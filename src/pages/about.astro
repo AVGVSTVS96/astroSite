@@ -1,7 +1,6 @@
 ---
 import '/src/global.css'
 ---
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -11,6 +10,16 @@ import '/src/global.css'
 		<title>Astro</title>
 	</head>
 	<body>
+		<div class="navbar-container w-full bg-gray-800 fixed top-0 ">
+			<div class="button-container flex justify-end m-1">
+			  <button class="rounded  bg-gray-700 p-2 mx-2">
+				<a class="text-white text-xl" href="/">Home</a>
+			  </button>
+			  <button class="rounded  bg-gray-700 p-2 mx-2">
+				<a class="text-white text-xl" href="/about/">About</a>
+			  </button>
+			</div>
+		  </div>
 		<h1>Second Page</h1>
 	</body>
 </html>
