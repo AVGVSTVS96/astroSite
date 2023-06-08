@@ -1,0 +1,29 @@
+---
+const { title } = Astro.props;
+import NavBar from '../components/NavBar.astro';
+import '/src/global.css'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+        <style>
+            :root {
+                @apply bg-gray-900;
+            }
+
+            hr {
+                @apply border-gray-200;
+            }
+        </style>
+	</head>
+    <NavBar />
+    <div class="prose prose-invert prose-hr:border-amber-600 ">
+        <slot>
+        </slot>
+    </div>
+</html>
