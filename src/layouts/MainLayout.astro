@@ -1,5 +1,6 @@
 ---
 const { title } = Astro.props;
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -10,6 +11,6 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<slot>
-	</slot>
+	<slot />
+	<Footer />
 </html>
