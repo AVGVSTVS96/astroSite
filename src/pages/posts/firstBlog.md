@@ -40,3 +40,14 @@ import '/src/global.css'
 </html>
 
 ```
+> Prose is the class provided by the TailwindCSS Typography plugin. It's used to add opinionated typographic markdown styling to the content. TailwidCSS by default resets default styles so markdown content looks like plain text.
+
+`Prose-invert` changes the color of text to white as opposed to the default black.
+There are a wide range of prose modifiers that can be used to change the look of the content such as `prose-sm` to make the text smaller or `prose-lg` to make it larger and modifiers to target each element type like `prose-h1` or `prose-headings` to target all headings.
+
+```jsx
+// Sets padding top to 12rem for h1 elements
+prose-h1:pt-12
+```
+
+---
