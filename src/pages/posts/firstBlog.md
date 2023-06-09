@@ -6,7 +6,7 @@ author: "Bassim Shahidy"
 tags: ["blog", "astro", "tailwindcss"]
 ---
 
-# My first blog post
+# How I built this blog
 ---
 This post describes the process of building my website with Astro and TailwindCSS
 
@@ -40,7 +40,9 @@ import '/src/global.css'
 </html>
 
 ```
-> Prose is the class provided by the TailwindCSS Typography plugin. It's used to add opinionated typographic markdown styling to the content. TailwidCSS by default resets default styles so markdown content looks like plain text.
+### Markdown styling
+
+Prose is a class provided by the TailwindCSS Typography plugin used for adding opinionated typographic markdown styling to the content. TailwidCSS by default resets default styles so markdown content looks like plain text, Typography applies styles back to the content.
 
 `Prose-invert` changes the color of text to white as opposed to the default black.
 There are a wide range of prose modifiers that can be used to change the look of the content such as `prose-sm` to make the text smaller or `prose-lg` to make it larger and modifiers to target each element type like `prose-h1` or `prose-headings` to target all headings.
@@ -49,5 +51,28 @@ There are a wide range of prose modifiers that can be used to change the look of
 // Sets padding top to 12rem for h1 elements
 prose-h1:pt-12
 ```
+### Creating a footer with the current year and a link to GitHub
+```jsx
+---
+import Social from "./subComponents/Social.astro";
+---
 
+<footer class="text-white flex items-center mt-8 mb-6 gap-4 text-sm">
+    <p>© {new Date().getFullYear()} Bassim shahidy. All rights reserved.</p>
+    <Social platform="github" username="withastro" icon="github"/>
+</footer>
+```
+
+
+### Adding icons as props to Astro components
+> Within the Footer component, I created a subcomponent called Social.astro. It takes in a icon prop which accesses icons by name from the public folder. 
+```jsx
+---
+const { platform, username, icon } = Astro.props;
+---
+<a href={`https://www.${platform}.com/${username}`}>
+    <img src={`/${icon}.svg`} alt={`${icon} icon`} width="22" height="22"/>
+</a>
+
+```
 ---
