@@ -2,5 +2,5 @@
 const { platform, username, icon } = Astro.props;
 ---
 <a href={`https://www.${platform}.com/${username}`}>
-    <img src={`/${icon}.svg`} alt="github" width="22" height="22"/>
+    <img src={`/${icon}.svg`} alt={`${icon} icon`} width="22" height="22"/>
 </a>
