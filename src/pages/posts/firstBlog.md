@@ -1,6 +1,7 @@
 ---
 layout: "../../layouts/MDLayout.astro"
 title: "First post on my custom built blog"
+description: "My first post on my custom built blog"
 pubDate: "June 7, 2023"
 author: "Bassim Shahidy"
 tags: ["blog", "astro", "tailwindcss"]
