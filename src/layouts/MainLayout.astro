@@ -12,72 +12,10 @@ const { description } = Astro.props;
 		<meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
-	<div class="blob" id="blob"></div>
-	<div id="blur"></div>
 	<slot />
-
-
 	<style>
-		body {
-			overflow: hidden;
-		}
-
-		.blob {
-			background: linear-gradient(to right, aquamarine, blueviolet);
-			height: 20rem;
-			width: 25rem;
-			position: absolute;
-			border-radius: 50%;
-			z-index: -2;
-			animation: rotate 5s linear infinite;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-
-		#blur {
-			height: 100dvh;
-			width: 100dvw;
-			position: absolute;
-			z-index: -1;
-			backdrop-filter: blur(100px);
-		}
-
-		@keyframes rotate {
-			from {
-				transform: translate(-50%, -50%) rotate(0deg);
-			}
-
-			50% {
-				scale: 1 1.5;
-			}
-
-			to {
-				transform: translate(-50%, -50%) rotate(360deg);
-			}
-		}
 	</style>
 
 	<script>
-		const blob = document.getElementById("blob");
-
-		document.body.onpointermove = (event) => {
-			const { clientX, clientY } = event;
-
-			blob.animate(
-				[
-					{
-						transform: blob.style.transform,
-						left: blob.style.left,
-						top: blob.style.top,
-					},
-					{
-						left: `${clientX}px`,
-						top: `${clientY}px`,
-					},
-				],
-				{ duration: 3000, fill: "forwards" }
-			);
-		};
 	</script>
 </html>
