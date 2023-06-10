@@ -1,17 +1,36 @@
 ---
-import '/src/global.css'
-import NavBar from '../components/NavBar.astro'
-import MainLayout from '../layouts/MainLayout.astro';
+import "/src/global.css";
+import NavBar from "../components/NavBar.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <MainLayout title="Bassim Shahidy">
 	<body>
 		<NavBar />
-		<div class="max-w-3xl">
-			<h1 class="text-6xl text-white text-center">Astro</h1>
-			<p class="text-white mt-6 text-lg">
-				Welcome to Astro! This is a demo of a static site built with Astro and TailwindCSS.
-			</p>	
+		<div class="max-w-3xl prose prose-invert">
+			<h1 class="mb-2">Bassim Shahidy</h1>
+			<h2 class="mt-0">
+				IT Technician at the New York City BAR Association
+			</h2>
+			<hr class="border-gray-400" />
+			<h3 class="mb-1">How I Built This Site</h3>
+			<p class="text-lg">
+				This is the third version of my personal website! With each
+				iteration my website has grown in complexity in proportion to my
+				progress learning web development. This version is built with
+				Astro, a frontend rendering framework that uses an HTML like
+				syntax to create components while allowing the use of components
+				from several of the most popular frameworks.
+			</p>
+			<p>
+				Astro is also extremely fast, it uses the islands architecture
+				to only send Javascript when required within interactive
+				components.
+			</p>
 		</div>
 	</body>
+	<div class="footer-container absolute bottom-0">
+		<Footer />
+	</div>
 </MainLayout>
