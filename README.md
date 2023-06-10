@@ -6,7 +6,7 @@ This latest version of my personal website is my first multipage application and
 
 Astro is truly a joy to work with! I look forward to learning more about it and indulging in its rich featureset as I continue to build with it.
 
-> Open this repo in StackBlitz or CodeSandbox!
+### **Open this repo in StackBlitz or CodeSandbox!**
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/AVGVSTVS96/astroSite)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/AVGVSTVS96/astroSite)
