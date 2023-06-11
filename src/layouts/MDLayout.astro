@@ -13,22 +13,17 @@ import "/src/global.css";
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={frontmatter.description} />
         <title>{frontmatter.title}</title>
-        <style>
-            :root {
-                @apply bg-slate-900;
-            }
-        </style>
     </head>
     <NavBar />
-    <div
-        class="prose prose-invert prose-hr:border-amber-600 prose-h1:pt-2 max-w-3xl">
+    <article
+        class="prose dark:prose-invert prose-hr:border-amber-600 prose-h1:pt-2 max-w-3xl">
         <div class="flex justify-start mb-1">
             <span
-            class="written-by rounded-md py-1 px-2 text-sm bg-opacity-20 bg-stone-700 text-amber-600 text-opacity-75 max-w-fit">
-            Written by {frontmatter.author} on {frontmatter.pubDate}
-        </span>
-    </div>
+                class="written-by rounded-md py-1 px-2 text-sm bg-opacity-20 bg-stone-700 text-amber-600 text-opacity-75 max-w-fit">
+                Written by {frontmatter.author} on {frontmatter.pubDate}
+            </span>
+        </div>
         <slot />
-    </div>
+    </article>
     <Footer />
 </html>
