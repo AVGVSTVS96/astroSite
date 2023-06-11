@@ -1,19 +1,16 @@
+---
+import Button from "./subComponents/Button.astro";
+---
+
 <div class="navbar-container min-w-full bg-gray-800 sticky top-0 py-2 mb-6">
   <div class="button-container flex justify-between items-center text-white text-xl px-4">
     <a href="/">
-      <img src="../astroLogo.svg" alt="Astro Logo" class="h-8"/>
+      <img src="../astroLogo.svg" alt="Astro Logo" class="h-8 w-30" />
     </a>
-
     <div class="flex">
-      <a href="/" class="rounded bg-gray-700 p-2 mx-2">
-        <button class="">Home</button>
-      </a>
-      <a href="/about/" class="rounded bg-gray-700 p-2 mx-2">
-        <button class="">About</button>
-      </a>
-      <a href="/posts/firstBlog" class="rounded bg-gray-700 p-2 mx-2">
-        <button class="">Blog</button>
-      </a>
+      <Button name="Home" link="/" />
+      <Button name="About" link="/about" />
+      <Button name="Blog" link="/posts/firstBlog" />
     </div>
   </div>
 </div>
