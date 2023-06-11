@@ -23,7 +23,10 @@ import "/src/global.css";
                 Written by {frontmatter.author} on {frontmatter.pubDate}
             </span>
         </div>
+        <h1>{frontmatter.title}</h1>
+        <p>{frontmatter.description}</p>
         <slot />
     </article>
     <Footer />
+
 </html>

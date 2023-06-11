@@ -1,17 +1,17 @@
 ---
-layout: "../../layouts/MDLayout.astro"
-title: "First post on my custom built blog"
-description: "My first post on my custom built blog"
+title: "How I built this website"
+description: "This is my first blog and it describes how I built this website with Astro and TailwindCSS, detailing the conepts of layouts, markdown styling, and string interpolation in Astro."
 pubDate: "June 7, 2023"
 author: "Bassim Shahidy"
 tags: ["blog", "astro", "tailwindcss"]
+layout: "../../layouts/MDLayout.astro"
 ---
-
-# How I built this website
 ---
-This post describes the process of building my website with [Astro](https://astro.build) and [TailwindCSS](https://tailwindcss.com/)
+I chose to build this site with [Astro](https://astro.build) and [TailwindCSS](https://tailwindcss.com/) for several reasons. Astro an excellent framework to build a portfolio website with and is fun to use.
 
+TailwindCSS provide's a well thought out design system that speeds up development by abstracting CSS classes into utility classes designed to be used in conjunction with each other. This promotes a consistent design system and speeds up development.
 
+This post will detail many of the fundamental concepts in Astro used to build this site such as layouts, markdown styling, and string interpolation.
 ## Layouts
 
 Astro enables the use of page layouts, the two main ways I've used layouts so far is for normal pages and for markdown pages. The markdown page layout setup is a little different from normal `.astro` files.
@@ -192,8 +192,3 @@ This `<Card />` component can be imported and used in any other Astro files with
     </p>
 </Card>
 ```
-
-## Benefits
-
-- **Modularity:** The `Card` component encapsulates related content, improving the modularity of my codebase.
-- **Flexibility:** The use of the `slot` feature allows for a flexible amount of content to be passed into the `Card` component.
