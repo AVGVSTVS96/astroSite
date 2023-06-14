@@ -17,9 +17,9 @@ module.exports = {
 					200: '#75BEDA'
 				},
 			},
-			plugins: [
-				require('@tailwindcss/typography')
-			],
 		}
-	}
+	},
+	plugins: [
+		require('@tailwindcss/typography')
+	],
 }
