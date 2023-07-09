@@ -20,7 +20,7 @@
 }
 
 html {
-    @apply dark:bg-slate-900 dark:text-slate-100 bg-slate-200 text-slate-950;
+    @apply bg-slate-900 text-slate-100 ;
     min-height: 100dvh;
 }
 
