@@ -10,8 +10,8 @@ import Card from "../components/Card.astro";
 	<body>
 		<NavBar />
 		<Card
-		title="Bassim Shahidy"
-		subtitle="IT Technician at the New York City BAR Association">
+		title="My First Astro Website"
+		subtitle="Styled with Tailwind CSS">
 		<p slot="content" class="text-lg">
 			This is the third version of my personal website! With each
 			iteration my website has grown in complexity in proportion to my
@@ -24,6 +24,9 @@ import Card from "../components/Card.astro";
 			Astro is also extremely fast, it uses the islands architecture
 			to only send Javascript when required within interactive
 			components.
+		</p>
+		<p slot="content">
+			For more information on Astro and how I used it to build this website, visit <a href="/posts/firstBlog" class="font-semibold hover:text-slate-400">How I built this website</a>.
 		</p>
 	</Card>
 	</body>
