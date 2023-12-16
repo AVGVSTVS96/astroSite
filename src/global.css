@@ -20,7 +20,8 @@
 }
 
 html {
-    @apply bg-slate-900;
+    @apply bg-slate-950;
+    @apply text-slate-200;
     color: white;
     min-height: 100dvh;
 }
