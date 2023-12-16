@@ -2,12 +2,12 @@
 import Button from "./subComponents/Button.astro";
 ---
 
-<div class="navbar-container w-5/6 bg-slate-900 bg-opacity-50 bg-blur rounded-lg sticky top-2 mt-4 mb-8 py-2 px-4">
+<div class="navbar-container w-5/6 bg-slate-900 bg-opacity-50 backdrop-blur-md rounded-lg sticky top-2 mt-4 mb-8 py-2 px-4">
   <div class="button-container flex justify-between items-center gap-6 text-lg ">
     <a href="/">
       <img src="../astroLogo.svg" alt="Astro Logo" class="h-8 w-30 opacity-80" />
     </a>
-    <div class="flex opacity-60">
+    <div class="flex opacity-80">
       <Button name="Home" link="/" />
       <Button name="About" link="/about" />
       <Button name="Blog" link="/posts/firstBlog" />
