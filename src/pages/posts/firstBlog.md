@@ -74,14 +74,14 @@ import '/src/global.css'
 Layouts features a `<slot />` tag which is where the content importing the layout is then placed.
 A layout can be imported in both markdown and Astro files but each uses a different syntax.
 
-#### In MD files layouts are imported at the top in frontmatter
+### In MD files layouts are imported at the top in frontmatter
 
 ```jsx
 ---
 layout: "../../layouts/MDLayout.astro"
 ---
 ```
-#### In Astro files layouts are imported like any other component.
+### In Astro files layouts are imported like any other component.
 
 ```jsx
 import MainLayout from '../layouts/MainLayout.astro';
@@ -101,7 +101,7 @@ prose-h1:pt-12
 ```
 
 ---
-### Creating a footer with the current year and a link to GitHub
+## Creating a footer with the current year and a link to GitHub
 ```jsx
 ---
 import Social from "./subComponents/Social.astro";
@@ -114,7 +114,7 @@ import Social from "./subComponents/Social.astro";
 ```
 
 
-## Adding icons as props to Astro components
+### Adding icons as props to Astro components
 Within the Footer component, I created a subcomponent called Social.astro. It takes in a icon prop which accesses icons by name from the public folder.
 ```jsx
 ---
@@ -169,7 +169,7 @@ In a new file called `Card.astro` I created a `<Card />` component to further mo
 
 
 
-## Using the `<Card />` component in pages
+### Using the `<Card />` component in pages
 
 This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
 

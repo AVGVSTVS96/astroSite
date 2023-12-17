@@ -1,8 +1,8 @@
 ---
-const { heading } = Astro.props;
+const { className, heading } = Astro.props;
 ---
 
-<li>
+<li class={className}>
   <a href={'#' + heading.slug}>
     {heading.text}
   </a>

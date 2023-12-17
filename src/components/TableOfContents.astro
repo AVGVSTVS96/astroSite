@@ -25,12 +25,20 @@ function buildToc(headings) {
 
 <nav class="toc pl-4">
   <ul>
-    {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
+    {
+      toc.map((heading) => (
+        <TableOfContentsHeading className="toc-item" heading={heading} />
+      ))
+    }
   </ul>
 </nav>
 <style>
   .toc {
     width: 200px;
     font-size: 0.8em;
+  }
+
+  .toc-item {
+    @apply grid gap-2;
   }
 </style>
