@@ -1,32 +1,36 @@
 ---
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 import "/src/global.css";
 ---
 
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content={Astro.generator} />
-        <meta name="description" content={frontmatter.description} />
-        <title>{frontmatter.title}</title>
-    </head>
-    <NavBar />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={frontmatter.description} />
+    <title>{frontmatter.title}</title>
+  </head>
+  <NavBar />
+  <div class="flex flex-row-reverse">
+    <TableOfContents headings={headings} />
     <article
-        class="prose prose-invert prose-hr:border-amber-600 prose-hr:border-opacity-60 prose-h1:pt-2 max-w-3xl">
-        <div class="flex justify-start mb-1">
-            <span
-                class="written-by rounded-md py-1 px-2 text-sm bg-opacity-20 bg-stone-700 text-amber-600 text-opacity-75 max-w-fit">
-                Written by {frontmatter.author} on {frontmatter.pubDate}
-            </span>
-        </div>
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.description}</p>
-        <slot />
+      class="prose prose-invert prose-hr:border-amber-600 prose-hr:border-opacity-60 prose-h1:pt-2 max-w-3xl">
+      <div class="flex justify-start mb-1">
+        <span
+          class="written-by rounded-md py-1 px-2 text-sm bg-opacity-20 bg-stone-700 text-amber-600 text-opacity-75 max-w-fit">
+          Written by {frontmatter.author} on {frontmatter.pubDate}
+        </span>
+      </div>
+      <h1>{frontmatter.title}</h1>
+      <slot />
     </article>
-    <Footer />
+  </div>
+  <Footer />
+
 
 </html>
