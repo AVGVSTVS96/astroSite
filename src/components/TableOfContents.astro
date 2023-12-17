@@ -23,21 +23,14 @@ function buildToc(headings) {
 }
 ---
 
-<nav class="toc">
+<nav class="toc pl-4">
   <ul>
     {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
   </ul>
 </nav>
 <style>
-.toc ul > li > a {
-    padding-left: 0 !important; /* No indentation for top-level items */
-}
-
-.toc ul > li > ul {
-    @apply p-2 pl-4;
-}
-
-.toc ul > li > ul > li > ul > li > a {
-    padding-left: 40px !important; /* Indentation for second-level subheadings */
+    .toc {
+    width: 200px; /* Adjust as needed */
+    font-size: 0.8em; /* Adjust as needed */
 }
 </style>
