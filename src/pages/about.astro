@@ -1,35 +1,33 @@
 ---
-import '/src/global.css'
-import NavBar from '../components/NavBar.astro'
-import MainLayout from '../layouts/MainLayout.astro';
+import NavBar from "../components/NavBar.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import Footer from "../components/Footer.astro";
 import Card from "../components/Card.astro";
 ---
 
 <MainLayout title="About Me" description="Bassim Shahidy's personal website">
-	<body>
-		<NavBar />
-		<Card
-		title="My First Astro Website"
-		subtitle="Styled with Tailwind CSS">
-		<p slot="content" class="text-lg">
-			This is the third version of my personal website! With each
-			iteration my website has grown in complexity in proportion to my
-			progress learning web development. This version is built with
-			Astro, a frontend rendering framework that uses an HTML like
-			syntax to create components while allowing the use of components
-			from several of the most popular frameworks.
-		</p>
-		<p slot="content">
-			Astro is also extremely fast, it uses the islands architecture
-			to only send Javascript when required within interactive
-			components.
-		</p>
-		<p slot="content">
-			For more information on Astro and how I used it to build this website, visit <a href="/posts/firstBlog" class="font-semibold hover:text-slate-400">How I built this website</a>.
-		</p>
-	</Card>
-	</body>
-		<Footer />
-	</div>
+  <body>
+    <NavBar />
+    <Card title="My First Astro Website" subtitle="Styled with Tailwind CSS">
+      <p slot="content" class="text-lg">
+        This is the third version of my personal website! With each iteration my
+        website has grown in complexity in proportion to my progress learning
+        web development. This version is built with Astro, a frontend rendering
+        framework that uses an HTML like syntax to create components while
+        allowing the use of components from several of the most popular
+        frameworks.
+      </p>
+      <p slot="content">
+        Astro is also extremely fast, it uses the islands architecture to only
+        send Javascript when required within interactive components.
+      </p>
+      <p slot="content">
+        For more information on Astro and how I used it to build this website,
+        visit <a
+          href="/posts/firstBlog"
+          class="font-semibold hover:text-slate-400">How I built this website</a>.
+      </p>
+    </Card>
+  </body>
+  <Footer />
 </MainLayout>
