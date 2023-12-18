@@ -4,18 +4,28 @@ const { description } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title}</title>
-	</head>
-	<slot />
-	<style>
-	</style>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <slot />
+  <style></style>
 
-	<script>
-	</script>
+  <script></script>
 </html>
+<style>
+  html {
+    @apply bg-slate-950;
+    @apply text-slate-200;
+    min-height: 100dvh;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+</style>
