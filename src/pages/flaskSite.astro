@@ -20,10 +20,6 @@ import Button from "../components/subComponents/Button.astro";
         and computer science. Bassim also has a vast set of academic 
         interests including history, political science, and philosophy"
     />
-    <link
-      rel="stylesheet"
-      href="/output.css"
-    />
     <style>
       @keyframes background-pan {
         from {
@@ -72,35 +68,33 @@ import Button from "../components/subComponents/Button.astro";
         transition: background-size 0.5s, background-position 0.5s;
       }
     </style>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Bassim Shahidy",
-      "jobTitle": "IT Technician",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "NYC Bar Association"
-      },
-      "description": "Bassim Shahidy is an expert in IT with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.",
-      "url": "https://bassimshahidy.com",
-      "sameAs": [
-        "https://github.com/avgvstvs96"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "bassim@bassimshahidy.com",
-        "contactType": "professional"
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bassim Shahidy",
+        "jobTitle": "IT Technician",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "NYC Bar Association"
+        },
+        "description": "Bassim Shahidy is an expert in IT with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.",
+        "url": "https://bassimshahidy.com",
+        "sameAs": ["https://github.com/avgvstvs96"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "bassim@bassimshahidy.com",
+          "contactType": "professional"
+        }
       }
-    }
     </script>
   </head>
   <body class="radial_background min-h-screen w-full">
-      <div class="h-1.5 rotating-gradient-border"></div>
-      <div class="mt-6 ml-4">
-          <Button name="Home" link="/"/>
-        </div>
-      <div class="mx-auto max-w-5xl px-4 py-8 text-left text-white font-mono">
+    <div class="h-1.5 rotating-gradient-border"></div>
+    <div class="mt-6 ml-4">
+      <Button name="Home" link="/" />
+    </div>
+    <div class="mx-auto max-w-5xl px-4 py-8 text-left text-white font-mono">
       <div class="rounded-lg rotating-gradient-border p-1">
         <div id="content" class="content rounded-md bg-mycustom-100 p-12">
           <h1 data-value="BASSIM SHAHIDY" class="mb-4 text-4xl font-bold">
@@ -112,8 +106,7 @@ import Button from "../components/subComponents/Button.astro";
           <hr class="border-t border-gray-600 my-8" />
           <h2
             data-value="ABOUT THIS WEBSITE"
-            class="mt-4 mb-2 text-2xl font-bold"
-          >
+            class="mt-4 mb-2 text-2xl font-bold">
             ABOUT THIS WEBSITE
           </h2>
           <p class="mb-4 text-md">
@@ -129,8 +122,7 @@ import Button from "../components/subComponents/Button.astro";
             <div>
               <h2
                 data-value="MY IT SKILLS INCLUDE"
-                class="mb-2 text-2xl font-bold"
-              >
+                class="mb-2 text-2xl font-bold">
                 MY IT SKILLS INCLUDE
               </h2>
               <ul class="list-disc text-sm list-outside mb-1 md:mb-4 pl-4">
@@ -161,20 +153,17 @@ import Button from "../components/subComponents/Button.astro";
             <!--second column-->
             <div class="flex items-center justify-center mb-1 md:mb-0">
               <div
-                class="svg-container hover:scale-110 transition-transform duration-300"
-              >
+                class="svg-container hover:scale-110 transition-transform duration-300">
                 <svg
                   width="225"
                   height="225"
                   viewBox="0 0 200 200"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_105_351)">
                     <path
                       d="M156.064 143.936L112.127 100L156.064 56.0636L200 100L156.064 143.936ZM43.9364 143.936L0 100L43.9364 56.0636L87.8728 100L43.9364 143.936ZM100 200L56.0636 156.064L100 112.127L143.936 156.064L100 200ZM100 87.8728L56.0636 43.9364L100 0L143.936 43.9364L100 87.8728Z"
-                      fill="url(#paint0_linear_105_351)"
-                    />
+                      fill="url(#paint0_linear_105_351)"></path>
                   </g>
                   <defs>
                     <linearGradient
@@ -183,13 +172,12 @@ import Button from "../components/subComponents/Button.astro";
                       y1="16"
                       x2="100"
                       y2="200"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#ACAAFF" />
-                      <stop offset="1" stop-color="#C0E8FF" />
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ACAAFF"></stop>
+                      <stop offset="1" stop-color="#C0E8FF"></stop>
                     </linearGradient>
                     <clipPath id="clip0_105_351">
-                      <rect width="200" height="200" fill="white" />
+                      <rect width="200" height="200" fill="white"></rect>
                     </clipPath>
                   </defs>
                 </svg>
@@ -202,8 +190,7 @@ import Button from "../components/subComponents/Button.astro";
             <div>
               <h2
                 data-value="I'M CURRENTLY LEARNING"
-                class="mb-2 text-2xl font-bold"
-              >
+                class="mb-2 text-2xl font-bold">
                 I'M CURRENTLY LEARNING
               </h2>
               <ul class="list-disc list-outside text-sm mb-1 md:mb-4 pl-4">
@@ -231,22 +218,19 @@ import Button from "../components/subComponents/Button.astro";
             <!--second column-->
             <div class="flex items-center justify-center mb-1 md:mb-0">
               <div
-                class="svg-container hover:scale-110 transition-transform duration-300"
-              >
+                class="svg-container hover:scale-110 transition-transform duration-300">
                 <svg
                   width="185"
                   height="185"
                   viewBox="0 0 200 200"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_105_288)">
                     <path
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M0 0H66.6667V66.6667H0V0ZM133.333 66.6667H66.6667V133.333H0V200H66.6667V133.333H133.333V200H200V133.333H133.333V66.6667ZM133.333 66.6667H200V0H133.333V66.6667Z"
-                      fill="url(#paint0_linear_105_288)"
-                    />
+                      fill="url(#paint0_linear_105_288)"></path>
                   </g>
                   <defs>
                     <linearGradient
@@ -255,13 +239,12 @@ import Button from "../components/subComponents/Button.astro";
                       y1="19"
                       x2="149"
                       y2="174.5"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#ACAAFF" />
-                      <stop offset="1" stop-color="#C0E8FF" />
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ACAAFF"></stop>
+                      <stop offset="1" stop-color="#C0E8FF"></stop>
                     </linearGradient>
                     <clipPath id="clip0_105_288">
-                      <rect width="200" height="200" fill="white" />
+                      <rect width="200" height="200" fill="white"></rect>
                     </clipPath>
                   </defs>
                 </svg>
@@ -274,8 +257,7 @@ import Button from "../components/subComponents/Button.astro";
             <div>
               <h2
                 data-value="MY ACADEMIC INTERESTS"
-                class="mb-2 text-2xl font-bold"
-              >
+                class="mb-2 text-2xl font-bold">
                 MY ACADEMIC INTERESTS
               </h2>
               <ul class="list-disc list-outside text-sm mb-1 md:mb-4 pl-4">
@@ -302,22 +284,19 @@ import Button from "../components/subComponents/Button.astro";
             <!--second column-->
             <div class="flex items-center justify-center mb-1 md:mb-0">
               <div
-                class="svg-container hover:scale-110 transition-transform duration-300"
-              >
+                class="svg-container hover:scale-110 transition-transform duration-300">
                 <svg
                   width="210"
                   height="210"
                   viewBox="0 0 200 200"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_105_284)">
                     <path
                       fill-rule="evenodd"
                       clip-rule="evenodd"
                       d="M0 0H50V50H0V0ZM100 50H50V100H0V150H50V200H100V150H150V200H200V150H150V100H200V50H150V0H100V50ZM100 100H150V50H100V100ZM100 100V150H50V100H100Z"
-                      fill="url(#paint0_linear_custom)"
-                    />
+                      fill="url(#paint0_linear_custom)"></path>
                   </g>
                   <defs>
                     <linearGradient
@@ -326,13 +305,12 @@ import Button from "../components/subComponents/Button.astro";
                       y1="19"
                       x2="149"
                       y2="174.5"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="#B0B7FF" />
-                      <stop offset="1" stop-color="#E1D0FF" />
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#B0B7FF"></stop>
+                      <stop offset="1" stop-color="#E1D0FF"></stop>
                     </linearGradient>
                     <clipPath id="clip0_105_284">
-                      <rect width="200" height="200" fill="white" />
+                      <rect width="200" height="200" fill="white"></rect>
                     </clipPath>
                   </defs>
                 </svg>
@@ -345,15 +323,13 @@ import Button from "../components/subComponents/Button.astro";
               <div>
                 <h2
                   data-value="CONTACT ME"
-                  class="mb-4 text-2xl font-bold text-white"
-                >
+                  class="mb-4 text-2xl font-bold text-white">
                   CONTACT ME
                 </h2>
                 <form
                   action="https://formspree.io/f/mlekwory"
                   method="POST"
-                  class="space-y-6"
-                >
+                  class="space-y-6">
                   <div>
                     <label
                       for="email"
@@ -380,35 +356,30 @@ import Button from "../components/subComponents/Button.astro";
                       name="message"
                       rows="6"
                       class="w-full p-2.5 text-sm rounded-lg shadow-sm border focus:ring-primary-500 focus:border-primary-500 bg-slate-700 border-gray-700"
-                      placeholder="Leave a message..."
-                    ></textarea>
+                      placeholder="Leave a message..."></textarea>
                   </div>
                   <button
                     type="submit"
-                    class="py-2 px-5 font-bold text-center text-white rounded-lg bg-indigo-600 hover:bg-gradient-to-r from-violet-600 to-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300"
-                  >
+                    class="py-2 px-5 font-bold text-center text-white rounded-lg bg-indigo-600 hover:bg-gradient-to-r from-violet-600 to-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300">
                     Submit
                   </button>
                 </form>
               </div>
               <div class="flex items-center justify-center mt-2 md:mt-0">
                 <div
-                  class="svg-container hover:scale-110 transition-transform duration-300"
-                >
+                  class="svg-container hover:scale-110 transition-transform duration-300">
                   <svg
                     width="210"
                     height="210"
                     viewBox="0 0 200 200"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_231_793)">
                       <path
                         fill-rule="evenodd"
                         clip-rule="evenodd"
                         d="M50 0H200V50V150L150 200L150 50H0L50 0ZM0 165.067V100L65.067 100L0 165.067ZM100 200H35.7777L100 135.778L100 200Z"
-                        fill="url(#paint0_linear_231_793)"
-                      />
+                        fill="url(#paint0_linear_231_793)"></path>
                     </g>
                     <defs>
                       <linearGradient
@@ -417,13 +388,12 @@ import Button from "../components/subComponents/Button.astro";
                         y1="-9.23648e-06"
                         x2="39.5"
                         y2="152.5"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stop-color="#A7B5FF" />
-                        <stop offset="1" stop-color="#F3ACFF" />
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#A7B5FF"></stop>
+                        <stop offset="1" stop-color="#F3ACFF"></stop>
                       </linearGradient>
                       <clipPath id="clip0_231_793">
-                        <rect width="200" height="200" fill="white" />
+                        <rect width="200" height="200" fill="white"></rect>
                       </clipPath>
                     </defs>
                   </svg>
@@ -437,61 +407,61 @@ import Button from "../components/subComponents/Button.astro";
   </body>
 </html>
 <script>
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-let intervals = new Map();
-let animationInProgress = new Map();
+  let intervals = new Map();
+  let animationInProgress = new Map();
 
-function animateText(element) {
-  if (intervals.has(element) || animationInProgress.get(element)) return;
+  function animateText(element) {
+    if (intervals.has(element) || animationInProgress.get(element)) return;
 
-  animationInProgress.set(element, true);
+    animationInProgress.set(element, true);
 
-  let iteration = 0;
+    let iteration = 0;
 
-  const interval = setInterval(() => {
-    element.innerText = element.innerText
-      .split("")
-      .map((letter, index) => {
-        if (index < iteration) {
-          return element.dataset.value[index];
-        }
+    const interval = setInterval(() => {
+      element.innerText = element.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration) {
+            return element.dataset.value[index];
+          }
 
-        return letters[Math.floor(Math.random() * 26)];
-      })
-      .join("");
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
 
-    if (iteration >= element.dataset.value.length) {
-      clearInterval(interval);
-      intervals.delete(element);
-      animationInProgress.set(element, false);
-    }
+      if (iteration >= element.dataset.value.length) {
+        clearInterval(interval);
+        intervals.delete(element);
+        animationInProgress.set(element, false);
+      }
 
-    iteration += 1 / 3;
-  }, 30);
+      iteration += 1 / 3;
+    }, 30);
 
-  intervals.set(element, interval);
-}
+    intervals.set(element, interval);
+  }
 
-document.querySelectorAll("h1, h2").forEach((element: HTMLElement) => {
-  animateText(element); // Animate headings on page load
+  document.querySelectorAll("h1, h2").forEach((element: HTMLElement) => {
+    animateText(element); // Animate headings on page load
 
-  element.onmouseover = () => {
-    animateText(element); // Animate headings on hover
-  };
-});
-// new code
-const content = document.getElementById("content");
-const radialBackground = document.querySelector(".radial_background");
+    element.onmouseover = () => {
+      animateText(element); // Animate headings on hover
+    };
+  });
+  // new code
+  const content = document.getElementById("content");
+  const radialBackground = document.querySelector(".radial_background");
 
-content.addEventListener("mouseover", () => {
-  radialBackground.classList.add("zoomed");
-});
+  content.addEventListener("mouseover", () => {
+    radialBackground.classList.add("zoomed");
+  });
 
-content.addEventListener("mouseout", () => {
-  radialBackground.classList.remove("zoomed");
-  setTimeout(() => {
-    (radialBackground as HTMLElement).style.transform = "scale(1)";
-  }, 500); // Reset transform after 500ms
-});
+  content.addEventListener("mouseout", () => {
+    radialBackground.classList.remove("zoomed");
+    setTimeout(() => {
+      (radialBackground as HTMLElement).style.transform = "scale(1)";
+    }, 500); // Reset transform after 500ms
+  });
 </script>
