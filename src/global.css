@@ -1,6 +1,7 @@
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
+  scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
