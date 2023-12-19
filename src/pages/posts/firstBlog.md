@@ -100,6 +100,24 @@ There are a wide range of prose modifiers that can be used to change the look of
 prose-h1:pt-12
 ```
 
+### Syntax Highlighting
+
+Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
+
+```jsx
+import { defineConfig } from 'astro/config';
+import tailwind from "@astrojs/tailwind";
+
+export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      theme: 'material-theme-ocean'
+    }
+  },
+  integrations: [tailwind()]
+});
+```
+
 ---
 ### Creating a footer with the current year and a link to GitHub
 ```jsx
