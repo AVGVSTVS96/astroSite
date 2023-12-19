@@ -1,17 +1,19 @@
 ---
-import '/src/styles/global.css'
-import MainLayout from '../layouts/MainLayout.astro';
-import MinimalNavBar from '../components/designProject1/MinimalNavBar.astro';
+import "/src/styles/global.css";
+import MainLayout from "../layouts/MainLayout.astro";
+import MinimalNavBar from "../components/designProject1/MinimalNavBar.astro";
 ---
 
 <MainLayout title="Minimal Typography">
-    <MinimalNavBar />
-    <section class="container min-w-full py-10 px-10">
-        <div class="container flex flex-col gap-2 text-left min-w-full">
-            <h1 class="font-sans font-bold text-4xl tracking-tight">Hi, I'm Bassim</h1>
-            <p class="text-xl opacity-60">
-                I'm an IT/AV Specialist at the NYC BAR Association
-            </p>
-        </div>
-    </section>
+  <MinimalNavBar />
+  <section class="container min-w-full px-10 py-10">
+    <div class="container flex min-w-full flex-col gap-2 text-left">
+      <h1 class="font-sans text-4xl font-bold tracking-tight">
+        Hi, I'm Bassim
+      </h1>
+      <p class="text-xl opacity-60">
+        I'm an IT/AV Specialist at the NYC BAR Association
+      </p>
+    </div>
+  </section>
 </MainLayout>

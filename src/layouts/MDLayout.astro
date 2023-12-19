@@ -2,7 +2,7 @@
 const { frontmatter } = Astro.props;
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
-import '/src/styles/global.css';
+import "/src/styles/global.css";
 ---
 
 <html lang="en">
@@ -16,10 +16,10 @@ import '/src/styles/global.css';
   </head>
   <NavBar />
   <article
-    class="prose prose-invert prose-hr:border-sky-400 prose-hr:border-opacity-60 prose-h1:pt-2 max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
-    <div class="flex justify-start mb-1">
+    class="prose prose-invert max-w-xs prose-h1:pt-2 prose-hr:border-sky-400 prose-hr:border-opacity-60 sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
+    <div class="mb-1 flex justify-start">
       <span
-        class="written-by rounded-md py-1 px-2 text-sm bg-opacity-25 bg-sky-700 text-sky-400 text-opacity-95 max-w-fit">
+        class="written-by max-w-fit rounded-md bg-sky-700 bg-opacity-25 px-2 py-1 text-sm text-sky-400 text-opacity-95">
         Written by {frontmatter.author} on {frontmatter.pubDate}
       </span>
     </div>
@@ -41,4 +41,5 @@ import '/src/styles/global.css';
       flex-direction: column;
     }
   </style>
+
 </html>

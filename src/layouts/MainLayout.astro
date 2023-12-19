@@ -1,5 +1,5 @@
 ---
-import '/src/styles/global.css'
+import "/src/styles/global.css";
 const { title } = Astro.props;
 const { description } = Astro.props;
 ---
@@ -14,19 +14,17 @@ const { description } = Astro.props;
     <title>{title}</title>
   </head>
   <slot />
-  <style></style>
 
-  <script></script>
+  <style>
+    html {
+      @apply bg-slate-950;
+      @apply text-slate-200;
+      min-height: 100dvh;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
 </html>
-<style>
-  html {
-    @apply bg-slate-950;
-    @apply text-slate-200;
-    min-height: 100dvh;
-  }
-  body {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-</style>

@@ -1,19 +1,15 @@
 ---
 import Button from "../components/subComponents/Button.astro";
-import '/src/styles/global.css';
+import "/src/styles/global.css";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bassim Shahidy's Portfolio Website</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
-    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta
       name="description"
       content=" Bassim Shahidy is an IT Specialist with 
@@ -60,13 +56,17 @@ import '/src/styles/global.css';
         background-size: 40px 60px;
         height: 100%;
         width: 100%;
-        transition: background-size 0.5s, background-position 0.5s;
+        transition:
+          background-size 0.5s,
+          background-position 0.5s;
       }
 
       .radial_background.zoomed {
         background-size: 41px 61px;
         background-position: calc(50% - 0.5px) calc(50% - 0.5px);
-        transition: background-size 0.5s, background-position 0.5s;
+        transition:
+          background-size 0.5s,
+          background-position 0.5s;
       }
     </style>
     <script type="application/ld+json">
@@ -91,12 +91,12 @@ import '/src/styles/global.css';
     </script>
   </head>
   <body class="radial_background min-h-screen w-full">
-    <div class="h-1.5 rotating-gradient-border"></div>
-    <div class="mt-6 ml-4">
+    <div class="rotating-gradient-border h-1.5"></div>
+    <div class="ml-4 mt-6">
       <Button name="Home" link="/" />
     </div>
-    <div class="mx-auto max-w-5xl px-4 py-8 text-left text-white font-mono">
-      <div class="rounded-lg rotating-gradient-border p-1">
+    <div class="mx-auto max-w-5xl px-4 py-8 text-left font-mono text-white">
+      <div class="rotating-gradient-border rounded-lg p-1">
         <div id="content" class="content rounded-md bg-mycustom-100 p-12">
           <h1 data-value="BASSIM SHAHIDY" class="mb-4 text-4xl font-bold">
             BASSIM SHAHIDY
@@ -104,21 +104,21 @@ import '/src/styles/global.css';
           <p class="mb-4 text-xl font-semibold">
             I'm an IT Technician at the NYC Bar Association
           </p>
-          <hr class="border-t border-gray-600 my-8" />
+          <hr class="my-8 border-t border-gray-600" />
           <h2
             data-value="ABOUT THIS WEBSITE"
-            class="mt-4 mb-2 text-2xl font-bold">
+            class="mb-2 mt-4 text-2xl font-bold">
             ABOUT THIS WEBSITE
           </h2>
-          <p class="mb-4 text-md">
+          <p class="text-md mb-4">
             This is the second version of my website. I built the first version
             with Streamlit which allowed me to build it using only Python. I've
             since started learning HTML, CSS, and Javascript and am writing this
             website from scratch using Flask as the backend and TailwindCSS for
             styling.
           </p>
-          <hr class="border-t border-gray-600 my-8" />
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <hr class="my-8 border-t border-gray-600" />
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
             <!--first column-->
             <div>
               <h2
@@ -126,7 +126,7 @@ import '/src/styles/global.css';
                 class="mb-2 text-2xl font-bold">
                 MY IT SKILLS INCLUDE
               </h2>
-              <ul class="list-disc text-sm list-outside mb-1 md:mb-4 pl-4">
+              <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
                 <li class="mb-1">
                   Hardware setup, maintenance, and troubleshooting
                 </li>
@@ -152,9 +152,9 @@ import '/src/styles/global.css';
               </ul>
             </div>
             <!--second column-->
-            <div class="flex items-center justify-center mb-1 md:mb-0">
+            <div class="mb-1 flex items-center justify-center md:mb-0">
               <div
-                class="svg-container hover:scale-110 transition-transform duration-300">
+                class="svg-container transition-transform duration-300 hover:scale-110">
                 <svg
                   width="225"
                   height="225"
@@ -185,8 +185,8 @@ import '/src/styles/global.css';
               </div>
             </div>
           </div>
-          <hr class="border-t border-gray-600 my-8" />
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <hr class="my-8 border-t border-gray-600" />
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
             <!--first column-->
             <div>
               <h2
@@ -194,7 +194,7 @@ import '/src/styles/global.css';
                 class="mb-2 text-2xl font-bold">
                 I'M CURRENTLY LEARNING
               </h2>
-              <ul class="list-disc list-outside text-sm mb-1 md:mb-4 pl-4">
+              <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
                 <li class="mb-1">
                   Backend web development with Flask and Python
                 </li>
@@ -217,9 +217,9 @@ import '/src/styles/global.css';
               </ul>
             </div>
             <!--second column-->
-            <div class="flex items-center justify-center mb-1 md:mb-0">
+            <div class="mb-1 flex items-center justify-center md:mb-0">
               <div
-                class="svg-container hover:scale-110 transition-transform duration-300">
+                class="svg-container transition-transform duration-300 hover:scale-110">
                 <svg
                   width="185"
                   height="185"
@@ -252,8 +252,8 @@ import '/src/styles/global.css';
               </div>
             </div>
           </div>
-          <hr class="border-t border-gray-600 my-8" />
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <hr class="my-8 border-t border-gray-600" />
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
             <!--first column-->
             <div>
               <h2
@@ -261,7 +261,7 @@ import '/src/styles/global.css';
                 class="mb-2 text-2xl font-bold">
                 MY ACADEMIC INTERESTS
               </h2>
-              <ul class="list-disc list-outside text-sm mb-1 md:mb-4 pl-4">
+              <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
                 <li class="mb-1">
                   History - Ancient Greece, Rome, and the Renaissance
                 </li>
@@ -283,9 +283,9 @@ import '/src/styles/global.css';
               </ul>
             </div>
             <!--second column-->
-            <div class="flex items-center justify-center mb-1 md:mb-0">
+            <div class="mb-1 flex items-center justify-center md:mb-0">
               <div
-                class="svg-container hover:scale-110 transition-transform duration-300">
+                class="svg-container transition-transform duration-300 hover:scale-110">
                 <svg
                   width="210"
                   height="210"
@@ -318,9 +318,9 @@ import '/src/styles/global.css';
               </div>
             </div>
           </div>
-          <hr class="border-t border-gray-600 my-8" />
+          <hr class="my-8 border-t border-gray-600" />
           <section>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div>
                 <h2
                   data-value="CONTACT ME"
@@ -334,14 +334,14 @@ import '/src/styles/global.css';
                   <div>
                     <label
                       for="email"
-                      class="block mb-2 text-sm font-medium text-gray-300"
+                      class="mb-2 block text-sm font-medium text-gray-300"
                       >Your email</label
                     >
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      class="w-full p-2.5 text-sm rounded-lg shadow-sm border focus:ring-primary-500 focus:border-primary-500 bg-slate-700 border-gray-700"
+                      class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-lg border border-gray-700 bg-slate-700 p-2.5 text-sm shadow-sm"
                       placeholder="name@example.com"
                       required
                     />
@@ -349,26 +349,26 @@ import '/src/styles/global.css';
                   <div>
                     <label
                       for="message"
-                      class="block mb-2 text-sm font-medium text-gray-300"
+                      class="mb-2 block text-sm font-medium text-gray-300"
                       >Your message</label
                     >
                     <textarea
                       id="message"
                       name="message"
                       rows="6"
-                      class="w-full p-2.5 text-sm rounded-lg shadow-sm border focus:ring-primary-500 focus:border-primary-500 bg-slate-700 border-gray-700"
+                      class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-lg border border-gray-700 bg-slate-700 p-2.5 text-sm shadow-sm"
                       placeholder="Leave a message..."></textarea>
                   </div>
                   <button
                     type="submit"
-                    class="py-2 px-5 font-bold text-center text-white rounded-lg bg-indigo-600 hover:bg-gradient-to-r from-violet-600 to-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300">
+                    class="focus:ring-primary-300 rounded-lg bg-indigo-600 from-violet-600 to-blue-600 px-5 py-2 text-center font-bold text-white hover:bg-gradient-to-r focus:outline-none focus:ring-4">
                     Submit
                   </button>
                 </form>
               </div>
-              <div class="flex items-center justify-center mt-2 md:mt-0">
+              <div class="mt-2 flex items-center justify-center md:mt-0">
                 <div
-                  class="svg-container hover:scale-110 transition-transform duration-300">
+                  class="svg-container transition-transform duration-300 hover:scale-110">
                   <svg
                     width="210"
                     height="210"
@@ -453,18 +453,19 @@ import '/src/styles/global.css';
   });
   // new code
   const content: HTMLElement | null = document.getElementById("content");
-  const radialBackground: HTMLElement | null = document.querySelector(".radial_background");
+  const radialBackground: HTMLElement | null =
+    document.querySelector(".radial_background");
 
   if (content && radialBackground) {
-  content.addEventListener("mouseover", () => {
-    radialBackground.classList.add("zoomed");
-  });
+    content.addEventListener("mouseover", () => {
+      radialBackground.classList.add("zoomed");
+    });
 
-  content.addEventListener("mouseout", () => {
-    radialBackground.classList.remove("zoomed");
-    setTimeout(() => {
-      radialBackground.style.transform = "scale(1)";
-    }, 500); // Reset transform after 500ms
-  });
-}
+    content.addEventListener("mouseout", () => {
+      radialBackground.classList.remove("zoomed");
+      setTimeout(() => {
+        radialBackground.style.transform = "scale(1)";
+      }, 500); // Reset transform after 500ms
+    });
+  }
 </script>
