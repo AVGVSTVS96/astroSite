@@ -16,21 +16,33 @@ import "/src/global.css";
     <title>{frontmatter.title}</title>
   </head>
   <NavBar />
-  <div class="flex flex-row-reverse">
-    <TableOfContents headings={headings} />
-    <article
-      class="prose prose-invert prose-hr:border-amber-600 prose-hr:border-opacity-60 prose-h1:pt-2 max-w-3xl">
-      <div class="flex justify-start mb-1">
-        <span
-          class="written-by rounded-md py-1 px-2 text-sm bg-opacity-20 bg-stone-700 text-amber-600 text-opacity-75 max-w-fit">
-          Written by {frontmatter.author} on {frontmatter.pubDate}
-        </span>
-      </div>
-      <h1>{frontmatter.title}</h1>
-      <slot />
-    </article>
-  </div>
-  <Footer />
+<div class="flex flex-row-reverse">
+  <TableOfContents headings={headings} />
+  <article
+    class="prose prose-invert max-w-xs prose-h1:pt-2 prose-hr:border-sky-400 prose-hr:border-opacity-60 sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
+    <div class="mb-1 flex justify-start">
+      <span
+        class="written-by max-w-fit rounded-md bg-sky-700 bg-opacity-25 px-2 py-1 text-sm text-sky-400 text-opacity-95">
+        Written by {frontmatter.author} on {frontmatter.pubDate}
+      </span>
+    </div>
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.description}</p>
+    <slot />
+  </article>
+ </div>
+ <Footer />
 
-
+  <style>
+    html {
+      @apply bg-slate-950;
+      @apply text-slate-200;
+      min-height: 100dvh;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
 </html>

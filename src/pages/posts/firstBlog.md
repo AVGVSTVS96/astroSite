@@ -100,6 +100,24 @@ There are a wide range of prose modifiers that can be used to change the look of
 prose-h1:pt-12
 ```
 
+### Syntax Highlighting
+
+Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
+
+```jsx
+import { defineConfig } from 'astro/config';
+import tailwind from "@astrojs/tailwind";
+
+export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      theme: 'material-theme-ocean'
+    }
+  },
+  integrations: [tailwind()]
+});
+```
+
 ---
 ## Creating a footer with the current year and a link to GitHub
 ```jsx
@@ -126,7 +144,7 @@ const { platform, username } = Astro.props;
 ```
 ### String Interpolation in Astro
 
-Astro utilizes JavaScript's template literals`(` `)` to embed variable values within strings.
+Astro utilizes JavaScript's template literals `(` `)` to embed variable values within strings.
 Variables within template literals are then denoted by the `${}` syntax. This allows dynamic composition of strings URLs, paths, or text based on `Astro.props` values.
 ```jsx
 <a href={`https://www.${platform}.com/${username}`}>

@@ -1,0 +1,471 @@
+---
+import Button from "../components/subComponents/Button.astro";
+import "/src/styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bassim Shahidy's Portfolio Website</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="description"
+      content=" Bassim Shahidy is an IT Specialist with 
+        expertise in information technologies, audio visual technologies, 
+        and computer science. Bassim also has a vast set of academic 
+        interests including history, political science, and philosophy"
+    />
+    <style>
+      @keyframes background-pan {
+        from {
+          background-position: 0% center;
+        }
+        to {
+          background-position: -200% center;
+        }
+      }
+
+      .rotating-gradient-border {
+        animation: background-pan 5s linear infinite;
+        background: linear-gradient(
+          to right,
+          #7c3aed,
+          #2563eb,
+          #c026d3,
+          #7c3aed
+        );
+        background-size: 200% auto;
+      }
+
+      .svg-container {
+        display: inline-block;
+        transform-origin: center;
+      }
+
+      textarea {
+        min-height: 100px;
+        max-height: 176px;
+      }
+
+      .radial_background {
+        background: radial-gradient(rgba(35, 39, 60, 1) 8%, transparent 8%),
+          #191d2d;
+        background-position: center;
+        background-size: 40px 60px;
+        height: 100%;
+        width: 100%;
+        transition:
+          background-size 0.5s,
+          background-position 0.5s;
+      }
+
+      .radial_background.zoomed {
+        background-size: 41px 61px;
+        background-position: calc(50% - 0.5px) calc(50% - 0.5px);
+        transition:
+          background-size 0.5s,
+          background-position 0.5s;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bassim Shahidy",
+        "jobTitle": "IT Technician",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "NYC Bar Association"
+        },
+        "description": "Bassim Shahidy is an expert in IT with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.",
+        "url": "https://bassimshahidy.com",
+        "sameAs": ["https://github.com/avgvstvs96"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "bassim@bassimshahidy.com",
+          "contactType": "professional"
+        }
+      }
+    </script>
+  </head>
+  <body class="radial_background min-h-screen w-full">
+    <div class="rotating-gradient-border h-1.5"></div>
+    <div class="ml-4 mt-6">
+      <Button name="Home" link="/" />
+    </div>
+    <div class="mx-auto max-w-5xl px-4 py-8 text-left font-mono text-white">
+      <div class="rotating-gradient-border rounded-lg p-1">
+        <div id="content" class="content rounded-md bg-mycustom-100 p-12">
+          <h1 data-value="BASSIM SHAHIDY" class="mb-4 text-4xl font-bold">
+            BASSIM SHAHIDY
+          </h1>
+          <p class="mb-4 text-xl font-semibold">
+            I'm an IT Technician at the NYC Bar Association
+          </p>
+          <hr class="my-8 border-t border-gray-600" />
+          <h2
+            data-value="ABOUT THIS WEBSITE"
+            class="mb-2 mt-4 text-2xl font-bold">
+            ABOUT THIS WEBSITE
+          </h2>
+          <p class="text-md mb-4">
+            This is the second version of my website. I built the first version
+            with Streamlit which allowed me to build it using only Python. I've
+            since started learning HTML, CSS, and Javascript and am writing this
+            website from scratch using Flask as the backend and TailwindCSS for
+            styling.
+          </p>
+          <hr class="my-8 border-t border-gray-600" />
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <!--first column-->
+            <div>
+              <h2
+                data-value="MY IT SKILLS INCLUDE"
+                class="mb-2 text-2xl font-bold">
+                MY IT SKILLS INCLUDE
+              </h2>
+              <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
+                <li class="mb-1">
+                  Hardware setup, maintenance, and troubleshooting
+                </li>
+                <li class="mb-1">
+                  Software installation, configuration, and troubleshooting
+                </li>
+                <li class="mb-1">
+                  Network diagnostics, troubleshooting, and setup
+                </li>
+                <li class="mb-1">
+                  Data backup, recovery, and storage management
+                </li>
+                <li class="mb-1">
+                  Cybersecurity best practices and threat mitigation
+                </li>
+                <li class="mb-1">
+                  Managing cloud computing resources and virtualization
+                </li>
+                <li class="mb-1">
+                  Operating systems installation, updates, and security
+                  management
+                </li>
+              </ul>
+            </div>
+            <!--second column-->
+            <div class="mb-1 flex items-center justify-center md:mb-0">
+              <div
+                class="svg-container transition-transform duration-300 hover:scale-110">
+                <svg
+                  width="225"
+                  height="225"
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_105_351)">
+                    <path
+                      d="M156.064 143.936L112.127 100L156.064 56.0636L200 100L156.064 143.936ZM43.9364 143.936L0 100L43.9364 56.0636L87.8728 100L43.9364 143.936ZM100 200L56.0636 156.064L100 112.127L143.936 156.064L100 200ZM100 87.8728L56.0636 43.9364L100 0L143.936 43.9364L100 87.8728Z"
+                      fill="url(#paint0_linear_105_351)"></path>
+                  </g>
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_105_351"
+                      x1="20.5"
+                      y1="16"
+                      x2="100"
+                      y2="200"
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ACAAFF"></stop>
+                      <stop offset="1" stop-color="#C0E8FF"></stop>
+                    </linearGradient>
+                    <clipPath id="clip0_105_351">
+                      <rect width="200" height="200" fill="white"></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <hr class="my-8 border-t border-gray-600" />
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <!--first column-->
+            <div>
+              <h2
+                data-value="I'M CURRENTLY LEARNING"
+                class="mb-2 text-2xl font-bold">
+                I'M CURRENTLY LEARNING
+              </h2>
+              <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
+                <li class="mb-1">
+                  Backend web development with Flask and Python
+                </li>
+                <li class="mb-1">
+                  Front end web development with JS, HTML, and CSS
+                </li>
+                <li class="mb-1">
+                  Local deployment of LLMs like Alpaca and LLaMA
+                </li>
+                <li class="mb-1">
+                  Building apps that integrate with OpenAI's API
+                </li>
+                <li class="mb-1">
+                  Distilling documentation to embeddings for LLM context
+                </li>
+                <li class="mb-1">
+                  Building plugins that integrate ChatGPT with LlamaIndex for
+                  context
+                </li>
+              </ul>
+            </div>
+            <!--second column-->
+            <div class="mb-1 flex items-center justify-center md:mb-0">
+              <div
+                class="svg-container transition-transform duration-300 hover:scale-110">
+                <svg
+                  width="185"
+                  height="185"
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_105_288)">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M0 0H66.6667V66.6667H0V0ZM133.333 66.6667H66.6667V133.333H0V200H66.6667V133.333H133.333V200H200V133.333H133.333V66.6667ZM133.333 66.6667H200V0H133.333V66.6667Z"
+                      fill="url(#paint0_linear_105_288)"></path>
+                  </g>
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_105_288"
+                      x1="27.5"
+                      y1="19"
+                      x2="149"
+                      y2="174.5"
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ACAAFF"></stop>
+                      <stop offset="1" stop-color="#C0E8FF"></stop>
+                    </linearGradient>
+                    <clipPath id="clip0_105_288">
+                      <rect width="200" height="200" fill="white"></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <hr class="my-8 border-t border-gray-600" />
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <!--first column-->
+            <div>
+              <h2
+                data-value="MY ACADEMIC INTERESTS"
+                class="mb-2 text-2xl font-bold">
+                MY ACADEMIC INTERESTS
+              </h2>
+              <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
+                <li class="mb-1">
+                  History - Ancient Greece, Rome, and the Renaissance
+                </li>
+                <li class="mb-1">
+                  Philosophy - Objectivism and Existentialism
+                </li>
+                <li class="mb-1">
+                  Pyschology - Social Pyschology and Political Cognition
+                </li>
+                <li class="mb-1">
+                  Sociology - Structural Functionalism and Political Sociology
+                </li>
+                <li class="mb-1">
+                  Linguistics - Linguistic Relativity and Determinism
+                </li>
+                <li class="mb-1">
+                  Political Science - Institutionalism and Constitutional Design
+                </li>
+              </ul>
+            </div>
+            <!--second column-->
+            <div class="mb-1 flex items-center justify-center md:mb-0">
+              <div
+                class="svg-container transition-transform duration-300 hover:scale-110">
+                <svg
+                  width="210"
+                  height="210"
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_105_284)">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M0 0H50V50H0V0ZM100 50H50V100H0V150H50V200H100V150H150V200H200V150H150V100H200V50H150V0H100V50ZM100 100H150V50H100V100ZM100 100V150H50V100H100Z"
+                      fill="url(#paint0_linear_custom)"></path>
+                  </g>
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_custom"
+                      x1="27.5"
+                      y1="19"
+                      x2="149"
+                      y2="174.5"
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#B0B7FF"></stop>
+                      <stop offset="1" stop-color="#E1D0FF"></stop>
+                    </linearGradient>
+                    <clipPath id="clip0_105_284">
+                      <rect width="200" height="200" fill="white"></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <hr class="my-8 border-t border-gray-600" />
+          <section>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h2
+                  data-value="CONTACT ME"
+                  class="mb-4 text-2xl font-bold text-white">
+                  CONTACT ME
+                </h2>
+                <form
+                  action="https://formspree.io/f/mlekwory"
+                  method="POST"
+                  class="space-y-6">
+                  <div>
+                    <label
+                      for="email"
+                      class="mb-2 block text-sm font-medium text-gray-300"
+                      >Your email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-lg border border-gray-700 bg-slate-700 p-2.5 text-sm shadow-sm"
+                      placeholder="name@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="message"
+                      class="mb-2 block text-sm font-medium text-gray-300"
+                      >Your message</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="6"
+                      class="focus:ring-primary-500 focus:border-primary-500 w-full rounded-lg border border-gray-700 bg-slate-700 p-2.5 text-sm shadow-sm"
+                      placeholder="Leave a message..."></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="focus:ring-primary-300 rounded-lg bg-indigo-600 from-violet-600 to-blue-600 px-5 py-2 text-center font-bold text-white hover:bg-gradient-to-r focus:outline-none focus:ring-4">
+                    Submit
+                  </button>
+                </form>
+              </div>
+              <div class="mt-2 flex items-center justify-center md:mt-0">
+                <div
+                  class="svg-container transition-transform duration-300 hover:scale-110">
+                  <svg
+                    width="210"
+                    height="210"
+                    viewBox="0 0 200 200"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_231_793)">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M50 0H200V50V150L150 200L150 50H0L50 0ZM0 165.067V100L65.067 100L0 165.067ZM100 200H35.7777L100 135.778L100 200Z"
+                        fill="url(#paint0_linear_231_793)"></path>
+                    </g>
+                    <defs>
+                      <linearGradient
+                        id="paint0_linear_231_793"
+                        x1="177"
+                        y1="-9.23648e-06"
+                        x2="39.5"
+                        y2="152.5"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#A7B5FF"></stop>
+                        <stop offset="1" stop-color="#F3ACFF"></stop>
+                      </linearGradient>
+                      <clipPath id="clip0_231_793">
+                        <rect width="200" height="200" fill="white"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const letters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  let intervals: Map<HTMLElement, number> = new Map();
+  let animationInProgress: Map<HTMLElement, boolean> = new Map();
+
+  function animateText(element: HTMLElement): void {
+    if (intervals.has(element) || animationInProgress.get(element)) return;
+
+    animationInProgress.set(element, true);
+
+    let iteration: number = 0;
+
+    const interval: number = setInterval(() => {
+      element.innerText = element.innerText
+        .split("")
+        .map((letter: string, index: number) => {
+          if (index < iteration) {
+            return element.dataset.value[index];
+          }
+
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
+
+      if (iteration >= element.dataset.value.length) {
+        clearInterval(interval);
+        intervals.delete(element);
+        animationInProgress.set(element, false);
+      }
+
+      iteration += 1 / 3;
+    }, 30);
+
+    intervals.set(element, interval);
+  }
+
+  document.querySelectorAll("h1, h2").forEach((element: HTMLElement) => {
+    animateText(element); // Animate headings on page load
+
+    element.onmouseover = () => {
+      animateText(element); // Animate headings on hover
+    };
+  });
+  // new code
+  const content: HTMLElement | null = document.getElementById("content");
+  const radialBackground: HTMLElement | null =
+    document.querySelector(".radial_background");
+
+  if (content && radialBackground) {
+    content.addEventListener("mouseover", () => {
+      radialBackground.classList.add("zoomed");
+    });
+
+    content.addEventListener("mouseout", () => {
+      radialBackground.classList.remove("zoomed");
+      setTimeout(() => {
+        radialBackground.style.transform = "scale(1)";
+      }, 500); // Reset transform after 500ms
+    });
+  }
+</script>
