@@ -1,5 +1,9 @@
+---
+let { variant = 'default' } = Astro.props
+---
+
 <div
-  class="prose prose-invert max-w-3xl rounded-lg border border-slate-200 border-opacity-20 p-6 prose-h2:font-semibold prose-h2:opacity-60">
+  class={`prose prose-invert max-w-3xl rounded-lg border-opacity-20 p-6 prose-h2:font-semibold prose-h2:opacity-60 ${variant === 'borderless' ? '' : 'border border-slate-200'}`}>
   <h1 class="mb-2">{Astro.props.title}</h1>
   <h2 class="mt-0">{Astro.props.subtitle}</h2>
   <hr class="mb-8 border-sky-400/70" />
