@@ -119,7 +119,7 @@ export default defineConfig({
 ```
 
 ---
-### Creating a footer with the current year and a link to GitHub
+## Creating a footer with the current year and a link to GitHub
 ```jsx
 ---
 import Social from "./subComponents/Social.astro";
@@ -132,7 +132,7 @@ import Social from "./subComponents/Social.astro";
 ```
 
 
-## Adding icons as props to Astro components
+### Adding icons as props to Astro components
 Within the Footer component, I created a subcomponent called Social.astro. It takes in a icon prop which accesses icons by name from the public folder.
 ```jsx
 ---
@@ -144,7 +144,7 @@ const { platform, username } = Astro.props;
 ```
 ### String Interpolation in Astro
 
-Astro utilizes JavaScript's template literals`(` `)` to embed variable values within strings.
+Astro utilizes JavaScript's template literals `(` `)` to embed variable values within strings.
 Variables within template literals are then denoted by the `${}` syntax. This allows dynamic composition of strings URLs, paths, or text based on `Astro.props` values.
 ```jsx
 <a href={`https://www.${platform}.com/${username}`}>
@@ -187,7 +187,7 @@ In a new file called `Card.astro` I created a `<Card />` component to further mo
 
 
 
-## Using the `<Card />` component in pages
+### Using the `<Card />` component in pages
 
 This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
 
