@@ -1,5 +1,12 @@
 ---
-let { variant = 'default' } = Astro.props
+interface Props {
+  title?: string
+  subtitle?: string
+  heading?: string
+  variant: 'bordered' | 'borderless'
+}
+
+let { variant } = Astro.props
 ---
 
 <div
