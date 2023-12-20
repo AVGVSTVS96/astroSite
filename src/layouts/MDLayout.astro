@@ -17,7 +17,9 @@ import "/src/styles/global.css";
   </head>
   <NavBar />
 <div class="flex flex-row-reverse">
-  <TableOfContents headings={headings} />
+  <div class="min-h-full">
+    <TableOfContents headings={headings} />
+  </div>
   <article
     class="prose prose-invert max-w-xs prose-h1:pt-2 prose-hr:border-sky-400 prose-hr:border-opacity-60 sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
     <div class="mb-1 flex justify-start">
