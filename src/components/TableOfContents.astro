@@ -23,8 +23,8 @@ function buildToc(headings) {
 }
 ---
 
-<nav class="toc pl-4">
-  <ul class="grid gap-2">
+<nav class="toc prose prose-invert w-[240px] pl-4 text-[0.8em]">
+  <ul class="grid list-none">
     {
       toc.map((heading) => (
         <TableOfContentsHeading className="toc-item" heading={heading} />
@@ -32,13 +32,3 @@ function buildToc(headings) {
     }
   </ul>
 </nav>
-<style>
-  .toc {
-    width: 200px;
-    font-size: 0.8em;
-  }
-
-  .toc-item {
-    @apply grid gap-2;
-  }
-</style>
