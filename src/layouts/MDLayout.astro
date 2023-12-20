@@ -16,23 +16,26 @@ import "/src/styles/global.css";
     <title>{frontmatter.title}</title>
   </head>
   <NavBar />
-<div class="flex flex-row-reverse">
-  <div class="min-h-full">
-    <TableOfContents headings={headings} />
-  </div>
-  <article
+<div class="grid grid-cols-12 min-w-full"> 
+  <div class="col-span-4"></div>
+  <div class="col-span-4 flex justify-center">
+    <article
     class="prose prose-invert max-w-xs prose-h1:pt-2 prose-hr:border-sky-400 prose-hr:border-opacity-60 sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
     <div class="mb-1 flex justify-start">
       <span
-        class="written-by max-w-fit rounded-md bg-sky-700 bg-opacity-25 px-2 py-1 text-sm text-sky-400 text-opacity-95">
-        Written by {frontmatter.author} on {frontmatter.pubDate}
-      </span>
-    </div>
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.description}</p>
-    <slot />
-  </article>
- </div>
+      class="written-by max-w-fit rounded-md bg-sky-700 bg-opacity-25 px-2 py-1 text-sm text-sky-400 text-opacity-95">
+      Written by {frontmatter.author} on {frontmatter.pubDate}
+    </span>
+  </div>
+  <h1>{frontmatter.title}</h1>
+  <p>{frontmatter.description}</p>
+  <slot />
+</article>
+</div>
+<div class="min-h-full col-span-4">
+  <TableOfContents headings={headings} />
+</div>
+</div>
  <Footer />
 
   <style>
