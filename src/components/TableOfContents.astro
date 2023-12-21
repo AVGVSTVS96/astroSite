@@ -23,12 +23,21 @@ function buildToc(headings) {
 }
 ---
 
-<nav class="toc sticky top-28 prose prose-invert prose-a:text-slate-300/90 hover:prose-a:text-sky-300/90 w-[240px] pl-8 text-[0.8em]">
+<nav
+  class="toc prose prose-invert sticky top-28 w-[240px] pl-16 text-[0.8em] prose-a:text-slate-300/90 hover:prose-a:text-sky-300/90">
   <ul class="grid list-none">
     {
       toc.map((heading) => (
-        <TableOfContentsHeading className="toc-item my-[0.15rem]" heading={heading} />
+        <TableOfContentsHeading
+          className="toc-item my-[0.15rem]"
+          heading={heading}
+        />
       ))
     }
   </ul>
 </nav>
+<style is:global>
+  .active {
+    @apply text-sky-400/90;
+  }
+</style>
