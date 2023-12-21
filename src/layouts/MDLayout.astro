@@ -16,27 +16,25 @@ import "/src/styles/global.css";
     <title>{frontmatter.title}</title>
   </head>
   <NavBar />
-<div class="grid grid-cols-12 min-w-full"> 
-  <div class="col-span-4"></div>
-  <div class="col-span-4 flex justify-center">
+  <div class="flex justify-center">
+    <div class="xl:w-[240px]"></div>
     <article
-    class="prose prose-invert max-w-xs prose-h1:pt-2 prose-hr:border-sky-400 prose-hr:border-opacity-60 sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
-    <div class="mb-1 flex justify-start">
-      <span
-      class="written-by max-w-fit rounded-md bg-sky-700 bg-opacity-25 px-2 py-1 text-sm text-sky-400 text-opacity-95">
-      Written by {frontmatter.author} on {frontmatter.pubDate}
-    </span>
+      class="prose prose-invert max-w-xs prose-h1:pt-2 prose-hr:border-sky-400 prose-hr:border-opacity-60 sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
+      <div class="mb-1 flex justify-start">
+        <span
+          class="written-by max-w-fit rounded-md bg-sky-700 bg-opacity-25 px-2 py-1 text-sm text-sky-400 text-opacity-95">
+          Written by {frontmatter.author} on {frontmatter.pubDate}
+        </span>
+      </div>
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.description}</p>
+      <slot />
+    </article>
+    <div class="min-h-full">
+      <TableOfContents headings={headings} />
+    </div>
   </div>
-  <h1>{frontmatter.title}</h1>
-  <p>{frontmatter.description}</p>
-  <slot />
-</article>
-</div>
-<div class="min-h-full col-span-4">
-  <TableOfContents headings={headings} />
-</div>
-</div>
- <Footer />
+  <Footer />
 
   <style>
     html {
@@ -50,28 +48,34 @@ import "/src/styles/global.css";
       flex-direction: column;
     }
   </style>
-</html>
+
   <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
-        const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
+    window.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
 
-        if (entry.isIntersecting) {
-          tocLink.classList.add('active');
-        } else {
-          tocLink.classList.remove('active');
+            if (entry.isIntersecting) {
+              tocLink.classList.add("active");
+            } else {
+              tocLink.classList.remove("active");
+            }
+          });
+        },
+        {
+          rootMargin: "0px",
+          threshold: 0.1,
         }
-      });
-    }, {
-      rootMargin: '0px',
-      threshold: 0.1
-    });
+      );
 
-    // Target all headings that should be observed
-    document.querySelectorAll('article h2, article h3').forEach((heading) => {
-      observer.observe(heading);
+      // Target all headings that should be observed
+      document.querySelectorAll("article h2, article h3").forEach((heading) => {
+        observer.observe(heading);
+      });
     });
-  });
-</script>
+  </script>
+
+
+</html>
