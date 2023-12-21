@@ -51,3 +51,27 @@ import "/src/styles/global.css";
     }
   </style>
 </html>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
+
+        if (entry.isIntersecting) {
+          tocLink.classList.add('active');
+        } else {
+          tocLink.classList.remove('active');
+        }
+      });
+    }, {
+      rootMargin: '0px',
+      threshold: 0.1
+    });
+
+    // Target all headings that should be observed
+    document.querySelectorAll('article h2, article h3').forEach((heading) => {
+      observer.observe(heading);
+    });
+  });
+</script>
