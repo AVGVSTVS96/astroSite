@@ -2,7 +2,9 @@ tabWidth: 2
 semi: true
 bracketSameLine: true
 printWidth: 80
+singleQuote: true
 trailingComma: "es5"
+
 plugins:
   - "prettier-plugin-astro"
   - "prettier-plugin-tailwindcss"

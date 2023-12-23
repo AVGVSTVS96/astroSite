@@ -74,14 +74,14 @@ import '/src/global.css'
 Layouts features a `<slot />` tag which is where the content importing the layout is then placed.
 A layout can be imported in both markdown and Astro files but each uses a different syntax.
 
-#### In MD files layouts are imported at the top in frontmatter
+### In MD files layouts are imported at the top in frontmatter
 
 ```jsx
 ---
 layout: "../../layouts/MDLayout.astro"
 ---
 ```
-#### In Astro files layouts are imported like any other component.
+### In Astro files layouts are imported like any other component.
 
 ```jsx
 import MainLayout from '../layouts/MainLayout.astro';

@@ -1,0 +1,32 @@
+---
+const { className, heading } = Astro.props;
+---
+
+<li class={className}>
+  <a href={'#' + heading.slug} class="no-underline">
+    {heading.text}
+  </a>
+  {
+    heading.subheadings.length > 0 && (
+      <ul class="my-0 list-none">
+        {heading.subheadings.map((subheading) => (
+          <Astro.self heading={subheading} />
+        ))}
+      </ul>
+    )
+  }
+</li>
+
+<style>
+  .active {
+    @apply text-sky-300/70;
+  }
+
+  :hover {
+    @apply text-slate-300/90;
+  }
+
+  .active:hover {
+    @apply text-sky-300/90;
+  }
+</style>
