@@ -1,5 +1,6 @@
 ---
-import Button from "./subComponents/Button.astro";
+import Button from './subComponents/Button.astro';
+import DropdownMenu from './subComponents/DropdownMenu.astro';
 ---
 
 <div
@@ -18,6 +19,11 @@ import Button from "./subComponents/Button.astro";
       <Button name="Blog" link="/posts/firstBlog" />
       <Button name="Project1" link="/designProject" />
       <Button name="Flask Site" link="/flaskSite" />
+      <DropdownMenu
+        name="Projects"
+        linkNames={['Minimal Typography', 'Old Flask Site']}
+        urls={['/designProject', '/flaskSite']}
+      />
     </div>
   </div>
 </div>

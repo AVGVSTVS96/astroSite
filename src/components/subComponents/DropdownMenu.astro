@@ -1,0 +1,25 @@
+---
+const { name = 'Dropdown', linkNames = [], urls = [] } = Astro.props;
+---
+
+<div class="relative flex justify-start">
+  <button
+    id="dropdown-button"
+    class="relative block rounded-md border border-slate-400 px-3">{name}</button>
+  <div
+    id="dropdown"
+    class="absolute top-14  rounded-md bg-slate-700 p-[0.5px] w-40">
+    {linkNames.map((linkName, index) => (
+        <a href={urls[index]} class="block px-3 py-2 text-sm">{linkName}</a>
+      ))}
+  </div>
+</div>
+
+<script>
+  const button = document.getElementById('dropdown-button');
+  const dropdown = document.getElementById('dropdown');
+
+  button.addEventListener('click', () => {
+    dropdown.classList.toggle('hidden');
+  });
+</script>
