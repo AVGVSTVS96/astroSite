@@ -1,10 +1,11 @@
 ---
 const { name, link } = Astro.props;
 ---
+
 <a
-    href={link}
-    class="bg-clip-text text-transparent font-normal rounded-lg 
-        bg-gradient-to-r from-slate-200 to-slate-200 border border-slate-700 py-2 px-3 mx-2 
+  href={link}
+  class="mx-2 rounded-lg border border-slate-700
+        bg-gradient-to-r from-slate-200 to-slate-200 bg-clip-text px-3 py-2 font-normal text-transparent
         hover:from-violet-400 hover:to-blue-400">
-    <button>{name}</button>
+  <button>{name}</button>
 </a>

@@ -1,9 +1,9 @@
 ---
 const { frontmatter, headings } = Astro.props;
-import NavBar from "../components/NavBar.astro";
-import Footer from "../components/Footer.astro";
-import TableOfContents from "../components/TableOfContents.astro";
-import "/src/styles/global.css";
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import '/src/styles/global.css';
 ---
 
 <html lang="en">
@@ -30,7 +30,7 @@ import "/src/styles/global.css";
       <p>{frontmatter.description}</p>
       <slot />
     </article>
-    <div class="min-h-full hidden lg:block">
+    <div class="hidden min-h-full lg:block">
       <TableOfContents headings={headings} />
     </div>
   </div>
@@ -49,28 +49,28 @@ import "/src/styles/global.css";
   </style>
 
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener('DOMContentLoaded', () => {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            const id = entry.target.getAttribute("id");
+            const id = entry.target.getAttribute('id');
             const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
 
             if (entry.isIntersecting) {
-              tocLink.classList.add("active");
+              tocLink.classList.add('active');
             } else {
-              tocLink.classList.remove("active");
+              tocLink.classList.remove('active');
             }
           });
         },
         {
-          rootMargin: "0px",
+          rootMargin: '0px',
           threshold: 0.1,
         }
       );
 
       // Target all headings that should be observed
-      document.querySelectorAll("article h2, article h3").forEach((heading) => {
+      document.querySelectorAll('article h2, article h3').forEach((heading) => {
         observer.observe(heading);
       });
     });
