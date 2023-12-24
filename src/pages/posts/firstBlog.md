@@ -1,6 +1,6 @@
 ---
 title: "How I built this website"
-description: "This is my first blog and it describes how I built this website with Astro and TailwindCSS, detailing the conepts of layouts, markdown styling, and string interpolation in Astro."
+description: "This is my first blog, it describes the fundamental concepts I used to build this website using Astro and TailwindCSS such as layouts, markdown styling, components, and string interpolation in Astro."
 pubDate: "June 7, 2023"
 author: "Bassim Shahidy"
 tags: ["blog", "astro", "tailwindcss"]
