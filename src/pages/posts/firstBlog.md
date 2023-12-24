@@ -7,11 +7,10 @@ tags: ["blog", "astro", "tailwindcss"]
 layout: "../../layouts/MDLayout.astro"
 ---
 ---
-I chose to build this site with [Astro](https://astro.build) and [TailwindCSS](https://tailwindcss.com/) for several reasons. Astro an excellent framework to build a portfolio website with and is fun to use.
+I chose to build this site with [Astro](https://astro.build) and [TailwindCSS](https://tailwindcss.com/) for several reasons. Astro is an excellent framework to build a portfolio website with and is a joy to work with thanks to it's rich documentation and intuitive structure.
 
-TailwindCSS provide's a well thought out design system that speeds up development by abstracting CSS classes into utility classes designed to be used in conjunction with each other. This promotes a consistent design system and speeds up development.
+TailwindCSS provides a well thought out design system that speeds up development by abstracting CSS classes into utility classes designed to be used in conjunction with each other. This promotes a consistent design system and speeds up development.
 
-This post will detail many of the fundamental concepts in Astro used to build this site such as layouts, markdown styling, and string interpolation.
 ## Layouts
 
 Astro enables the use of page layouts, the two main ways I've used layouts so far is for normal pages and for markdown pages. The markdown page layout setup is a little different from normal `.astro` files.
