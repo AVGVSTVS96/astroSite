@@ -5,13 +5,20 @@ const { name = 'Dropdown', linkNames = [], urls = [] } = Astro.props;
 <div class="relative flex justify-start pl-2">
   <button
     id="dropdown-button"
-    class="relative block rounded-md border border-slate-400 px-3">{name}</button>
+    class="relative block rounded-md border border-slate-400 px-3"
+    >{name}</button>
   <div
     id="dropdown"
-    class="absolute top-14 rounded-md bg-slate-800 p-[0.5px] w-40">
-    {linkNames.map((linkName, index) => (
-        <a href={urls[index]} class="block px-2 py-2 m-1 text-sm rounded-md hover:bg-slate-700">{linkName}</a>
-      ))}
+    class="absolute top-14 hidden w-40 rounded-md bg-slate-800 p-[0.5px]">
+    {
+      linkNames.map((linkName, index) => (
+        <a
+          href={urls[index]}
+          class="m-1 block rounded-md px-2 py-2 text-sm hover:bg-slate-700">
+          {linkName}
+        </a>
+      ))
+    }
   </div>
 </div>
 
