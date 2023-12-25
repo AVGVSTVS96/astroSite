@@ -1,6 +1,6 @@
 ---
-import Button from "../components/subComponents/Button.astro";
-import "/src/styles/global.css";
+import Button from '../components/subComponents/Button.astro';
+import '/src/styles/global.css';
 ---
 
 <!doctype html>
@@ -408,7 +408,7 @@ import "/src/styles/global.css";
   </body>
 </html>
 <script>
-  const letters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const letters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   let intervals: Map<HTMLElement, number> = new Map();
   let animationInProgress: Map<HTMLElement, boolean> = new Map();
@@ -422,7 +422,7 @@ import "/src/styles/global.css";
 
     const interval: number = setInterval(() => {
       element.innerText = element.innerText
-        .split("")
+        .split('')
         .map((letter: string, index: number) => {
           if (index < iteration) {
             return element.dataset.value[index];
@@ -430,7 +430,7 @@ import "/src/styles/global.css";
 
           return letters[Math.floor(Math.random() * 26)];
         })
-        .join("");
+        .join('');
 
       if (iteration >= element.dataset.value.length) {
         clearInterval(interval);
@@ -444,7 +444,7 @@ import "/src/styles/global.css";
     intervals.set(element, interval);
   }
 
-  document.querySelectorAll("h1, h2").forEach((element: HTMLElement) => {
+  document.querySelectorAll('h1, h2').forEach((element: HTMLElement) => {
     animateText(element); // Animate headings on page load
 
     element.onmouseover = () => {
@@ -452,19 +452,19 @@ import "/src/styles/global.css";
     };
   });
   // new code
-  const content: HTMLElement | null = document.getElementById("content");
+  const content: HTMLElement | null = document.getElementById('content');
   const radialBackground: HTMLElement | null =
-    document.querySelector(".radial_background");
+    document.querySelector('.radial_background');
 
   if (content && radialBackground) {
-    content.addEventListener("mouseover", () => {
-      radialBackground.classList.add("zoomed");
+    content.addEventListener('mouseover', () => {
+      radialBackground.classList.add('zoomed');
     });
 
-    content.addEventListener("mouseout", () => {
-      radialBackground.classList.remove("zoomed");
+    content.addEventListener('mouseout', () => {
+      radialBackground.classList.remove('zoomed');
       setTimeout(() => {
-        radialBackground.style.transform = "scale(1)";
+        radialBackground.style.transform = 'scale(1)';
       }, 500); // Reset transform after 500ms
     });
   }
