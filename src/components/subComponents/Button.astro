@@ -1,9 +1,10 @@
 ---
-const { name, link } = Astro.props;
+const { name, link, id } = Astro.props;
 ---
 
 <a
   href={link}
+  id={id}
   class="mx-2 rounded-lg border border-slate-700
         bg-gradient-to-r from-slate-200 to-slate-200 bg-clip-text px-3 py-2 font-normal text-transparent
         hover:from-violet-400 hover:to-blue-400">
