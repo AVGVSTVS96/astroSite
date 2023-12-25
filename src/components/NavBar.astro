@@ -10,8 +10,12 @@ import DropdownMenu from './subComponents/DropdownMenu.astro';
       <img
         src="../astroLogo.svg"
         alt="Astro Logo"
-        class="w-30 h-8 opacity-80"
+        class="w-30 h-8 opacity-80 md:block hidden"
       />
+      <img
+        src="../astro-icon-light.svg"
+        alt="Astro Logo"
+        class="w-8 h-8 opacity-80 sm:block md:hidden" />
     </a>
     <div class="flex lg:text-lg md:text-md">
       <Button name="Home" link="/" />
