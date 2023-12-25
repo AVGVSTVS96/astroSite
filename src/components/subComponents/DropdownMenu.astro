@@ -7,7 +7,7 @@ import Button from './Button.astro';
   <Button name={name} id="dropdown-button" />
   <div
     id="dropdown"
-    class="absolute top-14 ml-2 hidden w-40 rounded-md bg-slate-800 p-[0.5px]">
+    class="absolute top-14 hidden rounded-md bg-slate-800 p-[0.5px] sm:ml-2 md:w-40">
     {
       linkNames.map((linkName, index) => (
         <a
