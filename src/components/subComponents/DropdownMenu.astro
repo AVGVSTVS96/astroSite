@@ -24,7 +24,12 @@ import Button from './Button.astro';
   const button = document.getElementById('dropdown-button');
   const dropdown = document.getElementById('dropdown');
 
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (event) => {
     dropdown.classList.toggle('hidden');
+    event.stopPropagation();
+  });
+
+  document.addEventListener('click', () => {
+    dropdown.classList.add('hidden');
   });
 </script>
