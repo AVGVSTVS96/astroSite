@@ -5,12 +5,11 @@ const { name, link, id } = Astro.props;
 <a
   href={link}
   id={id}
-  class="mx-2 rounded-lg
-        text-slate-200 hover:bg-slate-800
-        px-3 py-2 font-normal">
+  class="mx-2 rounded-lg px-3 py-2 font-normal text-slate-200 hover:bg-slate-800">
   <button>{name}</button>
 </a>
- <style>
+<style>
   .dropdown-active {
     @apply bg-slate-800;
   }
+</style>
