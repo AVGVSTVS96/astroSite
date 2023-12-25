@@ -26,10 +26,12 @@ import Button from './Button.astro';
 
   button.addEventListener('click', (event) => {
     dropdown.classList.toggle('hidden');
+    button.classList.toggle('dropdown-active');
     event.stopPropagation();
   });
 
   document.addEventListener('click', () => {
+    button.classList.remove('dropdown-active');
     dropdown.classList.add('hidden');
   });
 </script>
