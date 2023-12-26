@@ -1,4 +1,11 @@
 ---
+interface Props {
+  name: string;
+  link?: string;
+  id?: string;
+  showCaret?: boolean;
+}
+
 const { name, link, id, showCaret = false } = Astro.props;
 ---
 
