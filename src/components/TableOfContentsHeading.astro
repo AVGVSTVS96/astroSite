@@ -22,6 +22,10 @@ const { className, heading } = Astro.props;
     @apply text-sky-300/70;
   }
 
+  li:has(.active) > a {
+    @apply text-sky-300/70;
+  }
+
   :hover {
     @apply text-slate-300/90;
   }
