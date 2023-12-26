@@ -18,7 +18,7 @@ const { name, link, id, showCaret = false, styles = '' } = Astro.props;
   {
     showCaret && (
       <svg
-        class="ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
+        class="caret-icon ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -32,4 +32,13 @@ const { name, link, id, showCaret = false, styles = '' } = Astro.props;
   .dropdown-active {
     @apply bg-slate-800;
   }
+
+  .caret-icon {
+    transition: transform 0.15s ease-in-out;
+    will-change: transform;
+}
+  .dropdown-active .caret-icon {
+    transform: rotate(180deg);
+  }
+
 </style>
