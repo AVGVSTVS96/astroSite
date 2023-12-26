@@ -1,12 +1,24 @@
 ---
-const { name, link, id } = Astro.props;
+const { name, link, id, showCaret = false } = Astro.props;
 ---
 
 <a
   href={link}
   id={id}
-  class="mx-2 rounded-lg px-3 py-2 font-normal text-slate-200 hover:bg-slate-800">
+  class="mx-2 flex items-center rounded-lg px-3 py-2 font-normal text-slate-200 hover:bg-slate-800">
   <button>{name}</button>
+  {
+    showCaret && (
+      <svg
+        class="ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.1">
+        <path d="M8 9l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    )
+  }
 </a>
 <style>
   .dropdown-active {
