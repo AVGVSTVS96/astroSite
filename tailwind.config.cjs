@@ -4,18 +4,6 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				chocolate: {
-					100: '#D2691E',
-					200: '#CD661D',
-				},
-				brown: {
-					100: '#804D3B',
-					200: '#522E24'
-				},
-				blueish: {
-					100: '#9AEDF4',
-					200: '#75BEDA'
-				},
 				mycustom: {
 					100: '#15162e',
 					200: '#191D2D'
