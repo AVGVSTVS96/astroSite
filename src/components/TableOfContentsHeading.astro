@@ -8,7 +8,7 @@ const { className, heading } = Astro.props;
   </a>
   {
     heading.subheadings.length > 0 && (
-      <ul class="my-0 list-none">
+      <ul class="my-0 list-image-[url(/sideCaret.svg)]">
         {heading.subheadings.map((subheading) => (
           <Astro.self heading={subheading} />
         ))}
