@@ -104,7 +104,7 @@ There are a wide range of prose modifiers that can be used to change the look of
 
 Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
 
-```jsx title="astro.config.mjs"
+```jsx title="astro.config.mjs" {6-7}
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
@@ -191,7 +191,7 @@ In a new file called `Card.astro` I created a `<Card />` component to further mo
 
 This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
 
-```jsx title="pages/index.astro"
+```jsx title="pages/index.astro" {2-4, 12}
 <Card
     title="Bassim Shahidy"
     subtitle="IT Technician at the New York City BAR Association">
