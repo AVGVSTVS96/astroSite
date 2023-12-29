@@ -17,7 +17,7 @@ Astro enables the use of page layouts, the two main ways I've used layouts so fa
 
 ### `MainLayout` for `.astro` files
 
-```jsx
+```jsx title="layouts/MainLayout.astro"
 ---
 const { title } = Astro.props;
 ---
@@ -37,14 +37,14 @@ const { title } = Astro.props;
 
 `const { title } = Astro.props;` Set's the title to a prop, this prop is set when `MainLayout` is called in a file.
 
-```jsx
+```jsx title="pages/index.astro"
 <MainLayout title="Bassim Shahidy">
 </MainLayout>
 ```
 
 ### `MDLayout` for `.md` files
 
-```jsx
+```jsx title="layouts/MDLayout.astro"
 ---
 const { frontmatter } = Astro.props;
 import NavBar from '../components/NavBar.astro';
@@ -75,14 +75,14 @@ A layout can be imported in both markdown and Astro files but each uses a differ
 
 ### In MD files layouts are imported at the top in frontmatter
 
-```jsx
+```jsx title="pages/posts/firstBlog.md"
 ---
 layout: "../../layouts/MDLayout.astro"
 ---
 ```
 ### In Astro files layouts are imported like any other component.
 
-```jsx
+```jsx title="pages/index.astro"
 import MainLayout from '../layouts/MainLayout.astro';
 ```
 
@@ -94,16 +94,17 @@ Prose is a class provided by the TailwindCSS Typography plugin used for adding o
 `Prose-invert` changes the color of text to white as opposed to the default black.
 There are a wide range of prose modifiers that can be used to change the look of the content such as `prose-sm` to make the text smaller or `prose-lg` to make it larger and modifiers to target each element type like `prose-h1` or `prose-headings` to target all headings.
 
-```jsx
-// Sets padding top to 12rem for h1 elements
-prose-h1:pt-12
+```html title="layouts/MDLayout.astro"
+ <article
+      class="prose prose-invert prose-h1:pt-2 prose-hr:border-sky-400">
+</article>
 ```
 
 ### Syntax Highlighting
 
 Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
 
-```jsx
+```jsx title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
@@ -119,7 +120,7 @@ export default defineConfig({
 
 ---
 ## Creating a footer with the current year and a link to GitHub
-```jsx
+```jsx title="components/Footer.astro"
 ---
 import Social from "./subComponents/Social.astro";
 ---
@@ -133,7 +134,7 @@ import Social from "./subComponents/Social.astro";
 
 ### Adding icons as props to Astro components
 Within the Footer component, I created a subcomponent called Social.astro. It takes in a icon prop which accesses icons by name from the public folder.
-```jsx
+```jsx title="components/subComponents/Social.astro"
 ---
 const { platform, username } = Astro.props;
 ---
@@ -145,11 +146,11 @@ const { platform, username } = Astro.props;
 
 Astro utilizes JavaScript's template literals `(` `)` to embed variable values within strings.
 Variables within template literals are then denoted by the `${}` syntax. This allows dynamic composition of strings URLs, paths, or text based on `Astro.props` values.
-```jsx
+```jsx frame="terminal" 
 <a href={`https://www.${platform}.com/${username}`}>
 ```
 Here, `platform` and `username` are variables passed as props which are used to create a URL string dynamically.
-```jsx
+```jsx frame="terminal" 
 <img src={`/${platform}.svg`} alt={`${platform} icon`}>
 ```
 The `platform` variable is also passed as a prop to the `src` and `alt` attributes because the icon itself should be named with the platform name. There should be no need for more than one icon per platform, changes in icon color can be done with CSS.
@@ -158,7 +159,7 @@ The `platform` variable is also passed as a prop to the `src` and `alt` attribut
 
 ## Card Component
 
-```jsx
+```jsx title="components/Card.astro"
 <div class="max-w-3xl prose prose-invert">
     <h1 class="mb-2">{Astro.props.title}</h1>
     <h2 class="mt-0">{Astro.props.subtitle}</h2>
@@ -170,12 +171,12 @@ The `platform` variable is also passed as a prop to the `src` and `alt` attribut
 
 In a new file called `Card.astro` I created a `<Card />` component to further modularize my code. This component accepts a `title` and `subtitle` as props, and uses the `slot` to feature any type or amount of HTML elements when the component is called, each being passed as props to the <Card /> component.
 
-```jsx
+```jsx frame="terminal"
 <slot name="content"></slot>
 ```
 
 `name="content"` is then used to identify all elements to be rendered within the main `<slot>` element.
-```jsx
+```jsx title="pages/index.astro"
 <Card
     title="Bassim Shahidy"
     subtitle="IT Technician at the New York City BAR Association">
@@ -190,7 +191,7 @@ In a new file called `Card.astro` I created a `<Card />` component to further mo
 
 This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
 
-```jsx
+```jsx title="pages/index.astro"
 <Card
     title="Bassim Shahidy"
     subtitle="IT Technician at the New York City BAR Association">
