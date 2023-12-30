@@ -1,12 +1,16 @@
 ---
+interface Link {
+  name: string;
+  url: string;
+}
+
 interface Props {
   name: string;
-  linkNames: string[];
-  urls: string[];
+  links: Link[];
   styles?: string;
 }
 
-const { name = 'Dropdown', linkNames = [], urls = [], styles = '' } = Astro.props;
+const { name = 'Dropdown', links = [], styles = '' } = Astro.props;
 import Button from './Button.astro';
 ---
 
@@ -16,11 +20,11 @@ import Button from './Button.astro';
     id="dropdown"
     class={`absolute top-14 hidden rounded-md bg-slate-800 p-[0.5px] sm:ml-2 md:w-40 text-balance`}>
     {
-      linkNames.map((linkName, index) => (
+      links.map((link) => (
         <a
-          href={urls[index]}
+          href={link.url}
           class="m-1 block rounded-md px-2 py-2 text-sm hover:bg-slate-700 transition-colors duration-200 text-slate-300/80 hover:text-slate-200/95">
-          {linkName}
+          {link.name}
         </a>
       ))
     }

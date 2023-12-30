@@ -24,8 +24,10 @@ import DropdownMenu from './subComponents/DropdownMenu.astro';
       <Button name="Blog" link="/posts/firstBlog" />
       <DropdownMenu
         name="Projects"
-        linkNames={['Minimal Typography', 'Old Flask Site']}
-        urls={['/designProject', '/flaskSite']}
+        links={[
+          { name: 'Minimal Typography', url: '/designProject' },
+          { name: 'Old Flask Site', url: '/flaskSite' },
+        ]}
         styles=""
       />
     </div>
