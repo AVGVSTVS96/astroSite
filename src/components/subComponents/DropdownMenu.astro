@@ -7,10 +7,9 @@ interface Link {
 interface Props {
   name: string;
   links: Link[];
-  styles?: string;
 }
 
-const { name = 'Dropdown', links = [], styles = '' } = Astro.props;
+const { name = 'Dropdown', links = [] } = Astro.props;
 import Button from './Button.astro';
 ---
 
