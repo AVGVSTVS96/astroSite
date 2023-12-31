@@ -13,11 +13,11 @@ const { name = 'Dropdown', links = [] } = Astro.props;
 import Button from './Button.astro';
 ---
 
-<div class="relative flex justify-start">
+<div class="relative">
   <Button name={name} id="dropdown-button" showCaret={true} />
   <div
     id="dropdown"
-    class="absolute top-14 hidden text-balance rounded-md bg-slate-800 p-[0.5px] sm:ml-2 md:w-40">
+    class="absolute mt-2 hidden text-balance rounded-md bg-slate-800 p-[0.5px] sm:ml-2 md:w-40">
     {
       links.map((link) => (
         <a
