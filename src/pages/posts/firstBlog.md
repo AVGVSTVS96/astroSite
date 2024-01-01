@@ -183,7 +183,7 @@ In a new file called `Card.astro` I created a `<Card />` component to further mo
 ```
 
 `name="content"` is then used to identify all elements to be rendered within the main `<slot>` element.
-```jsx title="pages/index.astro"
+```jsx title="pages/index.astro" {4-5}
 <Card
     title="Bassim Shahidy"
     subtitle="IT Technician at the New York City BAR Association">
