@@ -88,6 +88,62 @@ import MainLayout from '../layouts/MainLayout.astro';
 ```
 
 ---
+
+## Card Component
+
+```jsx title="components/Card.astro"
+<div class="max-w-3xl prose prose-invert">
+    <h1 class="mb-2">{Astro.props.title}</h1>
+    <h2 class="mt-0">{Astro.props.subtitle}</h2>
+    <hr class="border-gray-400" />
+    <h3 class="mb-1">Introduction</h3>
+    <slot name="content"></slot>
+</div>
+```
+
+In a new file called `Card.astro` I created a `<Card />` component to further modularize my code. This component accepts a `title` and `subtitle` as props, and uses the `slot` to feature any type or amount of HTML elements when the component is called, each being passed as props to the <Card /> component.
+
+```jsx frame="terminal"
+<slot name="content"></slot>
+```
+
+`name="content"` is then used to identify all elements to be rendered within the main `<slot>` element.
+```jsx title="pages/index.astro" {4-5}
+<Card
+    title="Bassim Shahidy"
+    subtitle="IT Technician at the New York City BAR Association">
+    <p slot="content" class="text-lg"></p>
+    <p slot="content"></p>
+</Card>
+```
+
+
+
+### Using the `<Card />` component in pages
+
+This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
+
+```jsx title="pages/index.astro" {2-4, 12}
+<Card
+    title="Bassim Shahidy"
+    subtitle="IT Technician at the New York City BAR Association">
+    <p slot="content" class="text-lg">
+        This is the third version of my personal website! With each
+        iteration my website has grown in complexity in proportion to my
+        progress learning web development. This version is built with
+        Astro, a frontend rendering framework that uses an HTML like
+        syntax to create components while allowing the use of components
+        from several of the most popular frameworks.
+    </p>
+    <p slot="content">
+        Astro is also extremely fast, it uses the islands architecture
+        to only send Javascript when required within interactive
+        components.
+    </p>
+</Card>
+```
+---
+
 ## Markdown styling
 TailwindCSS resets default browser styles so all markdown looks like plain text. To fix this I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides opinionated markdown styling.
 
@@ -161,59 +217,3 @@ Here, `platform` and `username` are variables passed as props which are used to 
 <img src={`/${platform}.svg`} alt={`${platform} icon`}>
 ```
 The `platform` variable is also passed as a prop to the `src` and `alt` attributes because the icon itself should be named with the platform name. There should be no need for more than one icon per platform, changes in icon color can be done with CSS.
-
----
-
-## Card Component
-
-```jsx title="components/Card.astro"
-<div class="max-w-3xl prose prose-invert">
-    <h1 class="mb-2">{Astro.props.title}</h1>
-    <h2 class="mt-0">{Astro.props.subtitle}</h2>
-    <hr class="border-gray-400" />
-    <h3 class="mb-1">Introduction</h3>
-    <slot name="content"></slot>
-</div>
-```
-
-In a new file called `Card.astro` I created a `<Card />` component to further modularize my code. This component accepts a `title` and `subtitle` as props, and uses the `slot` to feature any type or amount of HTML elements when the component is called, each being passed as props to the <Card /> component.
-
-```jsx frame="terminal"
-<slot name="content"></slot>
-```
-
-`name="content"` is then used to identify all elements to be rendered within the main `<slot>` element.
-```jsx title="pages/index.astro" {4-5}
-<Card
-    title="Bassim Shahidy"
-    subtitle="IT Technician at the New York City BAR Association">
-    <p slot="content" class="text-lg"></p>
-    <p slot="content"></p>
-</Card>
-```
-
-
-
-### Using the `<Card />` component in pages
-
-This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
-
-```jsx title="pages/index.astro" {2-4, 12}
-<Card
-    title="Bassim Shahidy"
-    subtitle="IT Technician at the New York City BAR Association">
-    <p slot="content" class="text-lg">
-        This is the third version of my personal website! With each
-        iteration my website has grown in complexity in proportion to my
-        progress learning web development. This version is built with
-        Astro, a frontend rendering framework that uses an HTML like
-        syntax to create components while allowing the use of components
-        from several of the most popular frameworks.
-    </p>
-    <p slot="content">
-        Astro is also extremely fast, it uses the islands architecture
-        to only send Javascript when required within interactive
-        components.
-    </p>
-</Card>
-```
