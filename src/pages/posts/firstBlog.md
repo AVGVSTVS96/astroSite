@@ -1,6 +1,6 @@
 ---
 title: "How I built this website"
-description: "This is my first blog, it describes the fundamental concepts I used to build this website using Astro and TailwindCSS such as layouts, markdown styling, components, and string interpolation in Astro."
+description: "This is my first blog post, it describes several fundamental concepts I learned and used to build this website using Astro and TailwindCSS, such as Astro layouts and components, markdown styling, and variables in Astro."
 pubDate: "June 7, 2023"
 author: "Bassim Shahidy"
 tags: ["blog", "astro", "tailwindcss"]
@@ -15,7 +15,7 @@ TailwindCSS provides a well thought out design system that speeds up development
 
 Astro enables the use of page layouts, the two main ways I've used layouts so far is for normal pages and for markdown pages. The markdown page layout setup is a little different from normal `.astro` files.
 
-### `MainLayout` for `.astro` files
+### Main Layout for Astro pages
 
 ```jsx title="layouts/MainLayout.astro"
 ---
@@ -35,14 +35,15 @@ const { title } = Astro.props;
 </html>
 ```
 
-`const { title } = Astro.props;` Set's the title to a prop, this prop is set when `MainLayout` is called in a file.
+`const { title } = Astro.props;` Set's the title to a prop, this prop is set when `MainLayout` is called in a file. Other props can also be accessed through `Astro.props` such as `{ description }` or `{ author }`.
+
 
 ```jsx title="pages/index.astro"
 <MainLayout title="Bassim Shahidy">
 </MainLayout>
 ```
 
-### `MDLayout` for `.md` files
+### Markdown Layout
 
 ```jsx title="layouts/MDLayout.astro"
 ---
@@ -88,11 +89,17 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 ---
 ## Markdown styling
+TailwindCSS resets default browser styles so all markdown looks like plain text. To fix this I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides opinionated markdown styling.
 
-Prose is a class provided by the TailwindCSS Typography plugin used for adding opinionated typographic markdown styling to the content. TailwidCSS by default resets default styles so markdown content looks like plain text, Typography applies styles back to the content.
+```js title="tailwind.config.cjs" {3}
+module.exports = {
+	plugins: [
+		require('@tailwindcss/typography')
+	],
+}
+```
 
-`Prose-invert` changes the color of text to white as opposed to the default black.
-There are a wide range of prose modifiers that can be used to change the look of the content such as `prose-sm` to make the text smaller or `prose-lg` to make it larger and modifiers to target each element type like `prose-h1` or `prose-headings` to target all headings.
+Prose is the main utility class used to style markdown. There are a wide range of prose modifiers that can be used to change the look of the content such as `prose-sm` to make the text smaller or `prose-lg` to make it larger and modifiers to target each element type like `prose-h1` or `prose-headings` to target all headings. In addition `prose-invert` changes the default color of all text to white as opposed to.
 
 ```html title="layouts/MDLayout.astro"
  <article
