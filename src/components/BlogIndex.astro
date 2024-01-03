@@ -1,7 +1,8 @@
 ---
 const allPosts = await Astro.glob('../pages/posts/*.md');
+let displayPosts = Astro.props.postCount ? allPosts.slice(-Astro.props.postCount) : allPosts;
 ---
 <h2 class="">Latest Posts</h2>
 <ul class="prose prose-invert list-none pl-0">
-    {allPosts.slice(-3).map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+    {displayPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
 </ul>
