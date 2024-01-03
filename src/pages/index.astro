@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import Footer from '../components/Footer.astro';
 import Card from '../components/Card.astro';
+import BlogIndex from '../components/BlogIndex.astro';
 ---
 
 <MainLayout
@@ -10,7 +11,8 @@ import Card from '../components/Card.astro';
   description="Bassim Shahidy's personal website">
   <body>
     <NavBar />
-    <Card
+    <div>
+      <Card
       title="Bassim Shahidy"
       subtitle="IT Specialist at the New York City BAR Association"
       heading="Introduction"
@@ -21,7 +23,10 @@ import Card from '../components/Card.astro';
       <p slot="content">
         In addition, I'm exploring AI and machine learning, seeking to understand and apply these technologies in practical scenarios. My technical repertoire also includes 3D printing—where I skillfully build and maintain printers for precision parts—and drone building, where I apply my electronics and software knowledge to create and pilot high-performance drones.
       </p>
+      <hr slot="content" class="border-sky-400/70" />
+      <BlogIndex slot="content"/>
     </Card>
+  </div>
   </body>
   <Footer />
 </MainLayout>
