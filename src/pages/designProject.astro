@@ -1,10 +1,35 @@
 ---
 import '/src/styles/global.css';
-import MainLayout from '../layouts/MainLayout.astro';
 import MinimalNavBar from '../components/designProject1/MinimalNavBar.astro';
 ---
-
-<MainLayout title="Minimal Typography">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="" />
+    <title>Minimal Typography</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bassim Shahidy",
+        "jobTitle": "IT Technician",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "NYC Bar Association"
+        },
+        "description": "Bassim Shahidy is an IT specialist with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.",
+        "url": "https://bassimshahidy.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "bassim@bassimshahidy.com",
+          "contactType": "professional"
+        }
+      }
+    </script>
+  </head>
   <MinimalNavBar />
   <section class="container min-w-full px-10 py-10 text-slate-200">
     <div class="container flex min-w-full flex-col gap-2 text-left">
@@ -16,4 +41,14 @@ import MinimalNavBar from '../components/designProject1/MinimalNavBar.astro';
       </p>
     </div>
   </section>
-</MainLayout>
+<style>
+  html {
+    @apply bg-slate-950;
+    min-height: 100dvh;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+</style>
