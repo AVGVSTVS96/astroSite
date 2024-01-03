@@ -76,7 +76,7 @@ A layout can be imported in both markdown and Astro files but each uses a differ
 
 ### In MD files layouts are imported at the top in frontmatter
 
-```jsx title="pages/posts/firstBlog.md"
+```jsx title="pages/posts/blog1.md"
 ---
 layout: "../../layouts/MDLayout.astro"
 ---
@@ -116,7 +116,7 @@ import DropdownMenu from './subComponents/DropdownMenu.astro';
     <div class="md:text-md flex lg:text-lg">
       <Button name="Home" link="/" />
       <Button name="About" link="/about" />
-      <Button name="Blog" link="/posts/firstBlog" />
+      <Button name="Blog" link="/posts/blog1" />
       <DropdownMenu
         name="Projects"
         links={[
