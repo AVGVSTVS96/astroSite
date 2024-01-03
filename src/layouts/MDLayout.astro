@@ -39,7 +39,7 @@ import '/src/styles/global.css';
     <div class="xl:w-[240px]"></div>
     <article
       class="prose prose-invert max-w-xs
-      prose-h1:pt-2 hover:prose-a:text-sky-300
+      prose-h1:pt-2 prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-sky-300
       prose-code:rounded-md prose-code:bg-gray-800/75 prose-code:p-1 prose-code:font-normal prose-code:text-sky-400
       prose-hr:border-sky-400 prose-hr:border-opacity-60
       sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
@@ -53,7 +53,8 @@ import '/src/styles/global.css';
       <p>{frontmatter.description}</p>
       <slot />
     </article>
-    <div class="hidden min-h-full lg:block">
+    <div
+      class="hidden min-h-full prose-a:transition-colors prose-a:duration-100 lg:block">
       <TableOfContents headings={headings} />
     </div>
   </div>
