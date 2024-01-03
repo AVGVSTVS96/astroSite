@@ -2,6 +2,7 @@
 import '/src/styles/global.css';
 const { title } = Astro.props;
 const { description } = Astro.props;
+import NavBar from '../components/NavBar.astro';
 ---
 
 <html lang="en">
@@ -32,6 +33,7 @@ const { description } = Astro.props;
       }
     </script>
   </head>
+  <NavBar />
   <slot />
 
   <style>
