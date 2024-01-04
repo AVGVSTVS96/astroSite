@@ -13,7 +13,6 @@ import BlogIndex from '../components/BlogIndex.astro';
       <Card
       title="Bassim Shahidy"
       subtitle="IT Specialist at the New York City BAR Association"
-      heading="Introduction"
       variant="borderless">
       <p slot="content">
         Based in NY, I'm an IT Professional with a wealth of experience in hardware, software management, network operations, cybersecurity, and audio-visual systems. Currently, my focus is on advancing my skillset in software engineering and web development, utilizing the latest programming technologies to enhance user experiences and system performance.
@@ -24,7 +23,9 @@ import BlogIndex from '../components/BlogIndex.astro';
     </Card>
     <div class="p-6">
       <hr class="border-sky-400/70" />
-      <h2 class="text-[1.75rem] mt-8 mb-3 text-slate-200">Latest Posts</h2>
+      <div class="prose prose-invert mt-8 mb-3">
+        <h1 class="">Latest Posts</h1>
+      </div>
       <BlogIndex postCount="3"/>
     </div>
   </div>
