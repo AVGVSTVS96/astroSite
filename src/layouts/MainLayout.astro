@@ -37,8 +37,12 @@ import NavBar from '../components/NavBar.astro';
   <slot />
 
   <style>
+    
+    :root{
+      @apply bg-white dark:bg-slate-950;
+
+    }
     html {
-      @apply bg-slate-950;
       min-height: 100dvh;
     }
     body {

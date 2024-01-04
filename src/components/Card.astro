@@ -11,7 +11,7 @@ let { variant, displayHr } = Astro.props;
 ---
 
 <div
-  class={`prose prose-invert max-w-3xl rounded-lg p-6 prose-h2:font-semibold prose-h2:opacity-60 ${
+  class={`prose dark:prose-invert max-w-3xl rounded-lg p-6 prose-h2:font-semibold prose-h2:opacity-60 ${
     variant === 'borderless' ? '' : 'border border-slate-200 border-opacity-20'
   }`}>
   <h1 class="mb-2">{Astro.props.title}</h1>
