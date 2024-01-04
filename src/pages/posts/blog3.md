@@ -1,5 +1,5 @@
 ---
-title: Intro to TailwindCSS
+title: Introduction to TailwindCSS
 description: Introduction to TailwindCSS, a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override.
 pubDate: "December 27, 2023"
 author: "Bassim Shahidy"
