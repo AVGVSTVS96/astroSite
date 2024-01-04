@@ -9,9 +9,11 @@ let displayPosts = Astro.props.postCount
 <ul class={`list-none pl-0 ${styles}`}>
   {
     displayPosts.map((post) => (
-      <li class="flex flex-row-reverse justify-between border-b-[0.5px] border-slate-300/25 p-2">
+      <li class="flex flex-row-reverse justify-between border-b-[0.5px] border-slate-300/25 p-2.5">
         <div>
-          <a href={post.url} class="text-xl font-[600] text-sky-300/75">
+          <a
+            href={post.url}
+            class="text-xl font-[600] text-sky-300/80 decoration-1 decoration-sky-300/55 underline-offset-[5px] hover:underline">
             {post.frontmatter.title}
           </a>
         </div>
