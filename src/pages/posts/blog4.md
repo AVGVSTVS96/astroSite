@@ -1,7 +1,7 @@
 ---
 title: How to use the new GitHub CLI
 description: How to use the new GitHub CLI, a command-line tool that makes it easier to work with GitHub directly from your terminal.
-pubDate: "January 1, 2023"
+pubDate: "January 2, 2024"
 author: "Bassim Shahidy"
 tags:
 layout: "../../layouts/MDLayout.astro"

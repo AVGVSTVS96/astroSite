@@ -1,7 +1,7 @@
 ---
 title: Intro to Astro
 description: Introduction to Astro, a new front-end framework for building fast, optimized websites and applications.
-pubDate: "January 1, 2023"
+pubDate: "December 12, 2023"
 author: "Bassim Shahidy"
 tags:
 layout: "../../layouts/MDLayout.astro"
