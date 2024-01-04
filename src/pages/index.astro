@@ -21,9 +21,12 @@ import BlogIndex from '../components/BlogIndex.astro';
       <p slot="content">
         In addition, I'm exploring AI and machine learning, seeking to understand and apply these technologies in practical scenarios. My technical repertoire also includes 3D printing—where I skillfully build and maintain printers for precision parts—and drone building, where I apply my electronics and software knowledge to create and pilot high-performance drones.
       </p>
-      <hr slot="content" class="border-sky-400/70" />
-      <BlogIndex slot="content" postCount="3"/>
     </Card>
+    <div class="p-6">
+      <hr class="border-sky-400/70" />
+      <h2 class="text-[1.75rem] mt-8 mb-3 text-slate-200">Latest Posts</h2>
+      <BlogIndex postCount="3"/>
+    </div>
   </div>
   </body>
   <Footer />

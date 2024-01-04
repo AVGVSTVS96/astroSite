@@ -1,8 +1,13 @@
 ---
 const allPosts = await Astro.glob('../pages/posts/*.md');
+const { styles = ''} = Astro.props;
 let displayPosts = Astro.props.postCount ? allPosts.slice(-Astro.props.postCount) : allPosts;
 ---
-<h2 class="">Latest Posts</h2>
-<ul class="prose prose-invert list-none pl-0">
-    {displayPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+<ul class={`list-none pl-0 ${styles}`}>
+    {displayPosts.map((post) => (
+        <li class="flex flex-row-reverse justify-between border-b-[0.5px] border-slate-300/25 p-2">
+            <div><a href={post.url} class="text-sky-300/75 font-[600] text-xl">{post.frontmatter.title}</a></div>
+            <div class="text-slate-200/60">{post.frontmatter.pubDate}</div>
+        </li>
+    ))}
 </ul>
