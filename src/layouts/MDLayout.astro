@@ -33,20 +33,23 @@ import '/src/styles/global.css';
         }
       }
     </script>
+    <script is:inline>
+      document.querySelector(':root').classList.add('dark');
+    </script>
   </head>
   <NavBar />
   <div class="flex justify-center">
     <div class="xl:w-[240px]"></div>
     <article
-      class="prose dark:prose-invert max-w-xs
+      class="prose max-w-xs dark:prose-invert
       prose-h1:pt-2 prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-sky-300
-      prose-code:rounded-md dark:prose-code:bg-gray-800/75 prose-code:p-1 prose-code:font-normal dark:prose-code:text-sky-400
-      prose-code:text-sky-600 prose-code:bg-gray-200
-      dark:prose-hr:border-sky-400 prose-hr:border-sky-500 dark:prose-hr:border-opacity-60
-      sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
+      prose-code:rounded-md prose-code:bg-gray-200 prose-code:p-1 prose-code:font-normal prose-code:text-sky-600
+      prose-hr:border-sky-500 sm:max-w-sm
+      md:max-w-lg lg:max-w-2xl xl:max-w-3xl
+      dark:prose-code:bg-gray-800/75 dark:prose-code:text-sky-400 dark:prose-hr:border-sky-400 dark:prose-hr:border-opacity-60">
       <div class="mb-1 flex justify-start">
         <span
-          class="written-by max-w-fit rounded-md dark:bg-sky-700/25 bg-sky-300/25 px-2 py-1 text-sm dark:text-sky-400 text-sky-500">
+          class="written-by max-w-fit rounded-md bg-sky-300/25 px-2 py-1 text-sm text-sky-500 dark:bg-sky-700/25 dark:text-sky-400">
           Written by {frontmatter.author} on {frontmatter.pubDate}
         </span>
       </div>
@@ -60,10 +63,16 @@ import '/src/styles/global.css';
     </div>
   </div>
   <Footer />
-
   <style>
+    :root {
+      @apply bg-white;
+    }
+
+    :root.dark {
+      @apply bg-slate-950;
+    }
+
     html {
-      @apply bg-white dark:bg-slate-950;
       min-height: 100dvh;
       scroll-padding-top: 4rem;
     }
