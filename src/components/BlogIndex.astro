@@ -1,12 +1,12 @@
 ---
 const allPosts = await Astro.glob('../pages/posts/*.md');
-const { styles = '' } = Astro.props;
+const { class: className } = Astro.props;
 let displayPosts = Astro.props.postCount
   ? allPosts.slice(-Astro.props.postCount)
   : allPosts;
 ---
 
-<ul class={`list-none pl-0 ${styles}`}>
+<ul class={`list-none pl-0 ${className}`}>
   {
     displayPosts.map((post) => (
       <li class="flex flex-row-reverse justify-between border-b-[0.5px] dark:border-slate-300/25 p-2.5">
