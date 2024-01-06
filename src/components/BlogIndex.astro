@@ -13,11 +13,11 @@ let displayPosts = Astro.props.postCount
         <div>
           <a
             href={post.url}
-            class="text-xl font-[600] dark:text-sky-300/80 decoration-1 dark:decoration-sky-300/55 underline-offset-[5px] hover:underline">
+            class="text-xl font-[600] text-slate-600 dark:text-sky-300/80 decoration-1 dark:decoration-sky-300/55 underline-offset-[5px] hover:underline">
             {post.frontmatter.title}
           </a>
         </div>
-        <div class="dark:text-slate-200/60">{post.frontmatter.pubDate}</div>
+        <div class="dark:text-slate-200/60 text-slate-600/75">{post.frontmatter.pubDate}</div>
       </li>
     ))
   }
