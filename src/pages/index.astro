@@ -23,7 +23,7 @@ import BlogIndex from '../components/BlogIndex.astro';
     </Card>
     <div class="p-6">
       <hr class="dark:border-sky-400/70 border-sky-500/50" />
-      <div class="prose dark:prose-invert light:prose-headings:text-slate-700 mt-8 mb-3">
+      <div class="prose dark:prose-invert mt-8 mb-3">
         <h1 class="">Latest Posts</h1>
       </div>
       <BlogIndex postCount="3"/>
@@ -32,3 +32,8 @@ import BlogIndex from '../components/BlogIndex.astro';
   </body>
   <Footer />
 </MainLayout>
+<style>
+  html.light {
+    @apply prose-headings:text-slate-700;
+  }
+</style>
