@@ -5,7 +5,7 @@ import expressiveCode from 'astro-expressive-code';
 
 /** @type {import('astro-expressive-code').AstroExpressiveCodeOptions} */
 const astroExpressiveCodeOptions = {
-  themes: ['material-theme-ocean'],
+  themes: ['material-theme-ocean', 'slack-ochin'],
 };
 
 // https://astro.build/config
