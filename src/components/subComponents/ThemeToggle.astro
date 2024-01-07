@@ -38,46 +38,20 @@
 </style>
 
 <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  })();
-
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark');
-    document.documentElement.classList.add('light');
-    document.documentElement.setAttribute('data-theme', 'slack-ochin');
-  } else {
-    document.documentElement.classList.remove('light');
-    document.documentElement.classList.add('dark');
-    document.documentElement.setAttribute('data-theme', 'material-theme-ocean');
-  }
-
-  window.localStorage.setItem('theme', theme);
-
-  const handleToggleClick = () => {
+    const theme = localStorage.getItem('theme') || 'dark';
     const element = document.documentElement;
-    const isDark = element.classList.contains('dark');
-
-    if (isDark) {
-      element.classList.remove('dark');
-      element.classList.add('light');
-      element.setAttribute('data-theme', 'slack-ochin');
-      localStorage.setItem('theme', 'light');
-    } else {
-      element.classList.remove('light');
-      element.classList.add('dark');
-      element.setAttribute('data-theme', 'material-theme-ocean');
-      localStorage.setItem('theme', 'dark');
-    }
-  };
-
-  document
-    .getElementById('themeToggle')
-    .addEventListener('click', handleToggleClick);
-</script>
+  
+    element.className = theme;
+    element.setAttribute('data-theme', theme === 'dark' ? 'material-theme-ocean' : 'slack-ochin');
+  
+    const handleToggleClick = () => {
+      const newTheme = element.className === 'dark' ? 'light' : 'dark';
+  
+      element.className = newTheme;
+      element.setAttribute('data-theme', newTheme === 'dark' ? 'material-theme-ocean' : 'slack-ochin');
+  
+      localStorage.setItem('theme', newTheme);
+    };
+  
+    document.getElementById('themeToggle').addEventListener('click', handleToggleClick);
+  </script>
