@@ -42,13 +42,13 @@
     const element = document.documentElement;
   
     element.className = theme;
-    element.setAttribute('data-theme', theme === 'dark' ? 'material-theme-ocean' : 'slack-ochin');
+    element.setAttribute('data-theme', theme === 'dark' ? 'material-theme-ocean' : 'material-theme-palenight');
   
     const handleToggleClick = () => {
       const newTheme = element.className === 'dark' ? 'light' : 'dark';
   
       element.className = newTheme;
-      element.setAttribute('data-theme', newTheme === 'dark' ? 'material-theme-ocean' : 'slack-ochin');
+      element.setAttribute('data-theme', newTheme === 'dark' ? 'material-theme-ocean' : 'material-theme-palenight');
   
       localStorage.setItem('theme', newTheme);
     };
