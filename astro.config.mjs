@@ -10,6 +10,10 @@ const astroExpressiveCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), expressiveCode(astroExpressiveCodeOptions)],
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    expressiveCode(astroExpressiveCodeOptions),
+  ],
 });
-
