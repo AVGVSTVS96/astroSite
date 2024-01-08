@@ -41,10 +41,13 @@ function buildToc(headings: string[]) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const id = entry.target.getAttribute('id');
+          const heading = entry.target.querySelector('h2, h3, h4, h5');
+          if (!heading) return;
+          const id = heading.getAttribute('id');
           const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
+          if (!tocLink) return;
 
-          if (entry.isIntersecting) {
+          if (entry.intersectionRatio > 0) {
             tocLink.classList.add('active');
           } else {
             tocLink.classList.remove('active');
@@ -52,14 +55,12 @@ function buildToc(headings: string[]) {
         });
       },
       {
-        rootMargin: '0px',
-        threshold: 0.1,
+        rootMargin: '-10% 0px -5% 0px',
       }
     );
 
-    // Target all headings that should be observed
-    document.querySelectorAll('article h2, article h3').forEach((heading) => {
-      observer.observe(heading);
+    document.querySelectorAll('article section').forEach((section) => {
+      observer.observe(section);
     });
   });
 </script>
