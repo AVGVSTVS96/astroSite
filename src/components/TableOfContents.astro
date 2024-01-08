@@ -24,7 +24,7 @@ function buildToc(headings: string[]) {
 ---
 
 <nav
-  class="toc prose dark:prose-invert sticky top-28 mt-28 w-[240px] text-[0.8em] leading-normal dark:prose-a:text-slate-300/70  prose-a:text-slate-500 sm:pl-2 md:pl-4 xl:pl-6">
+  class="toc prose sticky top-28 mt-28 w-[240px] text-[0.8em] leading-normal dark:prose-invert prose-a:text-slate-500 sm:pl-2 md:pl-4 xl:pl-6 dark:prose-a:text-slate-300/70">
   <ul class="grid list-none">
     {
       toc.map((heading) => (
@@ -36,3 +36,30 @@ function buildToc(headings: string[]) {
     }
   </ul>
 </nav>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
+
+          if (entry.isIntersecting) {
+            tocLink.classList.add('active');
+          } else {
+            tocLink.classList.remove('active');
+          }
+        });
+      },
+      {
+        rootMargin: '0px',
+        threshold: 0.1,
+      }
+    );
+
+    // Target all headings that should be observed
+    document.querySelectorAll('article h2, article h3').forEach((heading) => {
+      observer.observe(heading);
+    });
+  });
+</script>

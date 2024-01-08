@@ -40,7 +40,7 @@ import '/src/styles/global.css';
     <article
       class="prose max-w-xs dark:prose-invert
       prose-h1:pt-2 prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-sky-300
-      prose-code:rounded-md prose-code:bg-gray-200 prose-code:py-1 prose-code:px-1.5 prose-code:mx-0.5 prose-code:font-normal prose-code:text-sky-600
+      prose-code:mx-0.5 prose-code:rounded-md prose-code:bg-gray-200 prose-code:px-1.5 prose-code:py-1 prose-code:font-normal prose-code:text-sky-600
       prose-hr:border-sky-500 sm:max-w-sm
       md:max-w-lg lg:max-w-2xl xl:max-w-3xl
       dark:prose-code:bg-gray-800/75 dark:prose-code:text-sky-400 dark:prose-hr:border-sky-400 dark:prose-hr:border-opacity-60">
@@ -79,34 +79,6 @@ import '/src/styles/global.css';
       flex-direction: column;
     }
   </style>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const id = entry.target.getAttribute('id');
-            const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
-
-            if (entry.isIntersecting) {
-              tocLink.classList.add('active');
-            } else {
-              tocLink.classList.remove('active');
-            }
-          });
-        },
-        {
-          rootMargin: '0px',
-          threshold: 0.1,
-        }
-      );
-
-      // Target all headings that should be observed
-      document.querySelectorAll('article h2, article h3').forEach((heading) => {
-        observer.observe(heading);
-      });
-    });
-  </script>
 
 
 </html>
