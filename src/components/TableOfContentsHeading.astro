@@ -1,5 +1,5 @@
 ---
-const { className, heading } = Astro.props;
+const { class: className, heading } = Astro.props;
 ---
 
 <li class={className}>
@@ -18,15 +18,15 @@ const { className, heading } = Astro.props;
 </li>
 
 <style>
-  .active {
-    @apply text-sky-300/70;
+  li:has(.active) > a {
+    @apply text-sky-400 hover:text-sky-300;
   }
 
-  li:has(.active) > a {
+  :root:is(.dark) li:has(.active) > a {
     @apply text-sky-300/70 hover:text-sky-300/90;
   }
 
-  :hover > a {
-    @apply text-slate-300/90;
+  a:hover {
+    @apply text-slate-400 dark:text-slate-300/90;
   }
 </style>

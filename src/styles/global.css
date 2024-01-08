@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .border-card {
+    @apply border border-slate-200 border-opacity-20 rounded-lg;
+  }
+}
+
 :root {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;

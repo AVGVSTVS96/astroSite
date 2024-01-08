@@ -17,7 +17,7 @@ Astro enables the use of page layouts, the two main ways I've used layouts so fa
 
 ### Main Layout for Astro pages
 
-```jsx title="layouts/MainLayout.astro"
+```astro title="layouts/MainLayout.astro"
 ---
 const { title } = Astro.props;
 ---
@@ -38,14 +38,14 @@ const { title } = Astro.props;
 `const { title } = Astro.props;` Set's the title to a prop, this prop is set when `MainLayout` is called in a file. Other props can also be accessed through `Astro.props` such as `{ description }` or `{ author }`.
 
 
-```jsx title="pages/index.astro"
+```astro title="pages/index.astro"
 <MainLayout title="Bassim Shahidy">
 </MainLayout>
 ```
 
 ### Markdown Layout
 
-```jsx title="layouts/MDLayout.astro"
+```astro title="layouts/MDLayout.astro"
 ---
 const { frontmatter } = Astro.props;
 import NavBar from '../components/NavBar.astro';
@@ -76,15 +76,17 @@ A layout can be imported in both markdown and Astro files but each uses a differ
 
 ### In MD files layouts are imported at the top in frontmatter
 
-```jsx title="pages/posts/blog1.md"
+```astro title="pages/posts/blog1.md"
 ---
 layout: "../../layouts/MDLayout.astro"
 ---
 ```
 ### In Astro files layouts are imported like any other component.
 
-```jsx title="pages/index.astro"
+```astro title="pages/index.astro"
+---
 import MainLayout from '../layouts/MainLayout.astro';
+---
 ```
 
 ---
@@ -92,7 +94,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 ## Nav Bar Component
 I created a Nav bar component for my site, in it I import [Button](#button-component) and [DropdownMenu](#dropdown-menu-component) components in addition to two logos, one for mobile and one for desktop. 
 
-```jsx title="components/NavBar.astro"
+```astro title="components/NavBar.astro"
 ---
 import Button from './subComponents/Button.astro';
 import DropdownMenu from './subComponents/DropdownMenu.astro';
@@ -132,7 +134,7 @@ import DropdownMenu from './subComponents/DropdownMenu.astro';
 ### Button Component
 I created a button component with variable styling including the ability to add a caret icon when the button is being used to trigger a dropdown menu. The button component accepts several props including `name`, `link`, `id`, `showCaret`, and `styles` which are used to customize the button component when it's called.
 
-```jsx title="components/subComponents/Button.astro"
+```astro title="components/subComponents/Button.astro"
 ---
 interface Props {
   name: string;
@@ -188,7 +190,7 @@ const { name, link, id, showCaret = false, styles = '' } = Astro.props;
 ### Dropdown Menu Component
 The DropdownMenu component uses the Button component to open a dropdown menu with links to project pages on my website.
 
-```jsx title="components/subComponents/DropdownMenu.astro"
+```astro title="components/subComponents/DropdownMenu.astro"
 ---
 interface Link {
   name: string;
@@ -242,7 +244,7 @@ import Button from './Button.astro';
 
 ## Card Component
 
-```jsx title="components/Card.astro"
+```astro title="components/Card.astro"
 <div class="max-w-3xl prose prose-invert">
     <h1 class="mb-2">{Astro.props.title}</h1>
     <h2 class="mt-0">{Astro.props.subtitle}</h2>
@@ -254,12 +256,12 @@ import Button from './Button.astro';
 
 In a new file called `Card.astro` I created a `<Card />` component to further modularize my code. This component accepts a `title` and `subtitle` as props, and uses the `slot` to feature any type or amount of HTML elements when the component is called, each being passed as props to the <Card /> component.
 
-```jsx frame="terminal"
+```astro frame="terminal"
 <slot name="content"></slot>
 ```
 
 `name="content"` is then used to identify all elements to be rendered within the main `<slot>` element.
-```jsx title="pages/index.astro" {4-5}
+```astro title="pages/index.astro" {4-5}
 <Card
     title="Bassim Shahidy"
     subtitle="IT Technician at the New York City BAR Association">
@@ -274,7 +276,7 @@ In a new file called `Card.astro` I created a `<Card />` component to further mo
 
 This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
 
-```jsx title="pages/index.astro" {2-4, 12}
+```astro title="pages/index.astro" {2-4, 12}
 <Card
     title="Bassim Shahidy"
     subtitle="IT Technician at the New York City BAR Association">
@@ -318,7 +320,7 @@ Prose is the main utility class used to style markdown. There are a wide range o
 
 Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
 
-```jsx title="astro.config.mjs" {6-7}
+```js title="astro.config.mjs" {6-7}
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
@@ -334,7 +336,7 @@ export default defineConfig({
 
 ---
 ## Creating a footer with the current year and a link to GitHub
-```jsx title="components/Footer.astro"
+```astro title="components/Footer.astro"
 ---
 import Social from "./subComponents/Social.astro";
 ---
@@ -348,7 +350,7 @@ import Social from "./subComponents/Social.astro";
 
 ### Adding icons as props to Astro components
 Within the Footer component, I created a subcomponent called Social.astro. It takes in a icon prop which accesses icons by name from the public folder.
-```jsx title="components/subComponents/Social.astro"
+```astro title="components/subComponents/Social.astro"
 ---
 const { platform, username } = Astro.props;
 ---
@@ -360,11 +362,11 @@ const { platform, username } = Astro.props;
 
 Astro utilizes JavaScript's template literals `(` `)` to embed variable values within strings.
 Variables within template literals are then denoted by the `${}` syntax. This allows dynamic composition of strings URLs, paths, or text based on `Astro.props` values.
-```jsx frame="terminal" 
+```astro frame="terminal" 
 <a href={`https://www.${platform}.com/${username}`}>
 ```
 Here, `platform` and `username` are variables passed as props which are used to create a URL string dynamically.
-```jsx frame="terminal" 
+```astro frame="terminal" 
 <img src={`/${platform}.svg`} alt={`${platform} icon`}>
 ```
 The `platform` variable is also passed as a prop to the `src` and `alt` attributes because the icon itself should be named with the platform name. There should be no need for more than one icon per platform, changes in icon color can be done with CSS.

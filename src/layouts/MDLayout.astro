@@ -38,14 +38,15 @@ import '/src/styles/global.css';
   <div class="flex justify-center">
     <div class="xl:w-[240px]"></div>
     <article
-      class="prose prose-invert max-w-xs
+      class="prose max-w-xs dark:prose-invert
       prose-h1:pt-2 prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-sky-300
-      prose-code:rounded-md prose-code:bg-gray-800/75 prose-code:p-1 prose-code:font-normal prose-code:text-sky-400
-      prose-hr:border-sky-400 prose-hr:border-opacity-60
-      sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl">
+      prose-code:mx-0.5 prose-code:rounded-md prose-code:bg-gray-200 prose-code:px-1.5 prose-code:py-1 prose-code:font-normal prose-code:text-sky-600
+      prose-hr:border-sky-500 sm:max-w-sm
+      md:max-w-lg lg:max-w-2xl xl:max-w-3xl
+      dark:prose-code:bg-gray-800/75 dark:prose-code:text-sky-400 dark:prose-hr:border-sky-400 dark:prose-hr:border-opacity-60">
       <div class="mb-1 flex justify-start">
         <span
-          class="written-by max-w-fit rounded-md bg-sky-700 bg-opacity-25 px-2 py-1 text-sm text-sky-400 text-opacity-95">
+          class="written-by max-w-fit rounded-md bg-sky-300/25 px-2 py-1 text-sm text-sky-500 dark:bg-sky-700/25 dark:text-sky-400">
           Written by {frontmatter.author} on {frontmatter.pubDate}
         </span>
       </div>
@@ -59,10 +60,16 @@ import '/src/styles/global.css';
     </div>
   </div>
   <Footer />
-
   <style>
     html {
+      @apply bg-white;
+    }
+
+    html.dark {
       @apply bg-slate-950;
+    }
+
+    html {
       min-height: 100dvh;
       scroll-padding-top: 4rem;
     }
@@ -72,34 +79,6 @@ import '/src/styles/global.css';
       flex-direction: column;
     }
   </style>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const id = entry.target.getAttribute('id');
-            const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
-
-            if (entry.isIntersecting) {
-              tocLink.classList.add('active');
-            } else {
-              tocLink.classList.remove('active');
-            }
-          });
-        },
-        {
-          rootMargin: '0px',
-          threshold: 0.1,
-        }
-      );
-
-      // Target all headings that should be observed
-      document.querySelectorAll('article h2, article h3').forEach((heading) => {
-        observer.observe(heading);
-      });
-    });
-  </script>
 
 
 </html>
