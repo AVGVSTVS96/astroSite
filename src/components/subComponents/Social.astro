@@ -1,12 +1,32 @@
 ---
-const { platform, username } = Astro.props;
+const { platform, username, variant } = Astro.props;
+
+interface Props {
+  platform: string;
+  username?: string;
+  variant?: 'linkedIn';
+}
 ---
 
-<a href={`https://www.${platform}.com/${username}`}>
-  <img
-    src={`/${platform}.svg`}
-    alt={`${platform} icon`}
-    width="22"
-    height="22"
-  />
+
+{ variant != 'linkedIn' &&  <a href={`https://www.${platform}.com/${username}`}>
+    <img
+      src={`/${platform}.svg`}
+      alt={`${platform} icon`}
+      width="22"
+      height="22"
+    />
 </a>
+}
+
+{ variant === 'linkedIn' &&
+  <a href={'https://www.linkedin.com/in/bassimshahidy'}>
+    <img
+      src={`/linkedin.svg`}
+      alt={`${platform} icon`}
+      width="22"
+      height="22"
+      svg-class="svg-icon"
+    />
+</a>
+}
