@@ -14,9 +14,9 @@
     fill="none"
     fill-rule="evenodd">
     <style>
-      <!-- path {
-        fill: #0077b5;
-      } -->
+      path {
+        fill: #ffffff;
+      }
     </style>
     <path
       class="linkedin-icon"
