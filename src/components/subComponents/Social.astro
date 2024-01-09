@@ -8,12 +8,15 @@ interface Props {
 }
 ---
 
-
-<a href={`https://www.${variant === 'linkedIn' ? 'linkedin.com/in' : `${platform}.com`}/${username}`}>
+<a
+  href={`https://www.${
+    variant === 'linkedIn' ? 'linkedin.com/in' : `${platform}.com`
+  }/${username}`}>
   <img
     src={`/${platform}.svg`}
     alt={`${platform} icon`}
     width="22"
     height="22"
-    class={`${platform}-icon`}  />
+    class={`${platform}-icon`}
+  />
 </a>
