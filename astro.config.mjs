@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import remarkSectionize from 'remark-sectionize';
 import expressiveCode from 'astro-expressive-code';
+import icon from 'astro-icon';
 
 /** @type {import('astro-expressive-code').AstroExpressiveCodeOptions} */
 const astroExpressiveCodeOptions = {
@@ -18,5 +19,6 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     expressiveCode(astroExpressiveCodeOptions),
+    icon(),
   ],
 });
