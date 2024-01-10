@@ -13,7 +13,7 @@ const { name, link, id, showCaret = false, class: className } = Astro.props;
 <a
   href={link}
   id={id}
-  class=`mx-2 flex rounded-lg px-3 py-2 font-normal text-slate-200 hover:bg-slate-800 text-opacity-70 hover:text-opacity-100 transition-color duration-200 max-w-max ${className}`>
+  class=`mx-2 flex rounded-lg px-3 py-2 font-normal text-slate-200 hover:bg-slate-800 text-opacity-70 hover:text-opacity-100 transition-color duration-200 max-w-max ${className} ${showCaret ? 'pr-1.5' : ''}`>
   <button class="flex">
     {name}
     {
