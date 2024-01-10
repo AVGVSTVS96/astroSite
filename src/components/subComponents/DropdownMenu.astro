@@ -17,12 +17,12 @@ import Button from './Button.astro';
   <Button name={name} id="dropdown-button" showCaret={true} />
   <div
     id="dropdown"
-    class="absolute mt-2 hidden text-balance rounded-md bg-slate-800 p-[0.5px] sm:ml-2 md:w-40">
+    class="absolute mt-2 hidden text-balance rounded-md bg-slate-200/50 dark:bg-slate-800 backdrop-blur-md p-[0.5px] sm:ml-2 md:w-40">
     {
       links.map((link) => (
         <a
           href={link.url}
-          class="m-1 block rounded-md px-2 py-2 text-sm text-slate-300/80 transition-colors duration-200 hover:bg-slate-700 hover:text-slate-200/95">
+          class="m-1 block rounded-md px-2 py-2 text-sm text-slate-800 dark:text-slate-300/80 transition-colors duration-200 dark:hover:bg-slate-700 hover:bg-slate-300/50 dark:hover:text-slate-200/95">
           {link.name}
         </a>
       ))
