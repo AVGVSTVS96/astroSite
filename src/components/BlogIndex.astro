@@ -8,20 +8,20 @@ let displayPosts = Astro.props.postCount
 interface Props {
   postCount?: number;
   class?: string;
-}  
+}
 ---
 
 <ul class={`list-none pl-0 ${className}`}>
   {
     displayPosts.map((post) => (
-      <li class="flex flex-col sm:flex-row justify-between border-b-[0.5px] p-2.5 dark:border-slate-400/20">
-        <div class="text-slate-600/75 dark:text-slate-200/60 mb-2 sm:mb-0">
+      <li class="flex flex-col justify-between border-b-[0.5px] p-2.5 sm:flex-row dark:border-slate-400/20">
+        <div class="mb-2 text-slate-600/75 sm:mb-0 dark:text-slate-200/60">
           {post.frontmatter.pubDate}
         </div>
         <div>
           <a
             href={post.url}
-            class="text-xl font-[600] text-slate-700 underline decoration-sky-500 decoration-2 underline-offset-[5px] hover:text-slate-600/80 hover:decoration-sky-300/50 dark:text-slate-200 dark:decoration-sky-500 dark:hover:text-sky-300/80 dark:hover:underline">
+            class="text-xl font-[600] text-slate-700 underline decoration-sky-500 decoration-2 underline-offset-[5px] hover:text-slate-600/80 hover:decoration-sky-300 dark:text-slate-200 dark:decoration-sky-500 dark:hover:text-slate-200/75 dark:hover:underline dark:hover:decoration-sky-600/80">
             {post.frontmatter.title}
           </a>
         </div>
