@@ -1,10 +1,10 @@
 ---
 title: How to use the new GitHub CLI
 description: How to use the new GitHub CLI, a command-line tool that makes it easier to work with GitHub directly from your terminal.
-pubDate: "January 2, 2024"
-author: "Bassim Shahidy"
+pubDate: 'January 2, 2024'
+author: 'Bassim Shahidy'
 tags:
-layout: "../../layouts/MDLayout.astro"
+layout: '../../layouts/MDLayout.astro'
 ---
 
 GitHub CLI brings GitHub to your terminal. It reduces context switching, helps you focus, and enables you to more easily script and create your own workflows. Earlier this year, we announced the beta of GitHub CLI. Since we released the beta, users have created over 250,000 pull requests, performed over 350,000 merges, and created over 20,000 issues with GitHub CLI.

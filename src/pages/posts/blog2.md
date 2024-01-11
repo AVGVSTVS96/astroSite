@@ -1,10 +1,10 @@
 ---
-title: "Astro: The Next-Gen Front-End Framework"
+title: 'Astro: The Next-Gen Front-End Framework'
 description: "Astro is a revolutionary front-end framework that is transforming the way developers build fast, optimized websites and applications. It's not just a tool, but a paradigm shift, offering a unique blend of performance optimization, developer-friendly features, and support for popular JavaScript frameworks."
-pubDate: "December 12, 2023"
-author: "Bassim Shahidy"
+pubDate: 'December 12, 2023'
+author: 'Bassim Shahidy'
 tags:
-layout: "../../layouts/MDLayout.astro"
+layout: '../../layouts/MDLayout.astro'
 ---
 
 ## Astro Unveiled
