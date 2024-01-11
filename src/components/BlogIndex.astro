@@ -4,6 +4,11 @@ const { class: className } = Astro.props;
 let displayPosts = Astro.props.postCount
   ? allPosts.slice(-Astro.props.postCount)
   : allPosts;
+
+interface Props {
+  postCount?: number;
+  class?: string;
+}  
 ---
 
 <ul class={`list-none pl-0 ${className}`}>
