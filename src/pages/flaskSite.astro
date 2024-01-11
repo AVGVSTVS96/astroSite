@@ -428,7 +428,7 @@ import '/src/styles/global.css';
 
     let iteration: number = 0;
 
-    const interval: number = setInterval(() => {
+    const interval: NodeJS.Timeout = setInterval(() => {
       element.innerText = element.innerText
         .split('')
         .map((letter: string, index: number) => {
@@ -449,7 +449,7 @@ import '/src/styles/global.css';
       iteration += 1 / 3;
     }, 30);
 
-    intervals.set(element, interval);
+    intervals.set(element, interval as unknown as number);
   }
 
   document.querySelectorAll('h1, h2').forEach((element: HTMLElement) => {
