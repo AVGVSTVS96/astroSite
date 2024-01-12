@@ -8,9 +8,28 @@ const { class: className, heading } = Astro.props;
   </a>
   {
     heading.subheadings.length > 0 && (
-      <ul class="my-0 list-image-[url(/sideCaret.svg)]">
+    <ul class="my-0 px-0 list-none">
         {heading.subheadings.map((subheading) => (
-          <Astro.self heading={subheading} />
+          <li class="px-0">
+            <a href={'#' + subheading.slug} class="no-underline flex items-start group">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+                viewBox="0 0 20 20"
+                class=" flex-shrink-0 mt-1 mx-1
+                stroke-slate-500/90 group-hover:stroke-slate-400/80
+                dark:stroke-slate-500 dark:group-hover:stroke-slate-400">
+                <path
+                  d="M5 5L10 10L5 15"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round">
+                </path>
+              </svg>
+              {subheading.text}
+            </a>
+          </li>
         ))}
       </ul>
     )
@@ -27,6 +46,10 @@ const { class: className, heading } = Astro.props;
   }
 
   a:hover {
-    @apply text-slate-400 dark:text-slate-300/90;
+    @apply text-slate-400 dark:text-slate-300/85; 
   }
+
+  /* a.active svg {
+    @apply dark:stroke-slate-300/70;  
+  } */
 </style>
