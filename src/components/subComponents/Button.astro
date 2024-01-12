@@ -14,7 +14,7 @@ const { name, link, id, showCaret = false, class: className } = Astro.props;
   href={link}
   id={id}
   class=`mx-2 flex rounded-lg px-3 py-2 font-normal dark:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 hover:text-opacity-100 transition-color duration-200 max-w-max ${className} ${showCaret ? 'pr-1.5' : ''}`>
-  <button class="flex">
+  <button class="flex" aria-label={name}>
     {name}
     {
       showCaret && (
