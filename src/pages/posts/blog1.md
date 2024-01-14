@@ -276,7 +276,7 @@ In a new file called `Card.astro` I created a `<Card />` component to further mo
 
 This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
 
-```astro title="pages/index.astro" {2-4, 12}
+```astro title="pages/index.astro" {2-4, 11}
 <Card
   title="Bassim Shahidy"
   subtitle="IT Technician at the New York City BAR Association">
@@ -300,7 +300,7 @@ This `<Card />` component can be imported and used in any other Astro files with
 
 TailwindCSS resets default browser styles so all markdown looks like plain text. To fix this I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides opinionated markdown styling.
 
-```js title="tailwind.config.cjs" {3}
+```js title="tailwind.config.cjs" {2}
 module.exports = {
   plugins: [require('@tailwindcss/typography')],
 };
@@ -310,7 +310,8 @@ Prose is the main utility class used to style markdown. There are a wide range o
 
 ```html title="layouts/MDLayout.astro"
 <article
-  class="prose prose-invert prose-h1:pt-2 prose-hr:border-sky-400"></article>
+  class="prose prose-invert prose-h1:pt-2 prose-hr:border-sky-400">
+</article>
 ```
 
 ### Syntax Highlighting
