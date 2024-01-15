@@ -7,14 +7,15 @@ interface Link {
 interface Props {
   name: string;
   links: Link[];
+  showCaret?: boolean;
 }
 
-const { name = 'Dropdown', links = [] } = Astro.props;
+const { name = 'Dropdown', links = [], showCaret = false } = Astro.props;
 import Button from './Button.astro';
 ---
 
 <div class="relative">
-  <Button name={name} id="dropdown-button" showCaret={true} />
+  <Button name={name} id="dropdown-button" showCaret={showCaret} />
   <div
     id="dropdown"
     class="absolute mt-1 hidden text-balance rounded-md bg-slate-200/50 p-[0.5px] backdrop-blur-md sm:ml-2 md:w-40 dark:bg-slate-800">
