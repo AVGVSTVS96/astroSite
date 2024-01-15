@@ -35,7 +35,17 @@ import ThemeToggle from './subComponents/ThemeToggle.astro';
         />
       </div>
       <div class="flex sm:hidden">
-
+        <DropdownMenu
+          name="hamburger"
+          links={[
+            { name: 'Home', url: '/' },
+            { name: 'About', url: '/about' },
+            { name: 'Blog', url: '/blog' },
+            { name: 'Minimal Typography', url: '/designProject' },
+            { name: 'Old Flask Site', url: '/flaskSite' },
+          ]}
+          showCaret={false}
+          icon={true} />
       </div>
         <ThemeToggle />
     </div>
