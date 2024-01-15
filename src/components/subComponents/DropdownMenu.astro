@@ -7,19 +7,18 @@ interface Link {
 interface Props {
   name: string;
   links: Link[];
-  showCaret?: boolean;
-  icon?: boolean;
-  dropdownType?: 'desktop' | 'mobile';
+  showCaret: boolean;
+  icon: boolean;
 }
 
-const { name = 'Dropdown', links = [], showCaret = false, icon = false, dropdownType = 'desktop' } = Astro.props;
+const { name = 'Dropdown', links = [], showCaret = false, icon = false } = Astro.props;
 import Button from './Button.astro';
 ---
 
 <div class="relative">
-  <Button name={name} data-dropdown-type={dropdownType} showCaret={showCaret} icon={icon} /> 
+  <Button name={name} id="dropdown-button" showCaret={showCaret} icon={icon} /> 
   <div
-    data-dropdown={dropdownType}
+    id="dropdown"
     class="absolute mt-1 hidden text-balance rounded-md bg-slate-200/50 p-[0.5px] backdrop-blur-md sm:ml-2 md:w-40 dark:bg-slate-800">
     {
       links.map((link) => (
@@ -34,29 +33,17 @@ import Button from './Button.astro';
 </div>
 
 <script>
-document.querySelectorAll('[data-dropdown-type]').forEach(button => {
-  button.addEventListener('click', (event) => {
-    const dropdownType = button.getAttribute('data-dropdown-type');
-    const dropdown = document.querySelector(`[data-dropdown="${dropdownType}"]`);
-    
-    if (window.matchMedia('(min-width: 640px)').matches && dropdownType === 'mobile') {
-      return; // Skip for mobile dropdown on desktop view
-    }
+  const button = document.getElementById('dropdown-button');
+  const dropdown = document.getElementById('dropdown');
 
-    if (window.matchMedia('(max-width: 639px)').matches && dropdownType === 'desktop') {
-      return; // Skip for desktop dropdown on mobile view
-    }
-    
+  button.addEventListener('click', (event) => {
     dropdown.classList.toggle('hidden');
     button.classList.toggle('dropdown-active');
     event.stopPropagation();
   });
-});
 
-document.addEventListener('click', (event) => {
-    document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
-      dropdown.classList.add('hidden');
-    });
-  }
-);
+  document.addEventListener('click', () => {
+    button.classList.remove('dropdown-active');
+    dropdown.classList.add('hidden');
+  });
 </script>

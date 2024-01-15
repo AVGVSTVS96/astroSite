@@ -19,8 +19,7 @@ import ThemeToggle from './subComponents/ThemeToggle.astro';
         class="astro-icon h-8 w-8 opacity-80 block md:hidden"
       />
     </a>
-    <div class="button-theme-container flex">
-      <div class="md:text-md hidden sm:flex lg:text-lg">
+      <div class="md:text-md flex lg:text-lg">
         <Button name="Home" link="/" />
         <Button name="About" link="/about" />
         <Button name="Blog" link="/blog" />
@@ -31,24 +30,8 @@ import ThemeToggle from './subComponents/ThemeToggle.astro';
             { name: 'Old Flask Site', url: '/flaskSite' },
           ]}
           showCaret={true}
-          dropdownType="desktop"
+          icon={false}
         />
-      </div>
-      <div class="flex sm:hidden">
-        <DropdownMenu 
-          name='hamburger'
-          links={[
-            { name: 'Home', url: '/' },
-            { name: 'About', url: '/about' },
-            { name: 'Blog', url: '/blog' },
-            { name: 'Minimal Typography', url: '/designProject' },
-            { name: 'Old Flask Site', url: '/flaskSite' },
-          ]}
-          showCaret={false}
-          icon={true}
-          dropdownType="mobile"
-        />
-      </div>
       <ThemeToggle />
     </div>
   </div>
