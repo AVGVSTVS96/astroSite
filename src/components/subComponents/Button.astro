@@ -5,9 +5,11 @@ interface Props {
   id?: string;
   showCaret?: boolean;
   class?: string;
+  icon?: boolean;
 }
 
-const { name, link, id, showCaret = false, class: className } = Astro.props;
+const { name, link, id, showCaret = false, class: className, icon = false } = Astro.props;
+import { Icon } from 'astro-icon/components';
 ---
 
 <a
@@ -15,7 +17,7 @@ const { name, link, id, showCaret = false, class: className } = Astro.props;
   id={id}
   class=`mx-2 flex rounded-lg px-3 py-2 font-normal dark:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 hover:text-opacity-100 transition-color duration-200 max-w-max ${className} ${showCaret ? 'pr-1.5' : ''}`>
   <button class="flex" aria-label={name}>
-    {name}
+    {icon ? <Icon name={name} title={name} size={26} /> : name}
     {
       showCaret && (
         <svg
