@@ -5,13 +5,21 @@ interface Props {
   heading?: string;
   variant: 'bordered' | 'borderless';
   displayHr?: boolean;
+  padding?: string;
 }
 
-let { variant, displayHr, title, subtitle, heading } = Astro.props;
+let {
+  variant,
+  displayHr,
+  title,
+  subtitle,
+  heading,
+  padding = 'p-6',
+} = Astro.props;
 ---
 
 <div
-  class={`prose prose-slate dark:prose-invert max-w-3xl mx-4 p-6 prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${
+  class={`prose prose-slate dark:prose-invert max-w-3xl mx-4 ${padding} prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${
     variant === 'borderless' ? '' : 'border-card'
   }`}>
   {title && <h1 class="mb-2">{title}</h1>}
