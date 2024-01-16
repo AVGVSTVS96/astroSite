@@ -1,0 +1,4 @@
+title: FastGPT
+description: A high performance OpenAI GPT-4 chat app built with FastAPI. Featuring asynchronous requests, streaming responses, syntax highlighting, and more!
+tags: [ FastAPI, OpenAI, GPT-4 ]
+url: https://github.com/AVGVSTVS96/FastGPT
