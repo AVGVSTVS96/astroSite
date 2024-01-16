@@ -5,14 +5,14 @@ import Card from '../components/Card.astro';
 import { Icon } from 'astro-icon/components';
 ---
 
-<div class="mx-4 mt-8 w-1/2 px-6">
+<div class="mx-4 mt-8 px-6">
   <div class="prose mb-6 dark:prose-invert">
     <h1 class="mb-4">Projects</h1>
   </div>
-  <ul class="flex list-none pl-0">
+  <ul class="list-none pl-0 sm:flex">
     {
       projects.map((project) => (
-        <Card variant="bordered" padding="p-3.5" class="w-1/2">
+        <Card variant="bordered" padding="p-3.5" class="my-4 sm:my-0 sm:w-1/2">
           <div slot="content">
             <a
               class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
@@ -25,7 +25,9 @@ import { Icon } from 'astro-icon/components';
                 class="mx-2 size-5 opacity-70 hover:opacity-100"
               />
             </a>
-            <p class="mt-2.5  line-clamp-2 text-[0.925rem]">{project.data.description}</p>
+            <p class="mt-2.5  line-clamp-2 text-[0.925rem]">
+              {project.data.description}
+            </p>
             <div class="flex gap-2">
               {project.data.tags.map((tag) => (
                 <div class="rounded-xl border border-sky-200 bg-sky-50 px-2 py-1 text-sm text-sky-700/85 dark:border-sky-500/15 dark:bg-sky-500/10 dark:text-sky-300">
