@@ -11,12 +11,22 @@ interface Props {
   icon: boolean;
 }
 
-const { name = 'Dropdown', links = [], showCaret = false, icon = false } = Astro.props;
+const {
+  name = 'Dropdown',
+  links = [],
+  showCaret = false,
+  icon = false,
+} = Astro.props;
 import Button from './Button.astro';
 ---
 
-<div class="relative dropdown">
-  <Button name={name} class="dropdown-button" showCaret={showCaret} icon={icon} /> 
+<div class="dropdown relative">
+  <Button
+    name={name}
+    class="dropdown-button"
+    showCaret={showCaret}
+    icon={icon}
+  />
   <div
     class="dropdown-content absolute mt-1 hidden text-balance rounded-md bg-slate-200/50 p-[0.5px] backdrop-blur-md sm:ml-2 md:w-40 dark:bg-slate-800">
     {
@@ -34,21 +44,23 @@ import Button from './Button.astro';
 <script>
   const dropdowns = document.querySelectorAll('.dropdown');
 
-dropdowns.forEach((dropdown) => {
-  const button = dropdown.querySelector('.dropdown-button');
-  const content = dropdown.querySelector('.dropdown-content');
+  dropdowns.forEach((dropdown) => {
+    const button = dropdown.querySelector('.dropdown-button');
+    const content = dropdown.querySelector('.dropdown-content');
 
-  button.addEventListener('click', (event) => {
-    content.classList.toggle('hidden');
-    button.classList.toggle('dropdown-active');
-    event.stopPropagation();
-  });
+    if (button && content) {
+      button.addEventListener('click', (event) => {
+        content.classList.toggle('hidden');
+        button.classList.toggle('dropdown-active');
+        event.stopPropagation();
+      });
 
-  document.addEventListener('click', () => {
-    if (!dropdown.contains(event.target as Node)) {
-      button.classList.remove('dropdown-active');
-      content.classList.add('hidden');
+      document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target as Node)) {
+          button.classList.remove('dropdown-active');
+          content.classList.add('hidden');
+        }
+      });
     }
   });
-});
 </script>

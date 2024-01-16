@@ -433,14 +433,16 @@ import '/src/styles/global.css';
         .split('')
         .map((letter: string, index: number) => {
           if (index < iteration) {
-            return element.dataset.value[index];
+            if (element.dataset.value) {
+              return element.dataset.value[index];
+            }
           }
 
           return letters[Math.floor(Math.random() * 26)];
         })
         .join('');
 
-      if (iteration >= element.dataset.value.length) {
+      if (element.dataset.value && iteration >= element.dataset.value.length) {
         clearInterval(interval);
         intervals.delete(element);
         animationInProgress.set(element, false);
