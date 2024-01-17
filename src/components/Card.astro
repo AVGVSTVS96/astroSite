@@ -5,19 +5,29 @@ interface Props {
   heading?: string;
   variant: 'bordered' | 'borderless';
   displayHr?: boolean;
+  padding?: string;
+  class?: string;
 }
 
-let { variant, displayHr } = Astro.props;
+let {
+  variant,
+  displayHr,
+  title,
+  subtitle,
+  heading,
+  padding = 'p-6',
+  class: className,
+} = Astro.props;
 ---
 
 <div
-  class={`prose prose-slate dark:prose-invert max-w-3xl mx-4 p-6 prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${
+  class={`prose prose-slate dark:prose-invert max-w-3xl mx-4 ${padding} ${className} prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${
     variant === 'borderless' ? '' : 'border-card'
   }`}>
-  <h1 class="mb-2">{Astro.props.title}</h1>
-  <h2 class="mt-0">{Astro.props.subtitle}</h2>
+  {title && <h1 class="mb-2">{title}</h1>}
+  {subtitle && <h2 class="mt-0">{subtitle}</h2>}
   {displayHr && <hr class="mb-8 border-sky-500" />}
-  <h3 class="mb-1">{Astro.props.heading}</h3>
+  {heading && <h3 class="mb-1">{heading}</h3>}
   <slot name="content" />
 </div>
 <style>
