@@ -38,14 +38,14 @@ import '/src/styles/global.css';
   <div class="mx-6 flex justify-center">
     <div class="xl:w-[240px]"></div>
     <article
-      class="dark:prose-hr:border-accent prose-hr:border-dark-accent prose max-w-sm
-      dark:prose-invert prose-h1:pt-2 prose-a:decoration-sky-400 prose-a:underline-offset-[3px] prose-a:transition-colors
-      prose-a:duration-100 hover:prose-a:text-sky-300 prose-code:mx-0.5 prose-code:rounded-md prose-code:bg-gray-200 prose-code:px-1.5 prose-code:py-1
-      prose-code:font-normal prose-code:text-sky-600 sm:max-w-lg md:max-w-xl lg:max-w-2xl
-      xl:max-w-3xl dark:prose-code:bg-gray-800/75 dark:prose-code:text-sky-400 dark:prose-hr:border-opacity-60">
+      class="dark:prose-hr:border-accent-400 prose-hr:border-accent-500 hover:prose-a:text-accent-300 prose-a:decoration-accent-400
+      dark:prose-code:text-accent-400 prose-code:text-accent-600 prose max-w-sm dark:prose-invert
+      prose-h1:pt-2 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 prose-code:mx-0.5 prose-code:rounded-md prose-code:bg-gray-200
+      prose-code:px-1.5 prose-code:py-1 prose-code:font-normal sm:max-w-lg md:max-w-xl
+      lg:max-w-2xl xl:max-w-3xl dark:prose-code:bg-gray-800/75 dark:prose-hr:border-opacity-60">
       <div class="mb-1 flex justify-start">
         <span
-          class="written-by bg-accent-highlight/25 max-w-fit rounded-md px-2 py-1 text-sm text-sky-500 dark:bg-sky-700/25 dark:text-sky-400">
+          class="written-by bg-accent-300/25 dark:text-accent-400 text-accent-500 dark:bg-accent-700/25 max-w-fit rounded-md px-2 py-1 text-sm">
           Written by {frontmatter.author} on {frontmatter.pubDate}
         </span>
       </div>
@@ -61,11 +61,11 @@ import '/src/styles/global.css';
   <Footer />
   <style>
     html {
-      @apply bg-light;
+      @apply bg-primary-50;
     }
 
     html.dark {
-      @apply bg-dark;
+      @apply bg-primary-950;
     }
 
     html {

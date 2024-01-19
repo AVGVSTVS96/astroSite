@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors')
+const primaryColor = 'slate'
+const accentColor = 'sky'
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -12,31 +14,38 @@ module.exports = {
 					100: '#15162e',
 					200: '#191D2D'
 				},
-			},
-
-			textColor: {
-				dark: colors.slate[200], // slate-200 = #d1d5db
-				light: colors.slate[900], // slate-900 = #111827
-			},
-
-			backgroundColor: {
-				dark: colors.slate[950], // slate-950 = #111827
-				light: colors.slate[50], // slate-50 = #f9fafb
-				'light-slate': colors.slate[200], // slate-200 = #d1d5db
-				'dark-slate': colors.slate[800], // slate-800 = #3e4c59
-				'accent-light': colors.sky[50], // sky-50 = #eff6ff
-				'accent-highlight': colors.sky[300], // sky-300 = #93c5fd
-				'accent-dark': colors.sky[500], // sky-500 = #3b82f6
+				primary: {
+					50: colors[primaryColor][50],
+					100: colors[primaryColor][100],
+					200: colors[primaryColor][200],
+					300: colors[primaryColor][300],
+					400: colors[primaryColor][400],
+					500: colors[primaryColor][500],
+					600: colors[primaryColor][600],
+					700: colors[primaryColor][700],
+					800: colors[primaryColor][800],
+					900: colors[primaryColor][900],
+					950: colors[primaryColor][950]
+				},
+				accent: {
+					50: colors[accentColor][50],
+					100: colors[accentColor][100],
+					200: colors[accentColor][200],
+					300: colors[accentColor][300],
+					400: colors[accentColor][400],
+					500: colors[accentColor][500],
+					600: colors[accentColor][600],
+					700: colors[accentColor][700],
+					800: colors[accentColor][800],
+					900: colors[accentColor][900],
+					950: colors[accentColor][950]
+				},
 			},
 
 			borderColor: {
-				slate: {
-					DEFAULT: colors.slate[400], // slate-400 = #64748b
-				},
-				light: colors.slate[200], // slate-200 = #d1d5db
-				'light-accent': colors.sky[200], // sky-200 = #bae6fd
-				accent: colors.sky[400], // sky-400 = #60a5fa
-				'dark-accent': colors.sky[500], // sky-500 = #3b82f6
+				light: colors[primaryColor][200],
+				base: colors[primaryColor][400],
+				dark: colors[primaryColor][800],
 			},
 		}
 	},
