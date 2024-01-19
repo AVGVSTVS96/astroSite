@@ -33,6 +33,11 @@ module.exports = {
 			backgroundColor: {
 				dark: colors.slate[950], // slate-950 = #111827
 				light: colors.slate[50], // slate-50 = #f9fafb
+				'light-slate': colors.slate[200], // slate-200 = #d1d5db
+				'dark-slate': colors.slate[800], // slate-800 = #3e4c59
+				'accent-light': colors.sky[50], // sky-50 = #eff6ff
+				'accent-highlight': colors.sky[300], // sky-300 = #93c5fd
+				'accent-dark': colors.sky[500], // sky-500 = #3b82f6
 			},
 
 			borderColor: {
