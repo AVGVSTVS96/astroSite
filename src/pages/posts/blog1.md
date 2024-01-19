@@ -310,7 +310,7 @@ Prose is the main utility class used to style markdown. There are a wide range o
 
 ```html title="layouts/MDLayout.astro"
 <article
-  class="prose prose-invert prose-h1:pt-2 prose-hr:border-sky-400">
+  class="prose prose-invert prose-h1:pt-2 prose-hr:border-accent">
 </article>
 ```
 

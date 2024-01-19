@@ -14,7 +14,7 @@ interface Props {
 <ul class={`list-none pl-0 ${className}`}>
   {
     displayPosts.map((post) => (
-      <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3 dark:border-slate-400/20">
+      <li class="dark:border-slate/20 grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3">
         <div class="dark:text-dark/60 text-light/75 col-span-1 self-center">
           {post.frontmatter.pubDate}
         </div>

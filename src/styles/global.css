@@ -4,7 +4,7 @@
 
 @layer components {
   .border-card {
-    @apply rounded-lg border border-slate-200 border-opacity-20;
+    @apply rounded-lg border border-light border-opacity-20;
   }
 
   .blue-underline {
