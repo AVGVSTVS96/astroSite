@@ -10,6 +10,10 @@
   .blue-underline {
     @apply underline decoration-accent-500 dark:hover:text-primary-200/75 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:decoration-accent-600/80;
   }
+
+  .h1 {
+    @apply dark:text-light text-dark text-4xl font-extrabold;
+  }
 }
 
 :root {
