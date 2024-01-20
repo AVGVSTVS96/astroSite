@@ -6,8 +6,7 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <div class="mx-4 mt-8 px-6">
-  <div
-    class="dark:text-primary-50 text-primary-900 mb-4 text-4xl font-extrabold">
+  <div class="dark:text-light text-dark mb-4 text-4xl font-extrabold">
     <h1>Projects</h1>
   </div>
   <ul class="list-none pl-0 sm:flex">
@@ -18,7 +17,7 @@ import { Icon } from 'astro-icon/components';
             <a
               class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
               href={project.data.url}>
-              <span class="hover:dark:text-primary-200/75 dark:text-primary-50">
+              <span class="dark:text-light hover:dark:text-primary-200/75">
                 {project.data.title}
               </span>
               <Icon
@@ -31,7 +30,7 @@ import { Icon } from 'astro-icon/components';
             </p>
             <div class="flex gap-2">
               {project.data.tags.map((tag) => (
-                <div class="border-accent-400 dark:border-accent-500/15 bg-accent-50 dark:bg-accent-500/10 dark:text-accent-300 text-accent-700/85 rounded-xl border px-2 py-1 text-sm">
+                <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
                   {tag}
                 </div>
               ))}

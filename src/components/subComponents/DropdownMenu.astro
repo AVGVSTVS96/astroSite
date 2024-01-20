@@ -28,12 +28,12 @@ import Button from './Button.astro';
     icon={icon}
   />
   <div
-    class="dropdown-content dark:bg-primary-800 bg-primary-100 absolute mt-1 hidden text-balance rounded-md p-[0.5px] backdrop-blur-md sm:ml-2 md:w-40">
+    class="dropdown-content absolute mt-1 hidden text-balance rounded-md bg-primary-100 p-[0.5px] backdrop-blur-md sm:ml-2 md:w-40 dark:bg-primary-800">
     {
       links.map((link) => (
         <a
           href={link.url}
-          class="dark:hover:text-primary-200/95 hover:bg-accent-300/75 dark:hover:bg-accent-600 dark:text-primary-200/80 text-primary-900 m-1 block rounded-md px-2 py-2 text-sm transition-colors duration-200">
+          class="text-dark m-1 block rounded-md px-2 py-2 text-sm transition-colors duration-200 hover:bg-accent-300/75 dark:text-primary-200/80 dark:hover:bg-accent-600 dark:hover:text-primary-200/95">
           {link.name}
         </a>
       ))

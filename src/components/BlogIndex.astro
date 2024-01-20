@@ -14,14 +14,14 @@ interface Props {
 <ul class={`list-none pl-0 ${className}`}>
   {
     displayPosts.map((post) => (
-      <li class="dark:border-base/20 grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3">
-        <div class="dark:text-primary-200/60 text-primary-900/75 col-span-1 self-center">
+      <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3 dark:border-base/20">
+        <div class="text-dark/75 col-span-1 self-center dark:text-primary-200/60">
           {post.frontmatter.pubDate}
         </div>
         <div class="col-span-2 sm:text-right">
           <a
             href={post.url}
-            class="dark:text-primary-50 dark:hover:text-primary-200/75 text-primary-900 hover:text-primary-900/80 hover:decoration-accent-300 decoration-accent-500 dark:decoration-accent-500 dark:hover:decoration-accent-600/80 block text-xl font-[600] underline decoration-2 underline-offset-[5px] dark:hover:underline">
+            class="dark:text-light text-dark hover:text-dark/80 block text-xl font-[600] underline decoration-accent-500 decoration-2 underline-offset-[5px] hover:decoration-accent-300 dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:underline dark:hover:decoration-accent-600/80">
             {post.frontmatter.title}
           </a>
         </div>

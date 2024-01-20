@@ -26,12 +26,12 @@ let {
   }`}>
   {title && <h1 class="mb-2">{title}</h1>}
   {subtitle && <h2 class="mt-0">{subtitle}</h2>}
-  {displayHr && <hr class="border-accent-500 mb-8" />}
+  {displayHr && <hr class="mb-8 border-accent-500" />}
   {heading && <h3 class="mb-1">{heading}</h3>}
   <slot name="content" />
 </div>
 <style>
   html.light {
-    @apply prose-headings:text-primary-900;
+    @apply prose-headings:text-dark;
   }
 </style>

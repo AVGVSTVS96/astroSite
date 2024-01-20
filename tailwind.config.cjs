@@ -47,6 +47,14 @@ module.exports = {
 				base: colors[primaryColor][400],
 				dark: colors[primaryColor][800],
 			},
+
+			textColor: {
+				light: colors[primaryColor][50],
+				'muted-light': colors[primaryColor][200],
+				'muted-base': colors[primaryColor][400],
+				'muted-dark': colors[primaryColor][500],
+				dark: colors[primaryColor][900],
+			}
 		}
 	},
 	plugins: [
