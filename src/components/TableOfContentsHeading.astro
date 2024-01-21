@@ -18,7 +18,7 @@ import { Icon } from 'astro-icon/components';
               <Icon
                 name="sideCaret"
                 size={13}
-                class="dark:group-hover:stroke-primary-300 group-hover:stroke-primary-400/80 dark:stroke-primary-400 stroke-primary-500 mx-1 mt-1 flex-shrink-0"
+                class="mx-1 mt-1 flex-shrink-0 stroke-primary-500 group-hover:stroke-primary-400/80 dark:stroke-primary-400 dark:group-hover:stroke-primary-300"
                 title="caret-icon"
               />
               {subheading.text}
@@ -32,7 +32,7 @@ import { Icon } from 'astro-icon/components';
 
 <style>
   li:has(.active) > a {
-    @apply hover:text-accent-300 text-accent-400;
+    @apply text-accent-400 hover:text-accent-300;
   }
 
   :root:is(.dark) li:has(.active) > a {
@@ -40,6 +40,6 @@ import { Icon } from 'astro-icon/components';
   }
 
   a:hover {
-    @apply dark:text-primary-200/80 text-primary-400;
+    @apply dark:text-muted-light/80 text-muted;
   }
 </style>
