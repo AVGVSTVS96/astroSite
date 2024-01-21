@@ -1,14 +1,12 @@
 ---
-import BlogIndex from '../components/BlogIndex.astro';
+import BlogIndex from '@components/BlogIndex.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout title="Blog" description="Blog posts by Bassim Shahidy">
   <div class="container flex flex-col items-center">
     <div class="mx-4 w-fit">
-      <h1 class="h1 mb-4">
-        Blog Posts
-      </h1>
+      <h1 class="h1 mb-4">Blog Posts</h1>
       <BlogIndex class="sm:w-[560px] md:w-[720px] lg:w-[860px]" />
     </div>
   </div>
