@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      astro:
+        patterns:
+          - "astro*"
+          - "remark-sectionize"
+        update-types:
+          - "minor"
+          - "patch"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+          - "@astrojs/tailwind"
+        update-types:
+          - "minor"
+          - "patch"
+      prettier:
+        patterns:
+          - "prettier*"
+        update-types:
+          - "minor"
+          - "patch"
