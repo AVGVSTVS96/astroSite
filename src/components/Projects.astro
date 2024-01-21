@@ -6,8 +6,8 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <div class="mx-4 mt-8 px-6">
-  <div class="prose mb-6 dark:prose-invert">
-    <h1 class="mb-4">Projects</h1>
+  <div class="h1 mb-4">
+    <h1>Projects</h1>
   </div>
   <ul class="list-none pl-0 sm:flex">
     {
@@ -17,7 +17,7 @@ import { Icon } from 'astro-icon/components';
             <a
               class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
               href={project.data.url}>
-              <span class="dark:text-slate-50 hover:dark:text-slate-200/75">
+              <span class="dark:text-light hover:dark:text-muted-light/75">
                 {project.data.title}
               </span>
               <Icon
@@ -25,12 +25,12 @@ import { Icon } from 'astro-icon/components';
                 class="mx-2 size-5 opacity-70 hover:opacity-100"
               />
             </a>
-            <p class="mt-2.5  line-clamp-2 text-[0.925rem]">
+            <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
               {project.data.description}
             </p>
             <div class="flex gap-2">
               {project.data.tags.map((tag) => (
-                <div class="rounded-xl border border-sky-200 bg-sky-50 px-2 py-1 text-sm text-sky-700/85 dark:border-sky-500/15 dark:bg-sky-500/10 dark:text-sky-300">
+                <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
                   {tag}
                 </div>
               ))}

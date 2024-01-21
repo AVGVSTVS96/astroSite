@@ -4,11 +4,15 @@
 
 @layer components {
   .border-card {
-    @apply rounded-lg border border-slate-200 border-opacity-20;
+    @apply rounded-lg border border-light border-opacity-20;
   }
 
   .blue-underline {
-    @apply  underline decoration-sky-500 dark:hover:text-slate-200/75 decoration-2 underline-offset-[5px] dark:decoration-sky-500 dark:hover:decoration-sky-600/80;
+    @apply underline decoration-accent-500 dark:hover:text-primary-200/75 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:decoration-accent-600/80;
+  }
+
+  .h1 {
+    @apply dark:text-light text-dark text-4xl font-extrabold;
   }
 }
 

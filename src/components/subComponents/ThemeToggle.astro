@@ -2,7 +2,10 @@
 
 ---
 
-<button id="themeToggle" aria-label="Dark Mode Toggle" class="rounded-lg px-3 py-2">
+<button
+  id="themeToggle"
+  aria-label="Dark Mode Toggle"
+  class="rounded-lg px-3 py-2">
   <svg width="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       class="sun"
@@ -21,7 +24,7 @@
   #themeToggle {
     border: 0;
     background: none;
-    @apply hover:bg-slate-200/50 dark:hover:bg-slate-800;
+    @apply hover:bg-primary-200/50 dark:hover:bg-primary-800;
   }
   .sun {
     fill: rgba(0, 0, 0, 0.7);
