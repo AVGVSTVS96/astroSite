@@ -7,7 +7,7 @@ import ThemeToggle from '@subComponents/ThemeToggle.astro';
 <div
   class="navbar-container dark:bg-primary-950 bg-primary-50 border-base/50 dark:border-base/40 sticky top-0 z-10 mb-8 w-full border-b px-4 py-2 sm:px-6 md:px-10 xl:px-14">
   <div class="button-container flex items-center justify-between gap-6">
-    <a href="/">
+    <a href="/" class="dark:invert">
       <img
         src="../astroLogo.svg"
         alt="Astro Logo"
@@ -52,8 +52,3 @@ import ThemeToggle from '@subComponents/ThemeToggle.astro';
     </div>
   </div>
 </div>
-<style>
-  :root.dark .astro-icon {
-    filter: invert(1);
-  }
-</style>
