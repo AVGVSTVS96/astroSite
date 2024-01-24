@@ -26,14 +26,15 @@ import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
         <Button name="About" link="/about" />
         <Button name="Blog" link="/blog" />
         <DropdownMenu
-          name="Projects"
-          links={[
-            { name: 'Minimal Typography', url: '/designProject' },
-            { name: 'Old Flask Site', url: '/flaskSite' },
-          ]}
+        name="Projects"
+        links={[
+          { name: 'Minimal Typography', url: '/designProject' },
+          { name: 'Old Flask Site', url: '/flaskSite' },
+        ]}
           showCaret={true}
           icon={false}
-        />
+          />
+          <ThemeSwitcher />
       </div>
       <div class="flex sm:hidden">
         <DropdownMenu
@@ -47,9 +48,8 @@ import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
           ]}
           showCaret={false}
           icon={true}
-        />
+          />
       </div>
-      <ThemeSwitcher />
       <ThemeToggle />
     </div>
   </div>
