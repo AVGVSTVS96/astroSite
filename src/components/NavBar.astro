@@ -1,7 +1,8 @@
 ---
-import Button from '@subComponents/Button.astro';
-import DropdownMenu from '@subComponents/DropdownMenu.astro';
-import ThemeToggle from '@subComponents/ThemeToggle.astro';
+import Button from './subComponents/Button.astro';
+import DropdownMenu from './subComponents/DropdownMenu.astro';
+import ThemeToggle from './subComponents/ThemeToggle.astro';
+import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
 ---
 
 <div
@@ -48,6 +49,7 @@ import ThemeToggle from '@subComponents/ThemeToggle.astro';
           icon={true}
         />
       </div>
+      <ThemeSwitcher />
       <ThemeToggle />
     </div>
   </div>
