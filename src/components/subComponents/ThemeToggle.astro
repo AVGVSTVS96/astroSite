@@ -48,7 +48,7 @@
   if (['dark', 'light'].includes(theme)) {
     element.className = theme;
     element.setAttribute(
-      'data-theme',
+      'data-code-theme',
       theme === 'dark' ? 'material-theme-ocean' : 'material-theme-palenight'
     );
   }
@@ -60,7 +60,7 @@
     element.classList.add(newTheme);
 
     element.setAttribute(
-      'data-theme',
+      'data-code-theme',
       newTheme === 'dark' ? 'material-theme-ocean' : 'material-theme-palenight'
     );
 
