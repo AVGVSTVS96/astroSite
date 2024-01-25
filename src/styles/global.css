@@ -32,7 +32,7 @@
   }
     
     
-  .sky {
+  [data-theme='sky'] {
     --accent-50: theme(colors.sky.50);
     --accent-100: theme(colors.sky.100);
     --accent-200: theme(colors.sky.200);
@@ -46,7 +46,7 @@
     --accent-950: theme(colors.sky.950);
   }
     
-  .violet {
+  [data-theme='violet'] {
     --accent-50: theme(colors.violet.50);
     --accent-100: theme(colors.violet.100);
     --accent-200: theme(colors.violet.200);
@@ -60,7 +60,7 @@
     --accent-950: theme(colors.violet.950);
   }
   
-  .emerald {
+  [data-theme='emerald'] {
     --accent-50: theme(colors.emerald.50);
     --accent-100: theme(colors.emerald.100);
     --accent-200: theme(colors.emerald.200);
@@ -74,7 +74,7 @@
     --accent-950: theme(colors.emerald.950);
   }
   
-  .teal {
+  [data-theme='teal'] {
     --accent-50: theme(colors.teal.50);
     --accent-100: theme(colors.teal.100);
     --accent-200: theme(colors.teal.200);
