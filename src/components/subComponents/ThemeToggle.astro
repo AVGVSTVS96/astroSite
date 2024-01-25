@@ -42,32 +42,32 @@
 </style>
 
 <script is:inline>
-  const theme = localStorage.getItem('themeToggle') || 'dark';
   const element = document.documentElement;
+  const themeToggleButton = document.getElementById('themeToggle');
 
-  if (['dark', 'light'].includes(theme)) {
-    element.className = theme;
-    element.setAttribute(
-      'data-code-theme',
-      theme === 'dark' ? 'material-theme-ocean' : 'material-theme-palenight'
-    );
-  }
-
-  const handleToggleClick = () => {
-    const newTheme = element.classList.contains('dark') ? 'light' : 'dark';
-
-    element.classList.remove('dark', 'light');
-    element.classList.add(newTheme);
-
-    element.setAttribute(
-      'data-code-theme',
-      newTheme === 'dark' ? 'material-theme-ocean' : 'material-theme-palenight'
-    );
-
-    localStorage.setItem('themeToggle', newTheme);
+  const themes = {
+    dark: 'material-theme-ocean',
+    light: 'material-theme-palenight',
   };
 
-  document
-    .getElementById('themeToggle')
-    .addEventListener('click', handleToggleClick);
+  function applyTheme(theme) {
+    element.className = theme;
+    element.setAttribute('data-code-theme', themes[theme]);
+    localStorage.setItem('themeToggle', theme);
+  }
+
+  function initializeTheme() {
+    const storedTheme = localStorage.getItem('themeToggle') || 'dark';
+    if (Object.keys(themes).includes(storedTheme)) {
+      applyTheme(storedTheme);
+    }
+  }
+
+  function handleToggleClick() {
+    const newTheme = element.classList.contains('dark') ? 'light' : 'dark';
+    applyTheme(newTheme);
+  }
+
+  initializeTheme();
+  themeToggleButton.addEventListener('click', handleToggleClick);
 </script>
