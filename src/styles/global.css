@@ -2,36 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .border-card {
-    @apply border border-base/40 dark:border-light/20;
-  }
-
-  .blue-underline {
-    @apply underline decoration-accent-500 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:decoration-accent-600/80;
-  }
-
-  .h1 {
-    @apply dark:text-light text-dark text-4xl font-extrabold;
-  }
-
-  :not(pre) > code {
-    @apply mx-0.5 rounded-md bg-gray-200 px-1.5 py-1
-    dark:bg-gray-800/75;
-  }
-
-}
-
 @layer base {
-
   :root {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
     scrollbar-width: thin; */
     scroll-behavior: smooth;
   }
-    
-    
+
   [data-theme='sky'] {
     --accent-50: theme(colors.sky.50);
     --accent-100: theme(colors.sky.100);
@@ -45,7 +23,7 @@
     --accent-900: theme(colors.sky.900);
     --accent-950: theme(colors.sky.950);
   }
-    
+
   [data-theme='violet'] {
     --accent-50: theme(colors.violet.50);
     --accent-100: theme(colors.violet.100);
@@ -59,7 +37,7 @@
     --accent-900: theme(colors.violet.900);
     --accent-950: theme(colors.violet.950);
   }
-  
+
   [data-theme='emerald'] {
     --accent-50: theme(colors.emerald.50);
     --accent-100: theme(colors.emerald.100);
@@ -73,7 +51,7 @@
     --accent-900: theme(colors.emerald.900);
     --accent-950: theme(colors.emerald.950);
   }
-  
+
   [data-theme='teal'] {
     --accent-50: theme(colors.teal.50);
     --accent-100: theme(colors.teal.100);
@@ -129,26 +107,44 @@
     --accent-900: theme(colors.amber.900);
     --accent-950: theme(colors.amber.950);
   }
-  
+
   ::-webkit-scrollbar {
     background-color: transparent;
     width: 12px;
     height: 10px;
     gap: 5px;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background-color: hsla(0, 0%, 60%, 0.2);
     border-radius: 6px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background-color: hsla(0, 0%, 60%, 0.4);
   }
-  
+
   ::-webkit-scrollbar-thumb:active {
     background-color: hsla(0, 0%, 60%, 0.3);
   }
-  
-  
+
+}
+
+@layer components {
+  .border-card {
+    @apply border border-base/40 dark:border-light/20;
+  }
+
+  .blue-underline {
+    @apply underline decoration-accent-500 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:decoration-accent-600/80;
+  }
+
+  .h1 {
+    @apply dark:text-light text-dark text-4xl font-extrabold;
+  }
+
+  :not(pre) > code {
+    @apply mx-0.5 rounded-md bg-gray-200 px-1.5 py-1 dark:bg-gray-800/75;
+  }
+
 }
