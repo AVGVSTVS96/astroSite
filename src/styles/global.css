@@ -87,6 +87,48 @@
     --accent-900: theme(colors.teal.900);
     --accent-950: theme(colors.teal.950);
   }
+
+  [data-theme='cyan'] {
+    --accent-50: theme(colors.cyan.50);
+    --accent-100: theme(colors.cyan.100);
+    --accent-200: theme(colors.cyan.200);
+    --accent-300: theme(colors.cyan.300);
+    --accent-400: theme(colors.cyan.400);
+    --accent-500: theme(colors.cyan.500);
+    --accent-600: theme(colors.cyan.600);
+    --accent-700: theme(colors.cyan.700);
+    --accent-800: theme(colors.cyan.800);
+    --accent-900: theme(colors.cyan.900);
+    --accent-950: theme(colors.cyan.950);
+  }
+
+  [data-theme='fuchsia'] {
+    --accent-50: theme(colors.fuchsia.50);
+    --accent-100: theme(colors.fuchsia.100);
+    --accent-200: theme(colors.fuchsia.200);
+    --accent-300: theme(colors.fuchsia.300);
+    --accent-400: theme(colors.fuchsia.400);
+    --accent-500: theme(colors.fuchsia.500);
+    --accent-600: theme(colors.fuchsia.600);
+    --accent-700: theme(colors.fuchsia.700);
+    --accent-800: theme(colors.fuchsia.800);
+    --accent-900: theme(colors.fuchsia.900);
+    --accent-950: theme(colors.fuchsia.950);
+  }
+
+  [data-theme='amber'] {
+    --accent-50: theme(colors.amber.50);
+    --accent-100: theme(colors.amber.100);
+    --accent-200: theme(colors.amber.200);
+    --accent-300: theme(colors.amber.300);
+    --accent-400: theme(colors.amber.400);
+    --accent-500: theme(colors.amber.500);
+    --accent-600: theme(colors.amber.600);
+    --accent-700: theme(colors.amber.700);
+    --accent-800: theme(colors.amber.800);
+    --accent-900: theme(colors.amber.900);
+    --accent-950: theme(colors.amber.950);
+  }
   
   ::-webkit-scrollbar {
     background-color: transparent;
