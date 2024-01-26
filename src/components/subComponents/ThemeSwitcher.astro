@@ -1,0 +1,52 @@
+---
+// ThemeSwitcher.astro
+import DropdownMenu from './DropdownMenu.astro';
+
+const themeOptions = [
+  { name: 'Sky', url: '#sky' },
+  { name: 'Cyan', url: '#cyan' }, 
+  { name: 'Teal', url: '#teal' },
+  { name: 'Emerald', url: '#emerald' },
+  { name: 'Violet', url: '#violet' },
+  { name: 'Fuchsia', url: '#fuchsia' },
+  { name: 'Amber', url: '#amber' }
+];
+---
+
+<div class="theme-switcher">
+  <DropdownMenu
+    name="Theme"
+    links={themeOptions}
+    showCaret={true}
+    icon={false}
+  />
+</div>
+
+<script is:inline>
+  // Function to change the theme
+  const changeTheme = (newTheme) => {
+    // Remove the old theme
+    document.documentElement.removeAttribute('data-theme');
+
+    // Add the new theme
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('themeSwitcher', newTheme);
+  };
+
+  // Set the default theme based on stored preference or default to 'sky'
+  const currentTheme = localStorage.getItem('themeSwitcher') || 'sky';
+  changeTheme(currentTheme);
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Add event listeners to theme option links
+    document
+      .querySelectorAll('.theme-switcher .dropdown-content a')
+      .forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const theme = e.target.getAttribute('href').substring(1); // Extract theme name from href
+          changeTheme(theme);
+        });
+      });
+  });
+</script>

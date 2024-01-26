@@ -1,7 +1,8 @@
 ---
-import Button from '@subComponents/Button.astro';
-import DropdownMenu from '@subComponents/DropdownMenu.astro';
-import ThemeToggle from '@subComponents/ThemeToggle.astro';
+import Button from './subComponents/Button.astro';
+import DropdownMenu from './subComponents/DropdownMenu.astro';
+import ThemeToggle from './subComponents/ThemeToggle.astro';
+import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
 ---
 
 <div
@@ -20,19 +21,20 @@ import ThemeToggle from '@subComponents/ThemeToggle.astro';
       />
     </a>
     <div class="button-theme-container flex">
-      <div class="md:text-md hidden sm:flex lg:text-lg">
+      <div class="md:text-md hidden sm:flex lg:text-lg gap-2">
         <Button name="Home" link="/" />
         <Button name="About" link="/about" />
         <Button name="Blog" link="/blog" />
         <DropdownMenu
-          name="Projects"
-          links={[
-            { name: 'Minimal Typography', url: '/designProject' },
-            { name: 'Old Flask Site', url: '/flaskSite' },
-          ]}
+        name="Projects"
+        links={[
+          { name: 'Minimal Typography', url: '/designProject' },
+          { name: 'Old Flask Site', url: '/flaskSite' },
+        ]}
           showCaret={true}
           icon={false}
-        />
+          />
+          <ThemeSwitcher />
       </div>
       <div class="flex sm:hidden">
         <DropdownMenu
@@ -46,7 +48,7 @@ import ThemeToggle from '@subComponents/ThemeToggle.astro';
           ]}
           showCaret={false}
           icon={true}
-        />
+          />
       </div>
       <ThemeToggle />
     </div>

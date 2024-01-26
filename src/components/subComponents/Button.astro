@@ -22,7 +22,7 @@ import { Icon } from 'astro-icon/components';
 <a
   href={link}
   id={id}
-  class=`mx-2 flex rounded-lg px-3 py-2 font-normal dark:text-light hover:bg-primary-200/50 dark:hover:bg-primary-800 hover:text-opacity-100 transition-color duration-200 max-w-max ${className} ${showCaret ? 'pr-1.5' : ''}`>
+  class=`flex rounded-lg px-3 py-2 font-normal dark:text-light hover:bg-primary-200/50 dark:hover:bg-primary-800 hover:text-opacity-100 transition-color duration-200 max-w-max ${className} ${showCaret ? 'pr-1' : ''}`>
   <button class="flex" aria-label={name}>
     {icon ? <Icon name={name} title={name} size={26} /> : name}
     {

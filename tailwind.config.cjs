@@ -2,7 +2,8 @@
 
 const colors = require('tailwindcss/colors')
 const primaryColor = 'slate'
-const accentColor = 'sky'
+
+const mix = (name) => `color-mix(in srgb, var(${name}), transparent calc(100% * (1 - <alpha-value>)))`;
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -28,17 +29,17 @@ module.exports = {
 					950: colors[primaryColor][950]
 				},
 				accent: {
-					50: colors[accentColor][50],
-					100: colors[accentColor][100],
-					200: colors[accentColor][200],
-					300: colors[accentColor][300],
-					400: colors[accentColor][400],
-					500: colors[accentColor][500],
-					600: colors[accentColor][600],
-					700: colors[accentColor][700],
-					800: colors[accentColor][800],
-					900: colors[accentColor][900],
-					950: colors[accentColor][950]
+					50: mix('--accent-50'),
+					100: mix('--accent-100'),
+					200: mix('--accent-200'),
+					300: mix('--accent-300'),
+					400: mix('--accent-400'),
+					500: mix('--accent-500'),
+					600: mix('--accent-600'),
+					700: mix('--accent-700'),
+					800: mix('--accent-800'),
+					900: mix('--accent-900'),
+					950: mix('--accent-950')
 				},
 			},
 
