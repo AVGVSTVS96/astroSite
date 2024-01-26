@@ -3,7 +3,7 @@ title: 'Astro: The Next-Gen Front-End Framework'
 description: "Astro is the web framework for building content-driven websites like blogs, marketing, and e-commerce. Astro is best-known for pioneering a new frontend architecture to reduce JavaScript overhead and complexity compared to other frameworks. If you need a website that loads fast and has great SEO, then Astro is for you."
 pubDate: 'December 12, 2023'
 author: 'Bassim Shahidy'
-image: https://cdn.buttercms.com/xrVbfdR5TBy4iTaY4xl7
+image: https://codesandbox.io/api/v1/sandboxes/u72dgj/screenshot.png
 tags:
 layout: '../../layouts/MDLayout.astro'
 ---
