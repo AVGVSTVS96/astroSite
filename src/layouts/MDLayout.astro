@@ -5,7 +5,7 @@ import Footer from '@components/Footer.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 import '@styles/global.css';
 
-let schema = {
+const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": frontmatter.title,
@@ -34,7 +34,6 @@ let schema = {
     }
   }
 }
-let schemaString = JSON.stringify(schema, null, 2);
 ---
 
 <html lang="en">
@@ -45,7 +44,7 @@ let schemaString = JSON.stringify(schema, null, 2);
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={frontmatter.description} />
     <title>{frontmatter.title}</title>
-    <script type="application/ld+json" set:html={schemaString}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)}></script>
   </head>
   <NavBar />
   <div class="mx-6 flex justify-center">
