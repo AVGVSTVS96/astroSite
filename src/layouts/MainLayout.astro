@@ -16,14 +16,24 @@ import NavBar from '@components/NavBar.astro';
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Bassim Shahidy",
+        "@type": "ProfilePage",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Bassim Shahidy",
+          "alternateName": "bassimshahidy",
+          "description": "IT Technician at NYC Bar Association",
+          "sameAs": [
+            "https://www.linkedin.com/in/bassimshahidy",
+            "https://github.com/avgvstvs96"
+          ]
+        },
+        "dateCreated": "2024-01-25T08:00:00-05:00",
+        "dateModified": "2024-01-25T12:00:00-05:00",
         "jobTitle": "IT Technician",
         "worksFor": {
           "@type": "Organization",
           "name": "NYC Bar Association"
         },
-        "description": "Bassim Shahidy is an IT specialist with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.",
         "url": "https://bassimshahidy.com",
         "contactPoint": {
           "@type": "ContactPoint",
