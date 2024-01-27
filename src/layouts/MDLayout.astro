@@ -1,52 +1,45 @@
 ---
 const { frontmatter, headings } = Astro.props;
-import NavBar from '@components/NavBar.astro';
-import Footer from '@components/Footer.astro';
 import TableOfContents from '@components/TableOfContents.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import '@styles/global.css';
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": frontmatter.title,
-  "description": frontmatter.description,
-  "image": frontmatter.image,
-  "url": Astro.request.url,
-  "datePublished": frontmatter.pubDate + "T08:00:00-05:00",
-  "author": {
-    "@type": "Person",
-    "name": "Bassim Shahidy",
-    "jobTitle": "IT Technician",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "NYC Bar Association"
+const jsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  image: frontmatter.image,
+  url: Astro.request.url,
+  datePublished: frontmatter.pubDate + 'T08:00:00-05:00',
+  author: {
+    '@type': 'Person',
+    name: 'Bassim Shahidy',
+    jobTitle: 'IT Technician',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'NYC Bar Association',
     },
-    "description": "Bassim Shahidy is an IT specialist with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.",
-    "url": "https://bassimshahidy.com",
-    "sameAs": [
-            "https://www.linkedin.com/in/bassimshahidy",
-            "https://github.com/avgvstvs96"
-          ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "bassim@bassimshahidy.com",
-      "contactType": "professional"
-    }
-  }
-}
+    description:
+      'Bassim Shahidy is an IT specialist with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.',
+    url: 'https://bassimshahidy.com',
+    sameAs: [
+      'https://www.linkedin.com/in/bassimshahidy',
+      'https://github.com/avgvstvs96',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'bassim@bassimshahidy.com',
+      contactType: 'professional',
+    },
+  },
+};
+
+const schema = JSON.stringify(jsonLD, null, 2);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={frontmatter.description} />
-    <title>{frontmatter.title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)}></script>
-  </head>
-  <NavBar />
+<BaseLayout {frontmatter}>
+  <script slot="head" type="application/ld+json" set:html={schema} />
   <div class="mx-6 flex justify-center">
     <div class="xl:w-[240px]"></div>
     <article
@@ -70,26 +63,4 @@ const schema = {
       <TableOfContents headings={headings} />
     </div>
   </div>
-  <Footer />
-  <style>
-    html {
-      @apply bg-primary-50;
-    }
-
-    html.dark {
-      @apply bg-primary-950;
-    }
-
-    html {
-      min-height: 100dvh;
-      scroll-padding-top: 4rem;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-  </style>
-
-
-</html>
+</BaseLayout>
