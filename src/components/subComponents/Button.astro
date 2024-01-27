@@ -6,12 +6,14 @@ interface Props {
   showCaret?: boolean;
   class?: string;
   icon?: boolean;
+  menu?: boolean;
 }
 
 const {
   name,
   link,
   id,
+  menu = false,
   showCaret = false,
   class: className,
   icon = false,
@@ -19,14 +21,14 @@ const {
 import { Icon } from 'astro-icon/components';
 ---
 
-<a
-  href={link}
-  id={id}
-  class=`flex rounded-lg px-3 py-2 font-normal dark:text-light hover:bg-primary-200/50 dark:hover:bg-primary-800 hover:text-opacity-100 transition-color duration-200 max-w-max ${className} ${showCaret ? 'pr-1' : ''}`>
-  <button class="flex" aria-label={name}>
-    {icon ? <Icon name={name} title={name} size={26} /> : name}
-    {
-      showCaret && (
+{
+  menu ? (
+    <button
+      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200/50 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}
+      aria-label={name}
+      id={id}>
+      {icon ? <Icon name={name} title={name} size={26} /> : name}
+      {showCaret && (
         <svg
           class="caret-icon ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
           viewBox="0 0 24 24"
@@ -39,10 +41,34 @@ import { Icon } from 'astro-icon/components';
             stroke-linejoin="round"
           />
         </svg>
-      )
-    }
-  </button>
-</a>
+      )}
+    </button>
+  ) : (
+    <a
+      href={link}
+      id={id}
+      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200/50 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}>
+      <button class="flex" aria-label={name}>
+        {icon ? <Icon name={name} title={name} size={26} /> : name}
+        {showCaret && (
+          <svg
+            class="caret-icon ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.1">
+            <path
+              d="M8 9l5 5 5-5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        )}
+      </button>
+    </a>
+  )
+}
+
 <style>
   .dropdown-active {
     @apply bg-primary-200/50 dark:bg-primary-800;
