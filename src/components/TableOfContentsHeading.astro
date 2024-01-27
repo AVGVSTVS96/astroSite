@@ -10,7 +10,7 @@ import { Icon } from 'astro-icon/components';
   {
     heading.subheadings.length > 0 && (
       <ul class="my-0 list-none px-0">
-        {heading.subheadings.map((subheading) => (
+        {heading.subheadings.map((subheading: { slug: string; text: string; }) => (
           <li class="px-0">
             <a
               href={'#' + subheading.slug}
