@@ -37,7 +37,7 @@ const themeOptions = [
   const currentTheme = localStorage.getItem('themeSwitcher') || 'sky';
   changeTheme(currentTheme);
 
-  document.addEventListener('DOMContentLoaded', (event) => {
+  document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners to theme option links
     document
       .querySelectorAll('.theme-switcher .dropdown-content a')
