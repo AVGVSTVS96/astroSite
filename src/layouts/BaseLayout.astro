@@ -1,0 +1,46 @@
+---
+import Footer from '@components/Footer.astro';
+import NavBar from '../components/NavBar.astro';
+
+const {
+  frontmatter = {},
+  description = frontmatter?.description,
+  title = frontmatter?.title,
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <slot name="head" />
+  </head>
+  <NavBar />
+  <slot />
+  <Footer />
+
+  <style>
+    :root {
+      @apply bg-primary-50;
+    }
+
+    :root.dark {
+      @apply bg-primary-950;
+    }
+
+    html {
+      min-height: 100dvh;
+      scroll-padding-top: 4rem;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
+
+</html>
