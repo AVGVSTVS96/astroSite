@@ -38,7 +38,7 @@ const jsonLD = {
 const schema = JSON.stringify(jsonLD, null, 2);
 ---
 
-<BaseLayout {frontmatter}>
+<BaseLayout {...frontmatter}>
   <script slot="head" type="application/ld+json" set:html={schema} />
   <div class="mx-6 flex justify-center">
     <div class="xl:w-[240px]"></div>
