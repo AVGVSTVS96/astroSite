@@ -1,18 +1,10 @@
 ---
 import '@styles/global.css';
-const { title, description } = Astro.props;
-import NavBar from '@components/NavBar.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <title>{title}</title>
-    <script type="application/ld+json">
+<BaseLayout {...Astro.props}>
+    <script slot="head" type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
@@ -41,24 +33,5 @@ import NavBar from '@components/NavBar.astro';
         }
       }
     </script>
-  </head>
-  <NavBar />
   <slot />
-  <style>
-    :root {
-      @apply bg-primary-50;
-    }
-
-    :root.dark {
-      @apply bg-primary-950;
-    }
-    html {
-      min-height: 100dvh;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-  </style>
-</html>
+</BaseLayout>
