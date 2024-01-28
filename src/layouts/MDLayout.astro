@@ -5,13 +5,14 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import '@styles/global.css';
 
 const isoDate = new Date(frontmatter.pubDate).toISOString().substring(0, 10);
+let imageUrl = new URL(frontmatter.image, Astro.request.url).href;
 
 const jsonLD = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: frontmatter.title,
   description: frontmatter.description,
-  image: frontmatter.image,
+  image: imageUrl,
   url: Astro.request.url,
   datePublished: isoDate + 'T08:00:00-05:00',
   author: {
