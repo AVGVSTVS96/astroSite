@@ -11,7 +11,7 @@ const imageUrl = new URL(frontmatter.image, Astro.request.url).href;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
 );
-if (!images[frontmatter.image])
+if (frontmatter.image && !images[frontmatter.image])
   throw new Error(`"${frontmatter.image}" does not exist in images directory"`);
 
 const jsonLD = {
