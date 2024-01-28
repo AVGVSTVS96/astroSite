@@ -68,8 +68,8 @@ const schema = JSON.stringify(jsonLD, null, 2);
         frontmatter.image && (
           <Image
             src={images[frontmatter.image]()}
-            width={1600}
-            height={900}
+            width={frontmatter.image.width}
+            height={frontmatter.image.height}
             alt={frontmatter.title}
           />
         )
