@@ -4,6 +4,8 @@ import TableOfContents from '@components/TableOfContents.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import '@styles/global.css';
 
+const isoDate = new Date(frontmatter.pubDate).toISOString().substring(0, 10);
+
 const jsonLD = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -11,7 +13,7 @@ const jsonLD = {
   description: frontmatter.description,
   image: frontmatter.image,
   url: Astro.request.url,
-  datePublished: frontmatter.pubDate + 'T08:00:00-05:00',
+  datePublished: isoDate + 'T08:00:00-05:00',
   author: {
     '@type': 'Person',
     name: 'Bassim Shahidy',
