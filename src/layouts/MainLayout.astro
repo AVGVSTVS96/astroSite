@@ -1,64 +1,35 @@
 ---
 import '@styles/global.css';
-const { title, description } = Astro.props;
-import NavBar from '@components/NavBar.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <title>{title}</title>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfilePage",
-        "mainEntity": {
-          "@type": "Person",
-          "name": "Bassim Shahidy",
-          "alternateName": "bassimshahidy",
-          "description": "IT Technician at NYC Bar Association",
-          "sameAs": [
-            "https://www.linkedin.com/in/bassimshahidy",
-            "https://github.com/avgvstvs96"
-          ]
-        },
-        "dateCreated": "2024-01-25T08:00:00-05:00",
-        "dateModified": "2024-01-25T12:00:00-05:00",
-        "jobTitle": "IT Technician",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "NYC Bar Association"
-        },
-        "url": "https://bassimshahidy.com",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "bassim@bassimshahidy.com",
-          "contactType": "professional"
-        }
+<BaseLayout {...Astro.props}>
+  <script slot="head" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Bassim Shahidy",
+        "alternateName": "bassimshahidy",
+        "description": "IT Technician at NYC Bar Association",
+        "sameAs": [
+          "https://www.linkedin.com/in/bassimshahidy",
+          "https://github.com/avgvstvs96"
+        ]
+      },
+      "jobTitle": "IT Technician",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "NYC Bar Association"
+      },
+      "url": "https://bassimshahidy.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "bassim@bassimshahidy.com",
+        "contactType": "professional"
       }
-    </script>
-  </head>
-  <NavBar />
+    }
+  </script>
   <slot />
-  <style>
-    :root {
-      @apply bg-primary-50;
-    }
-
-    :root.dark {
-      @apply bg-primary-950;
-    }
-    html {
-      min-height: 100dvh;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-  </style>
-</html>
+</BaseLayout>
