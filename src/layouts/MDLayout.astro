@@ -7,10 +7,12 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 const isoDate = new Date(frontmatter.pubDate).toISOString().substring(0, 10);
-let imageUrl = new URL(frontmatter.image, Astro.request.url).href;
-
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg,jpg,png,gif}');
-if (!images[frontmatter.image]) throw new Error(`"${frontmatter.image}" does not exist in images directory"`);
+const imageUrl = new URL(frontmatter.image, Astro.request.url).href;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/*.{jpeg,jpg,png,gif}'
+);
+if (!images[frontmatter.image])
+  throw new Error(`"${frontmatter.image}" does not exist in images directory"`);
 
 const jsonLD = {
   '@context': 'https://schema.org',
@@ -62,7 +64,16 @@ const schema = JSON.stringify(jsonLD, null, 2);
         </span>
       </div>
       <h1>{frontmatter.title}</h1>
-      {frontmatter.image && <Image src={images[frontmatter.image]()} width={1600} height={900} alt={frontmatter.title} />}
+      {
+        frontmatter.image && (
+          <Image
+            src={images[frontmatter.image]()}
+            width={1600}
+            height={900}
+            alt={frontmatter.title}
+          />
+        )
+      }
       <p>{frontmatter.description}</p>
       <slot />
     </article>
