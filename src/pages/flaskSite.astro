@@ -431,7 +431,7 @@ import '@styles/global.css';
     const interval: NodeJS.Timeout = setInterval(() => {
       element.innerText = element.innerText
         .split('')
-        .map((letter: string, index: number) => {
+        .map((_letter: string, index: number) => {
           if (index < iteration) {
             if (element.dataset.value) {
               return element.dataset.value[index];
