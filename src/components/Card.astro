@@ -7,21 +7,23 @@ interface Props {
   displayHr?: boolean;
   padding?: string;
   class?: string;
+  noMargin?: boolean;
 }
 
 const {
-  variant,
-  displayHr,
   title,
   subtitle,
   heading,
+  variant,
+  displayHr,
   padding = 'p-6',
   class: className,
+  noMargin = false,
 } = Astro.props;
 ---
 
 <div
-  class={`prose prose-slate dark:prose-invert max-w-3xl mx-4 rounded-lg ${padding} ${className} prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${
+  class={`prose prose-slate dark:prose-invert max-w-3xl rounded-lg prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${padding} ${className} ${noMargin ? '' : 'mx-4'} ${
     variant === 'borderless' ? '' : 'border-card'
   }`}>
   {title && <h1 class="mb-2">{title}</h1>}
