@@ -10,21 +10,23 @@ import { Icon } from 'astro-icon/components';
   {
     heading.subheadings.length > 0 && (
       <ul class="my-0 list-none px-0">
-        {heading.subheadings.map((subheading: { slug: string; text: string; }) => (
-          <li class="px-0">
-            <a
-              href={'#' + subheading.slug}
-              class="group flex items-start no-underline">
-              <Icon
-                name="sideCaret"
-                size={13}
-                class="mx-1 mt-1 flex-shrink-0 stroke-primary-500 group-hover:stroke-primary-400/80 dark:stroke-primary-400 dark:group-hover:stroke-primary-300"
-                title="caret-icon"
-              />
-              {subheading.text}
-            </a>
-          </li>
-        ))}
+        {heading.subheadings.map(
+          (subheading: { slug: string; text: string }) => (
+            <li class="px-0">
+              <a
+                href={'#' + subheading.slug}
+                class="group flex items-start no-underline">
+                <Icon
+                  name="sideCaret"
+                  size={13}
+                  class="mx-1 mt-1 flex-shrink-0 stroke-primary-500 group-hover:stroke-primary-400/80 dark:stroke-primary-400 dark:group-hover:stroke-primary-300"
+                  title="caret-icon"
+                />
+                {subheading.text}
+              </a>
+            </li>
+          )
+        )}
       </ul>
     )
   }
@@ -40,6 +42,6 @@ import { Icon } from 'astro-icon/components';
   }
 
   a:hover {
-    @apply dark:text-muted-light/80 text-muted;
+    @apply text-muted dark:text-muted-light/80;
   }
 </style>

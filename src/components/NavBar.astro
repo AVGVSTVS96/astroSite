@@ -6,7 +6,7 @@ import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
 ---
 
 <div
-  class="navbar-container dark:bg-primary-950 bg-primary-50 border-base/50 dark:border-base/40 sticky top-0 z-10 mb-8 w-full border-b px-4 py-2 sm:px-6 md:px-10 xl:px-14">
+  class="navbar-container sticky top-0 z-10 mb-8 w-full border-b border-base/50 bg-primary-50 px-4 py-2 dark:border-base/40 dark:bg-primary-950 sm:px-6 md:px-10 xl:px-14">
   <div class="button-container flex items-center justify-between gap-6">
     <a href="/" class="dark:invert">
       <img
@@ -21,20 +21,20 @@ import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
       />
     </a>
     <div class="button-theme-container flex">
-      <div class="md:text-md hidden sm:flex lg:text-lg gap-2">
+      <div class="md:text-md hidden gap-2 sm:flex lg:text-lg">
         <Button name="Home" link="/" />
         <Button name="About" link="/about" />
         <Button name="Blog" link="/blog" />
         <DropdownMenu
-        name="Projects"
-        links={[
-          { name: 'Minimal Typography', url: '/designProject' },
-          { name: 'Old Flask Site', url: '/flaskSite' },
-        ]}
+          name="Projects"
+          links={[
+            { name: 'Minimal Typography', url: '/designProject' },
+            { name: 'Old Flask Site', url: '/flaskSite' },
+          ]}
           showCaret={true}
           icon={false}
-          />
-          <ThemeSwitcher />
+        />
+        <ThemeSwitcher />
       </div>
       <div class="flex sm:hidden">
         <DropdownMenu
@@ -48,7 +48,7 @@ import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
           ]}
           showCaret={false}
           icon={true}
-          />
+        />
       </div>
       <ThemeToggle />
     </div>
