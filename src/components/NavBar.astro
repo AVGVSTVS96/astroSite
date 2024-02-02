@@ -20,7 +20,7 @@ import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
         class="astro-icon block h-8 w-8 opacity-80 md:hidden"
       />
     </a>
-    <div class="button-theme-container flex">
+    <div class="button-theme-container gap-1 flex">
       <div class="md:text-md hidden gap-2 sm:flex lg:text-lg">
         <Button name="Home" link="/" />
         <Button name="About" link="/about" />
@@ -34,8 +34,8 @@ import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
           showCaret={true}
           icon={false}
         />
-        <ThemeSwitcher />
       </div>
+      <ThemeSwitcher />
       <div class="flex sm:hidden">
         <DropdownMenu
           name="hamburger"
