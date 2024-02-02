@@ -9,10 +9,10 @@ import { Icon } from 'astro-icon/components';
   <div class="h1 mb-4">
     <h1>Projects</h1>
   </div>
-  <ul class="list-none pl-0 sm:flex">
+  <ul class="list-none pl-0 grid sm:grid-cols-2 gap-4">
     {
       projects.map((project) => (
-        <Card variant="bordered" padding="p-3.5" class="my-4 sm:my-0 sm:w-1/2">
+        <Card variant="bordered" padding="p-3.5" noMargin={true}>
           <div slot="content">
             <a
               class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
