@@ -9,7 +9,7 @@ import { Icon } from 'astro-icon/components';
   <div class="h1 mb-4">
     <h1>Projects</h1>
   </div>
-  <ul class="list-none pl-0 grid sm:grid-cols-2 gap-4">
+  <ul class="list-none pl-0 grid md:grid-cols-2 gap-4">
     {
       projects.map((project) => (
         <Card variant="bordered" padding="p-3.5" noMargin={true}>
@@ -28,7 +28,7 @@ import { Icon } from 'astro-icon/components';
             <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
               {project.data.description}
             </p>
-            <div class="flex gap-2">
+            <div class="flex gap-2 flex-wrap">
               {project.data.tags.map((tag) => (
                 <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
                   {tag}
