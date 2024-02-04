@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar.astro';
 const { description, title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark min-h-dvh scroll-pt-16">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,10 +15,11 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
   </head>
-  <NavBar />
-  <slot />
-  <Footer />
-
+  <body class="flex flex-col items-center">
+    <NavBar />
+    <slot />
+    <Footer />
+  </body>
   <style>
     :root {
       @apply bg-primary-50;
@@ -27,17 +28,5 @@ const { description, title } = Astro.props;
     :root.dark {
       @apply bg-primary-950;
     }
-
-    html {
-      min-height: 100dvh;
-      scroll-padding-top: 4rem;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
   </style>
-
-
 </html>
