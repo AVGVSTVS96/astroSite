@@ -5,7 +5,7 @@ pubDate: 'December 12, 2023'
 author: 'Bassim Shahidy'
 image: /src/images/astroBackground.png
 tags:
-layout: '../../layouts/MDLayout.astro'
+layout: '@layouts/MDLayout.astro'
 ---
 
 ## Features

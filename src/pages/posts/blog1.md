@@ -4,7 +4,7 @@ description: 'This is my first blog post, it describes several fundamental conce
 pubDate: 'June 7, 2023'
 author: 'Bassim Shahidy'
 tags: ['blog', 'astro', 'tailwindcss']
-layout: '../../layouts/MDLayout.astro'
+layout: '@layouts/MDLayout.astro'
 ---
 
 ---
