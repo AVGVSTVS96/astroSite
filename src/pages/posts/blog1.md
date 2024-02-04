@@ -9,70 +9,222 @@ layout: '../../layouts/MDLayout.astro'
 
 ---
 
-I chose to build this site with [Astro](https://astro.build) and [TailwindCSS](https://tailwindcss.com/) for several reasons. Astro is an excellent framework to build a portfolio website with and is a joy to work with thanks to it's rich documentation and intuitive structure.
+I chose to build this site with [Astro](https://astro.build) and [TailwindCSS](https://tailwindcss.com/) for several reasons. Astro is an excellent framework to build a portfolio website with and is a joy to work with thanks to it's rich documentation and intuitive structure. It allows for progressive enhancement, gradually adding new and more complex features to the site as I learn more about web development and Astro's features.
 
 TailwindCSS provides a well thought out design system that speeds up development by abstracting CSS classes into utility classes designed to be used in conjunction with each other. This promotes a consistent design system and speeds up development.
 
 ## Layouts
+In Astro, layouts are used to create a base structure for pages which can include the websites main components and styling like navbars, footers, and the main color scheme. Layouts can also be used to import other layouts, allowing for a nested layout structure; for example, a base layout containing HTML boilerplate and SEO, and a markdown layout which provides styling and compoents for blog posts and articles.
 
-Astro enables the use of page layouts, the two main ways I've used layouts so far is for normal pages and for markdown pages. The markdown page layout setup is a little different from normal `.astro` files.
 
-### Main Layout for Astro pages
+### Base Layout
+I first created a `BaseLayout.astro` file to set up the basic structure of my pages. This layout includes the HTML boilerplate, head section, my [navbar](#nav-bar-component) and [footer](#creating-a-footer-with-the-current-year-and-a-link-to-github) components, and a `<slot />` tag where the page's content is inserted. A named `<slot />` tag is also used in the head section to allow for the insertion of additional page specific head elements like schema data and meta tags.
 
-```astro title="layouts/MainLayout.astro"
+In this layout I'm using `Astro.props` to pass the title and description of the page to the layout. This allows the these fields to be set dynamically based on each page's content.
+
+
+```astro title="layouts/BaseLayout.astro" {17, 21}
 ---
-const { title } = Astro.props;
----
+import Footer from '@components/Footer.astro';
+import NavBar from '@components/NavBar.astro';
+import '@styles/global.css';
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <slot />
-</html>
-```
-
-`const { title } = Astro.props;` Set's the title to a prop, this prop is set when `MainLayout` is called in a file. Other props can also be accessed through `Astro.props` such as `{ description }` or `{ author }`.
-
-```astro title="pages/index.astro"
-<MainLayout title="Bassim Shahidy" />
-```
-
-### Markdown Layout
-
-```astro title="layouts/MDLayout.astro"
----
-const { frontmatter } = Astro.props;
-import NavBar from '../components/NavBar.astro';
-import '/src/global.css';
+const { description, title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark min-h-dvh scroll-pt-16">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>{frontmatter.title}</title>
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <slot name="head" />
   </head>
-  <NavBar />
-  <div class="prose prose-invert prose-hr:border-amber-600">
+  <body class="flex flex-col items-center">
+    <NavBar />
     <slot />
-  </div>
+    <Footer />
+  </body>
+  <style>
+    :root {
+      @apply bg-primary-50;
+    }
 
+    :root.dark {
+      @apply bg-primary-950;
+    }
+  </style>
 </html>
+
 ```
 
-`const { frontmatter } = Astro.props;` Sets the frontmatter in the markdown pages as props, the title can then be set in the MD template with `frontmatter.title`
 
-Layouts features a `<slot />` tag which is where the content importing the layout is then placed.
-A layout can be imported in both markdown and Astro files but each uses a different syntax.
+### Main Layout
 
-### In MD files layouts are imported at the top in frontmatter
+I then created a `MainLayout.astro` file which imports my base layout, defines the schema data for my website's main pages, and passes metadata like the title and description to the base layout's meta tags.
+
+
+To pass page specific metadata to the base layout, I use the spread operator with `Astro.props` allowing all properties defined on the main layout component to be available to the base layout. 
+
+```astro title="layouts/MainLayout.astro" {5}
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout {...Astro.props}>
+  <script slot="head" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Bassim Shahidy",
+        "alternateName": "bassimshahidy",
+        "description": "IT Technician at NYC Bar Association",
+        "sameAs": [
+          "https://www.linkedin.com/in/bassimshahidy",
+          "https://github.com/avgvstvs96"
+        ]
+      },
+      "jobTitle": "IT Technician",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "NYC Bar Association"
+      },
+      "url": "https://bassimshahidy.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "bassim@bassimshahidy.com",
+        "contactType": "professional"
+      }
+    }
+  </script>
+  <slot />
+</BaseLayout>
+
+```
+
+On each page, the title and description props are defined on the main layout component, and are then passed to the base layout.
+  
+  ```astro title="pages/index.astro" {2-3}
+<MainLayout
+    title="Bassim Shahidy"
+    description="Bassim Shahidy's personal website">
+</MainLayout>
+  ```
+
+### Markdown Layout
+
+I also created a `MDLayout.astro` file to define the styling and structure for blog posts. This layout is a lot more complex than the main layout, it includes styling for markdown content, a table of contents, post specific schema data, and image handling.
+
+```astro title="layouts/MDLayout.astro" {2, 5, 8-12, 19-23, 50, 68-73}
+---
+const { frontmatter, headings } = Astro.props;
+import TableOfContents from '@components/TableOfContents.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const isoDate = new Date(frontmatter.pubDate).toISOString().substring(0, 10);
+const imageUrl = new URL(frontmatter.image, Astro.request.url).href;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/*.{jpeg,jpg,png,gif}'
+);
+if (frontmatter.image && !images[frontmatter.image])
+  throw new Error(`"${frontmatter.image}" does not exist in images directory"`);
+
+const jsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  ...(frontmatter.image ? { image: imageUrl } : {}),
+  url: Astro.request.url,
+  datePublished: isoDate + 'T08:00:00-05:00',
+  author: {
+    '@type': 'Person',
+    name: 'Bassim Shahidy',
+    jobTitle: 'IT Technician',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'NYC Bar Association',
+    },
+    description:
+      'Bassim Shahidy is an IT specialist with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.',
+    url: 'https://bassimshahidy.com',
+    sameAs: [
+      'https://www.linkedin.com/in/bassimshahidy',
+      'https://github.com/avgvstvs96',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'bassim@bassimshahidy.com',
+      contactType: 'professional',
+    },
+  },
+};
+
+const schema = JSON.stringify(jsonLD, null, 2);
+---
+
+<BaseLayout {...frontmatter}>
+  <script slot="head" type="application/ld+json" set:html={schema} />
+  <div class="mx-6 flex justify-center">
+    <div class="xl:w-[240px]"></div>
+    <article
+      class="prose dark:prose-invert max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl prose-h1:pt-2 prose-code:text-accent-600 prose-code:dark:text-accent-400 prose-code:font-normal
+      prose-a:decoration-accent-400 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-accent-300
+      prose-hr:border-accent-500
+      dark:prose-hr:border-accent-400 dark:prose-hr:border-opacity-60">
+      <div class="mb-1 flex justify-start">
+        <span
+          class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
+          Written by {frontmatter.author} on {frontmatter.pubDate}
+        </span>
+      </div>
+      <h1>{frontmatter.title}</h1>
+      {
+        frontmatter.image && (
+          <Image
+            src={images[frontmatter.image]()}
+            width={frontmatter.image.width}
+            height={frontmatter.image.height}
+            alt={frontmatter.title}
+          />
+        )
+      }
+      <p>{frontmatter.description}</p>
+      <slot />
+    </article>
+    <div
+      class="hidden min-h-full prose-a:transition-colors prose-a:duration-100 lg:block">
+      <TableOfContents headings={headings} />
+    </div>
+  </div>
+</BaseLayout>
+
+```
+#### Frontmatter and Astro.props
+
+Frontmatter variables defined in markdown files make post specific metadata available to the `Astro.props` object: `const { frontmatter } = Astro.props;`
+
+This allows these values to be accessed by the base layout's `{description}` and `{title}` variables by spreading `{...frontmatter}` into it.
+
+#### SEO Schema
+I created a JSON-LD object to define the schema data for each blog post. This object uses values from the frontmatter to set the headline, description, and date published from each blog post and includes the post's image if it exists.
+
+The published date is formatted to be compatible with the ISO 8601 standard to comply with Google's schema specifications and the image URL is created for locally hosted images using the `new URL()` method to provide a full image URL to the schema based on the current page's URL.
+
+#### Image Optimization
+Images are optimized using the Astro `Image` component. In order to optimize each post's images dynamically, they need to be imported into the layout file. I used the `import.meta.glob` function to selectively import a post's image from the `/src/images` directory by filtering them using the `frontmatter.image` value.
+
+### Importing Layouts
+
+Layouts are imported differently depending on the file type.
+
+#### Markdown Files
 
 ```astro title="pages/posts/blog1.md"
 ---
@@ -80,7 +232,7 @@ layout: '../../layouts/MDLayout.astro';
 ---
 ```
 
-### In Astro files layouts are imported like any other component.
+#### Astro Files
 
 ```astro title="pages/index.astro"
 ---
@@ -89,7 +241,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 ```
 
 ---
-
+<!-- TODO -->
 ## Nav Bar Component
 
 I created a Nav bar component for my site, in it I import [Button](#button-component) and [DropdownMenu](#dropdown-menu-component) components in addition to two logos, one for mobile and one for desktop.
