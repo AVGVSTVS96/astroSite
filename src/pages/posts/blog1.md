@@ -218,7 +218,7 @@ I created a JSON-LD object to define the schema data for each blog post. This ob
 The published date is formatted to be compatible with the ISO 8601 standard to comply with Google's schema specifications and the image URL is created for locally hosted images using the `new URL()` method to provide a full image URL to the schema based on the current page's URL.
 
 #### Image Optimization
-Images are optimized using the Astro `Image` component. In order to optimize each post's images dynamically, they need to be imported into the layout file. I used the `import.meta.glob` function to selectively import a post's image from the `/src/images` directory by filtering them using the `frontmatter.image` value.
+Images are optimized using the Astro `Image` component. In order to optimize each post's images dynamically, they need to be imported into the layout file's `Image` component. I used the `import.meta.glob` function to selectively import a post's image from the `/src/images` directory by filtering through them using the `frontmatter.image` value, then imported the image using `{images[frontmatter.image]()}`.
 
 ### Importing Layouts
 
