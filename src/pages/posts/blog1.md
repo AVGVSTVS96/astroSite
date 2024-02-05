@@ -8,8 +8,11 @@ layout: '@layouts/MDLayout.astro'
 ---
 
 ---
+[Astro]: https://astro.build
+[TailwindCSS]: https://tailwindcss.com/
 
-I chose to build this site with [Astro](https://astro.build) and [TailwindCSS](https://tailwindcss.com/) for several reasons. Astro is an excellent framework to build a portfolio website with and is a joy to work with thanks to it's rich documentation and intuitive structure. It allows for progressive enhancement, gradually adding new and more complex features to the site as I learn more about web development and Astro's features.
+I chose to build this site with [Astro][] and [TailwindCSS][] for several reasons. Astro is an excellent framework to build a portfolio website with and is a joy to work with thanks to it's rich documentation and intuitive structure. It allows for progressive enhancement, gradually adding new and more complex features to the site as I learn more about web development and Astro's features.
+
 
 TailwindCSS provides a well thought out design system that speeds up development by abstracting CSS classes into utility classes designed to be used in conjunction with each other. This promotes a consistent design system and speeds up development.
 
