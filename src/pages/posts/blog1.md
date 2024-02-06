@@ -21,10 +21,12 @@ In Astro, layouts are used to create a base structure for pages which can includ
 
 
 ### Base Layout
-I first created a `BaseLayout.astro` file to set up the basic structure of my pages. This layout includes the HTML boilerplate, head section, my [navbar](#nav-bar-component) and [footer](#creating-a-footer-with-the-current-year-and-a-link-to-github) components, and a `<slot />` tag where the page's content is inserted. A named `<slot />` tag is also used in the head section to allow for the insertion of additional page specific head elements like schema data and meta tags.
+I first created a `BaseLayout.astro` file to set up the basic structure of my pages. This layout includes the HTML boilerplate, head section, my [navbar][] and [footer][] components, and a `<slot />` tag where the page's content is inserted. A named `<slot />` tag is also used in the head section to allow for the insertion of additional page specific head elements like schema data and meta tags.
 
 In this layout I'm using `Astro.props` to pass the title and description of the page to the layout. This allows the these fields to be set dynamically based on each page's content.
 
+[navbar]: #nav-bar-component
+[footer]: #creating-a-footer-with-the-current-year-and-a-link-to-github
 
 ```astro title="layouts/BaseLayout.astro" {17, 21}
 ---
