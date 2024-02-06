@@ -4,7 +4,7 @@ description: Introduction to TailwindCSS, a highly customizable, low-level CSS f
 pubDate: 'December 27, 2023'
 author: 'Bassim Shahidy'
 tags:
-layout: '../../layouts/MDLayout.astro'
+layout: '@layouts/MDLayout.astro'
 ---
 
 Tailwind CSS is a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override.
