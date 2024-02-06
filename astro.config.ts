@@ -7,8 +7,8 @@ import expressiveCode, {
 } from 'astro-expressive-code';
 
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
-  themes: ['material-theme-ocean', 'material-theme-palenight'],
-  themeCssSelector: (theme) => `[data-code-theme='${theme.name}']`,
+  themes: ['material-theme-palenight', 'material-theme-ocean'],
+  themeCssSelector: (theme) => `.${theme.type}`,
 };
 
 // https://astro.build/config
