@@ -45,21 +45,15 @@
   const element = document.documentElement;
   const themeToggleButton = document.getElementById('themeToggle');
 
-  const themes = {
-    dark: 'material-theme-ocean',
-    light: 'material-theme-palenight',
-  };
-
   function applyTheme(theme) {
     element.classList.remove('dark', 'light');
     element.classList.add(theme);
-    element.setAttribute('data-code-theme', themes[theme]);
     localStorage.setItem('themeToggle', theme);
   }
 
   function initializeTheme() {
     const storedTheme = localStorage.getItem('themeToggle') || 'dark';
-    if (Object.keys(themes).includes(storedTheme)) {
+    if (['dark', 'light'].includes(storedTheme)) {
       applyTheme(storedTheme);
     }
   }
