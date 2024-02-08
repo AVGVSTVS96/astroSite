@@ -2,6 +2,12 @@ import { Hono } from 'hono';
 import { streamText } from 'hono/streaming';
 import { env } from 'hono/adapter';
 
+// Define the structure for messages as expected in the request body
+interface Message {
+  role: string;
+  content: string;
+}
+
 const app = new Hono();
 
 app.post('/chat', (c) => {
@@ -9,7 +15,7 @@ app.post('/chat', (c) => {
 
   return streamText(c, async (stream) => {
     try {
-      const requestBody = await c.req.json();
+      const requestBody = await c.req.json() as { modelName: string; messages: Message[] };
       const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -17,24 +23,31 @@ app.post('/chat', (c) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: requestBody.modelName, // Assuming the model name is sent in the request body
+          model: requestBody.modelName,
           messages: requestBody.messages,
         }),
       });
+
+      if (!openaiResponse.ok) {
+        const errorBody = await openaiResponse.json();
+        // Matching the error format from the FastAPI code
+        const errorMessage = `${errorBody.error.type}: ${errorBody.error.message}`;
+        await stream.write(errorMessage);
+        return;
+      }
 
       if (openaiResponse.body) {
         const reader = openaiResponse.body.getReader();
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-          // Convert Uint8Array to string and write to stream
           const text = new TextDecoder().decode(value);
           await stream.write(text);
         }
       }
     } catch (error) {
-      console.error('Error streaming OpenAI response:', error);
-      stream.write('Error processing your request.');
+      // Writing the error message in the format similar to FastAPI's OpenAIError handling
+      await stream.write(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   });
 });
