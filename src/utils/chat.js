@@ -1,73 +1,6 @@
-// DOM Elements
-const chatMessagesDiv = document.getElementById("chat-messages");
-const userInputElem = document.getElementById("user-input");
-const modelToggle = document.getElementById("model-toggle");
-const modelLabelLeft = document.getElementById("model-label-left");
-const modelLabelRight = document.getElementById("model-label-right");
-
 // State variables
 let messages = [];
 let systemMessageRef = null;
-let modelName = modelToggle.checked ? "gpt-4" : "gpt-3.5-turbo";
-let autoScrollState = true;
-let lastScrollTop = 0;
-
-// Utility functions
-window.renderMarkdown = function (content) {
-  const md = new markdownit();
-  return md.render(content);
-};
-
-function highlightCode(element) {
-  const codeElements = element.querySelectorAll("pre code");
-  codeElements.forEach((codeElement) => {
-    hljs.highlightElement(codeElement);
-  });
-}
-
-function autoScroll() {
-  if (autoScrollState) {
-    chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
-  }
-}
-
-
-async function postRequest() {
-    return await fetch("/chat", {
-        method: "POST",
-        body: JSON.stringify({
-            messages: messages,
-            model_type: modelName,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-}
-
-async function handleResponse(response, messageText) {
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder("utf-8");
-    let assistantMessage = "";
-
-    while (true) {
-        const { value, done } = await reader.read();
-        if (done) {
-            messages.push({
-                role: "assistant",
-                content: assistantMessage,
-            });
-            break;
-        }
-
-        const text = decoder.decode(value);
-        assistantMessage += text;
-        messageText.innerHTML = window.renderMarkdown(assistantMessage).trim();
-        highlightCode(messageText);
-        autoScroll();
-    }
-}
-
 
 function updateSystemMessage(systemMessage) {
   if (
@@ -75,32 +8,13 @@ function updateSystemMessage(systemMessage) {
     (!systemMessageRef || systemMessage !== systemMessageRef.content)
   ) {
     let systemMessageIndex = messages.findIndex((message) => message.role === "system");
+    // If the system message exists in array, remove it
     if (systemMessageIndex !== -1) {
       messages.splice(systemMessageIndex, 1);
     }
     systemMessageRef = { role: "system", content: systemMessage };
     messages.push(systemMessageRef);
   }
-}
-
-function addMessageToDiv(role, content = "") {
-  let messageDiv = document.createElement("div");
-  messageDiv.className =
-    role === "user" ? "message user-message" : "message assistant-message";
-
-  let messageText = document.createElement("p");
-  messageDiv.appendChild(messageText);
-
-  if (content) {
-    let renderedContent = window.renderMarkdown(content).trim();
-    messageText.innerHTML = renderedContent;
-    highlightCode(messageDiv);
-  }
-
-  chatMessagesDiv.appendChild(messageDiv);
-  autoScroll();
-
-  return messageText;
 }
 
 window.onload = function () {
@@ -123,40 +37,3 @@ window.onload = function () {
     handleResponse(response, messageText);
   });
 };
-
-// Event listener functions
-function handleModelToggle() {
-  if (modelToggle.checked) {
-    modelLabelRight.textContent = "GPT-4";
-    modelName = "gpt-4";
-  } else {
-    modelLabelLeft.textContent = "GPT-3.5";
-    modelName = "gpt-3.5-turbo";
-  }
-}
-
-function handleInputKeydown(event) {
-  if (event.key === "Enter" && !event.shiftKey) {
-    event.preventDefault();
-    document.getElementById("submitBtn").click();
-  }
-}
-
-function handleChatScroll() {
-  const isAtBottom =
-    chatMessagesDiv.scrollHeight - chatMessagesDiv.clientHeight <=
-    chatMessagesDiv.scrollTop + 150;
-
-  if (chatMessagesDiv.scrollTop < lastScrollTop) {
-    autoScrollState = false;
-  } else {
-    autoScrollState = isAtBottom;
-  }
-
-  lastScrollTop = chatMessagesDiv.scrollTop;
-}
-
-// Event listeners
-modelToggle.addEventListener("change", handleModelToggle);
-userInputElem.addEventListener("keydown", handleInputKeydown);
-chatMessagesDiv.addEventListener("scroll", handleChatScroll);
