@@ -26,9 +26,8 @@ export async function onRequest(context) {
 
   const { messages, model_type } = requestBody;
 
-  // Ensure messages conform to ChatCompletionMessageParam[]
-  const chatMessages = messages.map(msg => ({
-    role: msg.role as 'system' | 'user',  // Adjust as per OpenAI's expected types
+  const chatMessages = messages.map((msg) => ({
+    role: msg.role as 'system' | 'user',
     content: msg.content,
   }));
 
@@ -36,33 +35,37 @@ export async function onRequest(context) {
     apiKey: env.OPENAI_API_KEY,
   });
 
-  let stream;
   try {
-    stream = await openai.chat.completions.create({
+    const stream = await openai.chat.completions.create({
       model: model_type,
-      messages: chatMessages, // Use the transformed messages array
+      messages: chatMessages,
       stream: true,
     });
+
+    let { readable, writable } = new TransformStream();
+    let writer = writable.getWriter();
+    const textEncoder = new TextEncoder();
+
+    // Properly handle the stream
+    (async () => {
+      try {
+        for await (const part of stream) {
+          const content = part.choices[0]?.delta?.content || '';
+          if (content) {
+            await writer.write(textEncoder.encode(content));
+          }
+        }
+      } catch (error) {
+        await writer.write(
+          textEncoder.encode(`Error processing stream: ${error.message}`)
+        );
+      } finally {
+        writer.close();
+      }
+    })();
+
+    return new Response(readable);
   } catch (error) {
     return new Response(`OpenAI Error: ${error.message}`, { status: 500 });
   }
-
-  let { readable, writable } = new TransformStream();
-  let writer = writable.getWriter();
-  const textEncoder = new TextEncoder();
-
-  try {
-    for await (const part of stream) {
-      const content = part.choices[0]?.delta?.content || '';
-      if (content) {
-        writer.write(textEncoder.encode(content));
-      }
-    }
-  } catch (error) {
-    writer.write(textEncoder.encode(`Error processing stream: ${error.message}`));
-  } finally {
-    writer.close();
-  }
-
-  return new Response(readable);
 }
