@@ -1,3 +1,7 @@
+import { highlightCode } from "./highlightCode";
+import { postRequest } from "./postRequest";
+import { renderMarkdown } from "./renderMarkdown";
+
 // DOM Elements
 const chatMessagesDiv = document.getElementById("chat-messages");
 const userInputElem = document.getElementById("user-input");
@@ -6,24 +10,13 @@ const modelLabelLeft = document.getElementById("model-label-left");
 const modelLabelRight = document.getElementById("model-label-right");
 
 // State variables
-let messages = [];
+export let messages = [];
 let systemMessageRef = null;
-let modelName = modelToggle.checked ? "gpt-4-0125-preview" : "gpt-3.5-turbo";
+export let modelName = modelToggle.checked ? "gpt-4-0125-preview" : "gpt-3.5-turbo";
 let autoScrollState = true;
 let lastScrollTop = 0;
 
-// Utility functions
-window.renderMarkdown = function (content) {
-  const md = new markdownit();
-  return md.render(content);
-};
-
-function highlightCode(element) {
-  const codeElements = element.querySelectorAll("pre code");
-  codeElements.forEach((codeElement) => {
-    hljs.highlightElement(codeElement);
-  });
-}
+renderMarkdown();
 
 function autoScroll() {
   if (autoScrollState) {
@@ -32,40 +25,27 @@ function autoScroll() {
 }
 
 
-async function postRequest() {
-    return await fetch("/chat", {
-        method: "POST",
-        body: JSON.stringify({
-            messages: messages,
-            model_type: modelName,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-}
-
 async function handleResponse(response, messageText) {
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder("utf-8");
-    let assistantMessage = "";
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder("utf-8");
+  let assistantMessage = "";
 
-    while (true) {
-        const { value, done } = await reader.read();
-        if (done) {
-            messages.push({
-                role: "assistant",
-                content: assistantMessage,
-            });
-            break;
-        }
-
-        const text = decoder.decode(value);
-        assistantMessage += text;
-        messageText.innerHTML = window.renderMarkdown(assistantMessage).trim();
-        highlightCode(messageText);
-        autoScroll();
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) {
+      messages.push({
+        role: "assistant",
+        content: assistantMessage,
+      });
+      break;
     }
+
+    const text = decoder.decode(value);
+    assistantMessage += text;
+    messageText.innerHTML = window.renderMarkdown(assistantMessage).trim();
+    highlightCode(messageText);
+    autoScroll();
+  }
 }
 
 
