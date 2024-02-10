@@ -5,7 +5,7 @@ interface Message {
   content: string;
 }
 
-interface Gpt4Request {
+interface ChatRequest {
   messages: Message[];
   model_type: string;
 }
@@ -17,7 +17,7 @@ export async function onRequest(context) {
     return new Response('Method not allowed', { status: 405 });
   }
 
-  let requestBody: Gpt4Request;
+  let requestBody: ChatRequest;
   try {
     requestBody = await request.json();
   } catch (error) {
@@ -46,7 +46,6 @@ export async function onRequest(context) {
     let writer = writable.getWriter();
     const textEncoder = new TextEncoder();
 
-    // Properly handle the stream
     (async () => {
       try {
         for await (const part of stream) {
@@ -66,6 +65,6 @@ export async function onRequest(context) {
 
     return new Response(readable);
   } catch (error) {
-    return new Response(`OpenAI Error: ${error.message}`, { status: 500 });
+    return new Response(`Error: ${error.message}`, { status: 500 });
   }
 }
