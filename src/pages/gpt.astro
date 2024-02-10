@@ -55,12 +55,28 @@
     ></script>
   </body>
 </html>
-<style>
+<style is:global>
   :root {
     --side-margin: 4px;
     --top-bottom-padding: 4px;
     --inner-roundness: 5.5px;
+    --message-text-color: hsl(240, 76%, 95%);
     scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 8px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 60%, 0.15);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsla(0, 0%, 60%, 0.25);
   }
 
   body {
@@ -176,15 +192,15 @@
   }
 
   .user-message {
-    background-color: hsl(235, 55%, 45%);
-    color: hsl(240, 76%, 90%);
+    background-color: hsl(235, 30%, 29%);
+    color: var(--message-text-color);
     float: right;
     clear: both;
   }
 
   .assistant-message {
-    background-color: hsl(235, 23%, 65%);
-    color: hsl(240, 30%, 25%);
+    background-color: hsl(225, 50%, 30%);
+    color: var(--message-text-color);
     float: left;
     clear: both;
   }
