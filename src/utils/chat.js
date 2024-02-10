@@ -8,7 +8,7 @@ const modelLabelRight = document.getElementById("model-label-right");
 // State variables
 let messages = [];
 let systemMessageRef = null;
-let modelName = modelToggle.checked ? "gpt-4" : "gpt-3.5-turbo";
+let modelName = modelToggle.checked ? "gpt-4-0125-preview" : "gpt-3.5-turbo";
 let autoScrollState = true;
 let lastScrollTop = 0;
 
@@ -128,7 +128,7 @@ window.onload = function () {
 function handleModelToggle() {
   if (modelToggle.checked) {
     modelLabelRight.textContent = "GPT-4";
-    modelName = "gpt-4";
+    modelName = "gpt-4-0125-preview";
   } else {
     modelLabelLeft.textContent = "GPT-3.5";
     modelName = "gpt-3.5-turbo";
