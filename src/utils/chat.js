@@ -1,5 +1,5 @@
 import { addMessageToDiv } from "./addMessageToDiv";
-import { highlightCode } from "./highlightCode";
+import { handleResponse } from "./handleResponse";
 import { postRequest } from "./postRequest";
 import { renderMarkdown } from "./renderMarkdown";
 
@@ -12,8 +12,8 @@ const modelLabelRight = document.getElementById("model-label-right");
 
 // State variables
 export let messages = [];
-let systemMessageRef = null;
 export let modelName = modelToggle.checked ? "gpt-4-0125-preview" : "gpt-3.5-turbo";
+let systemMessageRef = null;
 let autoScrollState = true;
 let lastScrollTop = 0;
 
@@ -22,30 +22,6 @@ renderMarkdown();
 export function autoScroll() {
   if (autoScrollState) {
     chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
-  }
-}
-
-
-async function handleResponse(response, messageText) {
-  const reader = response.body.getReader();
-  const decoder = new TextDecoder("utf-8");
-  let assistantMessage = "";
-
-  while (true) {
-    const { value, done } = await reader.read();
-    if (done) {
-      messages.push({
-        role: "assistant",
-        content: assistantMessage,
-      });
-      break;
-    }
-
-    const text = decoder.decode(value);
-    assistantMessage += text;
-    messageText.innerHTML = window.renderMarkdown(assistantMessage).trim();
-    highlightCode(messageText);
-    autoScroll();
   }
 }
 
