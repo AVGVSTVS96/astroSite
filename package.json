@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "wrangler": "bunx wrangler pages dev -- bun run dev"
   },
   "release": {
     "branches": [
