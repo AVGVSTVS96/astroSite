@@ -1,55 +1,71 @@
-import { Hono } from 'hono';
-import { streamText } from 'hono/streaming';
-import { env } from 'hono/adapter';
+import { OpenAI } from 'openai';
 
-// Define the structure for messages as expected in the request body
 interface Message {
   role: string;
   content: string;
 }
 
-const app = new Hono();
+interface Gpt4Request {
+  messages: Message[];
+  model_type: string;
+}
 
-app.post('/chat', (c) => {
-  const { OPENAI_API_KEY } = env<{ OPENAI_API_KEY: string }>(c);
+export async function onRequest(context) {
+  const { request, env } = context;
 
-  return streamText(c, async (stream) => {
-    try {
-      const requestBody = await c.req.json() as { modelName: string; messages: Message[] };
-      const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OPENAI_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: requestBody.modelName,
-          messages: requestBody.messages,
-        }),
-      });
+  if (request.method !== 'POST') {
+    return new Response('Method not allowed', { status: 405 });
+  }
 
-      if (!openaiResponse.ok) {
-        const errorBody = await openaiResponse.json();
-        // Matching the error format from the FastAPI code
-        const errorMessage = `${errorBody.error.type}: ${errorBody.error.message}`;
-        await stream.write(errorMessage);
-        return;
-      }
+  let requestBody: Gpt4Request;
+  try {
+    requestBody = await request.json();
+  } catch (error) {
+    return new Response('Invalid JSON', { status: 400 });
+  }
 
-      if (openaiResponse.body) {
-        const reader = openaiResponse.body.getReader();
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          const text = new TextDecoder().decode(value);
-          await stream.write(text);
-        }
-      }
-    } catch (error) {
-      // Writing the error message in the format similar to FastAPI's OpenAIError handling
-      await stream.write(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
-    }
+  const { messages, model_type } = requestBody;
+
+  const chatMessages = messages.map((msg) => ({
+    role: msg.role as 'system' | 'user',
+    content: msg.content,
+  }));
+
+  const openai = new OpenAI({
+    apiKey: env.OPENAI_API_KEY,
   });
-});
 
-export default app;
+  try {
+    const stream = await openai.chat.completions.create({
+      model: model_type,
+      messages: chatMessages,
+      stream: true,
+    });
+
+    let { readable, writable } = new TransformStream();
+    let writer = writable.getWriter();
+    const textEncoder = new TextEncoder();
+
+    // Properly handle the stream
+    (async () => {
+      try {
+        for await (const part of stream) {
+          const content = part.choices[0]?.delta?.content || '';
+          if (content) {
+            await writer.write(textEncoder.encode(content));
+          }
+        }
+      } catch (error) {
+        await writer.write(
+          textEncoder.encode(`Error processing stream: ${error.message}`)
+        );
+      } finally {
+        writer.close();
+      }
+    })();
+
+    return new Response(readable);
+  } catch (error) {
+    return new Response(`OpenAI Error: ${error.message}`, { status: 500 });
+  }
+}
