@@ -1,12 +1,9 @@
-import { addMessageToDiv } from "./addMessageToDiv";
-import { handleResponse } from "./handleResponse";
-import { postRequest } from "./postRequest";
 import { renderMarkdown } from "./renderMarkdown";
-import { updateSystemMessage } from "./updateSystemMessage";
+import { handleChat } from "./handleChat";
 
 // DOM Elements
 export const chatMessagesDiv = document.getElementById("chat-messages");
-const userInputElem = document.getElementById("user-input");
+export const userInputElem = document.getElementById("user-input");
 const modelToggle = document.getElementById("model-toggle");
 const modelLabelLeft = document.getElementById("model-label-left");
 const modelLabelRight = document.getElementById("model-label-right");
@@ -22,6 +19,7 @@ export function setSystemMessageRef(newSystemMessage) {
   systemMessageRef = newSystemMessage;
 }
 
+handleChat();
 renderMarkdown();
 
 export function autoScroll() {
@@ -29,28 +27,6 @@ export function autoScroll() {
     chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
   }
 }
-
-
-window.onload = function () {
-  document.getElementById("chat-form").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    let userInput = userInputElem.value.trim();
-    let systemMessage = document.getElementById("system-message").value.trim();
-
-    updateSystemMessage(systemMessage);
-
-    messages.push({ role: "user", content: userInput });
-    addMessageToDiv("user", userInput);
-    userInputElem.value = "";
-
-    let messageText = addMessageToDiv("assistant");
-
-    const response = await postRequest();
-
-    handleResponse(response, messageText);
-  });
-};
 
 // Event listener functions
 function handleModelToggle() {
