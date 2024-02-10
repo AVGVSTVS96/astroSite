@@ -2,6 +2,7 @@ import { addMessageToDiv } from "./addMessageToDiv";
 import { handleResponse } from "./handleResponse";
 import { postRequest } from "./postRequest";
 import { renderMarkdown } from "./renderMarkdown";
+import { updateSystemMessage } from "./updateSystemMessage";
 
 // DOM Elements
 export const chatMessagesDiv = document.getElementById("chat-messages");
@@ -13,30 +14,19 @@ const modelLabelRight = document.getElementById("model-label-right");
 // State variables
 export let messages = [];
 export let modelName = modelToggle.checked ? "gpt-4-0125-preview" : "gpt-3.5-turbo";
-let systemMessageRef = null;
+export let systemMessageRef = null;
 let autoScrollState = true;
 let lastScrollTop = 0;
+
+export function setSystemMessageRef(newSystemMessage) {
+  systemMessageRef = newSystemMessage;
+}
 
 renderMarkdown();
 
 export function autoScroll() {
   if (autoScrollState) {
     chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
-  }
-}
-
-
-function updateSystemMessage(systemMessage) {
-  if (
-    systemMessage &&
-    (!systemMessageRef || systemMessage !== systemMessageRef.content)
-  ) {
-    let systemMessageIndex = messages.findIndex((message) => message.role === "system");
-    if (systemMessageIndex !== -1) {
-      messages.splice(systemMessageIndex, 1);
-    }
-    systemMessageRef = { role: "system", content: systemMessage };
-    messages.push(systemMessageRef);
   }
 }
 
