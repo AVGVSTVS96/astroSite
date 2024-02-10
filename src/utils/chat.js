@@ -1,9 +1,10 @@
+import { addMessageToDiv } from "./addMessageToDiv";
 import { highlightCode } from "./highlightCode";
 import { postRequest } from "./postRequest";
 import { renderMarkdown } from "./renderMarkdown";
 
 // DOM Elements
-const chatMessagesDiv = document.getElementById("chat-messages");
+export const chatMessagesDiv = document.getElementById("chat-messages");
 const userInputElem = document.getElementById("user-input");
 const modelToggle = document.getElementById("model-toggle");
 const modelLabelLeft = document.getElementById("model-label-left");
@@ -18,7 +19,7 @@ let lastScrollTop = 0;
 
 renderMarkdown();
 
-function autoScroll() {
+export function autoScroll() {
   if (autoScrollState) {
     chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
   }
@@ -63,25 +64,6 @@ function updateSystemMessage(systemMessage) {
   }
 }
 
-function addMessageToDiv(role, content = "") {
-  let messageDiv = document.createElement("div");
-  messageDiv.className =
-    role === "user" ? "message user-message" : "message assistant-message";
-
-  let messageText = document.createElement("p");
-  messageDiv.appendChild(messageText);
-
-  if (content) {
-    let renderedContent = window.renderMarkdown(content).trim();
-    messageText.innerHTML = renderedContent;
-    highlightCode(messageDiv);
-  }
-
-  chatMessagesDiv.appendChild(messageDiv);
-  autoScroll();
-
-  return messageText;
-}
 
 window.onload = function () {
   document.getElementById("chat-form").addEventListener("submit", async function (event) {
