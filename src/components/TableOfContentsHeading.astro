@@ -11,7 +11,7 @@ import { Icon } from 'astro-icon/components';
     heading.subheadings.length > 0 && (
       <ul class="my-0 list-none px-0">
         {heading.subheadings.map(
-          (subheading: { slug: string; text: string }) => (
+          (subheading: { slug: string; text: string, subheadings: any[] }) => (
             <li class="px-0">
               <a
                 href={'#' + subheading.slug}
@@ -24,6 +24,29 @@ import { Icon } from 'astro-icon/components';
                 />
                 {subheading.text}
               </a>
+              {
+                subheading.subheadings && subheading.subheadings.length > 0 && (
+                  <ul class="my-0 list-none px-0">
+                    {subheading.subheadings.map(
+                      (subsubheading: { slug: string; text: string }) => (
+                        <li class="px-0">
+                          <a
+                            href={'#' + subsubheading.slug}
+                            class="group flex items-start no-underline">
+                            <Icon
+                              name="sideCaret"
+                              size={13}
+                              class="mr-1 ml-5 mt-1 flex-shrink-0 stroke-primary-500 group-hover:stroke-primary-400/80 dark:stroke-primary-400 dark:group-hover:stroke-primary-300"
+                              title="caret-icon"
+                            />
+                            {subsubheading.text}
+                          </a>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                )
+              }
             </li>
           )
         )}
