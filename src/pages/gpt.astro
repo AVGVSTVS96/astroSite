@@ -32,7 +32,7 @@
       </label>
     </div>
     <div class="chat-container">
-      <h1 class="heading">Canvas GPT</h1>
+      <h1 class="heading">AstroGPT</h1>
       <div class="chat-wrapper">
         <div id="chat-messages" class="chat-box"></div>
         <form id="chat-form" class="input-form">
@@ -121,8 +121,7 @@
     padding: 20px;
     border-radius: 10px;
 
-    background-color: hsla(235, 30%, 8%, 0.6);
-    backdrop-filter: blur(1px);
+    background-color: hsla(240, 30%, 10%, 0.9);
     border: 0.25px solid hsla(235, 30%, 20%, 0.4);
     box-shadow:
       0 1px 3px rgba(0, 0, 0, 0.12),
@@ -215,7 +214,6 @@
     margin-bottom: 5px;
   }
 
-  /* Menubar styles */
   .menubar {
     display: flex;
     justify-content: space-between;
@@ -237,7 +235,7 @@
     height: 27px;
     min-width: 70px;
     border-radius: var(--inner-roundness);
-    border: 2px solid hsla(240, 25%, 75%, 0.016);
+    border: 2px solid hsla(240, 25%, 75%, 0.06);
     background-color: hsl(235, 20%, 20%);
     color: hsl(240, 25%, 75%);
     transition: border-color 0.2s ease-in-out;
@@ -246,7 +244,7 @@
 
   .input:focus {
     outline: none;
-    border-color: hsl(240, 20%, 40%);
+    border-color: hsla(240, 20%, 40%, 0.50);
   }
 
   .input,
@@ -257,16 +255,15 @@
 
   .slider-container {
     position: relative;
-    width: 130px;
+    width: 140px;
     height: 2em;
     cursor: pointer;
-    background-color: hsl(240, 10%, 15%);
+    background-color: hsl(240, 20%, 10%);
     border-radius: var(--inner-roundness);
     transition: 0.4s;
   }
 
   .slider-container input {
-    /* display: none; */
     opacity: 0;
     position: fixed;
   }
@@ -283,9 +280,10 @@
     position: absolute;
     left: 0;
     height: 2em;
+    box-shadow: inset 0 0 5px hsl(240, 20%, 15%);
     width: 50%;
     border-radius: var(--inner-roundness);
-    background-color: hsl(240, 20%, 20%);
+    background-color: hsl(240, 17%, 30%);
     transition: 0.4s;
   }
 
