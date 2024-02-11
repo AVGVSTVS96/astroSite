@@ -7,9 +7,12 @@ const modelToggle = document.getElementById("model-toggle");
 const modelLabelLeft = document.getElementById("model-label-left");
 const modelLabelRight = document.getElementById("model-label-right");
 
+const gpt3 = "gpt-3.5-turbo-0125";
+const gpt4 = "gpt-4-0125-preview";
+
 // State variables
 export let messages = [];
-export let modelName = modelToggle.checked ? "gpt-4-0125-preview" : "gpt-3.5-turbo";
+export let modelName = modelToggle.checked ? gpt4 : gpt3;
 let autoScrollState = true;
 let lastScrollTop = 0;
 
@@ -25,10 +28,10 @@ export function autoScroll() {
 function handleModelToggle() {
   if (modelToggle.checked) {
     modelLabelRight.textContent = "GPT-4";
-    modelName = "gpt-4-0125-preview";
+    modelName = gpt4;
   } else {
     modelLabelLeft.textContent = "GPT-3.5";
-    modelName = "gpt-3.5-turbo";
+    modelName = gpt3;
   }
 }
 
