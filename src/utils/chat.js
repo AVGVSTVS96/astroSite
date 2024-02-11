@@ -1,4 +1,3 @@
-import { renderMarkdown } from "./renderMarkdown";
 import { handleChatRequest } from "./handleChat";
 
 // DOM Elements
@@ -20,7 +19,6 @@ export function setSystemMessageRef(newSystemMessage) {
 }
 
 handleChatRequest();
-renderMarkdown();
 
 export function autoScroll() {
   if (autoScrollState) {

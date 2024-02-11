@@ -2,6 +2,9 @@ import { userInputElem, messages, autoScroll, chatMessagesDiv } from "./chat";
 import { postRequest } from "./postRequest";
 import { updateSystemMessage } from "./updateSystemMessage";
 import { highlightCode } from "./highlightCode";
+import { renderMarkdown } from "./renderMarkdown";
+
+renderMarkdown();
 
 function addMessageToDiv(role, content = "") {
     let messageDiv = document.createElement("div");
