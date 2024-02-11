@@ -10,13 +10,8 @@ const modelLabelRight = document.getElementById("model-label-right");
 // State variables
 export let messages = [];
 export let modelName = modelToggle.checked ? "gpt-4-0125-preview" : "gpt-3.5-turbo";
-export let systemMessageRef = null;
 let autoScrollState = true;
 let lastScrollTop = 0;
-
-export function setSystemMessageRef(newSystemMessage) {
-  systemMessageRef = newSystemMessage;
-}
 
 handleChatRequest();
 
