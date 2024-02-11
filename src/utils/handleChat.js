@@ -1,10 +1,19 @@
 import { userInputElem, messages, autoScroll, chatMessagesDiv } from "./chat";
 import { postRequest } from "./postRequest";
 import { updateSystemMessage } from "./updateSystemMessage";
-import { highlightCode } from "./highlightCode";
-import { renderMarkdown } from "./renderMarkdown";
 
-renderMarkdown();
+
+window.renderMarkdown = function (content) {
+    const md = new markdownit();
+    return md.render(content);
+};
+
+function highlightCode(element) {
+    const codeElements = element.querySelectorAll("pre code");
+    codeElements.forEach((codeElement) => {
+        hljs.highlightElement(codeElement);
+    });
+}
 
 function addMessageToDiv(role, content = "") {
     let messageDiv = document.createElement("div");
