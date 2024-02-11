@@ -1,5 +1,5 @@
 import { renderMarkdown } from "./renderMarkdown";
-import { handleChat } from "./handleChat";
+import { handleChatRequest } from "./handleChat";
 
 // DOM Elements
 export const chatMessagesDiv = document.getElementById("chat-messages");
@@ -19,7 +19,7 @@ export function setSystemMessageRef(newSystemMessage) {
   systemMessageRef = newSystemMessage;
 }
 
-handleChat();
+handleChatRequest();
 renderMarkdown();
 
 export function autoScroll() {
