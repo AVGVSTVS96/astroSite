@@ -3,7 +3,7 @@
 [Astro]: https://astro.build
 [TailwindCSS]: https://tailwindcss.com/
 
-![GitHub](https://img.shields.io/github/license/avgvstvs96/astrosite)
+![GitHub](https://img.shields.io/github/license/avgvstvs96/astrosite) 
 ![GitHub Release](https://img.shields.io/github/v/release/avgvstvs96/astrosite?logo=github)
 ![GitHub last commit](https://img.shields.io/github/last-commit/avgvstvs96/astrosite?logo=github)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/avgvstvs96/astrosite?logo=github) 
