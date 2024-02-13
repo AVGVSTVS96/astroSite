@@ -1,3 +1,11 @@
+## v0.7.2
+
+### Features
+
+* update to older gpt-4-0613 model (#36) (6e15a39)
+
+**Full Changelog**: [v0.7.1...v0.7.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.1...v0.7.2)
+
 ## v0.7.1
 
 ### Bug Fixes
