@@ -8,7 +8,7 @@ const modelLabelLeft = document.getElementById("model-label-left");
 const modelLabelRight = document.getElementById("model-label-right");
 
 const gpt3 = "gpt-3.5-turbo-0125";
-const gpt4 = "gpt-4-0125-preview";
+const gpt4 = "gpt-4";
 
 // State variables
 export let messages = [];
