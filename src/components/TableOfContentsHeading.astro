@@ -1,16 +1,16 @@
 ---
-const { class: className, heading, isSubheading } = Astro.props;
+const { class: className, heading, isSubheading, level = 0 } = Astro.props;
 import { Icon } from 'astro-icon/components';
 ---
 
 <li class={className}>
-  <a href={'#' + heading.slug} class="group mt-1 flex items-start no-underline">
+  <a href={'#' + heading.slug} class="flex group mt-1 items-start no-underline">
     {
       isSubheading && (
         <Icon
           name="sideCaret"
           size={13}
-          class="mx-1 mt-1 flex-shrink-0 stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400 dark:group-hover:stroke-primary-300"
+          class={`mx-1 mt-1 flex-shrink-0 ${level === 2 ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500' : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400'} dark:group-hover:stroke-primary-300`}
           title="caret-icon"
         />
       )
@@ -25,6 +25,7 @@ import { Icon } from 'astro-icon/components';
             className="px-0"
             heading={subheading}
             isSubheading={true}
+            level={level + 1}
           />
         ))}
       </ul>
