@@ -401,34 +401,80 @@ import Button from './Button.astro';
 ---
 
 ## Card Component
+To display content, I created a customizable `Card` component. This component accepts a variety of props which can be used to configure the component for the page it's being imported into.
+
+The `Card` also conditionally renders title, subtitle, and heading if they are provided to the component. If not, only content passed to the `slot` is rendered within the `Card`.
+
+There are also variable styles which can be defined based on the props passed. For example, `padding` sets a default padding value to `card-p`, a custom TailwindCSS `@layer component` I created to define card padding. The `padding` prop can also be set to a custom value when the component is called in a file, overriding the default value.
+
+The `variant` prop defines whether or not the `Card` has a border, it's two values being bordered and borderless. When this prop isn't set, the `Card` defaults to bordered.
+
+`noMargin` removes the component's default `mx-4` margins. I use this to remove margins for smaller `Card` components like my `Projects` component. 
+
+`displayHr` displays a horizontal divider between the title, subtitle and main card content.
+
+And the `class` prop allows me to pass any custom classes I want when calling this component in a file.
 
 ```astro title="components/Card.astro"
-<div class="prose prose-invert max-w-3xl">
-  <h1 class="mb-2">{Astro.props.title}</h1>
-  <h2 class="mt-0">{Astro.props.subtitle}</h2>
-  <hr class="border-gray-400" />
-  <h3 class="mb-1">Introduction</h3>
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  heading?: string;
+  variant: 'bordered' | 'borderless';
+  displayHr?: boolean;
+  padding?: string;
+  class?: string;
+  noMargin?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  heading,
+  variant,
+  displayHr,
+  padding = 'card-p',
+  class: className,
+  noMargin = false,
+} = Astro.props;
+---
+
+<div
+  class={`prose prose-slate dark:prose-invert max-w-3xl rounded-lg prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${padding} ${className} ${noMargin ? '' : 'mx-4'} ${
+    variant === 'borderless' ? '' : 'border-card'
+  }`}>
+  {title && <h1 class="mb-2">{title}</h1>}
+  {subtitle && <h2 class="mt-0">{subtitle}</h2>}
+  {displayHr && <hr class="mb-8 border-accent-500" />}
+  {heading && <h3 class="mb-1">{heading}</h3>}
   <slot name="content" />
 </div>
+<style>
+  html.light {
+    @apply prose-headings:text-dark;
+  }
+</style>
+
 ```
 
-In a new file called `Card.astro` I created a `<Card />` component to further modularize my code. This component accepts a `title` and `subtitle` as props, and uses the `slot` to feature any type or amount of HTML elements when the component is called, each being passed as props to the <Card /> component.
+The `Card` uses a `<slot>` to insert any type or amount of HTML elements when the component is called in a file.
 
 ```astro frame="terminal"
 <slot name="content" />
 ```
 
-`name="content"` is then used to identify all elements to be rendered within the main `<slot>` element.
+When inserting new elements, `name="content"` is defined on them to identify all elements to be rendered within the `<slot>` element. A single wrapper div can also be defined with `name="content"` and any elements wrapped by that div will be slotted into the `Card` component.
 
 ```astro title="pages/index.astro" {4-5}
 <Card
   title="Bassim Shahidy"
   subtitle="IT Technician at the New York City BAR Association">
-  <p slot="content" class="text-lg"></p>
-  <p slot="content"></p>
+  <p slot="content" class="text-lg">lorem ipsum</p>
+  <p slot="content">lorem ipsum</p>
 </Card>
 ```
-
+<!-- TODO -->
 ### Using the `<Card />` component in pages
 
 This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
@@ -455,7 +501,7 @@ This `<Card />` component can be imported and used in any other Astro files with
 
 ## Markdown styling
 
-TailwindCSS resets default browser styles so all markdown looks like plain text. To fix this I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides opinionated markdown styling.
+TailwindCSS resets default browser styles so all HTML elements rendered from markdown look like plain text. To fix this I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides opinionated markdown styling.
 
 ```js title="tailwind.config.cjs" {2}
 module.exports = {
