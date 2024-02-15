@@ -322,33 +322,90 @@ When inserting new elements, `name="content"` is defined on them to identify all
 </Card>
 ```
 <!-- TODO -->
-### Using the `<Card />` component in pages
+### Using the `Card` component in pages
 
-This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
+This example shows how I implemented the `<Card />` component on my `index.astro` page. The component is imported in the frontmatter with `import Card from '@components/Card.astro';` and is used to wrap the main content on my page. In this page I set the `variant` prop to `borderless`, passed a title and subtitle, and created a couple `<p>` elements with `slot="content"` so they're properly slotted into the `Card` component.
+
 
 ```astro title="pages/index.astro" {2-4, 11}
-<Card
-  title="Bassim Shahidy"
-  subtitle="IT Technician at the New York City BAR Association">
-  <p slot="content" class="text-lg">
-    This is the third version of my personal website! With each iteration my
-    website has grown in complexity in proportion to my progress learning web
-    development. This version is built with Astro, a frontend rendering
-    framework that uses an HTML like syntax to create components while allowing
-    the use of components from several of the most popular frameworks.
-  </p>
-  <p slot="content">
-    Astro is also extremely fast, it uses the islands architecture to only send
-    Javascript when required within interactive components.
-  </p>
-</Card>
+      <Card
+        title="Bassim Shahidy"
+        subtitle="IT Specialist at the New York City BAR Association"
+        variant="borderless">
+        <p slot="content">
+          Based in NY, I'm an IT Professional with a wealth of experience in
+          hardware, software management, network operations, cybersecurity, and
+          audio-visual systems. Currently, my focus is on advancing my skillset
+          in software engineering and web development, utilizing the latest
+          programming technologies to enhance user experiences and system
+          performance.
+        </p>
+        <p slot="content">
+          In addition, I'm exploring AI and machine learning, seeking to
+          understand and apply these technologies in practical scenarios. My
+          technical repertoire also includes 3D printing—where I skillfully
+          build and maintain printers for precision parts—and drone building,
+          where I apply my electronics and software knowledge to create and
+          pilot high-performance drones.
+        </p>
+      </Card>
 ```
+
+### Using the `Card` component within my `Projects` component
+
+I created a `Projects` component to display web development projects I've worked on. In this component I used the `Card` within a function to display each project in it's own card. This card is `bordered`, with a custom padding value passed to the `padding` prop, and `noMargin` set to `true`
+
+
+```astro
+  <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
+    {
+      projects.map((project) => (
+        <Card variant="bordered" padding="p-3.5" noMargin={true}>
+          <div slot="content">
+            <a
+              class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
+              href={project.data.url}>
+              <span class="dark:text-light hover:dark:text-muted-light/75">
+                {project.data.title}
+              </span>
+              <Icon
+                name="github"
+                class="mx-2 size-5 opacity-70 hover:opacity-100"
+              />
+            </a>
+            <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
+              {project.data.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {project.data.tags.map((tag) => (
+                <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
+                  {tag}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+      ))
+    }
+  </ul>
+```
+
+My projects utilize Astro's content collections, each project is defined as a single `YAML` file and are made available to the `Projects` component with `const projects = await getCollection('projects');`
+
+```yaml
+title: FlaskGPT
+description: A customizable GPT-3.5/4 chat application built with Flask and plain HTML, CSS, and JavaScript
+tags: [ Flask, OpenAI, Python, JavaScript ]
+url: https://github.com/AVGVSTVS96/flaskGPT
+```
+
+Now, when I want to add a new project, all I have to do is create another `YAML` file in my `content/projects` directory and the project will automatically be rendered within a card in the `Projects` component.
 
 ---
 
 ## Markdown styling
 
-TailwindCSS resets default browser styles so all HTML elements rendered from markdown look like plain text. To fix this I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides opinionated markdown styling.
+TailwindCSS resets default browser styles so all HTML elements rendered from markdown look like plain text. To style markdown, I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides well thought out, opinionated markdown styling.
 
 ```js title="tailwind.config.cjs" {2}
 module.exports = {
@@ -366,7 +423,7 @@ Prose is the main utility class used to style markdown. There are a wide range o
 
 ### Syntax Highlighting
 
-Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
+By default Astro will highlight any code in markdown files. Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
 
 ```js title="astro.config.mjs" {6-7}
 import { defineConfig } from 'astro/config';
