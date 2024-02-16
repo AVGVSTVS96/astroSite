@@ -4,16 +4,16 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <li class={className}>
-  <a href={'#' + heading.slug} class="flex group mt-0 items-start no-underline">
-        <Icon
-          name="sideCaret"
-          size={13}
-          class={`mx-1 mt-1 flex-shrink-0 dark:group-hover:stroke-primary-300
-                  ${level === 2 ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500' : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400'}
-                  ${isSubheading ? '' : 'hidden'}
-                `}
-          title="caret-icon"
-        />
+  <a href={'#' + heading.slug} class="group mt-0 flex items-start no-underline">
+    <Icon
+      name="sideCaret"
+      size={13}
+      class={`mx-1 mt-1 flex-shrink-0 dark:group-hover:stroke-primary-300
+              ${isSubheading ? '' : 'hidden'}
+              ${level === 2 ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500' : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400'}
+            `}
+      title="caret-icon"
+    />
     {heading.text}
   </a>
   {
