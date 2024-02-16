@@ -4,23 +4,22 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <li class={className}>
-  <a href={'#' + heading.slug} class="flex group mt-0 items-start no-underline">
-    {
-      isSubheading && (
-        <Icon
-          name="sideCaret"
-          size={13}
-          class={`mx-1 mt-1 flex-shrink-0 ${level === 2 ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500' : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400'} dark:group-hover:stroke-primary-300`}
-          title="caret-icon"
-        />
-      )
-    }
+  <a href={'#' + heading.slug} class="group mt-0 flex items-start no-underline">
+    <Icon
+      name="sideCaret"
+      size={13}
+      class={`mx-1 mt-1 flex-shrink-0 dark:group-hover:stroke-primary-300
+              ${isSubheading ? '' : 'hidden'}
+              ${level === 2 ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500' : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400'}
+            `}
+      title="caret-icon"
+    />
     {heading.text}
   </a>
   {
     heading.subheadings.length > 0 && (
       <ul class={`${isSubheading ? 'ml-2' : ''} my-0 list-none px-0`}>
-        {heading.subheadings.map((subheading) => (
+        {heading.subheadings.map((subheading: string) => (
           <Astro.self
             className="px-0"
             heading={subheading}
