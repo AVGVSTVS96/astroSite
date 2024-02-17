@@ -247,7 +247,45 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 ---
 
-## `Card` Component
+## Markdown styling
+
+TailwindCSS resets default browser styles so all HTML elements rendered from markdown look like plain text. To style markdown, I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides well thought out, opinionated markdown styling.
+
+```js title="tailwind.config.cjs"
+module.exports = {
+  plugins: [require('@tailwindcss/typography')],
+};
+```
+
+Prose is the main utility class used to style markdown. There are a wide range of prose modifiers that can be used to change the look of the content such as `prose-sm` to make the text smaller or `prose-lg` to make it larger and modifiers to target each element type like `prose-h1` or `prose-headings` to target all headings. In addition `prose-invert` changes the default color of all text to white as opposed to.
+
+```html title="layouts/MDLayout.astro"
+<article
+  class="prose prose-invert prose-h1:pt-2 prose-hr:border-accent">
+</article>
+```
+
+### Syntax Highlighting
+
+By default Astro will highlight any code in markdown files. Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
+
+```js title="astro.config.mjs" {6-7}
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+
+export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      theme: 'material-theme-ocean',
+    },
+  },
+  integrations: [tailwind()],
+});
+```
+
+---
+
+## Card Component
 To display content, I created a customizable `Card` component. This component accepts a variety of props which can be used to configure the component for the page it's being imported into.
 
 The `Card` also conditionally renders title, subtitle, and heading if they are provided to the component. If not, only content passed to the `slot` is rendered within the `Card`.
@@ -307,7 +345,7 @@ const {
 
 The `Card` uses a `<slot>` to insert any type or amount of HTML elements when the component is called in a file.
 
-```astro frame="terminal"
+```astro
 <slot name="content" />
 ```
 
@@ -321,13 +359,13 @@ When inserting new elements, `name="content"` is defined on them to identify all
   <p slot="content">lorem ipsum</p>
 </Card>
 ```
-<!-- TODO -->
+
 ### Using the `Card` component in pages
 
 This example shows how I implemented the `<Card />` component on my `index.astro` page. The component is imported in the frontmatter with `import Card from '@components/Card.astro';` and is used to wrap the main content on my page. In this page I set the `variant` prop to `borderless`, passed a title and subtitle, and created a couple `<p>` elements with `slot="content"` so they're properly slotted into the `Card` component.
 
 
-```astro title="pages/index.astro" {2-4, 11}
+```astro title="pages/index.astro"
       <Card
         title="Bassim Shahidy"
         subtitle="IT Specialist at the New York City BAR Association"
@@ -351,12 +389,12 @@ This example shows how I implemented the `<Card />` component on my `index.astro
       </Card>
 ```
 
-## `Projects` component
+## Projects component
 
 I created a `Projects` component to display web development projects I've worked on. In this component I used the `Card` component within a function that displays each project in it's in an unordered list. I customized the card for this component by setting it to `bordered`, with a custom padding value passed to the `padding` prop, and `noMargin` set to `true`
 
 
-```astro
+```astro title="components/projects.astro {3-4}
   <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
     {
       projects.map((project) => (
@@ -401,91 +439,3 @@ url: https://github.com/AVGVSTVS96/flaskGPT
 ```
 
 Now, when I want to add a new project, all I have to do is create a new `YAML` file with my project's information in `/projects` and it will automatically be rendered within a card in the `Projects` component.
-
----
-
-## Markdown styling
-
-TailwindCSS resets default browser styles so all HTML elements rendered from markdown look like plain text. To style markdown, I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides well thought out, opinionated markdown styling.
-
-```js title="tailwind.config.cjs" {2}
-module.exports = {
-  plugins: [require('@tailwindcss/typography')],
-};
-```
-
-Prose is the main utility class used to style markdown. There are a wide range of prose modifiers that can be used to change the look of the content such as `prose-sm` to make the text smaller or `prose-lg` to make it larger and modifiers to target each element type like `prose-h1` or `prose-headings` to target all headings. In addition `prose-invert` changes the default color of all text to white as opposed to.
-
-```html title="layouts/MDLayout.astro"
-<article
-  class="prose prose-invert prose-h1:pt-2 prose-hr:border-accent">
-</article>
-```
-
-### Syntax Highlighting
-
-By default Astro will highlight any code in markdown files. Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
-
-```js title="astro.config.mjs" {6-7}
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-
-export default defineConfig({
-  markdown: {
-    shikiConfig: {
-      theme: 'material-theme-ocean',
-    },
-  },
-  integrations: [tailwind()],
-});
-```
----
-
-## Creating a footer with the current year and a link to GitHub
-
-```astro title="components/Footer.astro"
----
-import Social from './subComponents/Social.astro';
----
-
-<footer class="mb-6 mt-8 flex items-center gap-4 text-sm text-white">
-  <p>© {new Date().getFullYear()} Bassim shahidy. All rights reserved.</p>
-  <Social platform="github" username="withastro" icon="github" />
-</footer>
-```
-
-### Adding icons as props to Astro components
-
-Within the Footer component, I created a subcomponent called Social.astro. It takes in a icon prop which accesses icons by name from the public folder.
-
-```astro title="components/subComponents/Social.astro"
----
-const { platform, username } = Astro.props;
----
-
-<a href={`https://www.${platform}.com/${username}`}>
-  <img
-    src={`/${platform}.svg`}
-    alt={`${platform} icon`}
-    width="22"
-    height="22"
-  />
-</a>
-```
-
-### String Interpolation in Astro
-
-Astro utilizes JavaScript's template literals `(` `)` to embed variable values within strings.
-Variables within template literals are then denoted by the `${}` syntax. This allows dynamic composition of strings URLs, paths, or text based on `Astro.props` values.
-
-```astro frame="terminal"
-<a href={`https://www.${platform}.com/${username}`}></a>
-```
-
-Here, `platform` and `username` are variables passed as props which are used to create a URL string dynamically.
-
-```astro frame="terminal"
-<img src={`/${platform}.svg`} alt={`${platform} icon`} />
-```
-
-The `platform` variable is also passed as a prop to the `src` and `alt` attributes because the icon itself should be named with the platform name. There should be no need for more than one icon per platform, changes in icon color can be done with CSS.
