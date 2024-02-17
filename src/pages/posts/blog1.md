@@ -246,218 +246,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 ```
 
 ---
-<!-- TODO -->
-## Nav Bar Component
-
-I created a Nav bar component for my site, in it I import [Button](#button-component) and [DropdownMenu](#dropdown-menu-component) components in addition to two logos, one for mobile and one for desktop.
-
-```astro title="components/NavBar.astro"
----
-import Button from './subComponents/Button.astro';
-import DropdownMenu from './subComponents/DropdownMenu.astro';
----
-
-<div
-  class="navbar-container sticky top-0 z-10 mb-8 w-full bg-slate-900 py-2 pl-4 pr-2 sm:w-5/6 sm:rounded-b-lg">
-  <div class="button-container flex items-center justify-between gap-6">
-    <a href="/">
-      <img
-        src="../astroLogo.svg"
-        alt="Astro Logo"
-        class="w-30 hidden h-8 opacity-80 md:block"
-      />
-      <img
-        src="../astro-icon-light.svg"
-        alt="Astro Logo"
-        class="h-8 w-8 opacity-80 sm:block md:hidden"
-      />
-    </a>
-    <div class="md:text-md flex lg:text-lg">
-      <Button name="Home" link="/" />
-      <Button name="About" link="/about" />
-      <Button name="Blog" link="/posts/blog1" />
-      <DropdownMenu
-        name="Projects"
-        links={[
-          { name: 'Minimal Typography', url: '/designProject' },
-          { name: 'Old Flask Site', url: '/flaskSite' },
-        ]}
-      />
-    </div>
-  </div>
-</div>
-```
-
-### Button Component
-
-I created a button component with variable styling including the ability to add a caret icon when the button is being used to trigger a dropdown menu. The button component accepts several props including `name`, `link`, `id`, `showCaret`, and `styles` which are used to customize the button component when it's called.
-
-```astro title="components/subComponents/Button.astro"
----
-interface Props {
-  name: string;
-  link?: string;
-  id?: string;
-  showCaret?: boolean;
-  styles?: string;
-}
-
-const { name, link, id, showCaret = false, styles = '' } = Astro.props;
----
-
-<a
-  href={link}
-  id={id}
-  class=`mx-2 flex rounded-lg px-3 py-2 font-normal text-slate-200 hover:bg-slate-800 text-opacity-70 hover:text-opacity-100 transition-color duration-200 max-w-max ${styles}`>
-  <button class="flex">
-    {name}
-    {
-      showCaret && (
-        <svg
-          class="caret-icon ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.1">
-          <path
-            d="M8 9l5 5 5-5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      )
-    }
-  </button>
-</a>
-<style>
-  .dropdown-active {
-    @apply bg-slate-800;
-  }
-
-  .caret-icon {
-    transition: transform 0.15s ease-in-out;
-    will-change: transform;
-  }
-  .dropdown-active .caret-icon {
-    transform: rotate(180deg);
-  }
-</style>
-```
-
-### Dropdown Menu Component
-
-The DropdownMenu component uses the Button component to open a dropdown menu with links to project pages on my website.
-
-```astro title="components/subComponents/DropdownMenu.astro"
----
-interface Link {
-  name: string;
-  url: string;
-}
-
-interface Props {
-  name: string;
-  links: Link[];
-}
-
-const { name = 'Dropdown', links = [] } = Astro.props;
-import Button from './Button.astro';
----
-
-<div class="relative">
-  <Button name={name} id="dropdown-button" showCaret={true} />
-  <div
-    id="dropdown"
-    class="absolute mt-2 hidden text-balance rounded-md bg-slate-800 p-[0.5px] sm:ml-2 md:w-40">
-    {
-      links.map((link) => (
-        <a
-          href={link.url}
-          class="m-1 block rounded-md px-2 py-2 text-sm text-slate-300/80 transition-colors duration-200 hover:bg-slate-700 hover:text-slate-200/95">
-          {link.name}
-        </a>
-      ))
-    }
-  </div>
-</div>
-
-<script>
-  const button = document.getElementById('dropdown-button');
-  const dropdown = document.getElementById('dropdown');
-
-  button.addEventListener('click', (event) => {
-    dropdown.classList.toggle('hidden');
-    button.classList.toggle('dropdown-active');
-    event.stopPropagation();
-  });
-
-  document.addEventListener('click', () => {
-    button.classList.remove('dropdown-active');
-    dropdown.classList.add('hidden');
-  });
-</script>
-```
-
----
-
-## Card Component
-
-```astro title="components/Card.astro"
-<div class="prose prose-invert max-w-3xl">
-  <h1 class="mb-2">{Astro.props.title}</h1>
-  <h2 class="mt-0">{Astro.props.subtitle}</h2>
-  <hr class="border-gray-400" />
-  <h3 class="mb-1">Introduction</h3>
-  <slot name="content" />
-</div>
-```
-
-In a new file called `Card.astro` I created a `<Card />` component to further modularize my code. This component accepts a `title` and `subtitle` as props, and uses the `slot` to feature any type or amount of HTML elements when the component is called, each being passed as props to the <Card /> component.
-
-```astro frame="terminal"
-<slot name="content" />
-```
-
-`name="content"` is then used to identify all elements to be rendered within the main `<slot>` element.
-
-```astro title="pages/index.astro" {4-5}
-<Card
-  title="Bassim Shahidy"
-  subtitle="IT Technician at the New York City BAR Association">
-  <p slot="content" class="text-lg"></p>
-  <p slot="content"></p>
-</Card>
-```
-
-### Using the `<Card />` component in pages
-
-This `<Card />` component can be imported and used in any other Astro files with the ability to pass a customized title, subtitle, and content for each instance.
-
-```astro title="pages/index.astro" {2-4, 11}
-<Card
-  title="Bassim Shahidy"
-  subtitle="IT Technician at the New York City BAR Association">
-  <p slot="content" class="text-lg">
-    This is the third version of my personal website! With each iteration my
-    website has grown in complexity in proportion to my progress learning web
-    development. This version is built with Astro, a frontend rendering
-    framework that uses an HTML like syntax to create components while allowing
-    the use of components from several of the most popular frameworks.
-  </p>
-  <p slot="content">
-    Astro is also extremely fast, it uses the islands architecture to only send
-    Javascript when required within interactive components.
-  </p>
-</Card>
-```
-
----
 
 ## Markdown styling
 
-TailwindCSS resets default browser styles so all markdown looks like plain text. To fix this I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides opinionated markdown styling.
+TailwindCSS resets default browser styles so all HTML elements rendered from markdown look like plain text. To style markdown, I used the official [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) plugin which provides well thought out, opinionated markdown styling.
 
-```js title="tailwind.config.cjs" {2}
+```js title="tailwind.config.cjs"
 module.exports = {
   plugins: [require('@tailwindcss/typography')],
 };
@@ -473,7 +267,7 @@ Prose is the main utility class used to style markdown. There are a wide range o
 
 ### Syntax Highlighting
 
-Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
+By default Astro will highlight any code in markdown files. Changing the code syntax highlighting theme in Astro is easy, I just needed to add a shikiConfig object to the astro.config.mjs file and set the desired theme.
 
 ```js title="astro.config.mjs" {6-7}
 import { defineConfig } from 'astro/config';
@@ -491,51 +285,157 @@ export default defineConfig({
 
 ---
 
-## Creating a footer with the current year and a link to GitHub
+## Card Component
+To display content, I created a customizable `Card` component. This component accepts a variety of props which can be used to configure the component for the page it's being imported into.
 
-```astro title="components/Footer.astro"
+The `Card` also conditionally renders title, subtitle, and heading if they are provided to the component. If not, only content passed to the `slot` is rendered within the `Card`.
+
+There are also variable styles which can be defined based on the props passed. For example, `padding` sets a default padding value to `card-p`, a custom TailwindCSS `@layer component` I created to define card padding. The `padding` prop can also be set to a custom value when the component is called in a file, overriding the default value.
+
+The `variant` prop defines whether or not the `Card` has a border, it's two values being bordered and borderless. When this prop isn't set, the `Card` defaults to bordered.
+
+`noMargin` removes the component's default `mx-4` margins. I use this to remove margins for smaller `Card` components like my `Projects` component. 
+
+`displayHr` displays a horizontal divider between the title, subtitle and main card content.
+
+And the `class` prop allows me to pass any custom classes I want when calling this component in a file.
+
+```astro title="components/Card.astro"
 ---
-import Social from './subComponents/Social.astro';
+interface Props {
+  title?: string;
+  subtitle?: string;
+  heading?: string;
+  variant: 'bordered' | 'borderless';
+  displayHr?: boolean;
+  padding?: string;
+  class?: string;
+  noMargin?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  heading,
+  variant,
+  displayHr,
+  padding = 'card-p',
+  class: className,
+  noMargin = false,
+} = Astro.props;
 ---
 
-<footer class="mb-6 mt-8 flex items-center gap-4 text-sm text-white">
-  <p>© {new Date().getFullYear()} Bassim shahidy. All rights reserved.</p>
-  <Social platform="github" username="withastro" icon="github" />
-</footer>
+<div
+  class={`prose prose-slate dark:prose-invert max-w-3xl rounded-lg prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${padding} ${className} ${noMargin ? '' : 'mx-4'} ${
+    variant === 'borderless' ? '' : 'border-card'
+  }`}>
+  {title && <h1 class="mb-2">{title}</h1>}
+  {subtitle && <h2 class="mt-0">{subtitle}</h2>}
+  {displayHr && <hr class="mb-8 border-accent-500" />}
+  {heading && <h3 class="mb-1">{heading}</h3>}
+  <slot name="content" />
+</div>
+<style>
+  html.light {
+    @apply prose-headings:text-dark;
+  }
+</style>
+
 ```
 
-### Adding icons as props to Astro components
+The `Card` uses a `<slot>` to insert any type or amount of HTML elements when the component is called in a file.
 
-Within the Footer component, I created a subcomponent called Social.astro. It takes in a icon prop which accesses icons by name from the public folder.
-
-```astro title="components/subComponents/Social.astro"
----
-const { platform, username } = Astro.props;
----
-
-<a href={`https://www.${platform}.com/${username}`}>
-  <img
-    src={`/${platform}.svg`}
-    alt={`${platform} icon`}
-    width="22"
-    height="22"
-  />
-</a>
+```astro
+<slot name="content" />
 ```
 
-### String Interpolation in Astro
+When inserting new elements, `name="content"` is defined on them to identify all elements to be rendered within the `<slot>` element. A single wrapper div can also be defined with `name="content"` and any elements wrapped by that div will be slotted into the `Card` component.
 
-Astro utilizes JavaScript's template literals `(` `)` to embed variable values within strings.
-Variables within template literals are then denoted by the `${}` syntax. This allows dynamic composition of strings URLs, paths, or text based on `Astro.props` values.
-
-```astro frame="terminal"
-<a href={`https://www.${platform}.com/${username}`}></a>
+```astro title="pages/index.astro" {4-5}
+<Card
+  title="Bassim Shahidy"
+  subtitle="IT Technician at the New York City BAR Association">
+  <p slot="content" class="text-lg">lorem ipsum</p>
+  <p slot="content">lorem ipsum</p>
+</Card>
 ```
 
-Here, `platform` and `username` are variables passed as props which are used to create a URL string dynamically.
+### Using the `Card` component in pages
 
-```astro frame="terminal"
-<img src={`/${platform}.svg`} alt={`${platform} icon`} />
+This example shows how I implemented the `<Card />` component on my `index.astro` page. The component is imported in the frontmatter with `import Card from '@components/Card.astro';` and is used to wrap the main content on my page. In this page I set the `variant` prop to `borderless`, passed a title and subtitle, and created a couple `<p>` elements with `slot="content"` so they're properly slotted into the `Card` component.
+
+
+```astro title="pages/index.astro"
+      <Card
+        title="Bassim Shahidy"
+        subtitle="IT Specialist at the New York City BAR Association"
+        variant="borderless">
+        <p slot="content">
+          Based in NY, I'm an IT Professional with a wealth of experience in
+          hardware, software management, network operations, cybersecurity, and
+          audio-visual systems. Currently, my focus is on advancing my skillset
+          in software engineering and web development, utilizing the latest
+          programming technologies to enhance user experiences and system
+          performance.
+        </p>
+        <p slot="content">
+          In addition, I'm exploring AI and machine learning, seeking to
+          understand and apply these technologies in practical scenarios. My
+          technical repertoire also includes 3D printing—where I skillfully
+          build and maintain printers for precision parts—and drone building,
+          where I apply my electronics and software knowledge to create and
+          pilot high-performance drones.
+        </p>
+      </Card>
 ```
 
-The `platform` variable is also passed as a prop to the `src` and `alt` attributes because the icon itself should be named with the platform name. There should be no need for more than one icon per platform, changes in icon color can be done with CSS.
+## Projects component
+
+I created a `Projects` component to display web development projects I've worked on. In this component I used the `Card` component within a function that displays each project in it's in an unordered list. I customized the card for this component by setting it to `bordered`, with a custom padding value passed to the `padding` prop, and `noMargin` set to `true`
+
+
+```astro title="components/projects.astro {3-4}
+  <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
+    {
+      projects.map((project) => (
+        <Card variant="bordered" padding="p-3.5" noMargin={true}>
+          <div slot="content">
+            <a
+              class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
+              href={project.data.url}>
+              <span class="dark:text-light hover:dark:text-muted-light/75">
+                {project.data.title}
+              </span>
+              <Icon
+                name="github"
+                class="mx-2 size-5 opacity-70 hover:opacity-100"
+              />
+            </a>
+            <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
+              {project.data.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {project.data.tags.map((tag) => (
+                <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
+                  {tag}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+      ))
+    }
+  </ul>
+```
+
+### Using Astro's Content Collections
+My projects utilize Astro's content collections, each project is defined as a single `YAML` file within a `content/projects` directory and are made available to the `Projects` component with `const projects = await getCollection('projects');`
+
+```yaml
+title: FlaskGPT
+description: A customizable GPT-3.5/4 chat application built with Flask and plain HTML, CSS, and JavaScript
+tags: [ Flask, OpenAI, Python, JavaScript ]
+url: https://github.com/AVGVSTVS96/flaskGPT
+```
+
+Now, when I want to add a new project, all I have to do is create a new `YAML` file with my project's information in `/projects` and it will automatically be rendered within a card in the `Projects` component.
