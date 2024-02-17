@@ -1,8 +1,21 @@
+## v0.7.3
+
+### Refactor
+
+* Refactor: Use recursive component for `TableOfContentsHeading` in [#38](https://github.com/AVGVSTVS96/astroSite/pull/38)
+* Improve TOC Icon rendering, use `hidden` class instead of conditional rendering in [#39](https://github.com/AVGVSTVS96/astroSite/pull/39)
+
+### Content
+
+* blog: Update blog content, update code block styling in [#41](https://github.com/AVGVSTVS96/astroSite/pull/41)
+
+**Full Changelog**: [v0.7.2...v0.7.3](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.2...v0.7.3)
+
 ## v0.7.2
 
 ### Features
 
-* update to older gpt-4-0613 model (#36) (6e15a39)
+* update to older gpt-4-0613 model [#36](https://github.com/AVGVSTVS96/astroSite/pull/36)
 
 **Full Changelog**: [v0.7.1...v0.7.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.1...v0.7.2)
 
