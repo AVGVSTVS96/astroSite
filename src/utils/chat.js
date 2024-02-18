@@ -1,14 +1,14 @@
-import { handleChatRequest } from "./handleChat";
+import { handleChatRequest } from './handleChat';
 
 // DOM Elements
-export const chatMessagesDiv = document.getElementById("chat-messages");
-export const userInputElem = document.getElementById("user-input");
-const modelToggle = document.getElementById("model-toggle");
-const modelLabelLeft = document.getElementById("model-label-left");
-const modelLabelRight = document.getElementById("model-label-right");
+export const chatMessagesDiv = document.getElementById('chat-messages');
+export const userInputElem = document.getElementById('user-input');
+const modelToggle = document.getElementById('model-toggle');
+const modelLabelLeft = document.getElementById('model-label-left');
+const modelLabelRight = document.getElementById('model-label-right');
 
-const gpt3 = "gpt-3.5-turbo-0125";
-const gpt4 = "gpt-4";
+const gpt3 = 'gpt-3.5-turbo-0125';
+const gpt4 = 'gpt-4';
 
 // State variables
 export let messages = [];
@@ -27,18 +27,18 @@ export function autoScroll() {
 // Event listener functions
 function handleModelToggle() {
   if (modelToggle.checked) {
-    modelLabelRight.textContent = "GPT-4";
+    modelLabelRight.textContent = 'GPT-4';
     modelName = gpt4;
   } else {
-    modelLabelLeft.textContent = "GPT-3.5";
+    modelLabelLeft.textContent = 'GPT-3.5';
     modelName = gpt3;
   }
 }
 
 function handleInputKeydown(event) {
-  if (event.key === "Enter" && !event.shiftKey) {
+  if (event.key === 'Enter' && !event.shiftKey) {
     event.preventDefault();
-    document.getElementById("submitBtn").click();
+    document.getElementById('submitBtn').click();
   }
 }
 
@@ -57,6 +57,6 @@ function handleChatScroll() {
 }
 
 // Event listeners
-modelToggle.addEventListener("change", handleModelToggle);
-userInputElem.addEventListener("keydown", handleInputKeydown);
-chatMessagesDiv.addEventListener("scroll", handleChatScroll);
+modelToggle.addEventListener('change', handleModelToggle);
+userInputElem.addEventListener('keydown', handleInputKeydown);
+chatMessagesDiv.addEventListener('scroll', handleChatScroll);

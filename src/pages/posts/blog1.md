@@ -8,19 +8,20 @@ layout: '@layouts/MDLayout.astro'
 ---
 
 ---
+
 [Astro]: https://astro.build
 [TailwindCSS]: https://tailwindcss.com/
 
 I chose to build this site with [Astro][] and [TailwindCSS][] for several reasons. Astro is an excellent framework to build a portfolio website with and is a joy to work with thanks to it's rich documentation and intuitive structure. It allows for progressive enhancement, gradually adding new and more complex features to the site as I learn more about web development and Astro's features.
 
-
 TailwindCSS provides a well thought out design system that speeds up development by abstracting CSS classes into utility classes designed to be used in conjunction with each other. This promotes a consistent design system and speeds up development.
 
 ## Layouts
+
 In Astro, layouts are used to create a base structure for pages which can include the websites main components and styling like navbars, footers, and the main color scheme. Layouts can also be used to import other layouts, allowing for a nested layout structure; for example, a base layout containing HTML boilerplate and SEO, and a markdown layout which provides styling and compoents for blog posts and articles.
 
-
 ### Base Layout
+
 I first created a `BaseLayout.astro` file to set up the basic structure of my pages. This layout includes the HTML boilerplate, head section, my [navbar][] and [footer][] components, and a `<slot />` tag where the page's content is inserted. A named `<slot />` tag is also used in the head section to allow for the insertion of additional page specific head elements like schema data and meta tags.
 
 In this layout I'm using `Astro.props` to pass the title and description of the page to the layout. This allows the these fields to be set dynamically based on each page's content.
@@ -62,16 +63,13 @@ const { description, title } = Astro.props;
     }
   </style>
 </html>
-
 ```
-
 
 ### Main Layout
 
 I then created a `MainLayout.astro` file which imports my base layout, defines the schema data for my website's main pages, and passes metadata like the title and description to the base layout's meta tags.
 
-
-To pass page specific metadata to the base layout, I use the spread operator with `Astro.props` allowing all properties defined on the main layout component to be available to the base layout. 
+To pass page specific metadata to the base layout, I use the spread operator with `Astro.props` allowing all properties defined on the main layout component to be available to the base layout.
 
 ```astro title="layouts/MainLayout.astro" {5}
 ---
@@ -108,17 +106,16 @@ import BaseLayout from '@layouts/BaseLayout.astro';
   </script>
   <slot />
 </BaseLayout>
-
 ```
 
 On each page, the title and description props are defined on the main layout component, and are then passed to the base layout.
-  
-  ```astro title="pages/index.astro" {2-3}
+
+```astro title="pages/index.astro" {2-3}
 <MainLayout
-    title="Bassim Shahidy"
-    description="Bassim Shahidy's personal website">
-</MainLayout>
-  ```
+  title="Bassim Shahidy"
+  description="Bassim Shahidy's personal website"
+/>
+```
 
 ### Markdown Layout
 
@@ -179,10 +176,10 @@ const schema = JSON.stringify(jsonLD, null, 2);
   <div class="mx-6 flex justify-center">
     <div class="xl:w-[240px]"></div>
     <article
-      class="prose dark:prose-invert max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl prose-h1:pt-2 prose-code:text-accent-600 prose-code:dark:text-accent-400 prose-code:font-normal
-      prose-a:decoration-accent-400 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-accent-300
-      prose-hr:border-accent-500
-      dark:prose-hr:border-accent-400 dark:prose-hr:border-opacity-60">
+      class="prose max-w-sm dark:prose-invert prose-h1:pt-2 prose-a:decoration-accent-400 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-accent-300 prose-code:font-normal prose-code:text-accent-600
+      prose-hr:border-accent-500 prose-code:dark:text-accent-400 dark:prose-hr:border-accent-400 dark:prose-hr:border-opacity-60 sm:max-w-lg
+      md:max-w-xl
+      lg:max-w-2xl xl:max-w-3xl">
       <div class="mb-1 flex justify-start">
         <span
           class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
@@ -209,8 +206,8 @@ const schema = JSON.stringify(jsonLD, null, 2);
     </div>
   </div>
 </BaseLayout>
-
 ```
+
 #### Frontmatter and Astro.props
 
 Frontmatter variables defined in markdown files make post specific metadata available to the `Astro.props` object: `const { frontmatter } = Astro.props;`
@@ -218,11 +215,13 @@ Frontmatter variables defined in markdown files make post specific metadata avai
 This allows these values to be accessed by the base layout's `{description}` and `{title}` variables by spreading `{...frontmatter}` into it.
 
 #### SEO Schema
+
 I created a JSON-LD object to define the schema data for each blog post. This object uses values from the frontmatter to set the headline, description, and date published from each blog post and includes the post's image if it exists.
 
 The published date is formatted to be compatible with the ISO 8601 standard to comply with Google's schema specifications and the image URL is created for locally hosted images using the `new URL()` method to provide a full image URL to the schema based on the current page's URL.
 
 #### Image Optimization
+
 Images are optimized using the Astro `Image` component. In order to optimize each post's images dynamically, they need to be imported into the layout file's `Image` component. I used the `import.meta.glob` function to selectively import a post's image from the `/src/images` directory by filtering through them using the `frontmatter.image` value, then imported the image using `{images[frontmatter.image]()}`.
 
 ### Importing Layouts
@@ -261,8 +260,7 @@ Prose is the main utility class used to style markdown. There are a wide range o
 
 ```html title="layouts/MDLayout.astro"
 <article
-  class="prose prose-invert prose-h1:pt-2 prose-hr:border-accent">
-</article>
+  class="prose-hr:border-accent prose prose-invert prose-h1:pt-2"></article>
 ```
 
 ### Syntax Highlighting
@@ -286,6 +284,7 @@ export default defineConfig({
 ---
 
 ## Card Component
+
 To display content, I created a customizable `Card` component. This component accepts a variety of props which can be used to configure the component for the page it's being imported into.
 
 The `Card` also conditionally renders title, subtitle, and heading if they are provided to the component. If not, only content passed to the `slot` is rendered within the `Card`.
@@ -294,7 +293,7 @@ There are also variable styles which can be defined based on the props passed. F
 
 The `variant` prop defines whether or not the `Card` has a border, it's two values being bordered and borderless. When this prop isn't set, the `Card` defaults to bordered.
 
-`noMargin` removes the component's default `mx-4` margins. I use this to remove margins for smaller `Card` components like my `Projects` component. 
+`noMargin` removes the component's default `mx-4` margins. I use this to remove margins for smaller `Card` components like my `Projects` component.
 
 `displayHr` displays a horizontal divider between the title, subtitle and main card content.
 
@@ -340,7 +339,6 @@ const {
     @apply prose-headings:text-dark;
   }
 </style>
-
 ```
 
 The `Card` uses a `<slot>` to insert any type or amount of HTML elements when the component is called in a file.
@@ -364,77 +362,74 @@ When inserting new elements, `name="content"` is defined on them to identify all
 
 This example shows how I implemented the `<Card />` component on my `index.astro` page. The component is imported in the frontmatter with `import Card from '@components/Card.astro';` and is used to wrap the main content on my page. In this page I set the `variant` prop to `borderless`, passed a title and subtitle, and created a couple `<p>` elements with `slot="content"` so they're properly slotted into the `Card` component.
 
-
 ```astro title="pages/index.astro"
-      <Card
-        title="Bassim Shahidy"
-        subtitle="IT Specialist at the New York City BAR Association"
-        variant="borderless">
-        <p slot="content">
-          Based in NY, I'm an IT Professional with a wealth of experience in
-          hardware, software management, network operations, cybersecurity, and
-          audio-visual systems. Currently, my focus is on advancing my skillset
-          in software engineering and web development, utilizing the latest
-          programming technologies to enhance user experiences and system
-          performance.
-        </p>
-        <p slot="content">
-          In addition, I'm exploring AI and machine learning, seeking to
-          understand and apply these technologies in practical scenarios. My
-          technical repertoire also includes 3D printing—where I skillfully
-          build and maintain printers for precision parts—and drone building,
-          where I apply my electronics and software knowledge to create and
-          pilot high-performance drones.
-        </p>
-      </Card>
+<Card
+  title="Bassim Shahidy"
+  subtitle="IT Specialist at the New York City BAR Association"
+  variant="borderless">
+  <p slot="content">
+    Based in NY, I'm an IT Professional with a wealth of experience in hardware,
+    software management, network operations, cybersecurity, and audio-visual
+    systems. Currently, my focus is on advancing my skillset in software
+    engineering and web development, utilizing the latest programming
+    technologies to enhance user experiences and system performance.
+  </p>
+  <p slot="content">
+    In addition, I'm exploring AI and machine learning, seeking to understand
+    and apply these technologies in practical scenarios. My technical repertoire
+    also includes 3D printing—where I skillfully build and maintain printers for
+    precision parts—and drone building, where I apply my electronics and
+    software knowledge to create and pilot high-performance drones.
+  </p>
+</Card>
 ```
 
 ## Projects component
 
 I created a `Projects` component to display web development projects I've worked on. In this component I used the `Card` component within a function that displays each project in it's in an unordered list. I customized the card for this component by setting it to `bordered`, with a custom padding value passed to the `padding` prop, and `noMargin` set to `true`
 
-
 ```astro title="components/projects.astro {3-4}
-  <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
-    {
-      projects.map((project) => (
-        <Card variant="bordered" padding="p-3.5" noMargin={true}>
-          <div slot="content">
-            <a
-              class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
-              href={project.data.url}>
-              <span class="dark:text-light hover:dark:text-muted-light/75">
-                {project.data.title}
-              </span>
-              <Icon
-                name="github"
-                class="mx-2 size-5 opacity-70 hover:opacity-100"
-              />
-            </a>
-            <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
-              {project.data.description}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              {project.data.tags.map((tag) => (
-                <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
-                  {tag}
-                </div>
-              ))}
-            </div>
+<ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
+  {
+    projects.map((project) => (
+      <Card variant="bordered" padding="p-3.5" noMargin={true}>
+        <div slot="content">
+          <a
+            class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
+            href={project.data.url}>
+            <span class="dark:text-light hover:dark:text-muted-light/75">
+              {project.data.title}
+            </span>
+            <Icon
+              name="github"
+              class="mx-2 size-5 opacity-70 hover:opacity-100"
+            />
+          </a>
+          <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
+            {project.data.description}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {project.data.tags.map((tag) => (
+              <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
+                {tag}
+              </div>
+            ))}
           </div>
-        </Card>
-      ))
-    }
-  </ul>
+        </div>
+      </Card>
+    ))
+  }
+</ul>
 ```
 
 ### Using Astro's Content Collections
+
 My projects utilize Astro's content collections, each project is defined as a single `YAML` file within a `content/projects` directory and are made available to the `Projects` component with `const projects = await getCollection('projects');`
 
 ```yaml
 title: FlaskGPT
 description: A customizable GPT-3.5/4 chat application built with Flask and plain HTML, CSS, and JavaScript
-tags: [ Flask, OpenAI, Python, JavaScript ]
+tags: [Flask, OpenAI, Python, JavaScript]
 url: https://github.com/AVGVSTVS96/flaskGPT
 ```
 
