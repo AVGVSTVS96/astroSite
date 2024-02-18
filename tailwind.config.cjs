@@ -10,6 +10,11 @@ module.exports = {
 	darkMode: 'class',
 	theme: {
 		extend: {
+			screens: {
+				'3xs': '380px',
+				'2xs': '440px',
+				'xs': '520px',
+			},
 			colors: {
 				mycustom: {
 					100: '#15162e',
