@@ -18,19 +18,19 @@ const {
   class: className,
   icon = false,
 } = Astro.props;
+
+const buttonStyles =`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`;
+
 import { Icon } from 'astro-icon/components';
 ---
 
 {
   menu ? (
-    <button
-      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}
-      aria-label={name}
-      id={id}>
+    <button class={buttonStyles} aria-label={name} id={id}>
       {icon ? <Icon name={name} title={name} size={26} /> : name}
       {showCaret && (
         <svg
-          class="caret-icon ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
+          class="caret-icon ml-1 mt-1 size-5 lg:size-6"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -44,15 +44,12 @@ import { Icon } from 'astro-icon/components';
       )}
     </button>
   ) : (
-    <a
-      href={link}
-      id={id}
-      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}>
+    <a href={link} id={id} class={buttonStyles}>
       <button class="flex" aria-label={name}>
         {icon ? <Icon name={name} title={name} size={26} /> : name}
         {showCaret && (
           <svg
-            class="caret-icon ml-1 mt-1 h-5 w-5 lg:h-6 lg:w-6"
+            class="caret-icon ml-1 mt-1 size-5 lg:size-6"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
