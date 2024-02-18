@@ -49,10 +49,12 @@ const schema = JSON.stringify(jsonLD, null, 2);
 
 <BaseLayout {...frontmatter}>
   <script slot="head" type="application/ld+json" set:html={schema} />
-  <div class="mx-6 flex justify-center">
-    <div class="xl:w-[240px]"></div>
+  <div class="flex justify-center">
+    <div class="2xl:w-[240px]"></div>
     <article
-      class="prose dark:prose-invert max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl prose-h1:pt-2
+      class="prose dark:prose-invert prose-h1:pt-2
+
+      max-w-64 3xs:max-w-xs 2xs:max-w-sm xs:max-w-md sm:max-w-xl md:max-w-2xl min-[868px]:max-w-3xl lg:max-w-[42rem] xl:max-w-4xl 
 
       prose-code:text-accent-600 prose-code:dark:text-accent-400 prose-code:font-medium prose-code:py-1 prose-code:px-2 prose-code:mx-[0.5px]
       before:prose-code:hidden after:prose-code:hidden
