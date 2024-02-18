@@ -24,7 +24,7 @@ import { Icon } from 'astro-icon/components';
 {
   menu ? (
     <button
-      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200/50 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}
+      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}
       aria-label={name}
       id={id}>
       {icon ? <Icon name={name} title={name} size={26} /> : name}
@@ -47,7 +47,7 @@ import { Icon } from 'astro-icon/components';
     <a
       href={link}
       id={id}
-      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200/50 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}>
+      class={`transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:text-light dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`}>
       <button class="flex" aria-label={name}>
         {icon ? <Icon name={name} title={name} size={26} /> : name}
         {showCaret && (
@@ -71,7 +71,7 @@ import { Icon } from 'astro-icon/components';
 
 <style>
   .dropdown-active {
-    @apply bg-primary-200/50 dark:bg-primary-800;
+    @apply bg-primary-200 dark:bg-primary-800;
   }
 
   .caret-icon {
