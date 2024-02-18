@@ -1,3 +1,14 @@
+## v0.7.4
+
+### Refactor
+
+* Refactor and format code in [#42](https://github.com/AVGVSTVS96/astroSite/pull/42)
+
+### Style
+
+* Update code theme, button colors, blog post widths, breakpoints, and refactor in [#43](https://github.com/AVGVSTVS96/astroSite/pull/43)
+
+**Full Changelog**: [v0.7.3...v0.7.4](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.3...v0.7.4)
 ## v0.7.3
 
 ### Refactor
