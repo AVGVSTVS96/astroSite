@@ -1,6 +1,6 @@
 ---
 title: 'Astro: The Next-Gen Front-End Framework'
-description: "Astro is the web framework for building content-driven websites like blogs, marketing, and e-commerce. Astro is best-known for pioneering a new frontend architecture to reduce JavaScript overhead and complexity compared to other frameworks. If you need a website that loads fast and has great SEO, then Astro is for you."
+description: 'Astro is the web framework for building content-driven websites like blogs, marketing, and e-commerce. Astro is best-known for pioneering a new frontend architecture to reduce JavaScript overhead and complexity compared to other frameworks. If you need a website that loads fast and has great SEO, then Astro is for you.'
 pubDate: 'December 12, 2023'
 author: 'Bassim Shahidy'
 image: /src/images/astroBackground.png
@@ -19,12 +19,12 @@ Astro comes with out-of-the-box support for a plethora of popular JavaScript fra
 
 Some highlights include:
 
--   **[Islands][]:** A component-based web architecture optimized for content-driven websites.
--   **[UI-agnostic][]:** Supports React, Preact, Svelte, Vue, Solid, Lit, HTMX, web components, and more.
--   **[Server-first][]:** Moves expensive rendering off of your visitors’ devices.
--   **[Zero JS, by default][]:** Less client-side JavaScript to slow your site down.
--   **[Content collections][]:** Organize, validate, and provide TypeScript type-safety for your Markdown content.
--   **[Customizable][]:** Tailwind, MDX, and hundreds of integrations to choose from.
+- **[Islands][]:** A component-based web architecture optimized for content-driven websites.
+- **[UI-agnostic][]:** Supports React, Preact, Svelte, Vue, Solid, Lit, HTMX, web components, and more.
+- **[Server-first][]:** Moves expensive rendering off of your visitors’ devices.
+- **[Zero JS, by default][]:** Less client-side JavaScript to slow your site down.
+- **[Content collections][]:** Organize, validate, and provide TypeScript type-safety for your Markdown content.
+- **[Customizable][]:** Tailwind, MDX, and hundreds of integrations to choose from.
 
 [Islands]: https://docs.astro.build/en/concepts/islands/
 [UI-agnostic]: https://docs.astro.build/en/core-concepts/framework-components/
@@ -44,7 +44,6 @@ Astro is…
 3.  **[Fast by default][]:** It should be impossible to build a slow website in Astro.
 4.  **[Easy to use][]:** You don’t need to be an expert to build something with Astro.
 5.  **[Developer-focused][]:** You should have the resources you need to be successful.
-
 
 [Content-driven]: https://docs.astro.build/en/concepts/why-astro//#content-driven
 [Server-first]: https://docs.astro.build/en/concepts/why-astro//#server-first
@@ -74,19 +73,18 @@ This approach stands in contrast to other modern JavaScript web frameworks like 
 
 The SPA model has its benefits. However, these come at the expense of additional complexity and performance tradeoffs. These tradeoffs harm page performance -- critical metrics like [Time to Interactive (TTI)][] -- which doesn’t make much sense for content-focused websites where first-load performance is essential.
 
-
 Astro’s server-first approach allows you to opt in to client-side rendering only if, and exactly as, necessary. You can choose to add UI framework components that run on the client. You can take advantage of Astro’s view transitions router for finer control over select page transitions and animations. Astro’s server-first rendering, either pre-rendered or on-demand, provides performant defaults that you can enhance and extend.
 
 ### Fast by default
 
 Good performance is always important, but it is _especially_ critical for websites whose success depends on displaying your content. It has been well-proven that poor performance loses you engagement, conversions, and money. For example:
 
--   Every 100ms faster → 1% more conversions ([Mobify][], earning +$380,000/yr)
--   50% faster → 12% more sales ([AutoAnything][])
--   20% faster → 10% more conversions ([Furniture Village][])
--   40% faster → 15% more sign-ups ([Pinterest][])
--   850ms faster → 7% more conversions ([COOK][])
--   Every 1 second slower → 10% fewer users ([BBC][])
+- Every 100ms faster → 1% more conversions ([Mobify][], earning +$380,000/yr)
+- 50% faster → 12% more sales ([AutoAnything][])
+- 20% faster → 10% more conversions ([Furniture Village][])
+- 40% faster → 15% more sign-ups ([Pinterest][])
+- 850ms faster → 7% more conversions ([COOK][])
+- Every 1 second slower → 10% fewer users ([BBC][])
 
 [Mobify]: https://web.dev/why-speed-matters/
 [AutoAnything]: https://www.digitalcommerce360.com/2010/08/19/web-accelerator-revs-conversion-and-sales-autoanything/

@@ -24,6 +24,7 @@ If anything feels off, or if you feel that some functionality is missing, please
 If you are a hubber and are interested in shipping new commands for the CLI, check out our [doc on internal contributions][intake-doc].
 
 <!-- this anchor is linked to from elsewhere, so avoid renaming it -->
+
 ## Installation
 
 ### macOS
@@ -45,7 +46,7 @@ If you are a hubber and are interested in shipping new commands for the CLI, che
 #### Conda
 
 | Install:                                 | Upgrade:                                |
-|------------------------------------------|-----------------------------------------|
+| ---------------------------------------- | --------------------------------------- |
 | `conda install gh --channel conda-forge` | `conda update gh --channel conda-forge` |
 
 Additional Conda installation options available on the [gh-feedstock page](https://github.com/conda-forge/gh-feedstock#installing-gh).
@@ -67,6 +68,7 @@ For more information about the Webi installer see [its homepage](https://webinst
 ### Linux & BSD
 
 `gh` is available via:
+
 - [our Debian and RPM repositories](./docs/install_linux.md);
 - community-maintained repositories in various Linux distros;
 - OS-agnostic package managers such as [Homebrew](#homebrew), [Conda](#conda), [Spack](#spack), [Webi](#webi); and
@@ -80,8 +82,8 @@ For more information, see [Linux & BSD installation](./docs/install_linux.md).
 
 #### WinGet
 
-| Install:            | Upgrade:            |
-| ------------------- | --------------------|
+| Install:                         | Upgrade:                         |
+| -------------------------------- | -------------------------------- |
 | `winget install --id GitHub.cli` | `winget upgrade --id GitHub.cli` |
 
 > **Note**  
@@ -89,9 +91,9 @@ For more information, see [Linux & BSD installation](./docs/install_linux.md).
 
 #### scoop
 
-| Install:           | Upgrade:           |
-| ------------------ | ------------------ |
-| `scoop install gh` | `scoop update gh`  |
+| Install:           | Upgrade:          |
+| ------------------ | ----------------- |
+| `scoop install gh` | `scoop update gh` |
 
 #### Chocolatey
 

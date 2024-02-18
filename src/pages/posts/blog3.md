@@ -8,6 +8,7 @@ layout: '@layouts/MDLayout.astro'
 ---
 
 <!-- TODO -->
+
 ## Nav Bar Component
 
 I created a Nav bar component for my site, in it I import [Button](#button-component) and [DropdownMenu](#dropdown-menu-component) components in addition to two logos, one for mobile and one for desktop.
