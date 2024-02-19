@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "astro": "astro",
     "release": "semantic-release",
     "wrangler": "bunx wrangler pages dev -- bun run dev"
