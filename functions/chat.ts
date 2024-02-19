@@ -10,7 +10,7 @@ interface ChatRequest {
   model_type: string;
 }
 
-export async function onRequest(context) {
+export async function onRequest(context: { request: any; env: any; }) {
   const { request, env } = context;
 
   if (request.method !== 'POST') {
