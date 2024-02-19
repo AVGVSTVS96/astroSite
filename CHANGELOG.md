@@ -1,3 +1,16 @@
+## v0.7.5
+
+### Refactor
+* Use `Astro-icon` in `Button`, add `astro check` script, misc improvements in [#45](https://github.com/AVGVSTVS96/astroSite/pull/45)
+
+### Style
+* Update blog post line height and inline code styling in [#44](https://github.com/AVGVSTVS96/astroSite/pull/44)
+
+### Dependencies
+* Update astro to 4.4.0, wrangler to 3.28.3, openai to 4.28.0 in [#46](https://github.com/AVGVSTVS96/astroSite/pull/46)
+
+**Full Changelog**: [v0.7.4...v0.7.5](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.4...v0.7.5)
+
 ## v0.7.4
 
 ### Refactor
