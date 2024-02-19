@@ -26,7 +26,7 @@ import { Icon } from 'astro-icon/components';
 
 {
   menu ? (
-    <button class={buttonStyles} aria-label={name + " menu"} id={id}>
+    <button class={buttonStyles} aria-label={`${name} menu`} id={id}>
       {icon ? <Icon name={name} size={26} /> : name}
       {showCaret && (
         <Icon
@@ -38,7 +38,7 @@ import { Icon } from 'astro-icon/components';
     </button>
   ) : (
     <a href={link} id={id} class={buttonStyles}>
-      <button class="flex" aria-label={name + " button"}>
+      <button class="flex" aria-label={`${name} button`}>
         {icon ? <Icon name={name} size={26} /> : name}
         {showCaret && (
           <Icon
