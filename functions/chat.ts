@@ -47,20 +47,13 @@ export async function onRequest(context) {
     const textEncoder = new TextEncoder();
 
     (async () => {
-      try {
-        for await (const part of stream) {
-          const content = part.choices[0]?.delta?.content || '';
-          if (content) {
-            await writer.write(textEncoder.encode(content));
-          }
+      for await (const part of stream) {
+        const content = part.choices[0]?.delta?.content || '';
+        if (content) {
+          await writer.write(textEncoder.encode(content));
         }
-      } catch (error) {
-        await writer.write(
-          textEncoder.encode(`Error processing stream: ${error.message}`)
-        );
-      } finally {
-        writer.close();
       }
+      writer.close();
     })();
 
     return new Response(readable);
