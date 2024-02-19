@@ -8,7 +8,6 @@ updates:
       astro:
         patterns:
           - "astro*"
-          - "remark-sectionize"
         update-types:
           - "minor"
           - "patch"
