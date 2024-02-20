@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 interface Props {
   name: string;
   link?: string;
@@ -19,14 +20,20 @@ const {
   icon = false,
 } = Astro.props;
 
-const buttonStyles = `transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:hover:bg-primary-800 ${className} ${showCaret ? 'pr-1' : ''}`;
+const baseStyles: string = `transition-color flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:hover:bg-primary-800`;
 
-import { Icon } from 'astro-icon/components';
+const variableStyles: (string | undefined)[] = [
+  className,
+  showCaret ? 'pr-1' : '',
+];
 ---
 
 {
   menu ? (
-    <button class={buttonStyles} aria-label={`${name} menu`} id={id}>
+    <button
+      class:list={[baseStyles, variableStyles]}
+      aria-label={`${name} menu`}
+      id={id}>
       {icon ? <Icon name={name} size={26} /> : name}
       {showCaret && (
         <Icon
@@ -37,8 +44,10 @@ import { Icon } from 'astro-icon/components';
       )}
     </button>
   ) : (
-    <a href={link} id={id} class={buttonStyles}>
-      <button class="flex" aria-label={`${name} button`}>
+    <a href={link} id={id}>
+      <button
+        class:list={[baseStyles, variableStyles]}
+        aria-label={`${name} button`}>
         {icon ? <Icon name={name} size={26} /> : name}
         {showCaret && (
           <Icon
