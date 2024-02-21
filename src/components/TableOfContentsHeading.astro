@@ -8,10 +8,13 @@ import { Icon } from 'astro-icon/components';
     <Icon
       name="sideCaret"
       size={13}
-      class={`mx-1 mt-1 flex-shrink-0 dark:group-hover:stroke-primary-300
-              ${isSubheading ? '' : 'hidden'}
-              ${level === 2 ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500' : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400'}
-            `}
+      class:list={[
+        'mx-1 mt-1 flex-shrink-0 dark:group-hover:stroke-primary-300',
+        isSubheading ? '' : 'hidden',
+        level === 2
+          ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500'
+          : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400',
+      ]}
       title="caret-icon"
     />
     {heading.text}

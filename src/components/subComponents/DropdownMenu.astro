@@ -29,7 +29,10 @@ import Button from './Button.astro';
     icon={icon}
   />
   <div
-    class=`dropdown-content ${icon ? '' : 'w-full'} absolute mt-1 hidden text-balance rounded-md bg-primary-200 p-[0.5px] dark:bg-primary-800`>
+    class:list={[
+      `dropdown-content absolute mt-1 hidden text-balance rounded-md bg-primary-200 p-[0.5px] dark:bg-primary-800`,
+      icon ? '' : 'w-full',
+    ]}>
     {
       links.map((link) => (
         <a

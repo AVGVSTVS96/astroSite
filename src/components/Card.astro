@@ -20,12 +20,19 @@ const {
   class: className,
   noMargin = false,
 } = Astro.props;
+
+const baseStyles: string =
+  'prose prose-slate max-w-3xl rounded-lg dark:prose-invert prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60';
+
+const variableStyles: (string | undefined)[] = [
+  padding,
+  className,
+  noMargin ? '' : 'mx-4',
+  variant === 'borderless' ? '' : 'border-card',
+];
 ---
 
-<div
-  class={`prose prose-slate dark:prose-invert max-w-3xl rounded-lg prose-h2:font-semibold prose-h2:opacity-80 dark:prose-h2:opacity-60 ${padding} ${className} ${noMargin ? '' : 'mx-4'} ${
-    variant === 'borderless' ? '' : 'border-card'
-  }`}>
+<div class:list={[baseStyles, variableStyles]}>
   {title && <h1 class="mb-2">{title}</h1>}
   {subtitle && <h2 class="mt-0">{subtitle}</h2>}
   {displayHr && <hr class="mb-8 border-accent-500" />}
