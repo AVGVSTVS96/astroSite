@@ -1,6 +1,8 @@
 ---
-// ThemeSwitcher.astro
 import DropdownMenu from './DropdownMenu.astro';
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'div'>;
 
 const themeOptions = [
   { name: 'Sky', url: '#sky' },

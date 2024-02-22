@@ -1,17 +1,20 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+
 const allPosts = await Astro.glob('@pages/posts/*.md');
-const { class: className } = Astro.props;
+const { class: className, ...attrs } = Astro.props;
+
 let displayPosts = Astro.props.postCount
   ? allPosts.slice(-Astro.props.postCount)
   : allPosts;
 
-interface Props {
+interface Props extends HTMLAttributes<'ul'> {
   postCount?: number;
   class?: string;
 }
 ---
 
-<ul class={`list-none pl-0 ${className}`}>
+<ul class={`list-none pl-0 ${className}`} {...attrs}>
   {
     displayPosts.map((post) => (
       <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 dark:border-base/20 sm:grid-cols-3">

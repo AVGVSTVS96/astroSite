@@ -1,10 +1,13 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+import Button from './Button.astro';
+
 interface Link {
   name: string;
   url: string;
 }
 
-interface Props {
+interface Props extends HTMLAttributes<'div'>{
   name: string;
   links: Link[];
   showCaret: boolean;
@@ -16,11 +19,11 @@ const {
   links = [],
   showCaret = false,
   icon = false,
+  ...attrs
 } = Astro.props;
-import Button from './Button.astro';
 ---
 
-<div class="dropdown relative">
+<div class="dropdown relative" {...attrs}>
   <Button
     menu={true}
     name={name}

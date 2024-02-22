@@ -1,8 +1,13 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 
+type Props = HTMLAttributes<'button'>;
+
+const { ...attrs } = Astro.props;
 ---
 
 <button
+  {...attrs}
   id="themeToggle"
   aria-label="Dark Mode Toggle"
   class="ml-2 rounded-lg px-3 py-2">
@@ -24,7 +29,7 @@
   #themeToggle {
     border: 0;
     background: none;
-    @apply hover:bg-primary-200/50 dark:hover:bg-primary-800;
+    @apply hover:bg-primary-200 dark:hover:bg-primary-800;
   }
   .sun {
     fill: rgba(0, 0, 0, 0.7);
