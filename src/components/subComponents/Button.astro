@@ -1,6 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'>{
   name: string;
   link?: string;
   id?: string;
@@ -18,6 +20,7 @@ const {
   showCaret = false,
   class: className,
   icon = false,
+  ...attrs
 } = Astro.props;
 
 const baseStyles: string = `transition-colors flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:hover:bg-primary-800`;
@@ -31,6 +34,7 @@ const variableStyles: (string | undefined)[] = [
 {
   menu ? (
     <button
+      {...attrs}
       class:list={[baseStyles, variableStyles]}
       aria-label={`${name} menu`}
       id={id}>
@@ -46,6 +50,7 @@ const variableStyles: (string | undefined)[] = [
   ) : (
     <a href={link} id={id}>
       <button
+        {...attrs}
         class:list={[baseStyles, variableStyles]}
         aria-label={`${name} button`}>
         {icon ? <Icon name={name} size={26} /> : name}

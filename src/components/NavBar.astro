@@ -4,10 +4,15 @@ import DropdownMenu from './subComponents/DropdownMenu.astro';
 import ThemeToggle from './subComponents/ThemeToggle.astro';
 import ThemeSwitcher from './subComponents/ThemeSwitcher.astro';
 import { Icon } from 'astro-icon/components';
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'div'>;
+
+const { ...attrs } = Astro.props;
 ---
 
 <div
-  class="navbar-container sticky top-0 z-10 mb-8 w-full border-b border-base/50 bg-primary-50 px-4 py-2 dark:border-base/40 dark:bg-primary-950 sm:px-6 md:px-10 xl:px-14">
+  class="navbar-container sticky top-0 z-10 mb-8 w-full border-b border-base/50 bg-primary-50 px-4 py-2 dark:border-base/40 dark:bg-primary-950 sm:px-6 md:px-10 xl:px-14" {...attrs}>
   <div
     class="button-container flex items-center justify-between text-dark dark:text-light">
     <a href="/" aria-label="home button">

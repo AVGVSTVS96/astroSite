@@ -1,5 +1,7 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
   title?: string;
   subtitle?: string;
   heading?: string;
@@ -19,6 +21,7 @@ const {
   padding = 'card-p',
   class: className,
   noMargin = false,
+  ...attrs
 } = Astro.props;
 
 const baseStyles: string =
@@ -32,7 +35,7 @@ const variableStyles: (string | undefined)[] = [
 ];
 ---
 
-<div class:list={[baseStyles, variableStyles]}>
+<div class:list={[baseStyles, variableStyles]} {...attrs}>
   {title && <h1 class="mb-2">{title}</h1>}
   {subtitle && <h2 class="mt-0">{subtitle}</h2>}
   {displayHr && <hr class="mb-8 border-accent-500" />}

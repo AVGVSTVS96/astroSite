@@ -1,10 +1,17 @@
 ---
 import Social from '@subComponents/Social.astro';
+
+import type { HTMLAttributes } from 'astro/types';
+const { ...attrs } = Astro.props;
+
 const name = 'Bassim Shahidy';
+
+type Props = HTMLAttributes<'div'>;
 ---
 
 <div
-  class="footer-container mt-24 flex w-full justify-center border-t border-base/40">
+  class="footer-container mt-24 flex w-full justify-center border-t border-base/40"
+  {...attrs}>
   <footer class="m-5 flex items-center gap-4 text-sm dark:text-light">
     <p>© {new Date().getFullYear()} {name}. All rights reserved.</p>
     <Social platform="github" username="avgvstvs96" />

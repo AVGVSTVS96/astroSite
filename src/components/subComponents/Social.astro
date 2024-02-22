@@ -1,8 +1,9 @@
 ---
-const { platform, username, variant } = Astro.props;
+const { platform, username, variant, ...attrs } = Astro.props;
 import { Icon } from 'astro-icon/components';
+import type { HTMLAttributes } from 'astro/types';
 
-interface Props {
+interface Props extends HTMLAttributes<'a'> {
   platform: string;
   username?: string;
   variant?: 'linkedIn';
@@ -10,6 +11,7 @@ interface Props {
 ---
 
 <a
+  {...attrs}
   href={`https://www.${
     variant === 'linkedIn' ? 'linkedin.com/in' : `${platform}.com`
   }/${username}`}
