@@ -1,3 +1,15 @@
+## v0.7.6
+
+### Refactor
+* refactor: Add aria-labels and update Button + SVG colors in [#47](https://github.com/AVGVSTVS96/astroSite/pull/47)
+* refactor: implement class:list for better organization. of variable styles in [#48](https://github.com/AVGVSTVS96/astroSite/pull/48)
+* refactor: add HTML attributes, fix typo, match button hover colors in [#50](https://github.com/AVGVSTVS96/astroSite/pull/50)
+
+### Dependencies
+* chore(deps): bump ip from 2.0.0 to 2.0.1 by @dependabot in [#49](https://github.com/AVGVSTVS96/astroSite/pull/49)
+
+**Full Changelog**: [v0.7.5...v0.7.6](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.5...v0.7.6)
+
 ## v0.7.5
 
 ### Refactor
