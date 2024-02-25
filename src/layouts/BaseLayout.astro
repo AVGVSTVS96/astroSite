@@ -16,7 +16,7 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
   </head>
-  <body class="flex flex-col items-center">
+  <body class="flex flex-col items-center min-w-[100dvw] min-h-[100dvh]">
     <NavBar />
     <slot />
     <Footer />
