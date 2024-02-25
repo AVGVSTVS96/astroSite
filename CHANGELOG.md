@@ -1,12 +1,20 @@
+## v0.8.0
+### Bug fixes
+* Stop scrollbar from shifting page layout and add GPT Chat link to mobile menu in https://github.com/AVGVSTVS96/astroSite/pull/51
+### Dependencies
+* bump Wrangler to 3.29.0 in https://github.com/AVGVSTVS96/astroSite/pull/53
+
+**Full Changelog**:[v0.7.6...v0.8.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.6...v0.8.0)
+
 ## v0.7.6
 
 ### Refactor
-* refactor: Add aria-labels and update Button + SVG colors in [#47](https://github.com/AVGVSTVS96/astroSite/pull/47)
-* refactor: implement class:list for better organization. of variable styles in [#48](https://github.com/AVGVSTVS96/astroSite/pull/48)
-* refactor: add HTML attributes, fix typo, match button hover colors in [#50](https://github.com/AVGVSTVS96/astroSite/pull/50)
+* Add aria-labels and update Button + SVG colors in [#47](https://github.com/AVGVSTVS96/astroSite/pull/47)
+* implement class:list for better organization. of variable styles in [#48](https://github.com/AVGVSTVS96/astroSite/pull/48)
+* add HTML attributes, fix typo, match button hover colors in [#50](https://github.com/AVGVSTVS96/astroSite/pull/50)
 
 ### Dependencies
-* chore(deps): bump ip from 2.0.0 to 2.0.1 by @dependabot in [#49](https://github.com/AVGVSTVS96/astroSite/pull/49)
+* bump ip from 2.0.0 to 2.0.1 by @dependabot in [#49](https://github.com/AVGVSTVS96/astroSite/pull/49)
 
 **Full Changelog**: [v0.7.5...v0.7.6](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.5...v0.7.6)
 
@@ -38,12 +46,12 @@
 
 ### Refactor
 
-* Refactor: Use recursive component for `TableOfContentsHeading` in [#38](https://github.com/AVGVSTVS96/astroSite/pull/38)
+* Use recursive component for `TableOfContentsHeading` in [#38](https://github.com/AVGVSTVS96/astroSite/pull/38)
 * Improve TOC Icon rendering, use `hidden` class instead of conditional rendering in [#39](https://github.com/AVGVSTVS96/astroSite/pull/39)
 
 ### Content
 
-* blog: Update blog content, update code block styling in [#41](https://github.com/AVGVSTVS96/astroSite/pull/41)
+* Update blog content, update code block styling in [#41](https://github.com/AVGVSTVS96/astroSite/pull/41)
 
 **Full Changelog**: [v0.7.2...v0.7.3](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.2...v0.7.3)
 
