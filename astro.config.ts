@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import remarkSectionize from 'remark-sectionize';
+import remarkSectionize from '@avgvstvs96/remark-sectionize';
 import tailwind from '@astrojs/tailwind';
 import icon from 'astro-icon';
 import expressiveCode, {
