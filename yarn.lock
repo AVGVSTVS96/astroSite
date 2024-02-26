@@ -658,10 +658,10 @@
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz"
   integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
 
-"@expressive-code/core@^0.32.4":
-  version "0.32.4"
-  resolved "https://registry.npmjs.org/@expressive-code/core/-/core-0.32.4.tgz"
-  integrity sha512-S0OwgZCy29OCcwFUBTLDrShUovIUWZcQn3EvSoKsGfzf/wTisK7XqZ1uH0Y7Mlof3Hf9uJMjOhJZvxTLtQUdSQ==
+"@expressive-code/core@^0.33.4":
+  version "0.33.4"
+  resolved "https://registry.yarnpkg.com/@expressive-code/core/-/core-0.33.4.tgz#f18af1b38e90cca3e2db49ae69eff40c2b1d6558"
+  integrity sha512-IywACrwcR/7cIPBQ1qG/RsgvNp85/CAX6okxR0Niztrd7rh4IcEhAsz51jX/NPNnhU9yPynTT+mLdM1URqrnvw==
   dependencies:
     "@ctrl/tinycolor" "^3.6.0"
     hast-util-to-html "^8.0.4"
@@ -669,28 +669,28 @@
     postcss "^8.4.21"
     postcss-nested "^6.0.1"
 
-"@expressive-code/plugin-frames@^0.32.4":
-  version "0.32.4"
-  resolved "https://registry.npmjs.org/@expressive-code/plugin-frames/-/plugin-frames-0.32.4.tgz"
-  integrity sha512-XOQrLqlVEy5JbqsBhDcSJQinceQ5j/Z8cE0/27Lnlcj4oXRdiQNjMVtstC/xZUeWEbm+FI9ZZP4Z9yihol61Aw==
+"@expressive-code/plugin-frames@^0.33.4":
+  version "0.33.4"
+  resolved "https://registry.yarnpkg.com/@expressive-code/plugin-frames/-/plugin-frames-0.33.4.tgz#8425998d7ef49958e73a345c024c06f63ed0ce8f"
+  integrity sha512-6HE5f8dAPjzmhs7yZJHVyH+w/UwVpktjlTvrUumrytHo6hidGlkB5lptWJlSAd9JXzev5BQEb4xrqQ0xQqO5+A==
   dependencies:
-    "@expressive-code/core" "^0.32.4"
+    "@expressive-code/core" "^0.33.4"
     hastscript "^7.2.0"
 
-"@expressive-code/plugin-shiki@^0.32.4":
-  version "0.32.4"
-  resolved "https://registry.npmjs.org/@expressive-code/plugin-shiki/-/plugin-shiki-0.32.4.tgz"
-  integrity sha512-zZzTXFFTpG+fmBG6C+4KzIyh1nFPdn4gLJ8E9LhBVufmRkn3gZplkE99lulfillsKyUZTRw3+dC3xYZWEZKzPw==
+"@expressive-code/plugin-shiki@^0.33.4":
+  version "0.33.4"
+  resolved "https://registry.yarnpkg.com/@expressive-code/plugin-shiki/-/plugin-shiki-0.33.4.tgz#54615935419ccd4451b2e7ddbf35424e6ab14257"
+  integrity sha512-XnDchHqCGk046hgQnu83t9+SDrRjsvpvUEBiI0wl4RljVDr1E0yllx0y6C1yEuKfFfasib6BxX/PkItgQdi/0Q==
   dependencies:
-    "@expressive-code/core" "^0.32.4"
-    shikiji "^0.8.0"
+    "@expressive-code/core" "^0.33.4"
+    shiki "^1.1.7"
 
-"@expressive-code/plugin-text-markers@^0.32.4":
-  version "0.32.4"
-  resolved "https://registry.npmjs.org/@expressive-code/plugin-text-markers/-/plugin-text-markers-0.32.4.tgz"
-  integrity sha512-lFlo3uwTp7vUmfXtLPn2aXs0CPFqdFvKiR3y8gtNzmBeYWPqVahF4RFUCN9ZpztCmXp5V8p2ADvNHzoNwCBwzA==
+"@expressive-code/plugin-text-markers@^0.33.4":
+  version "0.33.4"
+  resolved "https://registry.yarnpkg.com/@expressive-code/plugin-text-markers/-/plugin-text-markers-0.33.4.tgz#58fed0158f64bef32f5221590afa340dcf94d9aa"
+  integrity sha512-hl3E+8iZJMYGDaKsN4bOPOEBb9QeFjg+zQkOJRtjJgsmIYmaZpoQTzTg/JMduE8PLNsD30nAMwG/AbjN/klwZQ==
   dependencies:
-    "@expressive-code/core" "^0.32.4"
+    "@expressive-code/core" "^0.33.4"
     hastscript "^7.2.0"
     unist-util-visit-parents "^5.1.3"
 
@@ -1353,6 +1353,11 @@
     lodash-es "^4.17.21"
     read-pkg-up "^11.0.0"
 
+"@shikijs/core@1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-1.1.7.tgz#560de8d503ace894e36934f1e680762ed51ea394"
+  integrity sha512-gTYLUIuD1UbZp/11qozD3fWpUTuMqPSf3svDMMrL0UmlGU7D9dPw/V1FonwAorCUJBltaaESxq90jrSjQyGixg==
+
 "@sigstore/bundle@^2.1.1":
   version "2.1.1"
   resolved "https://registry.npmjs.org/@sigstore/bundle/-/bundle-2.1.1.tgz"
@@ -1900,13 +1905,13 @@ as-table@^1.0.36:
   dependencies:
     printable-characters "^1.0.42"
 
-astro-expressive-code@^0.32.3:
-  version "0.32.4"
-  resolved "https://registry.npmjs.org/astro-expressive-code/-/astro-expressive-code-0.32.4.tgz"
-  integrity sha512-/Kq8wLMz0X2gbLWGmPryqEdFV/om/GROsoLtPFqLrLCRD5CpwxXAW185BIGZKf4iYsyJim1vvcpQm5Y9hV5B1g==
+astro-expressive-code@^0.33.4:
+  version "0.33.4"
+  resolved "https://registry.yarnpkg.com/astro-expressive-code/-/astro-expressive-code-0.33.4.tgz#22111d857e373368e27187e0719ac8737ea4916e"
+  integrity sha512-PtXLjd89WBA1WsDYlt3V1LZs9Pa8FFoXilaGDSyfxtbYJ2OPHjWh2JJvCiXmfXmY3HkPJ2oW9Jjo6om5vUlVcg==
   dependencies:
     hast-util-to-html "^8.0.4"
-    remark-expressive-code "^0.32.4"
+    remark-expressive-code "^0.33.4"
 
 astro-icon@^1.0.3:
   version "1.1.0"
@@ -1917,10 +1922,10 @@ astro-icon@^1.0.3:
     "@iconify/types" "^2.0.0"
     "@iconify/utils" "^2.1.5"
 
-astro@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/astro/-/astro-4.4.0.tgz"
-  integrity sha512-JAsMrm1Z6W4Iqg9Q7LW/6lCXrqa4jndEOlR/yu7NGNP0BrPwSM8i4+yzya6hxgsNvyyVK8ywthaNhFmqd8Z+cg==
+astro@^4.4.4:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-4.4.4.tgz#5087cca5779d888e5c5b15690fd4738bc9c7bbdc"
+  integrity sha512-EZrDTN888w4sFKqavGsHu8jSaymyxNwnoqIq5NKlMG9WNU/Xn4Yn41pUdBuAOrgNzRp1NyXXhhV6GV1pN71V2Q==
   dependencies:
     "@astrojs/compiler" "^2.5.3"
     "@astrojs/internal-helpers" "0.2.1"
@@ -1974,7 +1979,6 @@ astro@^4.4.0:
     rehype "^13.0.1"
     resolve "^1.22.4"
     semver "^7.5.4"
-    server-destroy "^1.0.1"
     shikiji "^0.9.19"
     shikiji-core "^0.9.19"
     string-width "^7.0.0"
@@ -3051,15 +3055,15 @@ exponential-backoff@^3.1.1:
   resolved "https://registry.npmjs.org/exponential-backoff/-/exponential-backoff-3.1.1.tgz"
   integrity sha512-dX7e/LHVJ6W3DE1MHWi9S1EYzDESENfLrYohG2G++ovZrYOkm4Knwa0mc1cn84xJOR4KEU0WSchhLbd0UklbHw==
 
-expressive-code@^0.32.4:
-  version "0.32.4"
-  resolved "https://registry.npmjs.org/expressive-code/-/expressive-code-0.32.4.tgz"
-  integrity sha512-r+yUP2JV181tVR2EyYked7lT2W8bvL9o7xpdKU6q60FMU7Wh/DbGtH0jg+WmDxKK1C57iXF9chbBv+BsDPlUEQ==
+expressive-code@^0.33.4:
+  version "0.33.4"
+  resolved "https://registry.yarnpkg.com/expressive-code/-/expressive-code-0.33.4.tgz#c226af8e1aebfdbcddb2002a39cb312951dc0191"
+  integrity sha512-vb6DLHjG+jbLJGTvOUhxagsru7oUiBrQEsL9+hcWJvlxIqQ5mRFqjamQS9kCIhXXbfYWiYI7/wfTGxQxuHxsZQ==
   dependencies:
-    "@expressive-code/core" "^0.32.4"
-    "@expressive-code/plugin-frames" "^0.32.4"
-    "@expressive-code/plugin-shiki" "^0.32.4"
-    "@expressive-code/plugin-text-markers" "^0.32.4"
+    "@expressive-code/core" "^0.33.4"
+    "@expressive-code/plugin-frames" "^0.33.4"
+    "@expressive-code/plugin-shiki" "^0.33.4"
+    "@expressive-code/plugin-text-markers" "^0.33.4"
 
 extend-shallow@^2.0.1:
   version "2.0.1"
@@ -6118,12 +6122,12 @@ rehype@^13.0.1:
     rehype-stringify "^10.0.0"
     unified "^11.0.0"
 
-remark-expressive-code@^0.32.4:
-  version "0.32.4"
-  resolved "https://registry.npmjs.org/remark-expressive-code/-/remark-expressive-code-0.32.4.tgz"
-  integrity sha512-khV7fVBpVDOyz9EXU+6MFwLj7BtY3DLVlNMMJYQcfp9ksLMxG/i83rIJbMUZCRof9bDBmFFlrF0VDvqJ0/MNeQ==
+remark-expressive-code@^0.33.4:
+  version "0.33.4"
+  resolved "https://registry.yarnpkg.com/remark-expressive-code/-/remark-expressive-code-0.33.4.tgz#dc6699f89feeec9043a60d49da2400c199d3bf9d"
+  integrity sha512-ucGzDknAY6LJKkcNSaYh9N0SEr1LDA0shageM1xa+4fu/o+7g6R1/ApF7d2c+cj1ERLvaF4OaUa87n5baY+MDA==
   dependencies:
-    expressive-code "^0.32.4"
+    expressive-code "^0.33.4"
     hast-util-to-html "^8.0.4"
     unist-util-visit "^4.1.2"
 
@@ -6423,11 +6427,6 @@ semver@^7.0.0, semver@^7.1.1, semver@^7.1.2, semver@^7.3.2, semver@^7.3.5, semve
   dependencies:
     lru-cache "^6.0.0"
 
-server-destroy@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/server-destroy/-/server-destroy-1.0.1.tgz"
-  integrity sha512-rb+9B5YBIEzYcD6x2VKidaa+cqYBJQKnU4oe4E3ANwRRN56yk/ua1YCJT1n21NTS8w6CcOclAKNP3PhdCXKYtQ==
-
 set-blocking@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/set-blocking/-/set-blocking-2.0.0.tgz"
@@ -6488,17 +6487,17 @@ shebang-regex@^3.0.0:
   resolved "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
+shiki@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-1.1.7.tgz#270f7830b4d08bdf6b63eb97ef93e06c7af604de"
+  integrity sha512-9kUTMjZtcPH3i7vHunA6EraTPpPOITYTdA5uMrvsJRexktqP0s7P3s9HVK80b4pP42FRVe03D7fT3NmJv2yYhw==
+  dependencies:
+    "@shikijs/core" "1.1.7"
+
 shikiji-core@0.9.19, shikiji-core@^0.9.19:
   version "0.9.19"
   resolved "https://registry.npmjs.org/shikiji-core/-/shikiji-core-0.9.19.tgz"
   integrity sha512-AFJu/vcNT21t0e6YrfadZ+9q86gvPum6iywRyt1OtIPjPFe25RQnYJyxHQPMLKCCWA992TPxmEmbNcOZCAJclw==
-
-shikiji@^0.8.0:
-  version "0.8.7"
-  resolved "https://registry.npmjs.org/shikiji/-/shikiji-0.8.7.tgz"
-  integrity sha512-j5usxwI0yHkDTHOuhuSJl9+wT5CNYeYO82dJMSJBlJ/NYT5SIebGcPoL6y9QOyH15wGrJC4LOP2nz5k8mUDGRQ==
-  dependencies:
-    hast-util-to-html "^9.0.0"
 
 shikiji@^0.9.18, shikiji@^0.9.19:
   version "0.9.19"
