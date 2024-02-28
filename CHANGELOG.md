@@ -1,3 +1,15 @@
+## v0.8.1
+### Dependencies
+* Use my published `remark-sectionize` fork in [#54](https://github.com/AVGVSTVS96/astroSite/pull/54)
+* bump `ip` from 2.0.0 to 2.0.1 by @dependabot in [#55](https://github.com/AVGVSTVS96/astroSite/pull/55)
+* bump `@astrojs/check` from 0.5.4 to 0.5.6 by @dependabot in [#58](https://github.com/AVGVSTVS96/astroSite/pull/58)
+* bump the astro group with 2 updates by @dependabot in [#56](https://github.com/AVGVSTVS96/astroSite/pull/56)
+### Bug Fixes
+* fix: Add `overflow-x-hidden` to fix side scrolling in [#56](https://github.com/AVGVSTVS96/astroSite/pull/61)
+
+
+**Full Changelog**: [v0.8.0...v0.8.1](https://github.com/AVGVSTVS96/astroSite/compare/v0.8.0...v.0.8.1)
+
 ## v0.8.0
 ### Bug fixes
 * Stop scrollbar from shifting page layout and add GPT Chat link to mobile menu in https://github.com/AVGVSTVS96/astroSite/pull/51
