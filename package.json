@@ -24,7 +24,7 @@
     "@astrojs/check": "^0.5.6",
     "@astrojs/tailwind": "^5.1.0",
     "@avgvstvs96/remark-sectionize": "^2.0.0",
-    "astro": "^4.4.4",
+    "astro": "^4.4.6",
     "astro-expressive-code": "^0.33.4",
     "astro-icon": "^1.0.3",
     "openai": "^4.28.0",
