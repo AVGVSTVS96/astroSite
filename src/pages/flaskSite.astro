@@ -101,7 +101,7 @@ import '@styles/global.css';
         class="border text-muted hover:text-light border-slate-500/30 bg-slate-900/70 hover:border-slate-500/50"
       />
     </div>
-    <div class="mx-auto max-w-5xl px-4 py-8 text-left font-mono text-white">
+    <div class="mx-auto max-w-5xl px-4 py-8 text-left font-mono">
       <div class="rotating-gradient-border rounded-lg p-1">
         <div
           id="content"
@@ -118,12 +118,17 @@ import '@styles/global.css';
             class="mb-2 mt-4 text-2xl font-bold">
             ABOUT THIS WEBSITE
           </h2>
-          <p class="text-md mb-4">
+          <p class="mb-4">
             This is the second version of my website. I built the first version
             with Streamlit which allowed me to build it using only Python. I've
-            since started learning HTML, CSS, and Javascript and am writing this
+            since started learning HTML, CSS, and Javascript and wrote this
             website from scratch using Flask as the backend and TailwindCSS for
             styling.
+          </p>
+          <p>
+            I later converted this wesbite to Astro and removed Flask because,
+            as I continued learning web development, I realized this simple
+            website doesn't need a backend.
           </p>
           <hr class="my-8 border-t border-gray-600" />
           <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -131,7 +136,7 @@ import '@styles/global.css';
             <div>
               <h2
                 data-value="MY IT SKILLS INCLUDE"
-                class="mb-2 text-2xl font-bold">
+                class="mb-2 text-2xl font-bold mt-0">
                 MY IT SKILLS INCLUDE
               </h2>
               <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
@@ -199,21 +204,19 @@ import '@styles/global.css';
             <div>
               <h2
                 data-value="I'M CURRENTLY LEARNING"
-                class="mb-2 text-2xl font-bold">
+                class="mb-2 text-2xl font-bold mt-0">
                 I'M CURRENTLY LEARNING
               </h2>
               <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
+                <li class="mb-1">Building web apps with OpenAI's API</li>
                 <li class="mb-1">
-                  Backend web development with Flask and Python
+                  Backend web development with Python and NodeJS
                 </li>
                 <li class="mb-1">
-                  Front end web development with JS, HTML, and CSS
+                  Front end web development with HTML, CSS, and Astro
                 </li>
                 <li class="mb-1">
-                  Local deployment of LLMs like Alpaca and LLaMA
-                </li>
-                <li class="mb-1">
-                  Building apps that integrate with OpenAI's API
+                  Local deployment of LLMs like Mistral and LLaMA
                 </li>
                 <li class="mb-1">
                   Distilling documentation to embeddings for LLM context
@@ -266,7 +269,7 @@ import '@styles/global.css';
             <div>
               <h2
                 data-value="MY ACADEMIC INTERESTS"
-                class="mb-2 text-2xl font-bold">
+                class="mb-2 text-2xl font-bold mt-0">
                 MY ACADEMIC INTERESTS
               </h2>
               <ul class="mb-1 list-outside list-disc pl-4 text-sm md:mb-4">
@@ -332,7 +335,7 @@ import '@styles/global.css';
               <div>
                 <h2
                   data-value="CONTACT ME"
-                  class="mb-4 text-2xl font-bold text-white">
+                  class="mb-4 text-2xl font-bold text-white mt-0">
                   CONTACT ME
                 </h2>
                 <form
