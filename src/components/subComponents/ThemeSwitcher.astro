@@ -17,30 +17,24 @@ const themeOptions = [
 
 <div class="theme-switcher">
   <DropdownMenu
-    name="Theme"
+    name="color"
     links={themeOptions}
     showCaret={true}
-    icon={false}
+    icon={true}
   />
 </div>
 
 <script is:inline>
-  // Function to change the theme
   const changeTheme = (newTheme) => {
-    // Remove the old theme
     document.documentElement.removeAttribute('data-theme');
-
-    // Add the new theme
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('themeSwitcher', newTheme);
   };
 
-  // Set the default theme based on stored preference or default to 'sky'
   const currentTheme = localStorage.getItem('themeSwitcher') || 'sky';
   changeTheme(currentTheme);
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Add event listeners to theme option links
     document
       .querySelectorAll('.theme-switcher .dropdown-content a')
       .forEach((link) => {
@@ -52,3 +46,8 @@ const themeOptions = [
       });
   });
 </script>
+<style is:global>
+  [data-icon='color'] {
+    @apply text-accent-400;
+  }
+</style>
