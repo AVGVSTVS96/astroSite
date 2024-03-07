@@ -23,7 +23,7 @@ const {
   ...attrs
 } = Astro.props;
 
-const baseStyles: string = `transition-colors flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:hover:bg-primary-800`;
+const baseStyles: string = `transition-colors flex max-w-max rounded-lg px-3 items-center py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:hover:bg-primary-800`;
 
 const variableStyles: (string | undefined)[] = [
   className,
@@ -43,7 +43,7 @@ const variableStyles: (string | undefined)[] = [
         <Icon
           name="caret-down"
           title="caret-down"
-          class="caret-icon ml-1 mt-1 size-5 lg:size-6"
+          class="caret-icon ml-1 mt-1 size-6"
         />
       )}
     </button>
@@ -58,7 +58,7 @@ const variableStyles: (string | undefined)[] = [
           <Icon
             name="caret-down"
             title="caret-down"
-            class="caret-icon ml-1 mt-1 size-5 lg:size-6"
+            class="caret-icon ml-1 mt-1 size-6"
           />
         )}
       </button>
