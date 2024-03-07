@@ -26,7 +26,7 @@
       </linearGradient>
     </defs>
   
-    <g fill="none" stroke-width="15" transform="translate(107.5, 107.5)">
+    <g fill="none" stroke-width="15" transform="translate(100, 100)">
       <path d="M 0,-92.5 A 92.5,92.5 0 0,1 80,-46.25" stroke="url(#redyel)"/>
       <path d="M 80,-46.25 A 92.5,92.5 0 0,1 80,46.25" stroke="url(#yelgre)"/>
       <path d="M 80,46.25 A 92.5,92.5 0 0,1 0,92.5" stroke="url(#grecya)"/>
