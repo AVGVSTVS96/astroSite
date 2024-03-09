@@ -1,3 +1,16 @@
+## v0.8.2
+### Enhancements
+* Update `flaskSite` content and fix margin top by @AVGVSTVS96 in [70](https://github.com/AVGVSTVS96/astroSite/pull/70)
+* Create color icon SVG and use as `ThemeSwitcher` icon by @AVGVSTVS96 in [71](https://github.com/AVGVSTVS96/astroSite/pull/71)
+* Add `items-center` to `Button` component by @AVGVSTVS96 in [73](https://github.com/AVGVSTVS96/astroSite/pull/73)
+
+### Dependencies
+* bump the misc group with 2 updates by @dependabot in [66](https://github.com/AVGVSTVS96/astroSite/pull/66)
+* bump the astro group with 1 update by @dependabot in [68](https://github.com/AVGVSTVS96/astroSite/pull/68)
+* bump astro from 4.4.8 to 4.4.9 by @dependabot in [72](https://github.com/AVGVSTVS96/astroSite/pull/72)
+
+**Full Changelog**: [v0.8.1...v0.8.2](https://github.com/AVGVSTVS96/astroSite/compare/v.0.8.1...v0.8.2)
+
 ## v0.8.1
 ### Dependencies
 * Use my published `remark-sectionize` fork in [#54](https://github.com/AVGVSTVS96/astroSite/pull/54)

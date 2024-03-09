@@ -1,7 +1,7 @@
 {
   "name": "astrosite",
   "type": "module",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "astro dev",
@@ -24,7 +24,7 @@
     "@astrojs/check": "^0.5.6",
     "@astrojs/tailwind": "^5.1.0",
     "@avgvstvs96/remark-sectionize": "^2.0.0",
-    "astro": "^4.4.9",
+    "astro": "^4.4.15",
     "astro-expressive-code": "^0.33.4",
     "astro-icon": "^1.0.3",
     "openai": "^4.28.4",
