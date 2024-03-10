@@ -16,12 +16,13 @@ const themeOptions = [
 ---
 
 <div class="theme-switcher">
-  <DropdownMenu
-    name="color"
-    links={themeOptions}
-    showCaret={true}
-    icon={true}
-  />
+  <DropdownMenu name="" links={themeOptions} showCaret={true} icon={false}>
+    <slot name="icon" slot="icon">
+      <div
+        class="rainbow-ring before:ring-[0.7px] before:ring-primary-300 before:dark:ring-primary-950">
+      </div>
+    </slot>
+  </DropdownMenu>
 </div>
 
 <script is:inline>
@@ -47,7 +48,29 @@ const themeOptions = [
   });
 </script>
 <style is:global>
-  [data-icon='color'] {
-    @apply text-accent-400;
+  :root {
+    --ring-size: 26px;
+    --rainbow-width: 20px;
+  }
+
+  .rainbow-ring {
+    display: inline-block;
+    width: var(--ring-size);
+    height: var(--ring-size);
+    border-radius: 50%;
+    background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+    position: relative;
+  }
+
+  .rainbow-ring::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--rainbow-width);
+    height: var(--rainbow-width);
+    border-radius: 50%;
+    background: var(--accent-500);
   }
 </style>

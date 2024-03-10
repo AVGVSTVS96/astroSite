@@ -39,11 +39,12 @@ const variableStyles: (string | undefined)[] = [
       aria-label={`${name} menu`}
       id={id}>
       {icon ? <Icon name={name} size={26} /> : name}
+      <slot name="icon"/>
       {showCaret && (
         <Icon
           name="caret-down"
           title="caret-down"
-          class="caret-icon ml-1 mt-1 size-5 lg:size-6"
+          class="caret-icon ml-1 mt-1 size-6"
         />
       )}
     </button>
@@ -58,7 +59,7 @@ const variableStyles: (string | undefined)[] = [
           <Icon
             name="caret-down"
             title="caret-down"
-            class="caret-icon ml-1 mt-1 size-5 lg:size-6"
+            class="caret-icon ml-1 mt-1 size-6"
           />
         )}
       </button>

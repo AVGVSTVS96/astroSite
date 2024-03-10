@@ -7,7 +7,7 @@ interface Link {
   url: string;
 }
 
-interface Props extends HTMLAttributes<'div'>{
+interface Props extends HTMLAttributes<'div'> {
   name: string;
   links: Link[];
   showCaret: boolean;
@@ -29,8 +29,9 @@ const {
     name={name}
     class="dropdown-button"
     showCaret={showCaret}
-    icon={icon}
-  />
+    icon={icon}>
+    <slot name="icon" slot="icon" />
+  </Button>
   <div
     class:list={[
       `dropdown-content absolute mt-1 hidden text-balance rounded-md bg-primary-200 p-[0.5px] dark:bg-primary-800`,
