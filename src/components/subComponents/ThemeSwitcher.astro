@@ -27,7 +27,6 @@ const themeOptions = [
 
 <script is:inline>
   const changeTheme = (newTheme) => {
-    document.documentElement.removeAttribute('data-theme');
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('themeSwitcher', newTheme);
   };
