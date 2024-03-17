@@ -27,7 +27,6 @@ const themeOptions = [
 
 <script is:inline>
   const changeTheme = (newTheme) => {
-    document.documentElement.removeAttribute('data-theme');
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('themeSwitcher', newTheme);
   };
@@ -71,6 +70,6 @@ const themeOptions = [
     width: var(--rainbow-width);
     height: var(--rainbow-width);
     border-radius: 50%;
-    background: var(--accent-500);
+    background: linear-gradient(to bottom left, var(--accent-300), var(--accent-700));
   }
 </style>
