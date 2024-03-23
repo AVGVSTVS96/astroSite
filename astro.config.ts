@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import remarkSectionize from '@avgvstvs96/remark-sectionize';
 import tailwind from '@astrojs/tailwind';
+import react from '@astrojs/react';
 import icon from 'astro-icon';
 import expressiveCode, {
   type AstroExpressiveCodeOptions,
@@ -14,7 +15,7 @@ const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
     textMarkers: {
       markBackground: 'hsla(220, 25.00%, 30%, 0.4)',
       markBorderColor: 'hsla(220, 30.00%, 30%, 1)',
-    }
+    },
   },
 };
 
@@ -29,5 +30,6 @@ export default defineConfig({
     }),
     expressiveCode(astroExpressiveCodeOptions),
     icon(),
+    react(),
   ],
 });
