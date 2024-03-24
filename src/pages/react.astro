@@ -1,0 +1,30 @@
+---
+import '@styles/shad.css';
+// import '@styles/global.css';
+
+import ReactLayout from '@layouts/ReactLayout.astro';
+---
+
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    } else {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    }
+  };
+
+  const isDark = getThemePreference() === 'dark';
+  document.documentElement.classList.toggle('dark', isDark);
+
+  if (typeof localStorage !== 'undefined') {
+    window.addEventListener('storage', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  }
+</script>
+<ReactLayout>
+</ReactLayout>
