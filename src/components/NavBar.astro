@@ -12,13 +12,13 @@ const { ...attrs } = Astro.props;
 ---
 
 <div
-  class="navbar-container sticky top-0 z-10 mb-8 w-full border-b border-base/50 bg-primary-50 dark:border-base/40 dark:bg-primary-950"
+  class="navbar-container sticky top-0 z-10 mb-8 w-full border-b bg-primary-50 border-border dark:bg-primary-950"
   {...attrs}>
   <div
     class="h-2 w-full bg-gradient-to-r from-accent-300 via-accent-500 to-accent-400">
   </div>
   <div
-    class="button-container flex items-center justify-between px-4 py-2 text-dark dark:text-light sm:px-6 md:px-10 xl:px-14">
+    class="button-container flex items-center justify-between px-4 py-1 text-dark dark:text-light sm:px-6 md:px-10 xl:px-14">
     <a href="/" aria-label="home button">
       <Icon
         name="astroLogo"
@@ -32,9 +32,9 @@ const { ...attrs } = Astro.props;
         class="block opacity-80 md:hidden"
       />
     </a>
-    <div class="button-theme-container flex gap-1">
-      <div class="gap-1 text-lg sm:flex">
-        <div class="hidden gap-1 sm:flex">
+    <div class="button-theme-container items-center flex gap-1">
+      <div class="gap-1 text-md sm:flex">
+        <div class="hidden gap-1 sm:flex items-center">
           <Button name="Home" link="/" />
           <Button name="About" link="/about" />
           <Button name="Blog" link="/blog" />
