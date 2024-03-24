@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import type { HTMLAttributes } from 'astro/types';
 
-interface Props extends HTMLAttributes<'button'>{
+interface Props extends HTMLAttributes<'button'> {
   name: string;
   link?: string;
   id?: string;
@@ -23,7 +23,7 @@ const {
   ...attrs
 } = Astro.props;
 
-const baseStyles: string = `transition-colors items-center flex max-w-max rounded-lg px-3 py-2 font-normal duration-200 hover:bg-primary-200 hover:text-opacity-100 dark:hover:bg-primary-800`;
+const baseStyles: string = ` items-center border border-transparent flex max-w-max rounded-lg px-3 py-1 font-normal text-foreground/70 hover:text-foreground`;
 
 const variableStyles: (string | undefined)[] = [
   className,
@@ -39,12 +39,12 @@ const variableStyles: (string | undefined)[] = [
       aria-label={`${name} menu`}
       id={id}>
       {icon ? <Icon name={name} size={26} /> : name}
-      <slot name="icon"/>
+      <slot name="icon" />
       {showCaret && (
         <Icon
           name="caret-down"
           title="caret-down"
-          class="caret-icon ml-1 mt-1 size-6"
+          class="caret-icon ml-1 mt-1 size-5"
         />
       )}
     </button>
@@ -59,7 +59,7 @@ const variableStyles: (string | undefined)[] = [
           <Icon
             name="caret-down"
             title="caret-down"
-            class="caret-icon ml-1 mt-1 size-6"
+            class="caret-icon ml-1 mt-1 size-5"
           />
         )}
       </button>
@@ -69,7 +69,7 @@ const variableStyles: (string | undefined)[] = [
 
 <style>
   .dropdown-active {
-    @apply bg-primary-200 dark:bg-primary-800;
+    @apply border-border text-foreground;
   }
 
   .caret-icon {
