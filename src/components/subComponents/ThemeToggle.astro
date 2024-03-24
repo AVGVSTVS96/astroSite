@@ -10,7 +10,7 @@ const { ...attrs } = Astro.props;
   {...attrs}
   id="themeToggle"
   aria-label="Dark Mode Toggle"
-  class="ml-2 rounded-lg px-3 py-2">
+  class="rounded-lg px-3 py-1">
   <svg width="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       class="sun"
@@ -29,7 +29,6 @@ const { ...attrs } = Astro.props;
   #themeToggle {
     border: 0;
     background: none;
-    @apply hover:bg-primary-200 dark:hover:bg-primary-800;
   }
   .sun {
     fill: rgba(0, 0, 0, 0.7);
