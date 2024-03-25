@@ -17,7 +17,7 @@ interface Props extends HTMLAttributes<'ul'> {
 <ul class={`list-none pl-0 ${className}`} {...attrs}>
   {
     displayPosts.map((post) => (
-      <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 dark:border-base/20 sm:grid-cols-3">
+      <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3">
         <div class="col-span-1 self-center text-dark/75 dark:text-muted-light/60">
           {post.frontmatter.pubDate}
         </div>
