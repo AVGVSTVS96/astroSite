@@ -5,10 +5,9 @@ import '@styles/global.css';
 import '@styles/shad.css';
 
 const { description, title } = Astro.props;
-
 ---
 
-<html lang="en" class="dark min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
+<html lang="en" class="min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -18,7 +17,7 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
   </head>
-  <body class="flex flex-col items-center min-h-screen">
+  <body class="flex min-h-screen flex-col items-center">
     <NavBar />
     <main class="flex-grow">
       <slot />
@@ -26,3 +25,17 @@ const { description, title } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<script is:inline>
+  const preferredTheme =
+    localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light');
+  document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
+
+  window.addEventListener('storage', () => {
+    const isDark = localStorage.getItem('theme') === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+  });
+</script>
