@@ -5,34 +5,8 @@ import '@styles/global.css';
 import '@styles/shad.css';
 
 const { description, title } = Astro.props;
-
 ---
-<script is:inline>
-  // Function to retrieve the user's theme preference from localStorage or system settings
-  function getPreferredTheme() {
-    const storedTheme = localStorage.getItem('themeToggle');
-    if (storedTheme) {
-      return storedTheme;
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
 
-  // Function to apply a given theme by updating the class list of the document element
-  function applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    document.documentElement.classList.toggle('light', theme === 'light');
-  }
-
-  // Initialize the theme when the page loads
-  const initialTheme = getPreferredTheme();
-  applyTheme(initialTheme);
-
-  // Update the theme automatically across all tabs when it's changed
-  window.addEventListener('storage', () => {
-    const updatedTheme = getPreferredTheme();
-    applyTheme(updatedTheme);
-  });
-</script>
 <html lang="en" class="min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
   <head>
     <meta charset="utf-8" />
@@ -42,8 +16,36 @@ const { description, title } = Astro.props;
     <meta name="description" content={description} />
     <title>{title}</title>
     <slot name="head" />
+    <script is:inline>
+      // Function to retrieve the user's theme preference from localStorage or system settings
+      function getPreferredTheme() {
+        const storedTheme = localStorage.getItem('themeToggle');
+        if (storedTheme) {
+          return storedTheme;
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      }
+
+      // Function to apply a given theme by updating the class list of the document element
+      function applyTheme(theme) {
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.classList.toggle('light', theme === 'light');
+      }
+
+      // Initialize the theme when the page loads
+      const initialTheme = getPreferredTheme();
+      applyTheme(initialTheme);
+
+      // Update the theme automatically across all tabs when it's changed
+      window.addEventListener('storage', () => {
+        const updatedTheme = getPreferredTheme();
+        applyTheme(updatedTheme);
+      });
+    </script>
   </head>
-  <body class="flex flex-col items-center min-h-screen">
+  <body class="flex min-h-screen flex-col items-center">
     <NavBar />
     <main class="flex-grow">
       <slot />
