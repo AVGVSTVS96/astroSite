@@ -15,35 +15,23 @@ const { description, title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <slot name="head" />
     <script is:inline>
-      // Function to retrieve the user's theme preference from localStorage or system settings
-      function getPreferredTheme() {
-        const storedTheme = localStorage.getItem('themeToggle');
-        if (storedTheme) {
-          return storedTheme;
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches
+      const preferredTheme =
+        localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
-          : 'light';
-      }
+          : 'light');
+      document.documentElement.classList.toggle(
+        'dark',
+        preferredTheme === 'dark'
+      );
 
-      // Function to apply a given theme by updating the class list of the document element
-      function applyTheme(theme) {
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-        document.documentElement.classList.toggle('light', theme === 'light');
-      }
-
-      // Initialize the theme when the page loads
-      const initialTheme = getPreferredTheme();
-      applyTheme(initialTheme);
-
-      // Update the theme automatically across all tabs when it's changed
       window.addEventListener('storage', () => {
-        const updatedTheme = getPreferredTheme();
-        applyTheme(updatedTheme);
+        const isDark = localStorage.getItem('theme') === 'dark';
+        document.documentElement.classList.toggle('dark', isDark);
       });
     </script>
+    <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col items-center">
     <NavBar />
@@ -53,17 +41,3 @@ const { description, title } = Astro.props;
     <Footer />
   </body>
 </html>
-
-<script is:inline>
-  const preferredTheme =
-    localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light');
-  document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
-
-  window.addEventListener('storage', () => {
-    const isDark = localStorage.getItem('theme') === 'dark';
-    document.documentElement.classList.toggle('dark', isDark);
-  });
-</script>
