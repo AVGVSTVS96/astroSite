@@ -7,8 +7,33 @@ import '@styles/shad.css';
 const { description, title } = Astro.props;
 
 ---
+<script is:inline>
+  // Function to retrieve the user's theme preference from localStorage or system settings
+  function getPreferredTheme() {
+    const storedTheme = localStorage.getItem('themeToggle');
+    if (storedTheme) {
+      return storedTheme;
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
 
-<html lang="en" class="dark min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
+  // Function to apply a given theme by updating the class list of the document element
+  function applyTheme(theme) {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.classList.toggle('light', theme === 'light');
+  }
+
+  // Initialize the theme when the page loads
+  const initialTheme = getPreferredTheme();
+  applyTheme(initialTheme);
+
+  // Update the theme automatically across all tabs when it's changed
+  window.addEventListener('storage', () => {
+    const updatedTheme = getPreferredTheme();
+    applyTheme(updatedTheme);
+  });
+</script>
+<html lang="en" class="min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

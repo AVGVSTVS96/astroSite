@@ -46,27 +46,19 @@ const { ...attrs } = Astro.props;
 </style>
 
 <script is:inline>
-  const element = document.documentElement;
-  const themeToggleButton = document.getElementById('themeToggle');
+  function toggleTheme() {
+    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-  function applyTheme(theme) {
-    element.classList.remove('dark', 'light');
-    element.classList.add(theme);
-    localStorage.setItem('themeToggle', theme);
-  }
-
-  function initializeTheme() {
-    const storedTheme = localStorage.getItem('themeToggle') || 'dark';
-    if (['dark', 'light'].includes(storedTheme)) {
-      applyTheme(storedTheme);
-    }
-  }
-
-  function handleToggleClick() {
-    const newTheme = element.classList.contains('dark') ? 'light' : 'dark';
     applyTheme(newTheme);
+    localStorage.setItem('themeToggle', newTheme);
   }
 
-  initializeTheme();
-  themeToggleButton.addEventListener('click', handleToggleClick);
+  // Wait for the DOM to load before attaching event listener to button
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleButton = document.getElementById('themeToggle');
+    if (themeToggleButton) {
+      themeToggleButton.addEventListener('click', toggleTheme);
+    }
+  });
 </script>
