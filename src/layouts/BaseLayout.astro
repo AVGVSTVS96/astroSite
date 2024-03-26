@@ -53,3 +53,17 @@ const { description, title } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<script is:inline>
+  const preferredTheme =
+    localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light');
+  document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
+
+  window.addEventListener('storage', () => {
+    const isDark = localStorage.getItem('theme') === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+  });
+</script>
