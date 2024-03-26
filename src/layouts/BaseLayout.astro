@@ -5,34 +5,8 @@ import '@styles/global.css';
 import '@styles/shad.css';
 
 const { description, title } = Astro.props;
-
 ---
-<script is:inline>
-  // Function to retrieve the user's theme preference from localStorage or system settings
-  function getPreferredTheme() {
-    const storedTheme = localStorage.getItem('themeToggle');
-    if (storedTheme) {
-      return storedTheme;
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
 
-  // Function to apply a given theme by updating the class list of the document element
-  function applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    document.documentElement.classList.toggle('light', theme === 'light');
-  }
-
-  // Initialize the theme when the page loads
-  const initialTheme = getPreferredTheme();
-  applyTheme(initialTheme);
-
-  // Update the theme automatically across all tabs when it's changed
-  window.addEventListener('storage', () => {
-    const updatedTheme = getPreferredTheme();
-    applyTheme(updatedTheme);
-  });
-</script>
 <html lang="en" class="min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
   <head>
     <meta charset="utf-8" />
@@ -43,7 +17,7 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
   </head>
-  <body class="flex flex-col items-center min-h-screen">
+  <body class="flex min-h-screen flex-col items-center">
     <NavBar />
     <main class="flex-grow">
       <slot />
@@ -51,3 +25,17 @@ const { description, title } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<script is:inline>
+  const preferredTheme =
+    localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light');
+  document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
+
+  window.addEventListener('storage', () => {
+    const isDark = localStorage.getItem('theme') === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+  });
+</script>
