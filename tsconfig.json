@@ -24,7 +24,7 @@
         "src/utils/*"
       ],
       "@/*" : [
-        "./*"
+        "src/*"
       ]
     },
     "jsx": "react-jsx",
