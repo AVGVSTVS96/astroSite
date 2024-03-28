@@ -22,7 +22,7 @@ export function SideMenu() {
       </SheetTrigger>
       <SheetContent side="left" className="w-64">
         <SheetTitle className="font-bold">bassim</SheetTitle>
-        <nav className="mt-4 flex flex-col *:justify-start">
+        <nav className="mt-4 flex flex-col *:justify-start [&_a]:h-full [&_a]:my-1.5">
           <section>
             <span className="ml-2 flex items-center">
               <HomeIcon className="size-4" />
