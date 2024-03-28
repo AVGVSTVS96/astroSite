@@ -54,35 +54,37 @@ export function SideMenu() {
             </Button>
           </span>
           <hr className="my-4" />
-          <h4 className="mb-2 ml-4 mt-1 font-semibold">Projects</h4>
-          <Button
-            asChild
-            variant="link"
-            size="lg"
-            className="hover:no-underline">
-            <a href="/designProject">Minimal Typography</a>
-          </Button>
-          <Button
-            asChild
-            variant="link"
-            size="lg"
-            className="hover:no-underline">
-            <a href="/flaskSite">Old Flask Website</a>
-          </Button>
-          <Button
-            asChild
-            variant="link"
-            size="lg"
-            className="hover:no-underline">
-            <a href="/gpt">GPT Chat</a>
-          </Button>
-          <Button
-            asChild
-            variant="link"
-            size="lg"
-            className="hover:no-underline">
-            <a href="/react">React + shadcn/ui</a>
-          </Button>
+          <h4 className="mb-2 ml-2 mt-1 font-semibold">Projects</h4>
+          <span className='flex flex-col items-start [&_a]:px-4'>
+            <Button
+              asChild
+              variant="link"
+              size="lg"
+              className="hover:no-underline">
+              <a href="/designProject">Minimal Typography</a>
+            </Button>
+            <Button
+              asChild
+              variant="link"
+              size="lg"
+              className="hover:no-underline">
+              <a href="/flaskSite">Old Flask Website</a>
+            </Button>
+            <Button
+              asChild
+              variant="link"
+              size="lg"
+              className="hover:no-underline">
+              <a href="/gpt">GPT Chat</a>
+            </Button>
+            <Button
+              asChild
+              variant="link"
+              size="lg"
+              className="hover:no-underline">
+              <a href="/react">React + shadcn/ui</a>
+            </Button>
+          </span>
         </nav>
       </SheetContent>
     </Sheet>
