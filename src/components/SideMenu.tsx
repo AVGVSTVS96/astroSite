@@ -26,21 +26,21 @@ export function SideMenu() {
             asChild
             variant="link"
             size="lg"
-            className="py-0 hover:no-underline">
+            className="hover:no-underline">
             <a href="/">Home</a>
           </Button>
           <Button
             asChild
             variant="link"
             size="lg"
-            className="py-0 hover:no-underline">
+            className="hover:no-underline">
             <a href="/about">About</a>
           </Button>
           <Button
             asChild
             variant="link"
             size="lg"
-            className="py-0 hover:no-underline">
+            className="hover:no-underline">
             <a href="/blog">Blog</a>
           </Button>
           <h4 className="mb-2 ml-4 mt-4 font-semibold">Projects</h4>
