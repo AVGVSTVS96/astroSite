@@ -20,7 +20,7 @@ export function SideMenu() {
           <HamburgerMenuIcon className="size-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent side="left" className="w-64">
         <SheetTitle className="font-bold">bassim</SheetTitle>
         <nav className="mt-4 flex flex-col *:justify-start">
           <span className="ml-2 flex items-center">
@@ -53,7 +53,8 @@ export function SideMenu() {
               <a href="/blog">Blog</a>
             </Button>
           </span>
-          <h4 className="mb-2 ml-4 mt-4 font-semibold">Projects</h4>
+          <hr className="my-4" />
+          <h4 className="mb-2 ml-4 mt-1 font-semibold">Projects</h4>
           <Button
             asChild
             variant="link"
