@@ -10,6 +10,7 @@ import {
 } from '@components/ui/sheet';
 import { Button } from '@components/ui/button';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { HomeIcon, User, NotebookText } from 'lucide-react';
 
 export function SideMenu() {
   return (
@@ -22,27 +23,36 @@ export function SideMenu() {
       <SheetContent side="left">
         <SheetTitle className="font-bold">bassim</SheetTitle>
         <nav className="mt-4 flex flex-col *:justify-start">
-          <Button
-            asChild
-            variant="link"
-            size="lg"
-            className="hover:no-underline">
-            <a href="/">Home</a>
-          </Button>
-          <Button
-            asChild
-            variant="link"
-            size="lg"
-            className="hover:no-underline">
-            <a href="/about">About</a>
-          </Button>
-          <Button
-            asChild
-            variant="link"
-            size="lg"
-            className="hover:no-underline">
-            <a href="/blog">Blog</a>
-          </Button>
+          <span className="ml-2 flex items-center">
+            <HomeIcon className="size-4" />
+            <Button
+              asChild
+              variant="link"
+              size="lg"
+              className="px-3 hover:no-underline">
+              <a href="/">Home</a>
+            </Button>
+          </span>
+          <span className="ml-2 flex items-center">
+            <User className="size-4" />
+            <Button
+              asChild
+              variant="link"
+              size="lg"
+              className="px-3 hover:no-underline">
+              <a href="/about">About</a>
+            </Button>
+          </span>
+          <span className="ml-2 flex items-center">
+            <NotebookText className="size-4" />
+            <Button
+              asChild
+              variant="link"
+              size="lg"
+              className="px-3 hover:no-underline">
+              <a href="/blog">Blog</a>
+            </Button>
+          </span>
           <h4 className="mb-2 ml-4 mt-4 font-semibold">Projects</h4>
           <Button
             asChild
