@@ -20,8 +20,8 @@ export function SideMenu() {
           <HamburgerMenuIcon className='size-5' />
         </Button>
       </SheetTrigger>
-      <SheetContent side={'left'}>
-
+      <SheetContent side='left'>
+        <SheetTitle>Menu</SheetTitle>
       </SheetContent>
     </Sheet>
   );
