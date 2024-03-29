@@ -48,14 +48,14 @@ const { ...attrs } = Astro.props;
 <script is:inline>
   function toggleTheme() {
     const currentTheme =
-      localStorage.getItem('theme') ||
+      localStorage.getItem('themeToggle') ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem('themeToggle', newTheme);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
