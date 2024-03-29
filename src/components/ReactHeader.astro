@@ -2,6 +2,7 @@
 import { Button } from '@components/ui/button';
 import { ModeToggle } from '@components/subComponents/ModeToggle';
 import { Icon } from 'astro-icon/components';
+import { SideMenu } from '@components/SideMenu';
 ---
 
 <header class="flex items-center border-b border-border/50 px-8 py-2">
@@ -18,6 +19,9 @@ import { Icon } from 'astro-icon/components';
         Home
       </Button>
     </a>
-    <ModeToggle client:load />
+    <span class="flex gap-2 items-center">
+      <SideMenu client:load />
+      <ModeToggle client:load />
+    </span>
   </nav>
 </header>
