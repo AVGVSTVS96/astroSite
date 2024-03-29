@@ -22,7 +22,7 @@ export function SideMenu() {
       </SheetTrigger>
       <SheetContent side="left" className="w-64">
         <SheetTitle className="font-bold">bassim</SheetTitle>
-        <nav className="mt-4 flex flex-col *:justify-start [&_a]:h-full [&_a]:my-1.5">
+        <nav className="mt-4 flex flex-col *:justify-start [&_a]:h-full [&_a]:my-2">
           <section>
             <span className="ml-2 flex items-center">
               <HomeIcon className="size-4" />
@@ -63,28 +63,28 @@ export function SideMenu() {
                 asChild
                 variant="link"
                 size="lg"
-                className="hover:no-underline">
+                className="hover:no-underline text-muted-foreground hover:text-foreground">
                 <a href="/designProject">Minimal Typography</a>
               </Button>
               <Button
                 asChild
                 variant="link"
                 size="lg"
-                className="hover:no-underline">
+                className="hover:no-underline text-muted-foreground hover:text-foreground">
                 <a href="/flaskSite">Old Flask Website</a>
               </Button>
               <Button
                 asChild
                 variant="link"
                 size="lg"
-                className="hover:no-underline">
+                className="hover:no-underline text-muted-foreground hover:text-foreground">
                 <a href="/gpt">GPT Chat</a>
               </Button>
               <Button
                 asChild
                 variant="link"
                 size="lg"
-                className="hover:no-underline">
+                className="hover:no-underline text-muted-foreground hover:text-foreground">
                 <a href="/react">React + shadcn/ui</a>
               </Button>
             </span>
