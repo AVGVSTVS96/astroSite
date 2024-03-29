@@ -12,11 +12,7 @@ export function SideMenu() {
   const mainLinks = [
     { name: 'Home', icon: <HomeIcon className="mr-2 size-4" />, href: '/' },
     { name: 'About', icon: <User className="mr-2 size-4" />, href: '/about' },
-    {
-      name: 'Blog',
-      icon: <NotebookText className="mr-2 size-4" />,
-      href: '/blog',
-    },
+    { name: 'Blog', icon: <NotebookText className="mr-2 size-4" />, href: '/blog' },
   ];
 
   const projectLinks = [
