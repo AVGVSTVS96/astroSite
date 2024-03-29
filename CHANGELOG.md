@@ -1,8 +1,35 @@
+## v0.9.0
+### Enhancements
+* Create rainbow ring around theme switcher icon in [#75](https://github.com/AVGVSTVS96/astroSite/pull/75)
+* Add `mx-0.5` to dropdown menu items to fix #76 in [#78](https://github.com/AVGVSTVS96/astroSite/pull/78)
+* Add `flex-grow` to fix #82, add gradient to color icon, improve ThemeSwitcher code in [#83](https://github.com/AVGVSTVS96/astroSite/pull/83)
+* Add accent color gradient border to top of `NavBar` in [#88](https://github.com/AVGVSTVS96/astroSite/pull/88)
+* Add React and shadcn/ui page, create header on react page, update config and css in [#89](https://github.com/AVGVSTVS96/astroSite/pull/89)
+* Update nav, dropdown, and button styling in [#91](https://github.com/AVGVSTVS96/astroSite/pull/91)
+* Create `Reactheader` component, use Astro Icon for logo, import into `ReactLayout` in [#92](https://github.com/AVGVSTVS96/astroSite/pull/92)
+* Fix #93 - delete `border-card` css, use shadcn border color in `Card`, `BlogIndex`, and `Footer` in [#94](https://github.com/AVGVSTVS96/astroSite/pull/94)
+* Styling: Update `NavBar`, `Footer`, and bg-color in `Baselayout` in [#95](https://github.com/AVGVSTVS96/astroSite/pull/95)
+* Increase `NavBar` height with `py-1` in [#96](https://github.com/AVGVSTVS96/astroSite/pull/96)
+* Eliminate FOUC by initializing and applying theme in BaseLayout in [#101](https://github.com/AVGVSTVS96/astroSite/pull/101)
+* Create sidebar nav menu with shadcn sheet component in [#102](https://github.com/AVGVSTVS96/astroSite/pull/102)
+
+### Dependencies
+* chore(deps): bump astro from 4.4.9 to 4.4.15 in [#74](https://github.com/AVGVSTVS96/astroSite/pull/74)
+* chore(deps): bump `openai` to 4.29.1, `typescript` to 5.4.2, and `wrangler` to 3.34.2 by @dependabot in [#81](https://github.com/AVGVSTVS96/astroSite/pull/81)
+* chore(deps): bump the astro group with 3 updates by @dependabot in [#86](https://github.com/AVGVSTVS96/astroSite/pull/86)
+* chore(deps-dev): bump prettier-plugin-tailwindcss from 0.5.11 to 0.5.12 by @dependabot in [#79](https://github.com/AVGVSTVS96/astroSite/pull/79)
+
+### Documentation
+* Update README.md - Add `codespaces` link and update content in [#77](https://github.com/AVGVSTVS96/astroSite/pull/77)
+
+**Full Changelog**: [v0.8.2...v0.9.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.8.2...v0.9.0)
+
+
 ## v0.8.2
 ### Enhancements
-* Update `flaskSite` content and fix margin top by @AVGVSTVS96 in [70](https://github.com/AVGVSTVS96/astroSite/pull/70)
-* Create color icon SVG and use as `ThemeSwitcher` icon by @AVGVSTVS96 in [71](https://github.com/AVGVSTVS96/astroSite/pull/71)
-* Add `items-center` to `Button` component by @AVGVSTVS96 in [73](https://github.com/AVGVSTVS96/astroSite/pull/73)
+* Update `flaskSite` content and fix margin top in [70](https://github.com/AVGVSTVS96/astroSite/pull/70)
+* Create color icon SVG and use as `ThemeSwitcher` icon in [71](https://github.com/AVGVSTVS96/astroSite/pull/71)
+* Add `items-center` to `Button` component in [73](https://github.com/AVGVSTVS96/astroSite/pull/73)
 
 ### Dependencies
 * bump the misc group with 2 updates by @dependabot in [66](https://github.com/AVGVSTVS96/astroSite/pull/66)
@@ -274,7 +301,7 @@
 
 ### Features and Enhancements
 
-* Migrated and Converted Flask Website to Astro Page by @AVGVSTVS96 in [#3](https://github.com/AVGVSTVS96/astroSite/pull/3)
+* Migrated and Converted Flask Website to Astro Page in [#3](https://github.com/AVGVSTVS96/astroSite/pull/3)
    - [Updated Favicon](https://github.com/AVGVSTVS96/astroSite/commit/5e95ebb1f99fa9b96d120ab2310395cf55ad1441) and [linked it in `flaskSite.astro`](https://github.com/AVGVSTVS96/astroSite/commit/90815ce73ec0e14df78c107608869b8b3b24e670)
   - [Add Home Button to `flaskSite.astro` page](https://github.com/AVGVSTVS96/astroSite/commit/f26ef4d3776c916925b3f105786e7eef3a916307)
   - [Added newly supported Chrome CSS scrollbar styles](https://github.com/AVGVSTVS96/astroSite/commit/a309dae62c9f8a4ff96cacc2e74409166bfc907b) 
