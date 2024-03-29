@@ -17,7 +17,7 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <script is:inline>
       const preferredTheme =
-        localStorage.getItem('theme') ||
+        localStorage.getItem('themeToggle') ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light');
@@ -27,7 +27,7 @@ const { description, title } = Astro.props;
       );
 
       window.addEventListener('storage', () => {
-        const isDark = localStorage.getItem('theme') === 'dark';
+        const isDark = localStorage.getItem('themeToggle') === 'dark';
         document.documentElement.classList.toggle('dark', isDark);
       });
     </script>
