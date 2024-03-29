@@ -34,14 +34,14 @@ const {
   </Button>
   <div
     class:list={[
-      `dropdown-content absolute mt-1 hidden text-balance rounded-md border p-[0.5px] bg-primary-50 dark:bg-background`,
+      `dropdown-content absolute mt-1 hidden text-balance rounded-md border bg-primary-50 p-[0.5px] dark:bg-background`,
       icon ? '' : 'w-full',
     ]}>
     {
       links.map((link) => (
         <a
           href={link.url}
-          class="m-1 block rounded-md px-2 py-2 text-sm text-dark transition-colors duration-200 hover:bg-accent-300/75 dark:text-muted-light/80 dark:hover:bg-accent-600 dark:hover:text-muted-light/95">
+          class="m-1 block rounded-sm px-2 py-2 text-sm text-foreground/75 transition-colors duration-200 hover:bg-primary-200/70 hover:text-foreground dark:hover:bg-accent">
           {link.name}
         </a>
       ))
