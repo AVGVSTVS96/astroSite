@@ -35,9 +35,9 @@ const { ...attrs } = Astro.props;
     <div class="button-theme-container items-center flex gap-1">
       <div class="gap-1 text-[15px] sm:flex">
         <div class="hidden gap-1 sm:flex items-center">
-          <Button name="Home" link="/" />
-          <Button name="About" link="/about" />
-          <Button name="Blog" link="/blog" />
+          <Button name="Home" link="/" tabindex="-1" />
+          <Button name="About" link="/about" tabindex="-1" />
+          <Button name="Blog" link="/blog" tabindex="-1" />
           <DropdownMenu
             name="Projects"
             links={[
