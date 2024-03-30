@@ -37,6 +37,7 @@ export function SideMenu() {
               <span className="flex items-center" key={link.name}>
                 <a href={link.href} className='w-full'>
                   <Button
+                    tabIndex={-1}
                     variant="ghost"
                     size="lg"
                     className="h-9 w-full justify-start px-3 hover:no-underline">
