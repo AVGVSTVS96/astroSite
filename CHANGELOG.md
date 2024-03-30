@@ -1,3 +1,17 @@
+## v0.9.2
+### Enhancements
+* Update `DropdownMenu.astro` text and bg colors, decrease link border radius in [#105](https://github.com/AVGVSTVS96/astroSite/pull/105)
+
+### Bug Fixes
+* Updated the name of `ThemeToggle` local storage variable to fix #106 in [#107](https://github.com/AVGVSTVS96/astroSite/pull/107)
+* Improve keyboard navigation accessibility by resolving tabindex in [#109](https://github.com/AVGVSTVS96/astroSite/pull/109)
+
+### Refactoring
+* Re-organize components directory in [#108](https://github.com/AVGVSTVS96/astroSite/pull/108)
+
+**Full Changelog**: [v0.9.0...v0.9.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.0...v0.9.2)
+
+
 ## v0.9.0
 ### Enhancements
 * Create rainbow ring around theme switcher icon in [#75](https://github.com/AVGVSTVS96/astroSite/pull/75)
