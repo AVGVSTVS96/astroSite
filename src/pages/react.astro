@@ -3,6 +3,7 @@ import '@styles/shad.css';
 // import '@styles/global.css';
 
 import ReactLayout from '@layouts/ReactLayout.astro';
+import { CommandMenu } from '@components/CommandMenu';
 ---
 
 <script is:inline>
@@ -27,4 +28,5 @@ import ReactLayout from '@layouts/ReactLayout.astro';
   }
 </script>
 <ReactLayout>
+  <CommandMenu client:load />
 </ReactLayout>
