@@ -8,19 +8,20 @@ import { Button } from '@components/ui/button';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { HomeIcon, User, NotebookText } from 'lucide-react';
 
-export function SideMenu() {
-  const mainLinks = [
-    { name: 'Home', icon: <HomeIcon className="mr-2 size-4" />, href: '/' },
-    { name: 'About', icon: <User className="mr-2 size-4" />, href: '/about' },
-    { name: 'Blog', icon: <NotebookText className="mr-2 size-4" />, href: '/blog' },
-  ];
+export const mainLinks = [
+  { name: 'Home', icon: <HomeIcon className="mr-2 size-4" />, href: '/' },
+  { name: 'About', icon: <User className="mr-2 size-4" />, href: '/about' },
+  { name: 'Blog', icon: <NotebookText className="mr-2 size-4" />, href: '/blog' },
+];
 
-  const projectLinks = [
-    { name: 'Minimal Typography', href: '/designProject' },
-    { name: 'Old Flask Website', href: '/flaskSite' },
-    { name: 'GPT Chat', href: '/gpt' },
-    { name: 'React + shadcn/ui', href: '/react' },
-  ];
+export const projectLinks = [
+  { name: 'Minimal Typography', href: '/designProject' },
+  { name: 'Old Flask Website', href: '/flaskSite' },
+  { name: 'GPT Chat', href: '/gpt' },
+  { name: 'React + shadcn/ui', href: '/react' },
+];
+
+export function SideMenu() {
 
   return (
     <Sheet>

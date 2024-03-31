@@ -18,6 +18,8 @@ import {
   CommandShortcut,
 } from '@/components/ui/command';
 
+import { mainLinks, projectLinks } from './SideMenu';
+
 export function CommandMenu() {
   const [open, setOpen] = React.useState(false);
 
@@ -36,24 +38,6 @@ export function CommandMenu() {
   const navigate = (href: string) => {
     window.location.href = href;
   };
-
-  const mainLinks = [
-    {
-      name: 'Home',
-      icon: <HomeIcon className="mr-2 size-4" />,
-      href: '/',
-    },
-    {
-      name: 'About',
-      icon: <User className="mr-2 size-4" />,
-      href: '/about',
-    },
-    {
-      name: 'Blog',
-      icon: <NotebookText className="mr-2 size-4" />,
-      href: '/blog',
-    },
-  ];
 
   return (
     <>
