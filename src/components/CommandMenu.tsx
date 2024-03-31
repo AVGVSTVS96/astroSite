@@ -1,14 +1,10 @@
 import * as React from 'react';
 
 import {
-  CalendarIcon,
   EnvelopeClosedIcon,
-  FaceIcon,
   GearIcon,
   PersonIcon,
-  RocketIcon,
 } from '@radix-ui/react-icons';
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { HomeIcon, User, NotebookText } from 'lucide-react';
 
 import {
@@ -36,6 +32,10 @@ export function CommandMenu() {
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
   }, []);
+
+  const navigate = (href: string) => {
+    window.location.href = href;
+  };
 
   const mainLinks = [
     {
@@ -69,12 +69,10 @@ export function CommandMenu() {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
             {mainLinks.map((link, index) => (
-              <a key={index} href={link.href} className="hover:bg-accent">
-                <CommandItem>
-                  {link.icon}
-                  <span>{link.name}</span>
-                </CommandItem>
-              </a>
+              <CommandItem key={index} onSelect={() => navigate(link.href)}>
+                {link.icon}
+                <span>{link.name}</span>
+              </CommandItem>
             ))}
           </CommandGroup>
           <CommandSeparator />
