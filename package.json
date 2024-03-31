@@ -22,14 +22,13 @@
       "@semantic-release/release-notes-generator"
     ]
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@astrojs/react": "^3.1.0",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.5.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
+    "react-dom": "^18.2.0",
     "@astrojs/check": "^0.5.9",
     "@avgvstvs96/remark-sectionize": "^2.0.0",
     "@radix-ui/react-dialog": "^1.0.5",
