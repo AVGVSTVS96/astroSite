@@ -1,3 +1,11 @@
+## v0.9.3
+### Enhancements
+* Create `CommandMenu` component, use in `react.astro` in [#111](https://github.com/AVGVSTVS96/astroSite/pull/111)
+* Use `CommandMenu` and `SideMenu` in `NavBar.astro` in [#112](https://github.com/AVGVSTVS96/astroSite/pull/112)
+
+**Full Changelog**: [v0.9.2...v0.9.3](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.2...v0.9.3)
+
+
 ## v0.9.2
 ### Enhancements
 * Update `DropdownMenu.astro` text and bg colors, decrease link border radius in [#105](https://github.com/AVGVSTVS96/astroSite/pull/105)
@@ -25,7 +33,7 @@
 * Styling: Update `NavBar`, `Footer`, and bg-color in `Baselayout` in [#95](https://github.com/AVGVSTVS96/astroSite/pull/95)
 * Increase `NavBar` height with `py-1` in [#96](https://github.com/AVGVSTVS96/astroSite/pull/96)
 * Eliminate FOUC by initializing and applying theme in BaseLayout in [#101](https://github.com/AVGVSTVS96/astroSite/pull/101)
-* Create sidebar nav menu with shadcn sheet component in [#102](https://github.com/AVGVSTVS96/astroSite/pull/102)
+* Create `SideMenu` sidebar nav menu with shadcn sheet component in [#102](https://github.com/AVGVSTVS96/astroSite/pull/102)
 
 ### Dependencies
 * chore(deps): bump astro from 4.4.9 to 4.4.15 in [#74](https://github.com/AVGVSTVS96/astroSite/pull/74)
