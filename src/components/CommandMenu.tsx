@@ -12,6 +12,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from '@/components/ui/command';
+import { Button } from '@/components/ui/button';
 
 import { mainLinks, projectLinks } from './SideMenu';
 
@@ -22,7 +23,7 @@ export function CommandMenu() {
     const down = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey) {
         e.preventDefault();
-        if (e.key === 'j') {
+        if (e.key === 'k') {
           setOpen((open) => !open);
         } else {
           const link = mainLinks.find((link) =>
@@ -45,12 +46,18 @@ export function CommandMenu() {
 
   return (
     <>
-      <p className="text-sm text-muted-foreground">
-        Press{' '}
-        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-          <span className="text-xs">⌘</span>J
+      <Button
+        variant="outline"
+        className={
+          'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none sm:flex'
+        }
+        style={{ width: 'clamp(90px, 20vw, 240px)' }}
+        onClick={() => setOpen(true)}>
+        <span className="inline-flex">Search...</span>
+        <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+          <span className="text-xs">⌘</span>K
         </kbd>
-      </p>
+      </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
