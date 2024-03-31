@@ -9,9 +9,24 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { HomeIcon, User, NotebookText } from 'lucide-react';
 
 export const mainLinks = [
-  { name: 'Home', icon: <HomeIcon className="mr-2 size-4" />, href: '/' },
-  { name: 'About', icon: <User className="mr-2 size-4" />, href: '/about' },
-  { name: 'Blog', icon: <NotebookText className="mr-2 size-4" />, href: '/blog' },
+  {
+    name: 'Home',
+    icon: <HomeIcon className="mr-2 size-4" />,
+    href: '/',
+    shortcut: '⌘E',
+  },
+  {
+    name: 'About',
+    icon: <User className="mr-2 size-4" />,
+    href: '/about',
+    shortcut: '⌘A',
+  },
+  {
+    name: 'Blog',
+    icon: <NotebookText className="mr-2 size-4" />,
+    href: '/blog',
+    shortcut: '⌘B',
+  },
 ];
 
 export const projectLinks = [
@@ -22,7 +37,6 @@ export const projectLinks = [
 ];
 
 export function SideMenu() {
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -36,7 +50,7 @@ export function SideMenu() {
           <section>
             {mainLinks.map((link) => (
               <span className="flex items-center" key={link.name}>
-                <a href={link.href} className='w-full'>
+                <a href={link.href} className="w-full">
                   <Button
                     tabIndex={-1}
                     variant="ghost"
@@ -58,7 +72,7 @@ export function SideMenu() {
                   asChild
                   variant="link"
                   size="lg"
-                  className="text-muted-foreground w-full justify-start hover:text-foreground hover:no-underline"
+                  className="w-full justify-start text-muted-foreground hover:text-foreground hover:no-underline"
                   key={project.name}>
                   <a href={project.href}>{project.name}</a>
                 </Button>

@@ -1,11 +1,6 @@
 import * as React from 'react';
 
-import {
-  EnvelopeClosedIcon,
-  GearIcon,
-  PersonIcon,
-} from '@radix-ui/react-icons';
-import { HomeIcon, User, NotebookText } from 'lucide-react';
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 
 import {
   CommandDialog,
@@ -25,9 +20,18 @@ export function CommandMenu() {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === 'j' && (e.metaKey || e.ctrlKey)) {
+      if (e.metaKey || e.ctrlKey) {
         e.preventDefault();
-        setOpen((open) => !open);
+        if (e.key === 'j') {
+          setOpen((open) => !open);
+        } else {
+          const link = mainLinks.find((link) =>
+            link.shortcut.toLowerCase().endsWith(e.key.toLowerCase())
+          );
+          if (link) {
+            navigate(link.href);
+          }
+        }
       }
     };
 
@@ -55,27 +59,19 @@ export function CommandMenu() {
             {mainLinks.map((link, index) => (
               <CommandItem key={index} onSelect={() => navigate(link.href)}>
                 {link.icon}
-                <span>{link.name}</span>
+                {link.name}
+                <CommandShortcut>{link.shortcut}</CommandShortcut>
               </CommandItem>
             ))}
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <PersonIcon className="mr-2 h-4 w-4" />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
-              <span>Mail</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <GearIcon className="mr-2 h-4 w-4" />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
+          <CommandGroup heading="Projects">
+            {projectLinks.map((project, index) => (
+              <CommandItem key={index} onSelect={() => navigate(project.href)}>
+                <ArrowTopRightIcon className="mr-2 size-4" />
+                {project.name}
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
