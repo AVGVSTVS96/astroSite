@@ -20,25 +20,38 @@ import { cn } from '@/lib/utils';
 export function CommandMenu({ buttonStyles }: { buttonStyles?: string }) {
   const [open, setOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.metaKey || e.ctrlKey) {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      setOpen((open) => !open);
+    } else if (e.key === '/') {
+      if (
+        !(
+          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+          e.target instanceof HTMLInputElement ||
+          e.target instanceof HTMLTextAreaElement ||
+          e.target instanceof HTMLSelectElement
+        )
+      ) {
         e.preventDefault();
-        if (e.key === 'k') {
-          setOpen((open) => !open);
-        } else {
-          const link = mainLinks.find((link) =>
-            link.shortcut.toLowerCase().endsWith(e.key.toLowerCase())
-          );
-          if (link) {
-            navigate(link.href);
-          }
-        }
+        setOpen((open) => !open);
       }
-    };
+    } else if (e.metaKey || e.ctrlKey) {
+      const link = mainLinks.find((link) =>
+        link.shortcut.toLowerCase().endsWith(e.key.toLowerCase())
+      );
+      if (link) {
+        e.preventDefault();
+        navigate(link.href);
+      }
+    }
+  };
 
-    document.addEventListener('keydown', down);
-    return () => document.removeEventListener('keydown', down);
+  React.useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const navigate = (href: string) => {
