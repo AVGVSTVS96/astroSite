@@ -15,8 +15,9 @@ import {
 import { Button } from '@/components/ui/button';
 
 import { mainLinks, projectLinks } from './SideMenu';
+import { cn } from '@/lib/utils';
 
-export function CommandMenu() {
+export function CommandMenu({ buttonStyles }: { buttonStyles?: string }) {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -48,9 +49,10 @@ export function CommandMenu() {
     <>
       <Button
         variant="outline"
-        className={
-          'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none sm:flex'
-        }
+        className={cn(
+          'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none sm:flex',
+          buttonStyles
+        )}
         style={{ width: 'clamp(120px, 20vw, 240px)' }}
         onClick={() => setOpen(true)}>
         <span className="inline-flex">Search...</span>
