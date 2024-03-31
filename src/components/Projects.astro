@@ -16,32 +16,34 @@ const { ...attrs } = Astro.props;
   <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
     {
       projects.map((project) => (
-        <Card variant="bordered" padding="p-3.5" noMargin={true}>
-          <div slot="content">
-            <a
-              aria-label="github project link"
-              class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
-              href={project.data.url}>
-              <span class="dark:text-light hover:dark:text-muted-light/75">
-                {project.data.title}
-              </span>
-              <Icon
-                name="github"
-                class="mx-2 size-5 opacity-70 hover:opacity-100"
-              />
-            </a>
-            <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
-              {project.data.description}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              {project.data.tags.map((tag) => (
-                <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
-                  {tag}
-                </div>
-              ))}
+        <li>
+          <Card variant="bordered" padding="p-3.5" noMargin={true}>
+            <div slot="content">
+              <a
+                aria-label="github project link"
+                class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
+                href={project.data.url}>
+                <span class="dark:text-light hover:dark:text-muted-light/75">
+                  {project.data.title}
+                </span>
+                <Icon
+                  name="github"
+                  class="mx-2 size-5 opacity-70 hover:opacity-100"
+                />
+              </a>
+              <p class="mt-2.5 line-clamp-2 text-[0.925rem]">
+                {project.data.description}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {project.data.tags.map((tag) => (
+                  <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
+                    {tag}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </li>
       ))
     }
   </ul>
