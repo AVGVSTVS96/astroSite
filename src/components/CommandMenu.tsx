@@ -51,10 +51,10 @@ export function CommandMenu() {
         className={
           'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none sm:flex'
         }
-        style={{ width: 'clamp(90px, 20vw, 240px)' }}
+        style={{ width: 'clamp(120px, 20vw, 240px)' }}
         onClick={() => setOpen(true)}>
         <span className="inline-flex">Search...</span>
-        <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="pointer-events-none flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
