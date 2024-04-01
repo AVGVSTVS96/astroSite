@@ -6,7 +6,7 @@ import {
 } from '@components/ui/sheet';
 import { Button } from '@components/ui/button';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import { HomeIcon, User, NotebookText } from 'lucide-react';
+import { HomeIcon, User, NotebookTabs } from 'lucide-react';
 
 export const mainLinks = [
   {
@@ -23,7 +23,7 @@ export const mainLinks = [
   },
   {
     name: 'Blog',
-    icon: <NotebookText className="mr-2 size-4" />,
+    icon: <NotebookTabs className="mr-2 size-4" />,
     href: '/blog',
     shortcut: '⌘B',
   },
