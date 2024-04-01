@@ -4,6 +4,9 @@ import { ModeToggle } from '@components/ModeToggle';
 import { Icon } from 'astro-icon/components';
 import { SideMenu } from '@components/SideMenu';
 import { CommandMenu } from '@components/CommandMenu';
+
+const allPosts = await Astro.glob('@pages/posts/*.md');
+
 ---
 
 <header class="flex items-center border-b border-border/50 px-8 py-2">
@@ -22,7 +25,7 @@ import { CommandMenu } from '@components/CommandMenu';
       </Button>
     </a>
     <span class="flex gap-2 items-center">
-      <CommandMenu client:load />
+      <CommandMenu client:load posts={allPosts} />
       <SideMenu client:load />
       <ModeToggle client:load />
     </span>
