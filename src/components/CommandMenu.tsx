@@ -67,6 +67,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   return (
     <>
       <Button
+        aria-label='Open command menu'
         variant="outline"
         className={cn(
           'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none sm:flex',

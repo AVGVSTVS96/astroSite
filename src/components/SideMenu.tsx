@@ -40,7 +40,7 @@ export function SideMenu() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" aria-label="Open sidebar menu">
           <HamburgerMenuIcon className="size-5" />
         </Button>
       </SheetTrigger>
