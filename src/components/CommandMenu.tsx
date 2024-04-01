@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { NotebookText } from 'lucide-react';
 
 import {
   CommandDialog,
@@ -17,7 +18,12 @@ import { Button } from '@/components/ui/button';
 import { mainLinks, projectLinks } from './SideMenu';
 import { cn } from '@/lib/utils';
 
-export function CommandMenu({ buttonStyles }: { buttonStyles?: string }) {
+type CommandMenuProps = {
+  buttonStyles?: string;
+  posts?: any[];
+};
+
+export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   const [open, setOpen] = React.useState(false);
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -92,6 +98,20 @@ export function CommandMenu({ buttonStyles }: { buttonStyles?: string }) {
               <CommandItem key={index} onSelect={() => navigate(project.href)}>
                 <ArrowTopRightIcon className="mr-2 size-4" />
                 {project.name}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Blog Posts">
+            {posts?.map((post, index) => (
+              <CommandItem
+                slot="blogPosts"
+                key={index}
+                aria-label={`Link to blog post: ${post.frontmatter.title}`}
+                onSelect={() => navigate(post.url)}>
+                <NotebookText className="mr-2 size-4" />
+                {post.frontmatter.title}
+                <CommandShortcut>{post.frontmatter.pubDate}</CommandShortcut>
               </CommandItem>
             ))}
           </CommandGroup>
