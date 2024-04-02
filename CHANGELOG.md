@@ -1,3 +1,21 @@
+## v0.9.5
+### Accessibility Improvements
+* Wrap project cards in `<li>` tags to fix accessibility warning in [#113](https://github.com/AVGVSTVS96/astroSite/pull/113)
+* Add navigation links to `ReactHeader` and add aria labels to buttons in [#124](https://github.com/AVGVSTVS96/astroSite/pull/124)
+
+### Enhancements
+* Add `buttonStyles` prop to `CommandMenu`, use prop in `NavBar` to make button height shorter in [#114](https://github.com/AVGVSTVS96/astroSite/pull/114)
+* Update `CommandMenu` styling in [#115](https://github.com/AVGVSTVS96/astroSite/pull/115)
+* List blog posts in `CommandMenu.tsx`, resolves BAS-22 in [#117](https://github.com/AVGVSTVS96/astroSite/pull/117)
+* Update blog titles, resolves BAS-38 in [#118](https://github.com/AVGVSTVS96/astroSite/pull/118)
+* List blog posts in `CommandMenu` in `ReactHeader` in [#119](https://github.com/AVGVSTVS96/astroSite/pull/119)
+
+### Styling
+* Update `NavBar` position to fixed in [#125](https://github.com/AVGVSTVS96/astroSite/pull/125)
+
+**Full Changelog**: [v0.9.3...v0.9.5](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.3...v0.9.5)
+
+
 ## v0.9.3
 ### Enhancements
 * Create `CommandMenu` component, use in `react.astro` in [#111](https://github.com/AVGVSTVS96/astroSite/pull/111)
