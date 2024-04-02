@@ -1,3 +1,10 @@
+## v0.9.6
+### Bug Fixes
+* Revert `NavBar` to sticky in [#126](https://github.com/AVGVSTVS96/astroSite/pull/126)
+
+**Full Changelog**: [v0.9.5...v0.9.6](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.5...
+
+
 ## v0.9.5
 ### Accessibility Improvements
 * Wrap project cards in `<li>` tags to fix accessibility warning in [#113](https://github.com/AVGVSTVS96/astroSite/pull/113)
