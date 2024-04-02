@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.9",
+    "@astrojs/check": "^0.5.10",
     "@astrojs/react": "^3.1.0",
     "@astrojs/tailwind": "^5.1.0",
     "@avgvstvs96/remark-sectionize": "^2.0.0",
@@ -33,7 +33,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@types/react": "^18.2.69",
     "@types/react-dom": "^18.2.22",
-    "astro": "^4.5.6",
+    "astro": "^4.5.12",
     "astro-expressive-code": "^0.33.5",
     "astro-icon": "^1.0.3",
     "class-variance-authority": "^0.7.0",
@@ -43,7 +43,7 @@
     "openai": "^4.29.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sharp": "^0.33.2",
+    "sharp": "^0.33.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.2"
