@@ -15,16 +15,12 @@ const { title, description } = Astro.props;
     <slot name="head" />
     <script is:inline>
       const getThemePreference = () => {
-        if (
-          typeof localStorage !== 'undefined' &&
+        return typeof localStorage !== 'undefined' &&
           localStorage.getItem('theme')
-        ) {
-          return localStorage.getItem('theme');
-        } else {
-          return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? localStorage.getItem('theme')
+          : window.matchMedia('(prefers-color-scheme: dark)').matches
             ? 'dark'
             : 'light';
-        }
       };
 
       const isDark = getThemePreference() === 'dark';
@@ -40,4 +36,5 @@ const { title, description } = Astro.props;
   </head>
   <ReactHeader />
   <slot />
+
 </html>
