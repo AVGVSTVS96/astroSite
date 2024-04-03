@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-import { ArrowTopRightIcon } from '@radix-ui/react-icons';
-import { NotebookText } from 'lucide-react';
-
 import {
   CommandDialog,
   CommandEmpty,
@@ -15,8 +12,12 @@ import {
 } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
 
-import { mainLinks, projectLinks } from './SideMenu';
 import { cn } from '@/lib/utils';
+
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { NotebookText } from 'lucide-react';
+
+import { mainLinks, projectLinks, iconStyles } from './navLinks';
 
 type CommandMenuProps = {
   buttonStyles?: string;
@@ -67,7 +68,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   return (
     <>
       <Button
-        aria-label='Open command menu'
+        aria-label="Open command menu"
         variant="outline"
         className={cn(
           'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none sm:flex',
@@ -87,7 +88,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
           <CommandGroup heading="Suggestions">
             {mainLinks.map((link, index) => (
               <CommandItem key={index} onSelect={() => navigate(link.href)}>
-                {link.icon}
+                {React.createElement(link.icon, { className: iconStyles })}
                 {link.name}
                 <CommandShortcut>{link.shortcut}</CommandShortcut>
               </CommandItem>
@@ -97,7 +98,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
           <CommandGroup heading="Projects">
             {projectLinks.map((project, index) => (
               <CommandItem key={index} onSelect={() => navigate(project.href)}>
-                <ArrowTopRightIcon className="mr-2 size-4" />
+                <ArrowTopRightIcon className={iconStyles} />
                 {project.name}
               </CommandItem>
             ))}
@@ -110,7 +111,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
                 key={index}
                 aria-label={`Link to blog post: ${post.frontmatter.title}`}
                 onSelect={() => navigate(post.url)}>
-                <NotebookText className="mr-2 size-4" />
+                <NotebookText className={iconStyles} />
                 {post.frontmatter.title}
                 <CommandShortcut>{post.frontmatter.pubDate}</CommandShortcut>
               </CommandItem>
