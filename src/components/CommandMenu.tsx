@@ -27,26 +27,32 @@ type CommandMenuProps = {
 export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   const [open, setOpen] = React.useState(false);
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (event: KeyboardEvent) => {
+    const { metaKey, ctrlKey, key, target } = event;
+
     const isEditable =
-      (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-      e.target instanceof HTMLInputElement ||
-      e.target instanceof HTMLTextAreaElement ||
-      e.target instanceof HTMLSelectElement;
+      (target instanceof HTMLElement && target.isContentEditable) ||
+      target instanceof HTMLInputElement ||
+      target instanceof HTMLTextAreaElement ||
+      target instanceof HTMLSelectElement;
 
     const linkShortcut = mainLinks.find((link) =>
-      link.shortcut.toLowerCase().endsWith(e.key.toLowerCase())
+      link.shortcut.toLowerCase().endsWith(key.toLowerCase())
     );
 
     if (
-      ((e.metaKey || e.ctrlKey) && (e.key === 'k' || linkShortcut)) ||
-      (e.key === '/' && !isEditable)
+      ((metaKey || ctrlKey) && (key === 'k' || linkShortcut)) ||
+      (key === '/' && !isEditable)
     ) {
-      e.preventDefault();
-      e.key === 'k' || e.key === '/'
+      event.preventDefault();
+      key === 'k' || key === '/'
         ? setOpen((open) => !open)
         : linkShortcut && navigate(linkShortcut.href);
     }
+  };
+
+  const navigate = (href: string) => {
+    window.location.href = href;
   };
 
   React.useEffect(() => {
@@ -55,10 +61,6 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
-
-  const navigate = (href: string) => {
-    window.location.href = href;
-  };
 
   return (
     <>
