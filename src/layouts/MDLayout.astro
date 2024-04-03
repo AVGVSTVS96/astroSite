@@ -49,8 +49,9 @@ const schema = JSON.stringify(jsonLD, null, 2);
 
 <BaseLayout {...frontmatter}>
   <script slot="head" type="application/ld+json" set:html={schema} />
-  <div class="flex justify-center">
-    <div class="2xl:w-[240px]"></div>
+  <div
+    class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
+    <div class="hidden 2xl:block"></div>
     <article
       class="prose leading-[1.65] dark:prose-invert prose-h1:pt-2
 
@@ -92,7 +93,7 @@ const schema = JSON.stringify(jsonLD, null, 2);
   </div>
 </BaseLayout>
 <style is:global>
-    :not(pre)>code {
+  :not(pre) > code {
     @apply mx-0.5 rounded-md bg-slate-200 px-1.5 py-1 dark:bg-slate-700/75;
   }
 </style>
