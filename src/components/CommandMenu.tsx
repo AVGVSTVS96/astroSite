@@ -28,29 +28,24 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   const [open, setOpen] = React.useState(false);
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    const isEditable =
+      (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+      e.target instanceof HTMLInputElement ||
+      e.target instanceof HTMLTextAreaElement ||
+      e.target instanceof HTMLSelectElement;
+
+    const linkShortcut = mainLinks.find((link) =>
+      link.shortcut.toLowerCase().endsWith(e.key.toLowerCase())
+    );
+
+    if (
+      ((e.metaKey || e.ctrlKey) && (e.key === 'k' || linkShortcut)) ||
+      (e.key === '/' && !isEditable)
+    ) {
       e.preventDefault();
-      setOpen((open) => !open);
-    } else if (e.key === '/') {
-      if (
-        !(
-          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-          e.target instanceof HTMLInputElement ||
-          e.target instanceof HTMLTextAreaElement ||
-          e.target instanceof HTMLSelectElement
-        )
-      ) {
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-    } else if (e.metaKey || e.ctrlKey) {
-      const link = mainLinks.find((link) =>
-        link.shortcut.toLowerCase().endsWith(e.key.toLowerCase())
-      );
-      if (link) {
-        e.preventDefault();
-        navigate(link.href);
-      }
+      e.key === 'k' || e.key === '/'
+        ? setOpen((open) => !open)
+        : linkShortcut && navigate(linkShortcut.href);
     }
   };
 
