@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Sheet,
   SheetContent,
@@ -5,36 +7,9 @@ import {
   SheetTrigger,
 } from '@components/ui/sheet';
 import { Button } from '@components/ui/button';
+
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import { HomeIcon, User, NotebookTabs } from 'lucide-react';
-
-export const mainLinks = [
-  {
-    name: 'Home',
-    icon: <HomeIcon className="mr-2 size-4" />,
-    href: '/',
-    shortcut: '⌘E',
-  },
-  {
-    name: 'About',
-    icon: <User className="mr-2 size-4" />,
-    href: '/about',
-    shortcut: '⌘A',
-  },
-  {
-    name: 'Blog',
-    icon: <NotebookTabs className="mr-2 size-4" />,
-    href: '/blog',
-    shortcut: '⌘B',
-  },
-];
-
-export const projectLinks = [
-  { name: 'Minimal Typography', href: '/designProject' },
-  { name: 'Old Flask Website', href: '/flaskSite' },
-  { name: 'GPT Chat', href: '/gpt' },
-  { name: 'React + shadcn/ui', href: '/react' },
-];
+import { mainLinks, projectLinks, iconStyles } from './navLinks';
 
 export function SideMenu() {
   return (
@@ -56,7 +31,9 @@ export function SideMenu() {
                     variant="ghost"
                     size="lg"
                     className="h-9 w-full justify-start px-3 hover:no-underline">
-                    {link.icon}
+                    {React.createElement(link.icon, {
+                      className: iconStyles,
+                    })}
                     {link.name}
                   </Button>
                 </a>

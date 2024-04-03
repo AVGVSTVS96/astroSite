@@ -4,14 +4,9 @@ import { ModeToggle } from '@components/ModeToggle';
 import { Icon } from 'astro-icon/components';
 import { SideMenu } from '@components/SideMenu';
 import { CommandMenu } from '@components/CommandMenu';
+import { mainLinks } from './navLinks';
 
 const allPosts = await Astro.glob('@pages/posts/*.md');
-
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-];
 ---
 
 <header class="flex items-center border-b border-border/50 px-8 py-2">
@@ -25,16 +20,16 @@ const links = [
   <nav class="button-container flex w-full items-center justify-between pl-3">
     <span class="flex gap-5 px-4">
       {
-        links.map((link, index) => (
+        mainLinks.map((link, index) => (
           <a href={link.href}>
             <Button
               client:load
-              aria-label={link.label}
+              aria-label={link.name}
               key={index}
               tabIndex={-1}
               variant="link"
               className="hidden h-9 px-0 text-muted-foreground hover:text-foreground/80 hover:no-underline sm:block">
-              {link.label}
+              {link.name}
             </Button>
           </a>
         ))
