@@ -1,3 +1,22 @@
+## v0.9.7
+### Enhancements
+* Move navigation links to their own file, import where needed, closes #133 in [#139](https://github.com/AVGVSTVS96/astroSite/pull/139)
+* Update `ReactLayout` theme script and remove unneeded CSS import in [#142](https://github.com/AVGVSTVS96/astroSite/pull/142)
+* Use grid in `MDLayout` instead of flexbox to fix #130 in [#145](https://github.com/AVGVSTVS96/astroSite/pull/145)
+
+### Refactoring
+* Refactor: base layout, KB shortcut script, and CSS in [#144](https://github.com/AVGVSTVS96/astroSite/pull/144)
+
+### Dependencies
+* chore(deps): bump astro to 4.5.14, @astrojs/check to 0.5.10, sharp to 0.33.3 by @dependabot in [#140](https://github.com/AVGVSTVS96/astroSite/pull/140)
+* chore(deps-dev): bump tailwindcss to 3.4.3, @tailwindcss/typography to 0.5.12 by @dependabot in [#120](https://github.com/AVGVSTVS96/astroSite/pull/120)
+* chore(deps): bump @types/react-dom to 18.2.23, @astrojs/react to 18.7.4, and @types/react to 18.2.74 by @dependabot in [#122](https://github.com/AVGVSTVS96/astroSite/pull/122)
+* chore(deps): bump openai, typescript, type-coverage, and wrangler by @dependabot in [#141](https://github.com/AVGVSTVS96/astroSite/pull/141)
+* chore(deps-dev): bump prettier-plugin-tailwindcss from 0.5.12 to 0.5.13 by @dependabot in [#121](https://github.com/AVGVSTVS96/astroSite/pull/121)
+
+**Full Changelog**: [v0.9.6...v0.9.7](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.6...v0.9.7)
+
+
 ## v0.9.6
 ### Bug Fixes
 * Revert `NavBar` to sticky in [#126](https://github.com/AVGVSTVS96/astroSite/pull/126)
