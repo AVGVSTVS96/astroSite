@@ -24,6 +24,10 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkSectionize],
   },
+  prefetch: {
+    defaultStrategy: 'load',
+    prefetchAll: true
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
