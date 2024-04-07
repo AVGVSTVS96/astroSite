@@ -9,24 +9,20 @@ const { title, description } = Astro.props;
   <head>
     <Meta title={title} description={description} />
     <script is:inline>
-      const getThemePreference = () => {
-        return typeof localStorage !== 'undefined' &&
-          localStorage.getItem('theme')
-          ? localStorage.getItem('theme')
-          : window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light';
-      };
+      const preferredTheme =
+        localStorage.getItem('themeToggle') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.classList.toggle(
+        'dark',
+        preferredTheme === 'dark'
+      );
 
-      const isDark = getThemePreference() === 'dark';
-      document.documentElement.classList.toggle('dark', isDark);
-
-      if (typeof localStorage !== 'undefined') {
-        window.addEventListener('storage', () => {
-          const isDark = document.documentElement.classList.contains('dark');
-          localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-      }
+      window.addEventListener('storage', () => {
+        const isDark = localStorage.getItem('themeToggle') === 'dark';
+        document.documentElement.classList.toggle('dark', isDark);
+      });
     </script>
   </head>
   <ReactHeader />
