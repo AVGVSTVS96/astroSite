@@ -5,9 +5,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@components/ui/dropdown-menu';
-import { projectLinks } from './navLinks';
 
-export function Dropdown({ children }: { children: React.ReactNode }) {
+export function Dropdown({ children, items }: { children: React.ReactNode, items: {name: string, href: string}[] }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -18,13 +17,11 @@ export function Dropdown({ children }: { children: React.ReactNode }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-24 min-w-fit">
-        {projectLinks.map((project) => (
-          <DropdownMenuItem
-            key={project.name}
-            className="text-muted-foreground">
-            <a href={project.href}>{project.name}</a>
+        {items.map((item) => (
+          <DropdownMenuItem key={item.name} className="text-muted-foreground">
+            <a href={item.href}>{item.name}</a>
           </DropdownMenuItem>
-        ))}{' '}
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
