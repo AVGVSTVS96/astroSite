@@ -39,7 +39,7 @@ const allPosts = await Astro.glob('@pages/posts/*.md');
       }
       <Dropdown client:load items={projectLinks}>
         Projects
-        <ChevronDown size={12} className="ml-1.5 group-data-[state='open']:rotate-180 transition-all" />
+        <ChevronDown size={12} className="ml-1.5 mt-[1px] group-data-[state='open']:rotate-180 transition-all" />
       </Dropdown>
     </span>
     <span class="flex items-center gap-2">
