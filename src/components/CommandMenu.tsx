@@ -68,7 +68,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
         aria-label="Open command menu"
         variant="outline"
         className={cn(
-          'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none sm:flex',
+          'relative hidden h-9 justify-between rounded-[0.5rem] bg-background pr-1.5 text-sm font-normal text-muted-foreground shadow-none md:flex',
           buttonStyles
         )}
         style={{ width: 'clamp(120px, 20vw, 240px)' }}
