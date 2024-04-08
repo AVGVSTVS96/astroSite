@@ -12,13 +12,13 @@ export function Dropdown({ children, items }: { children: React.ReactNode, items
       <DropdownMenuTrigger asChild>
         <Button
           variant="link"
-          className="hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:text-foreground/80 sm:flex">
+          className="group hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:text-foreground/80 sm:flex">
           {children}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-24 min-w-fit">
         {items.map((item) => (
-          <DropdownMenuItem key={item.name} className="text-muted-foreground">
+          <DropdownMenuItem key={item.name} className="text-muted-foreground py-2">
             <a href={item.href}>{item.name}</a>
           </DropdownMenuItem>
         ))}
