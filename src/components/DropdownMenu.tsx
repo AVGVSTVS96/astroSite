@@ -13,7 +13,7 @@ export function Dropdown({ children }: { children: React.ReactNode }) {
       <DropdownMenuTrigger asChild>
         <Button
           variant="link"
-          className="hidden h-9 px-0 text-muted-foreground hover:text-foreground/80 hover:no-underline focus-visible:ring-0 data-[state='open']:text-foreground/80 sm:block">
+          className="hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:text-foreground/80 sm:flex">
           {children}
         </Button>
       </DropdownMenuTrigger>

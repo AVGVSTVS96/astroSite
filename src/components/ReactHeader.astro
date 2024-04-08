@@ -6,6 +6,7 @@ import { SideMenu } from '@components/SideMenu';
 import { CommandMenu } from '@components/CommandMenu';
 import { mainLinks } from './navLinks';
 import { Dropdown } from '@components/DropdownMenu';
+import { ChevronDown } from 'lucide-react';
 
 const allPosts = await Astro.glob('@pages/posts/*.md');
 ---
@@ -19,23 +20,26 @@ const allPosts = await Astro.glob('@pages/posts/*.md');
     </h1>
   </a>
   <nav class="button-container flex w-full items-center justify-between pl-3">
-    <span class="flex gap-5 px-4">
+    <span class="flex gap-2 px-4">
       {
         mainLinks.map((link, index) => (
-          <a href={link.href}>
+          <a href={link.href} class="rounded-md">
             <Button
               client:load
               aria-label={link.name}
               key={index}
               tabIndex={-1}
               variant="link"
-              className="hidden h-9 px-0 text-muted-foreground hover:text-foreground/80 hover:no-underline sm:block">
+              className="hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline sm:block">
               {link.name}
             </Button>
           </a>
         ))
       }
-      <Dropdown client:load>Projects</Dropdown>
+      <Dropdown client:load>
+        Projects
+        <ChevronDown size={12} className="ml-1.5" />
+      </Dropdown>
     </span>
     <span class="flex items-center gap-2">
       <CommandMenu client:load posts={allPosts} />
