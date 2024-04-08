@@ -5,6 +5,7 @@ import { Icon } from 'astro-icon/components';
 import { SideMenu } from '@components/SideMenu';
 import { CommandMenu } from '@components/CommandMenu';
 import { mainLinks } from './navLinks';
+import { Dropdown } from '@components/DropdownMenu';
 
 const allPosts = await Astro.glob('@pages/posts/*.md');
 ---
@@ -34,6 +35,7 @@ const allPosts = await Astro.glob('@pages/posts/*.md');
           </a>
         ))
       }
+      <Dropdown client:load>Projects</Dropdown>
     </span>
     <span class="flex items-center gap-2">
       <CommandMenu client:load posts={allPosts} />
