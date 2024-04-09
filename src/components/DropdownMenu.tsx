@@ -27,7 +27,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ children, items }) => {
           {children}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-24 min-w-fit">
+      <DropdownMenuContent className="w-24 min-w-fit" align='center'>
         {items.map((item) => (
           <DropdownMenuItem
             key={item.name}
