@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Button } from '@components/ui/button';
 import {
   DropdownMenu,
@@ -6,7 +8,16 @@ import {
   DropdownMenuTrigger,
 } from '@components/ui/dropdown-menu';
 
-export function Dropdown({ children, items }: { children: React.ReactNode, items: {name: string, href: string}[] }) {
+type DropdownProps = {
+  items: { name: string; href: string }[];
+  children: React.ReactNode;
+};
+
+export const Dropdown: React.FC<DropdownProps> = ({ children, items }) => {
+  const navigate = (href: string) => {
+    window.location.href = href;
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -20,8 +31,9 @@ export function Dropdown({ children, items }: { children: React.ReactNode, items
         {items.map((item) => (
           <DropdownMenuItem
             key={item.name}
-            className="py-2 text-muted-foreground">
-            <a href={item.href}>{item.name}</a>
+            className="py-2 text-muted-foreground"
+            onSelect={() => navigate(item.href)}>
+            {item.name}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
