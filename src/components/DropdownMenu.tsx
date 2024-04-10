@@ -23,11 +23,11 @@ export const Dropdown: React.FC<DropdownProps> = ({ children, items }) => {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="data-[state='open']:bg-accent group hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:text-foreground/80 sm:flex">
+          className="group hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:bg-accent data-[state='open']:text-foreground/80 sm:flex">
           {children}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-24 min-w-fit">
+      <DropdownMenuContent className="w-24 min-w-fit" align="center">
         {items.map((item) => (
           <DropdownMenuItem
             key={item.name}
@@ -39,4 +39,4 @@ export const Dropdown: React.FC<DropdownProps> = ({ children, items }) => {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
