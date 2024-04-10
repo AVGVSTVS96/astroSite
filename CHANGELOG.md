@@ -1,3 +1,29 @@
+## v0.10.0
+### Enhancements
+* Enable Astro prefetching, prefetch all links on load by @AVGVSTVS96 in [#150](https://github.com/AVGVSTVS96/astroSite/pull/150)
+* Add title and description to react page by @AVGVSTVS96 in [#151](https://github.com/AVGVSTVS96/astroSite/pull/151)
+* Create composable React `DropdownMenu` component, use for projects on react page by @AVGVSTVS96 in [#160](https://github.com/AVGVSTVS96/astroSite/pull/160)
+  * Add padding to dropdown items, add rotate transition to chevron icon by @AVGVSTVS96 in [#166](https://github.com/AVGVSTVS96/astroSite/pull/166)
+  * Update Dropdown button and icon CSS by @AVGVSTVS96 in [#167](https://github.com/AVGVSTVS96/astroSite/pull/167)
+  * Add `margin-top` to icon to better align with text by @AVGVSTVS96 in [#170](https://github.com/AVGVSTVS96/astroSite/pull/170)
+  * Set alignment for Dropdown and update `nav` margin-left by @AVGVSTVS96 in [#172](https://github.com/AVGVSTVS96/astroSite/pull/172)
+
+### Refactoring
+* Refactor react `ModeToggle`, remove dropdown, fixes #128 by @AVGVSTVS96 in [#157](https://github.com/AVGVSTVS96/astroSite/pull/157)
+* Refactor Dropdown by @AVGVSTVS96 in [#171](https://github.com/AVGVSTVS96/astroSite/pull/171)
+
+### Security
+* chore(meta-deps): Add overrides to resolve security vulnerabilities by @AVGVSTVS96 in [#149](https://github.com/AVGVSTVS96/astroSite/pull/149)
+
+### Dependencies
+* chore(deps): bump astro to 4.5.16, expressive-code to 0.34.1 by @dependabot in [#161](https://github.com/AVGVSTVS96/astroSite/pull/161)
+* chore(deps): bump openai, wrangler, type-coverage, and typescript by @dependabot in [#162](https://github.com/AVGVSTVS96/astroSite/pull/162)
+* chore(deps): bump lucide-react from 0.363.0 to 0.365.0 by @dependabot in [#163](https://github.com/AVGVSTVS96/astroSite/pull/163)
+* chore(deps): bump @types/react-dom from 18.2.23 to 18.2.24 by @dependabot in [#164](https://github.com/AVGVSTVS96/astroSite/pull/164)
+
+**Full Changelog**: [v0.9.7...v0.10.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.7...v0.10.0)
+
+
 ## v0.9.7
 ### Enhancements
 * Move navigation links to their own file, import where needed, closes #133 in [#139](https://github.com/AVGVSTVS96/astroSite/pull/139)
