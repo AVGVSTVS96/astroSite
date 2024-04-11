@@ -20,13 +20,19 @@
   "lang": "en",
   "shortcuts": [
     {
+      "name": "Home",
+      "url": "/",
+      "description": "Go to the home page"
+    },
+    {
       "name": "Blog",
       "url": "/blog",
       "description": "Read my blog"
     },
     {
       "name": "About",
-      "url": "/about"
+      "url": "/about",
+      "description": "Learn about this site"
     },
     {
       "name": "React",
