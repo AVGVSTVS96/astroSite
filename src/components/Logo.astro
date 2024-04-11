@@ -1,0 +1,17 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const { class: className } = Astro.props;
+
+interface Props {
+  class?: string;
+}
+---
+
+<a href="/" aria-label="home button" class={className}>
+  <h1
+    class="logo flex h-9 items-center gap-x-2.5 text-xl font-bold text-foreground dark:text-muted-light">
+    <Icon name="shadlogo" size={20} />
+    bassim
+  </h1>
+</a>

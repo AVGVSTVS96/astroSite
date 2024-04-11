@@ -1,26 +1,20 @@
 ---
 import { Button } from '@components/ui/button';
 import { ModeToggle } from '@components/ModeToggle';
-import { Icon } from 'astro-icon/components';
 import { SideMenu } from '@components/SideMenu';
 import { CommandMenu } from '@components/CommandMenu';
 import { mainLinks } from './navLinks';
 import { Dropdown } from '@components/DropdownMenu';
 import { ChevronDown } from 'lucide-react';
 import { projectLinks } from './navLinks';
+import Logo from './Logo.astro';
 
 const allPosts = await Astro.glob('@pages/posts/*.md');
 ---
 
 <header class="flex items-center border-b border-border/50 px-8 py-2">
-  <a href="/">
-    <h1
-      class="flex items-center gap-x-2.5 text-xl font-bold text-foreground dark:text-muted-light">
-      <Icon name="shadlogo" size={20} />
-      bassim
-    </h1>
-  </a>
-  <nav class="button-container flex w-full items-center justify-between ml-2">
+  <Logo />
+  <nav class="button-container ml-2 flex w-full items-center justify-between">
     <span class="flex gap-2 px-4">
       {
         mainLinks.map((link, index) => (
@@ -39,7 +33,10 @@ const allPosts = await Astro.glob('@pages/posts/*.md');
       }
       <Dropdown client:load items={projectLinks}>
         Projects
-        <ChevronDown size={12} className="ml-1.5 mt-[1.5px] group-data-[state='open']:rotate-180 transition-all" />
+        <ChevronDown
+          size={12}
+          className="ml-1.5 mt-[1.5px] transition-all group-data-[state='open']:rotate-180"
+        />
       </Dropdown>
     </span>
     <span class="flex items-center gap-2">
