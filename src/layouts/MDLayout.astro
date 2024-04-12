@@ -1,11 +1,13 @@
 ---
-const { frontmatter, headings } = Astro.props;
 import TableOfContents from '@components/TableOfContents.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import Prose from '@components/Prose.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+const { frontmatter, headings } = Astro.props;
 
 const isoDate = new Date(frontmatter.pubDate).toISOString().substring(0, 10);
+
 const imageUrl = new URL(frontmatter.image, Astro.request.url).href;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
@@ -52,39 +54,28 @@ const schema = JSON.stringify(jsonLD, null, 2);
   <div
     class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
     <div class="hidden 2xl:block"></div>
-    <article
-      class="prose leading-[1.65] dark:prose-invert prose-h1:pt-2
-
-      max-w-64 3xs:max-w-xs 2xs:max-w-sm xs:max-w-md sm:max-w-xl md:max-w-2xl min-[868px]:max-w-3xl lg:max-w-[42rem] xl:max-w-4xl 
-
-      prose-code:text-primary-800/90 dark:prose-code:text-primary-50/90 prose-code:font-medium prose-code:py-0.5 prose-code:px-1.5 prose-code:mx-[0.5px]
-      before:prose-code:hidden after:prose-code:hidden
-
-      prose-a:decoration-accent-400 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-accent-300
-
-      prose-hr:border-accent-500
-      dark:prose-hr:border-accent-400 dark:prose-hr:border-opacity-60
-
-      prose-table:border prose-th:px-3 prose-td:px-3 prose-td:border-r prose-th:border-r dark:prose-table:border-primary-600 dark:prose-td:border-r dark:prose-td:border-primary-600 dark:prose-th:border-primary-600">
-      <div class="mb-1 flex justify-start">
-        <span
-          class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
-          Written by {frontmatter.author} on {frontmatter.pubDate}
-        </span>
-      </div>
-      <h1>{frontmatter.title}</h1>
-      {
-        frontmatter.image && (
-          <Image
-            src={images[frontmatter.image]()}
-            width={frontmatter.image.width}
-            height={frontmatter.image.height}
-            alt={frontmatter.title}
-          />
-        )
-      }
-      <p>{frontmatter.description}</p>
-      <slot />
+    <article>
+      <Prose>
+        <div class="mb-1 flex justify-start">
+          <span
+            class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
+            Written by {frontmatter.author} on {frontmatter.pubDate}
+          </span>
+        </div>
+        <h1>{frontmatter.title}</h1>
+        {
+          frontmatter.image && (
+            <Image
+              src={images[frontmatter.image]()}
+              width={frontmatter.image.width}
+              height={frontmatter.image.height}
+              alt={frontmatter.title}
+            />
+          )
+        }
+        <p>{frontmatter.description}</p>
+        <slot />
+      </Prose>
     </article>
     <div
       class="hidden min-h-full prose-a:transition-colors prose-a:duration-100 lg:block">
@@ -92,8 +83,3 @@ const schema = JSON.stringify(jsonLD, null, 2);
     </div>
   </div>
 </BaseLayout>
-<style is:global>
-  :not(pre) > code {
-    @apply mx-0.5 rounded-md bg-slate-200 px-1.5 py-1 dark:bg-slate-700/75;
-  }
-</style>

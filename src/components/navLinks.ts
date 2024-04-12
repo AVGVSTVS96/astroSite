@@ -1,6 +1,6 @@
 import { HomeIcon, User, NotebookTabs } from 'lucide-react';
 
-export const iconStyles = "mr-2 size-4"
+export const iconStyles = 'mr-2 size-4';
 
 export const mainLinks = [
   {

@@ -1,0 +1,28 @@
+---
+const code =
+  'prose-code:text-primary-800/90 dark:prose-code:text-primary-50/90 prose-code:font-medium prose-code:py-0.5 prose-code:px-1.5 prose-code:mx-[0.5px] before:prose-code:hidden after:prose-code:hidden';
+
+const links =
+  'prose-a:decoration-accent-400 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-accent-300';
+
+const hr =
+  'prose-hr:border-accent-500 dark:prose-hr:border-accent-400 dark:prose-hr:border-opacity-60';
+
+const table =
+  'prose-table:border prose-th:px-3 prose-td:px-3 prose-td:border-r prose-th:border-r dark:prose-table:border-primary-600 dark:prose-td:border-r dark:prose-td:border-primary-600 dark:prose-th:border-primary-600';
+
+const width =
+  'max-w-64 3xs:max-w-xs 2xs:max-w-sm xs:max-w-md sm:max-w-xl md:max-w-2xl min-[868px]:max-w-3xl lg:max-w-[42rem] xl:max-w-4xl';
+
+const base = 'prose min-h-full leading-[1.65] dark:prose-invert prose-h1:pt-2';
+---
+
+<div class:list={[base, table, hr, links, code, width]}>
+  <slot />
+</div>
+
+<style is:global>
+  :not(pre) > code {
+    @apply mx-0.5 rounded-md bg-slate-200 px-1.5 py-1 dark:bg-slate-700/75;
+  }
+</style>

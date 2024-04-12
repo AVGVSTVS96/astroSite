@@ -15,8 +15,7 @@ interface Props extends HTMLAttributes<'a'> {
   href={`https://www.${
     variant === 'linkedIn' ? 'linkedin.com/in' : `${platform}.com`
   }/${username}`}
-  aria-label={`link to ${platform} profile for ${username}`}
-  >
+  aria-label={`link to ${platform} profile for ${username}`}>
   <Icon
     name={`${platform}`}
     size={20}

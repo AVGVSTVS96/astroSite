@@ -1,0 +1,48 @@
+{
+  "background_color": "#020817",
+  "description": "Bassim Shahidy's portfolio website",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Bassim's Portfolio",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "astroSite",
+  "start_url": "/",
+  "theme_color": "#020817",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "lang": "en",
+  "shortcuts": [
+    {
+      "name": "Home",
+      "url": "/",
+      "description": "Go to the home page"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "description": "Read my blog"
+    },
+    {
+      "name": "About",
+      "url": "/about",
+      "description": "Learn about this site"
+    },
+    {
+      "name": "React",
+      "url": "/react",
+      "description": "Practicing with React"
+    },
+    {
+      "name": "GPT Chat",
+      "url": "/gpt",
+      "description": "Chat with GPT"
+    }
+  ]
+}

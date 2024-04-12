@@ -3,9 +3,9 @@ import Button from './Button.astro';
 import DropdownMenu from './DropdownMenu.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import ThemeSwitcher from './ThemeSwitcher.astro';
-import { Icon } from 'astro-icon/components';
 import { CommandMenu } from '@components/CommandMenu';
 import { SideMenu } from '@components/SideMenu';
+import Logo from './Logo.astro';
 
 const allPosts = await Astro.glob('@pages/posts/*.md');
 
@@ -25,13 +25,7 @@ const { ...attrs } = Astro.props;
   <div
     class="button-container flex items-center justify-between px-4 py-2 text-dark dark:text-light sm:px-6 md:px-10 xl:px-14">
     <span class="flex items-center">
-      <a href="/" aria-label="home button" class="mr-4">
-        <h1
-          class="logo flex h-9 items-center gap-x-2.5 text-xl font-bold text-foreground dark:text-muted-light">
-          <Icon name="shadlogo" size={20} />
-          bassim
-        </h1>
-      </a>
+      <Logo class="mr-4" />
       <CommandMenu client:load buttonStyles="h-8 pr-1" posts={allPosts} />
     </span>
     <div class="button-theme-container flex items-center gap-1">
