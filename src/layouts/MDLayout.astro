@@ -1,12 +1,13 @@
 ---
-const { frontmatter, headings } = Astro.props;
 import TableOfContents from '@components/TableOfContents.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import Prose from '@components/Prose.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import Prose from '@components/Prose.astro';
+const { frontmatter, headings } = Astro.props;
 
 const isoDate = new Date(frontmatter.pubDate).toISOString().substring(0, 10);
+
 const imageUrl = new URL(frontmatter.image, Astro.request.url).href;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
