@@ -50,7 +50,7 @@ const schema = JSON.stringify(jsonLD, null, 2);
 ---
 
 <BaseLayout {...frontmatter}>
-  <script slot="head" type="application/ld+json" set:html={schema} />
+  <script is:inline slot="head" type="application/ld+json" set:html={schema} />
   <div
     class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
     <div class="hidden 2xl:block"></div>

@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
 <BaseLayout {...Astro.props}>
-  <script slot="head" type="application/ld+json">
+  <script is:inline slot="head" type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfilePage",
