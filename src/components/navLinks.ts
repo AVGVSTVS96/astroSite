@@ -28,4 +28,5 @@ export const projectLinks = [
   { name: 'Old Flask Website', href: '/flaskSite' },
   { name: 'GPT Chat', href: '/gpt' },
   { name: 'React + shadcn/ui', href: '/react' },
+  { name: 'Chat UI', href: '/gptchat' },
 ];
