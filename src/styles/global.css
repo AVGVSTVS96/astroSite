@@ -72,9 +72,7 @@
 
   ::-webkit-scrollbar {
     background-color: transparent;
-    width: 10px;
-    height: 10px;
-    gap: 5px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
