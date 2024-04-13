@@ -60,7 +60,8 @@ const variableStyles: (string | undefined)[] = [
           baseStyles,
           variableStyles,
           currentPath === link ||
-            (link === '/blog' && currentPath.includes('/posts/'))
+            currentPath === `${link}/` ||
+            (link === '/blog' && currentPath.startsWith('/posts/'))
             ? 'text-foreground'
             : ''
         )}
