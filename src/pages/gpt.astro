@@ -16,10 +16,10 @@ import '@styles/global.css';
   <body>
     <div class="menubar">
       <input
-        type="text"
-        class="input"
-        id="system-message"
-        placeholder="Enter system message"
+      type="text"
+      class="input placeholder:text-sm"
+      id="system-message"
+      placeholder="Enter system message"
       />
       <label class="slider-container">
         <input type="checkbox" id="model-toggle" autocomplete="off" />
@@ -31,12 +31,12 @@ import '@styles/global.css';
       </label>
     </div>
     <div class="chat-container">
-      <h1 class="heading">AstroGPT</h1>
+      <h1 class="text-2xl font-bold text-muted-light">AstroGPT</h1>
       <div class="chat-wrapper">
         <div id="chat-messages" class="chat-box"></div>
         <form id="chat-form" class="input-form">
           <textarea
-            class="input"
+            class="input placeholder:text-sm min-h-11 max-h-44"
             id="user-input"
             name="user_input"
             placeholder="Type your message..."></textarea>
@@ -80,6 +80,7 @@ import '@styles/global.css';
 
   body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100dvh;
@@ -228,7 +229,6 @@ import '@styles/global.css';
     border-radius: 8px;
     z-index: 1000;
   }
-
   .input {
     flex-grow: 1;
     height: 27px;
