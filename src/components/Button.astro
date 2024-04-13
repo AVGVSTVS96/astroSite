@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { cn } from '@/lib/utils';
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'button'> {
@@ -22,6 +23,8 @@ const {
   icon = false,
   ...attrs
 } = Astro.props;
+
+const currentPath = new URL(Astro.request.url).pathname;
 
 const baseStyles: string = `items-center border border-transparent flex max-w-max rounded-lg font-normal text-foreground/70 hover:text-foreground`;
 
@@ -53,7 +56,14 @@ const variableStyles: (string | undefined)[] = [
     <a href={link} id={id}>
       <button
         {...attrs}
-        class:list={[baseStyles, variableStyles]}
+        class={cn(
+          baseStyles,
+          variableStyles,
+          currentPath === link ||
+            (link === '/blog' && currentPath.includes('/posts/'))
+            ? 'text-foreground'
+            : ''
+        )}
         aria-label={`${name} button`}>
         {icon ? <Icon name={name} size={26} /> : name}
         {showCaret && (
