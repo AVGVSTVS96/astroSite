@@ -19,7 +19,7 @@ export function SideMenu() {
           <HamburgerMenuIcon className="size-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-64">
+      <SheetContent side="left" className="w-64 overflow-y-auto">
         <SheetTitle className="font-bold">bassim</SheetTitle>
         <nav className="mt-4 flex flex-col">
           <section>
