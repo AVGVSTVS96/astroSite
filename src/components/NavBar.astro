@@ -6,6 +6,7 @@ import ThemeSwitcher from './ThemeSwitcher.astro';
 import { CommandMenu } from '@components/CommandMenu';
 import { SideMenu } from '@components/SideMenu';
 import Logo from './Logo.astro';
+import { projectLinks } from './navLinks';
 
 const allPosts = await Astro.glob('@pages/posts/*.md');
 
@@ -36,12 +37,7 @@ const { ...attrs } = Astro.props;
           <Button name="Blog" link="/blog" tabindex="-1" />
           <DropdownMenu
             name="Projects"
-            links={[
-              { name: 'Minimal Typography', url: '/designProject' },
-              { name: 'Old Flask Site', url: '/flaskSite' },
-              { name: 'GPT Chat', url: '/gpt' },
-              { name: 'React + shadcn/ui', url: '/react' },
-            ]}
+            links={projectLinks}
             showCaret={true}
             icon={false}
           />
