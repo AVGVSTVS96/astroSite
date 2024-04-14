@@ -25,9 +25,9 @@ const { title, description } = Astro.props;
       });
     </script>
   </head>
-  <main class="flex flex-grow min-h-dvh min-w-screen flex-col items-center">
+  <main class="min-w-screen flex min-h-dvh grow flex-col items-center">
     <ReactHeader />
-    <div class="justify-center my-auto w-dvw flex">
+    <div class="my-auto flex w-dvw justify-center">
       <slot />
     </div>
   </main>
