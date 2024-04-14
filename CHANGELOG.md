@@ -1,19 +1,49 @@
+## v0.10.2
+### New Features
+* Create chat card component and use it in gptchat page in [#192](https://github.com/AVGVSTVS96/astroSite/pull/192)
+  * Add shadcn card and input components in [#191](https://github.com/AVGVSTVS96/astroSite/pull/191)
+  * Make chat card box scroll in [#193](https://github.com/AVGVSTVS96/astroSite/pull/193)
+  * Scaffold chat.tsx, select component to chat.tsx, use selections in chat.js in [#194](https://github.com/AVGVSTVS96/astroSite/pull/194)
+* Add PWA Manifest File in [#175](https://github.com/AVGVSTVS96/astroSite/pull/175)
+* Add condition in `Button.astro` to highlight links based on active page in [#187](https://github.com/AVGVSTVS96/astroSite/pull/187)
+
+### Enhancements
+* Decrease blog post width, add margin to article tag in [#185](https://github.com/AVGVSTVS96/astroSite/pull/185)
+* Import `global.css` adding tailwind to `gpt.astro`, update styles in [#182](https://github.com/AVGVSTVS96/astroSite/pull/182)
+* Remove background blur when opening dialogs like command palette in [#186](https://github.com/AVGVSTVS96/astroSite/pull/186)
+* Add `overflow-y-auto` to `SideMenu` so it scrolls when there's not enough vertical space in [#189](https://github.com/AVGVSTVS96/astroSite/pull/189)
+* Update `ReactLayout` and `ReactHeader` to center main content in [#190](https://github.com/AVGVSTVS96/astroSite/pull/190)
+
+### Refactor
+* Create separate component for logo, adjust styling in [#176](https://github.com/AVGVSTVS96/astroSite/pull/176)
+* Create Prose component for blog styling in [#179](https://github.com/AVGVSTVS96/astroSite/pull/179)
+* Add `is:inline` to JSON-LD scripts in [#183](https://github.com/AVGVSTVS96/astroSite/pull/183)
+* Use Tailwind `grow` instead of legacy `flex-grow` in [#196](https://github.com/AVGVSTVS96/astroSite/pull/196)
+* Use href for `DropdownMenu.astro` links in [#197](https://github.com/AVGVSTVS96/astroSite/pull/197)
+
+### Security and dependencies
+* chore(meta-deps): override tar to 6.2.1 by @dependabot in [#174](https://github.com/AVGVSTVS96/astroSite/pull/174)
+* Remove semantic release in [#188](https://github.com/AVGVSTVS96/astroSite/pull/188)
+
+
+**Full Changelog**: [v0.10.0...v0.10.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.10.0...v0.10.2)
+
 ## v0.10.0
 ### Enhancements
-* Enable Astro prefetching, prefetch all links on load by @AVGVSTVS96 in [#150](https://github.com/AVGVSTVS96/astroSite/pull/150)
-* Add title and description to react page by @AVGVSTVS96 in [#151](https://github.com/AVGVSTVS96/astroSite/pull/151)
-* Create composable React `DropdownMenu` component, use for projects on react page by @AVGVSTVS96 in [#160](https://github.com/AVGVSTVS96/astroSite/pull/160)
-  * Add padding to dropdown items, add rotate transition to chevron icon by @AVGVSTVS96 in [#166](https://github.com/AVGVSTVS96/astroSite/pull/166)
-  * Update Dropdown button and icon CSS by @AVGVSTVS96 in [#167](https://github.com/AVGVSTVS96/astroSite/pull/167)
-  * Add `margin-top` to icon to better align with text by @AVGVSTVS96 in [#170](https://github.com/AVGVSTVS96/astroSite/pull/170)
-  * Set alignment for Dropdown and update `nav` margin-left by @AVGVSTVS96 in [#172](https://github.com/AVGVSTVS96/astroSite/pull/172)
+* Enable Astro prefetching, prefetch all links on load in [#150](https://github.com/AVGVSTVS96/astroSite/pull/150)
+* Add title and description to react page in [#151](https://github.com/AVGVSTVS96/astroSite/pull/151)
+* Create composable React `DropdownMenu` component, use for projects on react page in [#160](https://github.com/AVGVSTVS96/astroSite/pull/160)
+  * Add padding to dropdown items, add rotate transition to chevron icon in [#166](https://github.com/AVGVSTVS96/astroSite/pull/166)
+  * Update Dropdown button and icon CSS in [#167](https://github.com/AVGVSTVS96/astroSite/pull/167)
+  * Add `margin-top` to icon to better align with text in [#170](https://github.com/AVGVSTVS96/astroSite/pull/170)
+  * Set alignment for Dropdown and update `nav` margin-left in [#172](https://github.com/AVGVSTVS96/astroSite/pull/172)
 
 ### Refactoring
-* Refactor react `ModeToggle`, remove dropdown, fixes #128 by @AVGVSTVS96 in [#157](https://github.com/AVGVSTVS96/astroSite/pull/157)
-* Refactor Dropdown by @AVGVSTVS96 in [#171](https://github.com/AVGVSTVS96/astroSite/pull/171)
+* Refactor react `ModeToggle`, remove dropdown, fixes #128 in [#157](https://github.com/AVGVSTVS96/astroSite/pull/157)
+* Refactor Dropdown in [#171](https://github.com/AVGVSTVS96/astroSite/pull/171)
 
 ### Security
-* chore(meta-deps): Add overrides to resolve security vulnerabilities by @AVGVSTVS96 in [#149](https://github.com/AVGVSTVS96/astroSite/pull/149)
+* chore(meta-deps): Add overrides to resolve security vulnerabilities in [#149](https://github.com/AVGVSTVS96/astroSite/pull/149)
 
 ### Dependencies
 * chore(deps): bump astro to 4.5.16, expressive-code to 0.34.1 by @dependabot in [#161](https://github.com/AVGVSTVS96/astroSite/pull/161)

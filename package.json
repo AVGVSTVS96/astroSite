@@ -1,7 +1,7 @@
 {
   "name": "astrosite",
   "type": "module",
-  "version": "0.10.0",
+  "version": "0.10.2",
   "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "astro dev",
