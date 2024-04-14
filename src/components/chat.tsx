@@ -23,12 +23,44 @@ export function Chat() {
       role: 'user',
       content: "I can't log in.",
     },
+    {
+      role: 'agent',
+      content: 'Hi, how can I help you today?',
+    },
+    {
+      role: 'user',
+      content: "Hey, I'm having trouble with my account.",
+    },
+    {
+      role: 'agent',
+      content: 'What seems to be the problem?',
+    },
+    {
+      role: 'user',
+      content: "I can't log in.",
+    },
+    {
+      role: 'agent',
+      content: 'Hi, how can I help you today?',
+    },
+    {
+      role: 'user',
+      content: "Hey, I'm having trouble with my account.",
+    },
+    {
+      role: 'agent',
+      content: 'What seems to be the problem?',
+    },
+    {
+      role: 'user',
+      content: "I can't log in.",
+    },
   ]);
   const [input, setInput] = React.useState('');
   const inputLength = input.trim().length;
 
   return (
-    <Card>
+    <Card className="w-[clamp(260px,60vw,700px)]">
       <CardHeader className="flex flex-row items-center">
         <div className="flex-1">
           <p className="font-bold leading-none tracking-tight">ChatGPT</p>
