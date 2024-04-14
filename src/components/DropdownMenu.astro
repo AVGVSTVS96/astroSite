@@ -4,7 +4,7 @@ import Button from './Button.astro';
 
 interface Link {
   name: string;
-  url: string;
+  href: string;
 }
 
 interface Props extends HTMLAttributes<'div'> {
@@ -40,7 +40,7 @@ const {
     {
       links.map((link) => (
         <a
-          href={link.url}
+          href={link.href}
           class="m-1 block rounded-sm px-2 py-2 text-sm text-foreground/75 transition-colors duration-200 hover:bg-primary-200/70 hover:text-foreground dark:hover:bg-accent">
           {link.name}
         </a>
