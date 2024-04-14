@@ -7,12 +7,23 @@ const modelToggle = document.getElementById('model-toggle');
 const modelLabelLeft = document.getElementById('model-label-left');
 const modelLabelRight = document.getElementById('model-label-right');
 
-const gpt3 = 'gpt-3.5-turbo-0125';
-const gpt4 = 'gpt-4';
-
 // State variables
 export let messages = [];
-export let modelName = modelToggle.checked ? gpt4 : gpt3;
+
+// export let modelName = modelToggle.checked ? gpt4 : gpt3;
+
+// set to get modelname from select in chat.tsx
+// export let modelName = window.modelName || window.gpt3;
+
+export let modelName = localStorage.getItem('selectedModel') || 'gpt3';
+
+if (modelName === 'gpt3') {
+  modelName = 'gpt-3.5-turbo-0125';
+} else if (modelName === 'gpt4') {
+  modelName = 'gpt-4';
+}
+console.log(modelName);
+
 let autoScrollState = true;
 let lastScrollTop = 0;
 
@@ -25,15 +36,15 @@ export function autoScroll() {
 }
 
 // Event listener functions
-function handleModelToggle() {
-  if (modelToggle.checked) {
-    modelLabelRight.textContent = 'GPT-4';
-    modelName = gpt4;
-  } else {
-    modelLabelLeft.textContent = 'GPT-3.5';
-    modelName = gpt3;
-  }
-}
+// function handleModelToggle() {
+//   if (modelToggle.checked) {
+//     modelLabelRight.textContent = 'GPT-4';
+//     modelName = gpt4;
+//   } else {
+//     modelLabelLeft.textContent = 'GPT-3.5';
+//     modelName = gpt3;
+//   }
+// }
 
 function handleInputKeydown(event) {
   if (event.key === 'Enter' && !event.shiftKey) {
@@ -57,6 +68,6 @@ function handleChatScroll() {
 }
 
 // Event listeners
-modelToggle.addEventListener('change', handleModelToggle);
+// modelToggle.addEventListener('change', handleModelToggle);
 userInputElem.addEventListener('keydown', handleInputKeydown);
 chatMessagesDiv.addEventListener('scroll', handleChatScroll);
