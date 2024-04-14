@@ -37,12 +37,7 @@ const { ...attrs } = Astro.props;
           <Button name="Blog" link="/blog" tabindex="-1" />
           <DropdownMenu
             name="Projects"
-            links={[
-              { name: 'Minimal Typography', href: '/designProject' },
-              { name: 'Old Flask Site', href: '/flaskSite' },
-              { name: 'GPT Chat', href: '/gpt' },
-              { name: 'React + shadcn/ui', href: '/react' },
-            ]}
+            links={projectLinks}
             showCaret={true}
             icon={false}
           />
