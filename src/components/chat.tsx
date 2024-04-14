@@ -101,7 +101,7 @@ export function Chat() {
         </div>
         <GptSelect />
       </CardHeader>
-      <CardContent className="flex-grow overflow-y-auto">
+      <CardContent className="grow overflow-y-auto">
         <div className="space-y-4">
           {messages.map((message, index) => (
             <div
