@@ -28,7 +28,7 @@ export function Chat() {
   const inputLength = input.trim().length;
 
   return (
-    <Card>
+    <Card className="w-[clamp(260px,60vw,700px)]">
       <CardHeader className="flex flex-row items-center">
         <div className="flex-1">
           <p className="font-bold leading-none tracking-tight">ChatGPT</p>
