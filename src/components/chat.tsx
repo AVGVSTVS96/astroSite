@@ -4,6 +4,40 @@ import { PaperPlaneIcon } from '@radix-ui/react-icons';
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card';
 import { Button } from '@components/ui/button';
 import { Input } from '@components/ui/input';
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+  SelectItem,
+} from '@components/ui/select';
+
+const GptSelect: React.FC = () => {
+  const [selectedModel, setSelectedModel] = React.useState('gpt3');
+
+  const handleModelChange = (value: string) => {
+    setSelectedModel(value);
+    localStorage.setItem('selectedModel', value);
+  };
+  console.log('Selected model:', selectedModel);
+
+  return (
+    <Select value={selectedModel} onValueChange={handleModelChange}>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a model" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel className="text-xs">OpenAI</SelectLabel>
+          <SelectItem value="gpt3">GPT-3.5</SelectItem>
+          <SelectItem value="gpt4">GPT-4-Turbo</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+};
 
 export function Chat() {
   const [messages, setMessages] = React.useState([
@@ -61,10 +95,11 @@ export function Chat() {
 
   return (
     <Card className="flex h-[clamp(300px,70vh,700px)] w-[clamp(260px,60vw,700px)] flex-col">
-      <CardHeader className="flex flex-row items-center">
+      <CardHeader className="h-18 flex flex-row items-center py-3">
         <div className="flex-1">
           <p className="font-bold leading-none tracking-tight">ChatGPT</p>
         </div>
+        <GptSelect />
       </CardHeader>
       <CardContent className="flex-grow overflow-y-auto">
         <div className="space-y-4">
