@@ -60,13 +60,13 @@ export function Chat() {
   const inputLength = input.trim().length;
 
   return (
-    <Card className="flex-col h-[50vh] flex max-h-[700px] min-h-[260px] w-[clamp(260px,60vw,700px)]">
+    <Card className="flex h-[clamp(300px,70vh,700px)] w-[clamp(260px,60vw,700px)] flex-col">
       <CardHeader className="flex flex-row items-center">
         <div className="flex-1">
           <p className="font-bold leading-none tracking-tight">ChatGPT</p>
         </div>
       </CardHeader>
-      <CardContent className="overflow-y-auto flex-grow">
+      <CardContent className="flex-grow overflow-y-auto">
         <div className="space-y-4">
           {messages.map((message, index) => (
             <div
@@ -81,7 +81,7 @@ export function Chat() {
           ))}
         </div>
       </CardContent>
-      <CardFooter className='mt-6'>
+      <CardFooter className="mt-6">
         <form
           onSubmit={(event) => {
             event.preventDefault();
