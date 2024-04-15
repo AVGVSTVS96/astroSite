@@ -9,7 +9,6 @@ updates:
         patterns:
           - "astro*"
           - "@astrojs/check"
-          - "@astrojs/react"
           - "sharp"
         update-types:
           - "minor"
@@ -19,12 +18,32 @@ updates:
           - "tailwindcss"
           - "@tailwindcss/*"
           - "@astrojs/tailwind"
+          - "clsx"
+          - "tailwind-merge"
+          - "tailwindcss-animate"
+          - "class-variance-authority"
         update-types:
           - "minor"
           - "patch"
       prettier:
         patterns:
           - "prettier*"
+        update-types:
+          - "minor"
+          - "patch"
+      react:
+        patterns:
+          - "@astrojs/react"
+          - "@types/react-dom"
+          - "@types/react"
+          - "lucide-react"
+        update-types:
+          - "minor"
+          - "patch"
+      components:
+        patterns:
+          - "@radix-ui/*"
+          - "cmdk"
         update-types:
           - "minor"
           - "patch"
