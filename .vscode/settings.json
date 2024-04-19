@@ -1,6 +1,27 @@
 {
-    "prettier.documentSelectors": ["**/*.astro", "**/*.cjs"],
-    "[astro]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
-  }
+  "prettier.documentSelectors": ["**/*.astro", "**/*.cjs"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+
+    // captures variables ending with Styles or Classes
+    // supports plain js plus ts types
+    // captures string or array of classnames
+    // captures classes in single/double quotes or backticks
+    //
+    // example:
+    // const baseStyles = `items-center flex p-5 mx-2 my-1`;
+    //
+    // example:
+    // const variableStyles: (string | undefined)[] = [
+    //   className,
+    //   showCaret ? 'pr-1' : '',
+    //   icon ? 'px-1.5 py-0.5' : 'px-3 py-1',
+    // ];
+    ["Styles\\s*(?::\\s*[^=]+)?\\s*=\\s*([^;]*);", "['\"`]([^'\"`]*)['\"`]"],
+    ["Classes\\s*(?::\\s*[^=]+)?\\s*=\\s*([^;]*);", "['\"`]([^'\"`]*)['\"`]"]
+  ]
+}
