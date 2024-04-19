@@ -11,9 +11,18 @@ import {
 type DropdownProps = {
   items: { name: string; href: string }[];
   children: React.ReactNode;
+  variant?:
+    | 'ghost'
+    | 'link'
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | null
+    | undefined;
 };
 
-export const Dropdown: React.FC<DropdownProps> = ({ children, items }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ children, items, variant }) => {
   const navigate = (href: string) => {
     window.location.href = href;
   };
@@ -22,7 +31,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ children, items }) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          variant={variant}
           className="group hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:bg-accent data-[state='open']:text-foreground/80 sm:flex">
           {children}
         </Button>
