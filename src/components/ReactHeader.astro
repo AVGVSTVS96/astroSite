@@ -8,6 +8,7 @@ import { Dropdown } from '@components/DropdownMenu';
 import { ChevronDown } from 'lucide-react';
 import { projectLinks } from './navLinks';
 import Logo from './Logo.astro';
+import { AccentColorSelector } from './AccentColorSelector';
 
 const allPosts = await Astro.glob('@pages/posts/*.md');
 ---
@@ -41,6 +42,7 @@ const allPosts = await Astro.glob('@pages/posts/*.md');
     </span>
     <span class="flex items-center gap-2">
       <CommandMenu client:load posts={allPosts} />
+      <AccentColorSelector client:load />
       <SideMenu client:load />
       <ModeToggle client:load />
     </span>
