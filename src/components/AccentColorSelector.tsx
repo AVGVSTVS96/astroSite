@@ -29,7 +29,7 @@ export const AccentColorSelector: React.FC = () => {
       variant="outline"
       onSelect={handleThemeChange}>
       <div className="flex items-center">
-        <div className="size-6 rounded-full bg-accent-400" />
+        <div className="size-5 rounded-full bg-accent-400" />
       </div>
     </Dropdown>
   );
