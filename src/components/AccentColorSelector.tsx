@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Dropdown } from '@components/DropdownMenu';
+import React, { useState, useEffect } from 'react';
+import { Dropdown } from './DropdownMenu';
 
 const themeOptions = [
   { name: 'Sky', href: '#sky' },
@@ -11,14 +11,14 @@ const themeOptions = [
   { name: 'Amber', href: '#amber' },
 ];
 
-export function AccentColorSelector() {
+export const AccentColorSelector: React.FC = () => {
   const [selectedTheme, setSelectedTheme] = useState('sky');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', selectedTheme);
   }, [selectedTheme]);
 
-  const handleThemeChange = (href) => {
+  const handleThemeChange = (href: string) => {
     const theme = href.substring(1);
     setSelectedTheme(theme);
   };
@@ -29,8 +29,8 @@ export function AccentColorSelector() {
       variant="outline"
       onSelect={handleThemeChange}>
       <div className="flex items-center">
-        <div className="size-6 rounded-full bg-accent-400" />
+        <div className="size-5 rounded-full bg-accent-400" />
       </div>
     </Dropdown>
   );
-}
+};
