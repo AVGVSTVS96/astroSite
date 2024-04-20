@@ -11,6 +11,7 @@ import {
 type DropdownProps = {
   items: { name: string; href: string }[];
   children: React.ReactNode;
+  onSelect?: (href: string) => void;
   variant?:
     | 'ghost'
     | 'link'
@@ -22,9 +23,18 @@ type DropdownProps = {
     | undefined;
 };
 
-export const Dropdown: React.FC<DropdownProps> = ({ children, items, variant }) => {
-  const navigate = (href: string) => {
-    window.location.href = href;
+export const Dropdown: React.FC<DropdownProps> = ({
+  children,
+  items,
+  variant,
+  onSelect,
+}) => {
+  const handleSelect = (href: string) => {
+    if (onSelect) {
+      onSelect(href);
+    } else {
+      window.location.href = href;
+    }
   };
 
   return (
@@ -41,7 +51,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ children, items, variant }) 
           <DropdownMenuItem
             key={item.name}
             className="py-2 text-muted-foreground"
-            onSelect={() => navigate(item.href)}>
+            onSelect={() => handleSelect(item.href)}>
             {item.name}
           </DropdownMenuItem>
         ))}
