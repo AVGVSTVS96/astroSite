@@ -12,10 +12,18 @@ const themeOptions = [
 ];
 
 export const AccentColorSelector: React.FC = () => {
-  const [selectedTheme, setSelectedTheme] = useState('sky');
+  const [selectedTheme, setSelectedTheme] = useState(() => {
+    const storedTheme =
+      typeof window !== 'undefined' &&
+      window.localStorage?.getItem('themeSwitcher');
+    return storedTheme || 'sky';
+  });
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', selectedTheme);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      document.documentElement.setAttribute('data-theme', selectedTheme);
+      localStorage.setItem('themeSwitcher', selectedTheme);
+    }
   }, [selectedTheme]);
 
   const handleThemeChange = (href: string) => {
