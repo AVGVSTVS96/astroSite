@@ -34,6 +34,7 @@ export const AccentColorSelector: React.FC = () => {
   return (
     <Dropdown
       items={themeOptions}
+      ariaLabel="Open accent color selector menu"
       variant="outline"
       onSelect={handleThemeChange}>
       <div className="flex items-center">
