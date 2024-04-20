@@ -33,7 +33,11 @@ const allPosts = await Astro.glob('@pages/posts/*.md');
             </a>
           ))
         }
-        <Dropdown client:load items={projectLinks} variant="link">
+        <Dropdown
+          client:load
+          items={projectLinks}
+          ariaLabel="Open projects dropdown menu"
+          variant="link">
           Projects
           <ChevronDown
             size={12}

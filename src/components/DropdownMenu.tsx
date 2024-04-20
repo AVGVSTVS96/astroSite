@@ -12,6 +12,7 @@ type DropdownProps = {
   items: { name: string; href: string }[];
   children: React.ReactNode;
   onSelect?: (href: string) => void;
+  ariaLabel?: string;
   variant?:
     | 'ghost'
     | 'link'
@@ -28,6 +29,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   items,
   variant,
   onSelect,
+  ariaLabel,
 }) => {
   const handleSelect = (href: string) => {
     if (onSelect) {
@@ -42,6 +44,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant={variant}
+          aria-label={ariaLabel}
           className="group flex h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:bg-accent data-[state='open']:text-foreground/80">
           {children}
         </Button>
