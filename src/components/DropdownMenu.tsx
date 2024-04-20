@@ -42,7 +42,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant={variant}
-          className="group hidden h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:bg-accent data-[state='open']:text-foreground/80 sm:flex">
+          className="group flex h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:bg-accent data-[state='open']:text-foreground/80">
           {children}
         </Button>
       </DropdownMenuTrigger>
