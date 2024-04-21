@@ -1,47 +1,103 @@
 import React, { useState, useEffect } from 'react';
 import { Dropdown } from './DropdownMenu';
 
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from '@components/ui/tooltip';
+
 const themeOptions = [
   {
-    name: React.createElement('div', {
-      className: 'bg-sky-400 size-5 rounded-full',
-    }),
+    name: (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="size-5 rounded-full bg-sky-400" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Sky</p>
+        </TooltipContent>
+      </Tooltip>
+    ),
     href: '#sky',
   },
   {
-    name: React.createElement('div', {
-      className: 'bg-cyan-400 size-5 rounded-full',
-    }),
+    name: (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="size-5 rounded-full bg-cyan-400" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Cyan</p>
+        </TooltipContent>
+      </Tooltip>
+    ),
     href: '#cyan',
   },
   {
-    name: React.createElement('div', {
-      className: 'bg-teal-400 size-5 rounded-full',
-    }),
+    name: (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="size-5 rounded-full bg-teal-400" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Teal</p>
+        </TooltipContent>
+      </Tooltip>
+    ),
     href: '#teal',
   },
   {
-    name: React.createElement('div', {
-      className: 'bg-emerald-400 size-5 rounded-full',
-    }),
+    name: (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="size-5 rounded-full bg-emerald-400" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Emerald</p>
+        </TooltipContent>
+      </Tooltip>
+    ),
     href: '#emerald',
   },
   {
-    name: React.createElement('div', {
-      className: 'bg-violet-400 size-5 rounded-full',
-    }),
+    name: (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="size-5 rounded-full bg-violet-400" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Violet</p>
+        </TooltipContent>
+      </Tooltip>
+    ),
     href: '#violet',
   },
   {
-    name: React.createElement('div', {
-      className: 'bg-fuchsia-400 size-5 rounded-full',
-    }),
+    name: (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="size-5 rounded-full bg-fuchsia-400" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Fuchsia</p>
+        </TooltipContent>
+      </Tooltip>
+    ),
     href: '#fuchsia',
   },
   {
-    name: React.createElement('div', {
-      className: 'bg-amber-400 size-5 rounded-full',
-    }),
+    name: (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className="size-5 rounded-full bg-amber-400" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Amber</p>
+        </TooltipContent>
+      </Tooltip>
+    ),
     href: '#amber',
   },
 ];
@@ -78,14 +134,16 @@ export const AccentColorSelector: React.FC = () => {
   };
 
   return (
-    <Dropdown
-      items={themeOptions}
-      ariaLabel="Open accent color selector menu"
-      variant="outline"
-      onSelect={handleThemeChange}>
-      <div className="flex items-center">
-        <div className="size-5 rounded-full bg-accent-400" />
-      </div>
-    </Dropdown>
+    <TooltipProvider>
+      <Dropdown
+        items={themeOptions}
+        ariaLabel="Open accent color selector menu"
+        variant="outline"
+        onSelect={handleThemeChange}>
+        <div className="flex items-center">
+          <div className="size-5 rounded-full bg-accent-400" />
+        </div>
+      </Dropdown>
+    </TooltipProvider>
   );
 };
