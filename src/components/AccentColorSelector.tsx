@@ -2,13 +2,48 @@ import React, { useState, useEffect } from 'react';
 import { Dropdown } from './DropdownMenu';
 
 const themeOptions = [
-  { name: 'Sky', href: '#sky' },
-  { name: 'Cyan', href: '#cyan' },
-  { name: 'Teal', href: '#teal' },
-  { name: 'Emerald', href: '#emerald' },
-  { name: 'Violet', href: '#violet' },
-  { name: 'Fuchsia', href: '#fuchsia' },
-  { name: 'Amber', href: '#amber' },
+  {
+    name: React.createElement('div', {
+      className: 'bg-sky-400 size-5 rounded-full',
+    }),
+    href: '#sky',
+  },
+  {
+    name: React.createElement('div', {
+      className: 'bg-cyan-400 size-5 rounded-full',
+    }),
+    href: '#cyan',
+  },
+  {
+    name: React.createElement('div', {
+      className: 'bg-teal-400 size-5 rounded-full',
+    }),
+    href: '#teal',
+  },
+  {
+    name: React.createElement('div', {
+      className: 'bg-emerald-400 size-5 rounded-full',
+    }),
+    href: '#emerald',
+  },
+  {
+    name: React.createElement('div', {
+      className: 'bg-violet-400 size-5 rounded-full',
+    }),
+    href: '#violet',
+  },
+  {
+    name: React.createElement('div', {
+      className: 'bg-fuchsia-400 size-5 rounded-full',
+    }),
+    href: '#fuchsia',
+  },
+  {
+    name: React.createElement('div', {
+      className: 'bg-amber-400 size-5 rounded-full',
+    }),
+    href: '#amber',
+  },
 ];
 
 export const AccentColorSelector: React.FC = () => {
