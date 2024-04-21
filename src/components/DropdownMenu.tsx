@@ -50,9 +50,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-fit" align="center">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <DropdownMenuItem
-            key={item.name}
+            key={index + 1}
             className="py-2 text-muted-foreground"
             onSelect={() => handleSelect(item.href)}>
             {item.name}
