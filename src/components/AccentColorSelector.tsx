@@ -7,61 +7,16 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from '@components/ui/tooltip';
-
-interface ThemeOptionItemProps {
-  className: string;
-  colorName: string;
-}
-
-const ThemeOptionItem: React.FC<ThemeOptionItemProps> = ({
-  className,
-  colorName,
-}) => {
-  return (
-    <Tooltip delayDuration={250}>
-      <TooltipTrigger asChild>
-        <div className={`${className} size-5 rounded-full`} />
-      </TooltipTrigger>
-      <TooltipContent
-        side="left"
-        sideOffset="1"
-        className="bg-muted text-foreground">
-        {colorName}
-        <Arrow className="fill-muted" width={12} height={6} />
-      </TooltipContent>
-    </Tooltip>
-  );
-};
+import { DropdownMenuItem } from '@components/ui/dropdown-menu';
 
 const themeOptions = [
-  {
-    name: <ThemeOptionItem className="bg-sky-400" colorName="Sky" />,
-    href: '#sky',
-  },
-  {
-    name: <ThemeOptionItem className="bg-cyan-400" colorName="Cyan" />,
-    href: '#cyan',
-  },
-  {
-    name: <ThemeOptionItem className="bg-teal-400" colorName="Teal" />,
-    href: '#teal',
-  },
-  {
-    name: <ThemeOptionItem className="bg-emerald-400" colorName="Emerald" />,
-    href: '#emerald',
-  },
-  {
-    name: <ThemeOptionItem className="bg-violet-400" colorName="Violet" />,
-    href: '#violet',
-  },
-  {
-    name: <ThemeOptionItem className="bg-fuchsia-400" colorName="Fuchsia" />,
-    href: '#fuchsia',
-  },
-  {
-    name: <ThemeOptionItem className="bg-amber-400" colorName="Amber" />,
-    href: '#amber',
-  },
+  { colorName: 'Sky', colorClass: 'bg-sky-400', href: '#sky' },
+  { colorName: 'Cyan', colorClass: 'bg-cyan-400', href: '#cyan' },
+  { colorName: 'Teal', colorClass: 'bg-teal-400', href: '#teal' },
+  { colorName: 'Emerald', colorClass: 'bg-emerald-400', href: '#emerald' },
+  { colorName: 'Violet', colorClass: 'bg-violet-400', href: '#violet' },
+  { colorName: 'Fuchsia', colorClass: 'bg-fuchsia-400', href: '#fuchsia' },
+  { colorName: 'Amber', colorClass: 'bg-amber-400', href: '#amber' },
 ];
 
 export const AccentColorSelector: React.FC = () => {
@@ -102,14 +57,31 @@ export const AccentColorSelector: React.FC = () => {
 
   return (
     <TooltipProvider>
-      <Dropdown
-        items={themeOptions}
-        ariaLabel="Open accent color selector menu"
-        variant="outline"
-        onSelect={handleThemeChange}>
+      <Dropdown ariaLabel="Open accent color selector menu" variant="outline">
         <div className="flex items-center">
           <div className="size-5 rounded-full bg-accent-400" />
         </div>
+        {themeOptions.map((option) => (
+          <Tooltip key={option.href} delayDuration={250}>
+            <TooltipTrigger asChild>
+              <DropdownMenuItem
+                className="py-2 text-muted-foreground"
+                onSelect={() => handleThemeChange(option.href)}>
+                <div className="flex items-center space-x-2">
+                  <div className={`${option.colorClass} size-5 rounded-full`} />
+                  <span className="sr-only">{option.colorName}</span>
+                </div>
+              </DropdownMenuItem>
+            </TooltipTrigger>
+            <TooltipContent
+              side="left"
+              sideOffset="0"
+              className="bg-muted text-foreground">
+              {option.colorName}
+              <Arrow className="fill-muted" width={12} height={6} />
+            </TooltipContent>
+          </Tooltip>
+        ))}
       </Dropdown>
     </TooltipProvider>
   );
