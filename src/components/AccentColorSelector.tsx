@@ -20,15 +20,26 @@ export const AccentColorSelector: React.FC = () => {
   });
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      document.documentElement.setAttribute('data-theme', selectedTheme);
-      localStorage.setItem('themeSwitcher', selectedTheme);
-    }
-  }, [selectedTheme]);
+    const handleStorageChange = () => {
+      const storedTheme = localStorage.getItem('themeSwitcher');
+      const localStorageAccessible =
+        typeof window !== 'undefined' && window.localStorage;
+
+      if (localStorageAccessible && storedTheme !== selectedTheme) {
+        setSelectedTheme(storedTheme);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   const handleThemeChange = (href: string) => {
     const theme = href.substring(1);
     setSelectedTheme(theme);
+    localStorage.setItem('themeSwitcher', theme);
+    document.documentElement.setAttribute('data-theme', theme);
   };
 
   return (
