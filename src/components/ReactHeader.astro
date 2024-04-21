@@ -13,7 +13,7 @@ import { AccentColorSelector } from './AccentColorSelector';
 const allPosts = await Astro.glob('@pages/posts/*.md');
 ---
 
-<header class="flex w-full items-center border-b border-border/50 px-8 py-2">
+<header class="flex w-full items-center border-b border-border/50 px-[clamp(0.75rem,3vw,2.5rem)] py-2"> 
   <Logo />
   <div class="button-container ml-2 flex w-full items-center justify-between">
     <nav>
