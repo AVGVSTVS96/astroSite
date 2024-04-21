@@ -8,96 +8,54 @@ import {
   TooltipContent,
 } from '@components/ui/tooltip';
 
+interface ThemeOptionItemProps {
+  className: string;
+  colorName: string;
+}
+
+const ThemeOptionItem: React.FC<ThemeOptionItemProps> = ({
+  className,
+  colorName,
+}) => {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className={`${className} size-5 rounded-full`} />
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>{colorName}</p>
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
 const themeOptions = [
   {
-    name: (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="size-5 rounded-full bg-sky-400" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Sky</p>
-        </TooltipContent>
-      </Tooltip>
-    ),
+    name: <ThemeOptionItem className="bg-sky-400" colorName="Sky" />,
     href: '#sky',
   },
   {
-    name: (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="size-5 rounded-full bg-cyan-400" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Cyan</p>
-        </TooltipContent>
-      </Tooltip>
-    ),
+    name: <ThemeOptionItem className="bg-cyan-400" colorName="Cyan" />,
     href: '#cyan',
   },
   {
-    name: (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="size-5 rounded-full bg-teal-400" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Teal</p>
-        </TooltipContent>
-      </Tooltip>
-    ),
+    name: <ThemeOptionItem className="bg-teal-400" colorName="Teal" />,
     href: '#teal',
   },
   {
-    name: (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="size-5 rounded-full bg-emerald-400" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Emerald</p>
-        </TooltipContent>
-      </Tooltip>
-    ),
+    name: <ThemeOptionItem className="bg-emerald-400" colorName="Emerald" />,
     href: '#emerald',
   },
   {
-    name: (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="size-5 rounded-full bg-violet-400" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Violet</p>
-        </TooltipContent>
-      </Tooltip>
-    ),
+    name: <ThemeOptionItem className="bg-violet-400" colorName="Violet" />,
     href: '#violet',
   },
   {
-    name: (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="size-5 rounded-full bg-fuchsia-400" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Fuchsia</p>
-        </TooltipContent>
-      </Tooltip>
-    ),
+    name: <ThemeOptionItem className="bg-fuchsia-400" colorName="Fuchsia" />,
     href: '#fuchsia',
   },
   {
-    name: (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <div className="size-5 rounded-full bg-amber-400" />
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Amber</p>
-        </TooltipContent>
-      </Tooltip>
-    ),
+    name: <ThemeOptionItem className="bg-amber-400" colorName="Amber" />,
     href: '#amber',
   },
 ];
