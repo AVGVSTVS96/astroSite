@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Dropdown } from './DropdownMenu';
-import { Arrow } from "@radix-ui/react-tooltip"
+import { Arrow } from '@radix-ui/react-tooltip';
 import {
   TooltipProvider,
   Tooltip,
@@ -27,11 +27,7 @@ const ThemeOptionItem: React.FC<ThemeOptionItemProps> = ({
         sideOffset="1"
         className="bg-muted text-foreground">
         {colorName}
-        <Arrow
-          className="fill-muted"
-          width={12}
-          height={6}
-        />
+        <Arrow className="fill-muted" width={12} height={6} />
       </TooltipContent>
     </Tooltip>
   );
@@ -73,24 +69,29 @@ export const AccentColorSelector: React.FC = () => {
     const storedTheme =
       typeof window !== 'undefined' &&
       window.localStorage?.getItem('themeSwitcher');
-    return storedTheme || 'sky';
+    return storedTheme;
   });
 
   useEffect(() => {
-    const handleStorageChange = () => {
-      const storedTheme = localStorage.getItem('themeSwitcher');
-      const localStorageAccessible =
-        typeof window !== 'undefined' && window.localStorage;
-
-      if (localStorageAccessible && storedTheme !== selectedTheme) {
-        setSelectedTheme(storedTheme);
-      }
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
     };
-
-    window.addEventListener('storage', handleStorageChange);
-
-    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
+
+  const localStorageAccessible =
+    typeof window !== 'undefined' && window.localStorage;
+
+  const handleStorageChange = () => {
+    const storedTheme = localStorage.getItem('themeSwitcher') || 'sky';
+
+    if (localStorageAccessible && storedTheme !== selectedTheme) {
+      setSelectedTheme(storedTheme);
+      document.documentElement.setAttribute('data-theme', storedTheme);
+    }
+  };
+
+  if (localStorageAccessible)
+    window.addEventListener('storage', handleStorageChange);
 
   const handleThemeChange = (href: string) => {
     const theme = href.substring(1);
