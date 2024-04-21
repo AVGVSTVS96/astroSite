@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Dropdown } from './DropdownMenu';
-
+import { Arrow } from "@radix-ui/react-tooltip"
 import {
   TooltipProvider,
   Tooltip,
@@ -18,12 +18,20 @@ const ThemeOptionItem: React.FC<ThemeOptionItemProps> = ({
   colorName,
 }) => {
   return (
-    <Tooltip>
+    <Tooltip delayDuration={250}>
       <TooltipTrigger asChild>
         <div className={`${className} size-5 rounded-full`} />
       </TooltipTrigger>
-      <TooltipContent>
-        <p>{colorName}</p>
+      <TooltipContent
+        side="left"
+        sideOffset="1"
+        className="bg-muted text-foreground">
+        {colorName}
+        <Arrow
+          className="fill-muted"
+          width={12}
+          height={6}
+        />
       </TooltipContent>
     </Tooltip>
   );
