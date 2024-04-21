@@ -1,17 +1,13 @@
 import React from 'react';
-
 import { Button } from '@components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@components/ui/dropdown-menu';
 
 type DropdownProps = {
-  items: { name: string; href: string }[];
-  children: React.ReactNode;
-  onSelect?: (href: string) => void;
+  children: [React.ReactNode, React.ReactNode];
   ariaLabel?: string;
   variant?:
     | 'ghost'
@@ -26,18 +22,11 @@ type DropdownProps = {
 
 export const Dropdown: React.FC<DropdownProps> = ({
   children,
-  items,
   variant,
-  onSelect,
   ariaLabel,
 }) => {
-  const handleSelect = (href: string) => {
-    if (onSelect) {
-      onSelect(href);
-    } else {
-      window.location.href = href;
-    }
-  };
+  
+  const [triggerChild, dropdownItem] = children;
 
   return (
     <DropdownMenu>
@@ -46,18 +35,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
           variant={variant}
           aria-label={ariaLabel}
           className="group flex h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline data-[state='open']:bg-accent data-[state='open']:text-foreground/80">
-          {children}
+          {triggerChild}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-fit" align="center">
-        {items.map((item, index) => (
-          <DropdownMenuItem
-            key={index + 1}
-            className="py-2 text-muted-foreground"
-            onSelect={() => handleSelect(item.href)}>
-            {item.name}
-          </DropdownMenuItem>
-        ))}
+        {dropdownItem}
       </DropdownMenuContent>
     </DropdownMenu>
   );
