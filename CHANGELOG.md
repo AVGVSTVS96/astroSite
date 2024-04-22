@@ -1,207 +1,290 @@
-## v0.10.2
-### New Features
-* Create chat card component and use it in gptchat page in [#192](https://github.com/AVGVSTVS96/astroSite/pull/192)
-  * Add shadcn card and input components in [#191](https://github.com/AVGVSTVS96/astroSite/pull/191)
-  * Make chat card box scroll in [#193](https://github.com/AVGVSTVS96/astroSite/pull/193)
-  * Scaffold chat.tsx, select component to chat.tsx, use selections in chat.js in [#194](https://github.com/AVGVSTVS96/astroSite/pull/194)
-* Add PWA Manifest File in [#175](https://github.com/AVGVSTVS96/astroSite/pull/175)
-* Add condition in `Button.astro` to highlight links based on active page in [#187](https://github.com/AVGVSTVS96/astroSite/pull/187)
-
-### Enhancements
-* Decrease blog post width, add margin to article tag in [#185](https://github.com/AVGVSTVS96/astroSite/pull/185)
-* Import `global.css` adding tailwind to `gpt.astro`, update styles in [#182](https://github.com/AVGVSTVS96/astroSite/pull/182)
-* Remove background blur when opening dialogs like command palette in [#186](https://github.com/AVGVSTVS96/astroSite/pull/186)
-* Add `overflow-y-auto` to `SideMenu` so it scrolls when there's not enough vertical space in [#189](https://github.com/AVGVSTVS96/astroSite/pull/189)
-* Update `ReactLayout` and `ReactHeader` to center main content in [#190](https://github.com/AVGVSTVS96/astroSite/pull/190)
+## v0.10.6
 
 ### Refactor
-* Create separate component for logo, adjust styling in [#176](https://github.com/AVGVSTVS96/astroSite/pull/176)
-* Create Prose component for blog styling in [#179](https://github.com/AVGVSTVS96/astroSite/pull/179)
-* Add `is:inline` to JSON-LD scripts in [#183](https://github.com/AVGVSTVS96/astroSite/pull/183)
-* Use Tailwind `grow` instead of legacy `flex-grow` in [#196](https://github.com/AVGVSTVS96/astroSite/pull/196)
-* Use href for `DropdownMenu.astro` links in [#197](https://github.com/AVGVSTVS96/astroSite/pull/197)
+
+- Add `Styles` suffix to `Prose.astro` tailwind variable names in [#211](https://github.com/AVGVSTVS96/astroSite/pull/211)
+- Use LCH colors for better rainbow gradient in [#212](https://github.com/AVGVSTVS96/astroSite/pull/212)
+- Remove DropdownMenuItem, items prop, and map from DropdownMenu.tsx in [#233](https://github.com/AVGVSTVS96/astroSite/pull/233)
+
+### Enhancements
+
+- Create accent color selector and use in react header in [#214](https://github.com/AVGVSTVS96/astroSite/pull/214)
+  - Add button variant prop to dropdown menu in [#213](https://github.com/AVGVSTVS96/astroSite/pull/213)
+  - Add `onSelect` prop to Dropdown component in [#215](https://github.com/AVGVSTVS96/astroSite/pull/215)
+  - Change dropdown menu width, remove `w-24` in [#216](https://github.com/AVGVSTVS96/astroSite/pull/216)
+  - Remove hidden class from `DropdownMenu`, hide buttons in `ReactHeader` in [#217](https://github.com/AVGVSTVS96/astroSite/pull/217)
+  - Update accent color selector, first working version in [#218](https://github.com/AVGVSTVS96/astroSite/pull/218)
+  - Use local storage to store and set the accent color in [#219](https://github.com/AVGVSTVS96/astroSite/pull/219)
+  - Add `ariaLabel` prop to `Dropdown` component in [#220](https://github.com/AVGVSTVS96/astroSite/pull/220)
+
+* Update AccentColorSelector logic to AccentColorSelector dropdown in [#223](https://github.com/AVGVSTVS96/astroSite/pull/223)
+* Fix `AccentColorSelector` storage event listener not working, refactor code in [#231](https://github.com/AVGVSTVS96/astroSite/pull/231)
+
+- Add shadcn tooltip component in [#226](https://github.com/AVGVSTVS96/astroSite/pull/226)
+  - Use `index + 1` as key in `DropdownMenu` map function instead of `item.name` in [#224](https://github.com/AVGVSTVS96/astroSite/pull/224)
+  - Update ThemeOptions array with colored circle elements in [#225](https://github.com/AVGVSTVS96/astroSite/pull/225)
+  - Use tooltip components within `ThemeOptions` array in [#227](https://github.com/AVGVSTVS96/astroSite/pull/227)
+  - Extract tooltip and circle element into `ThemeOptionItem` component in [#228](https://github.com/AVGVSTVS96/astroSite/pull/228)
+- Install shadcn-ui navigation-menu component in [#235](https://github.com/AVGVSTVS96/astroSite/pull/235)
+  - Use navLinks components built with shadcn `navigation-menu` in [#236](https://github.com/AVGVSTVS96/astroSite/pull/236)
+
+### Miscellaneous
+
+- Add tailwind settings to `settings.json` in [#210](https://github.com/AVGVSTVS96/astroSite/pull/210)
+- Update dependabot workflow groups in [#205](https://github.com/AVGVSTVS96/astroSite/pull/205)
+- Update `ReactHeader` padding, make responsive for smaller screens in [#229](https://github.com/AVGVSTVS96/astroSite/pull/229)
+- Add tailwind attributes and functions to .prettierrc to sort tailwind classes in [#245](https://github.com/AVGVSTVS96/astroSite/pull/245)
+- Remove unused import, add `tabindex={-1}` to buttons, add `rounded-md` in [#246](https://github.com/AVGVSTVS96/astroSite/pull/246)
+
+### Dependencies
+
+- bump astro to 4.6.1 and astro-expressive-code to 0.35.0 by @dependabot in [#208](https://github.com/AVGVSTVS96/astroSite/pull/208)
+- bump the react group with 4 updates by @dependabot in [#209](https://github.com/AVGVSTVS96/astroSite/pull/209)
+- bump the misc group with 3 updates by @dependabot in [#206](https://github.com/AVGVSTVS96/astroSite/pull/206)
+
+**Full Changelog**: [v0.10.2...v0.10.6](https://github.com/AVGVSTVS96/astroSite/compare/v0.10.2...v0.10.6)
+
+## v0.10.2
+
+### New Features
+
+- Create chat card component and use it in gptchat page in [#192](https://github.com/AVGVSTVS96/astroSite/pull/192)
+  - Add shadcn card and input components in [#191](https://github.com/AVGVSTVS96/astroSite/pull/191)
+  - Make chat card box scroll in [#193](https://github.com/AVGVSTVS96/astroSite/pull/193)
+  - Scaffold chat.tsx, select component to chat.tsx, use selections in chat.js in [#194](https://github.com/AVGVSTVS96/astroSite/pull/194)
+- Add PWA Manifest File in [#175](https://github.com/AVGVSTVS96/astroSite/pull/175)
+- Add condition in `Button.astro` to highlight links based on active page in [#187](https://github.com/AVGVSTVS96/astroSite/pull/187)
+
+### Enhancements
+
+- Decrease blog post width, add margin to article tag in [#185](https://github.com/AVGVSTVS96/astroSite/pull/185)
+- Import `global.css` adding tailwind to `gpt.astro`, update styles in [#182](https://github.com/AVGVSTVS96/astroSite/pull/182)
+- Remove background blur when opening dialogs like command palette in [#186](https://github.com/AVGVSTVS96/astroSite/pull/186)
+- Add `overflow-y-auto` to `SideMenu` so it scrolls when there's not enough vertical space in [#189](https://github.com/AVGVSTVS96/astroSite/pull/189)
+- Update `ReactLayout` and `ReactHeader` to center main content in [#190](https://github.com/AVGVSTVS96/astroSite/pull/190)
+
+### Refactor
+
+- Create separate component for logo, adjust styling in [#176](https://github.com/AVGVSTVS96/astroSite/pull/176)
+- Create Prose component for blog styling in [#179](https://github.com/AVGVSTVS96/astroSite/pull/179)
+- Add `is:inline` to JSON-LD scripts in [#183](https://github.com/AVGVSTVS96/astroSite/pull/183)
+- Use Tailwind `grow` instead of legacy `flex-grow` in [#196](https://github.com/AVGVSTVS96/astroSite/pull/196)
+- Use href for `DropdownMenu.astro` links in [#197](https://github.com/AVGVSTVS96/astroSite/pull/197)
 
 ### Security and dependencies
-* chore(meta-deps): override tar to 6.2.1 by @dependabot in [#174](https://github.com/AVGVSTVS96/astroSite/pull/174)
-* Remove semantic release in [#188](https://github.com/AVGVSTVS96/astroSite/pull/188)
 
+- chore(meta-deps): override tar to 6.2.1 by @dependabot in [#174](https://github.com/AVGVSTVS96/astroSite/pull/174)
+- Remove semantic release in [#188](https://github.com/AVGVSTVS96/astroSite/pull/188)
 
 **Full Changelog**: [v0.10.0...v0.10.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.10.0...v0.10.2)
 
 ## v0.10.0
+
 ### Enhancements
-* Enable Astro prefetching, prefetch all links on load in [#150](https://github.com/AVGVSTVS96/astroSite/pull/150)
-* Add title and description to react page in [#151](https://github.com/AVGVSTVS96/astroSite/pull/151)
-* Create composable React `DropdownMenu` component, use for projects on react page in [#160](https://github.com/AVGVSTVS96/astroSite/pull/160)
-  * Add padding to dropdown items, add rotate transition to chevron icon in [#166](https://github.com/AVGVSTVS96/astroSite/pull/166)
-  * Update Dropdown button and icon CSS in [#167](https://github.com/AVGVSTVS96/astroSite/pull/167)
-  * Add `margin-top` to icon to better align with text in [#170](https://github.com/AVGVSTVS96/astroSite/pull/170)
-  * Set alignment for Dropdown and update `nav` margin-left in [#172](https://github.com/AVGVSTVS96/astroSite/pull/172)
+
+- Enable Astro prefetching, prefetch all links on load in [#150](https://github.com/AVGVSTVS96/astroSite/pull/150)
+- Add title and description to react page in [#151](https://github.com/AVGVSTVS96/astroSite/pull/151)
+- Create composable React `DropdownMenu` component, use for projects on react page in [#160](https://github.com/AVGVSTVS96/astroSite/pull/160)
+  - Add padding to dropdown items, add rotate transition to chevron icon in [#166](https://github.com/AVGVSTVS96/astroSite/pull/166)
+  - Update Dropdown button and icon CSS in [#167](https://github.com/AVGVSTVS96/astroSite/pull/167)
+  - Add `margin-top` to icon to better align with text in [#170](https://github.com/AVGVSTVS96/astroSite/pull/170)
+  - Set alignment for Dropdown and update `nav` margin-left in [#172](https://github.com/AVGVSTVS96/astroSite/pull/172)
 
 ### Refactoring
-* Refactor react `ModeToggle`, remove dropdown, fixes #128 in [#157](https://github.com/AVGVSTVS96/astroSite/pull/157)
-* Refactor Dropdown in [#171](https://github.com/AVGVSTVS96/astroSite/pull/171)
+
+- Refactor react `ModeToggle`, remove dropdown, fixes #128 in [#157](https://github.com/AVGVSTVS96/astroSite/pull/157)
+- Refactor Dropdown in [#171](https://github.com/AVGVSTVS96/astroSite/pull/171)
 
 ### Security
-* chore(meta-deps): Add overrides to resolve security vulnerabilities in [#149](https://github.com/AVGVSTVS96/astroSite/pull/149)
+
+- chore(meta-deps): Add overrides to resolve security vulnerabilities in [#149](https://github.com/AVGVSTVS96/astroSite/pull/149)
 
 ### Dependencies
-* chore(deps): bump astro to 4.5.16, expressive-code to 0.34.1 by @dependabot in [#161](https://github.com/AVGVSTVS96/astroSite/pull/161)
-* chore(deps): bump openai, wrangler, type-coverage, and typescript by @dependabot in [#162](https://github.com/AVGVSTVS96/astroSite/pull/162)
-* chore(deps): bump lucide-react from 0.363.0 to 0.365.0 by @dependabot in [#163](https://github.com/AVGVSTVS96/astroSite/pull/163)
-* chore(deps): bump @types/react-dom from 18.2.23 to 18.2.24 by @dependabot in [#164](https://github.com/AVGVSTVS96/astroSite/pull/164)
+
+- chore(deps): bump astro to 4.5.16, expressive-code to 0.34.1 by @dependabot in [#161](https://github.com/AVGVSTVS96/astroSite/pull/161)
+- chore(deps): bump openai, wrangler, type-coverage, and typescript by @dependabot in [#162](https://github.com/AVGVSTVS96/astroSite/pull/162)
+- chore(deps): bump lucide-react from 0.363.0 to 0.365.0 by @dependabot in [#163](https://github.com/AVGVSTVS96/astroSite/pull/163)
+- chore(deps): bump @types/react-dom from 18.2.23 to 18.2.24 by @dependabot in [#164](https://github.com/AVGVSTVS96/astroSite/pull/164)
 
 **Full Changelog**: [v0.9.7...v0.10.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.7...v0.10.0)
 
-
 ## v0.9.7
+
 ### Enhancements
-* Move navigation links to their own file, import where needed, closes #133 in [#139](https://github.com/AVGVSTVS96/astroSite/pull/139)
-* Update `ReactLayout` theme script and remove unneeded CSS import in [#142](https://github.com/AVGVSTVS96/astroSite/pull/142)
-* Use grid in `MDLayout` instead of flexbox to fix #130 in [#145](https://github.com/AVGVSTVS96/astroSite/pull/145)
+
+- Move navigation links to their own file, import where needed, closes #133 in [#139](https://github.com/AVGVSTVS96/astroSite/pull/139)
+- Update `ReactLayout` theme script and remove unneeded CSS import in [#142](https://github.com/AVGVSTVS96/astroSite/pull/142)
+- Use grid in `MDLayout` instead of flexbox to fix #130 in [#145](https://github.com/AVGVSTVS96/astroSite/pull/145)
 
 ### Refactoring
-* Refactor: base layout, KB shortcut script, and CSS in [#144](https://github.com/AVGVSTVS96/astroSite/pull/144)
+
+- Refactor: base layout, KB shortcut script, and CSS in [#144](https://github.com/AVGVSTVS96/astroSite/pull/144)
 
 ### Dependencies
-* chore(deps): bump astro to 4.5.14, @astrojs/check to 0.5.10, sharp to 0.33.3 by @dependabot in [#140](https://github.com/AVGVSTVS96/astroSite/pull/140)
-* chore(deps-dev): bump tailwindcss to 3.4.3, @tailwindcss/typography to 0.5.12 by @dependabot in [#120](https://github.com/AVGVSTVS96/astroSite/pull/120)
-* chore(deps): bump @types/react-dom to 18.2.23, @astrojs/react to 18.7.4, and @types/react to 18.2.74 by @dependabot in [#122](https://github.com/AVGVSTVS96/astroSite/pull/122)
-* chore(deps): bump openai, typescript, type-coverage, and wrangler by @dependabot in [#141](https://github.com/AVGVSTVS96/astroSite/pull/141)
-* chore(deps-dev): bump prettier-plugin-tailwindcss from 0.5.12 to 0.5.13 by @dependabot in [#121](https://github.com/AVGVSTVS96/astroSite/pull/121)
+
+- chore(deps): bump astro to 4.5.14, @astrojs/check to 0.5.10, sharp to 0.33.3 by @dependabot in [#140](https://github.com/AVGVSTVS96/astroSite/pull/140)
+- chore(deps-dev): bump tailwindcss to 3.4.3, @tailwindcss/typography to 0.5.12 by @dependabot in [#120](https://github.com/AVGVSTVS96/astroSite/pull/120)
+- chore(deps): bump @types/react-dom to 18.2.23, @astrojs/react to 18.7.4, and @types/react to 18.2.74 by @dependabot in [#122](https://github.com/AVGVSTVS96/astroSite/pull/122)
+- chore(deps): bump openai, typescript, type-coverage, and wrangler by @dependabot in [#141](https://github.com/AVGVSTVS96/astroSite/pull/141)
+- chore(deps-dev): bump prettier-plugin-tailwindcss from 0.5.12 to 0.5.13 by @dependabot in [#121](https://github.com/AVGVSTVS96/astroSite/pull/121)
 
 **Full Changelog**: [v0.9.6...v0.9.7](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.6...v0.9.7)
 
-
 ## v0.9.6
+
 ### Bug Fixes
-* Revert `NavBar` to sticky in [#126](https://github.com/AVGVSTVS96/astroSite/pull/126)
+
+- Revert `NavBar` to sticky in [#126](https://github.com/AVGVSTVS96/astroSite/pull/126)
 
 **Full Changelog**: [v0.9.5...v0.9.6](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.5...
 
-
 ## v0.9.5
+
 ### Accessibility Improvements
-* Wrap project cards in `<li>` tags to fix accessibility warning in [#113](https://github.com/AVGVSTVS96/astroSite/pull/113)
-* Add navigation links to `ReactHeader` and add aria labels to buttons in [#124](https://github.com/AVGVSTVS96/astroSite/pull/124)
+
+- Wrap project cards in `<li>` tags to fix accessibility warning in [#113](https://github.com/AVGVSTVS96/astroSite/pull/113)
+- Add navigation links to `ReactHeader` and add aria labels to buttons in [#124](https://github.com/AVGVSTVS96/astroSite/pull/124)
 
 ### Enhancements
-* Add `buttonStyles` prop to `CommandMenu`, use prop in `NavBar` to make button height shorter in [#114](https://github.com/AVGVSTVS96/astroSite/pull/114)
-* Update `CommandMenu` styling in [#115](https://github.com/AVGVSTVS96/astroSite/pull/115)
-* List blog posts in `CommandMenu.tsx`, resolves BAS-22 in [#117](https://github.com/AVGVSTVS96/astroSite/pull/117)
-* Update blog titles, resolves BAS-38 in [#118](https://github.com/AVGVSTVS96/astroSite/pull/118)
-* List blog posts in `CommandMenu` in `ReactHeader` in [#119](https://github.com/AVGVSTVS96/astroSite/pull/119)
+
+- Add `buttonStyles` prop to `CommandMenu`, use prop in `NavBar` to make button height shorter in [#114](https://github.com/AVGVSTVS96/astroSite/pull/114)
+- Update `CommandMenu` styling in [#115](https://github.com/AVGVSTVS96/astroSite/pull/115)
+- List blog posts in `CommandMenu.tsx`, resolves BAS-22 in [#117](https://github.com/AVGVSTVS96/astroSite/pull/117)
+- Update blog titles, resolves BAS-38 in [#118](https://github.com/AVGVSTVS96/astroSite/pull/118)
+- List blog posts in `CommandMenu` in `ReactHeader` in [#119](https://github.com/AVGVSTVS96/astroSite/pull/119)
 
 ### Styling
-* Update `NavBar` position to fixed in [#125](https://github.com/AVGVSTVS96/astroSite/pull/125)
+
+- Update `NavBar` position to fixed in [#125](https://github.com/AVGVSTVS96/astroSite/pull/125)
 
 **Full Changelog**: [v0.9.3...v0.9.5](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.3...v0.9.5)
 
-
 ## v0.9.3
+
 ### Enhancements
-* Create `CommandMenu` component, use in `react.astro` in [#111](https://github.com/AVGVSTVS96/astroSite/pull/111)
-* Use `CommandMenu` and `SideMenu` in `NavBar.astro` in [#112](https://github.com/AVGVSTVS96/astroSite/pull/112)
+
+- Create `CommandMenu` component, use in `react.astro` in [#111](https://github.com/AVGVSTVS96/astroSite/pull/111)
+- Use `CommandMenu` and `SideMenu` in `NavBar.astro` in [#112](https://github.com/AVGVSTVS96/astroSite/pull/112)
 
 **Full Changelog**: [v0.9.2...v0.9.3](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.2...v0.9.3)
 
-
 ## v0.9.2
+
 ### Enhancements
-* Update `DropdownMenu.astro` text and bg colors, decrease link border radius in [#105](https://github.com/AVGVSTVS96/astroSite/pull/105)
+
+- Update `DropdownMenu.astro` text and bg colors, decrease link border radius in [#105](https://github.com/AVGVSTVS96/astroSite/pull/105)
 
 ### Bug Fixes
-* Updated the name of `ThemeToggle` local storage variable to fix #106 in [#107](https://github.com/AVGVSTVS96/astroSite/pull/107)
-* Improve keyboard navigation accessibility by resolving tabindex in [#109](https://github.com/AVGVSTVS96/astroSite/pull/109)
+
+- Updated the name of `ThemeToggle` local storage variable to fix #106 in [#107](https://github.com/AVGVSTVS96/astroSite/pull/107)
+- Improve keyboard navigation accessibility by resolving tabindex in [#109](https://github.com/AVGVSTVS96/astroSite/pull/109)
 
 ### Refactoring
-* Re-organize components directory in [#108](https://github.com/AVGVSTVS96/astroSite/pull/108)
+
+- Re-organize components directory in [#108](https://github.com/AVGVSTVS96/astroSite/pull/108)
 
 **Full Changelog**: [v0.9.0...v0.9.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.9.0...v0.9.2)
 
-
 ## v0.9.0
+
 ### Enhancements
-* Create rainbow ring around theme switcher icon in [#75](https://github.com/AVGVSTVS96/astroSite/pull/75)
-* Add `mx-0.5` to dropdown menu items to fix #76 in [#78](https://github.com/AVGVSTVS96/astroSite/pull/78)
-* Add `flex-grow` to fix #82, add gradient to color icon, improve ThemeSwitcher code in [#83](https://github.com/AVGVSTVS96/astroSite/pull/83)
-* Add accent color gradient border to top of `NavBar` in [#88](https://github.com/AVGVSTVS96/astroSite/pull/88)
-* Add React and shadcn/ui page, create header on react page, update config and css in [#89](https://github.com/AVGVSTVS96/astroSite/pull/89)
-* Update nav, dropdown, and button styling in [#91](https://github.com/AVGVSTVS96/astroSite/pull/91)
-* Create `Reactheader` component, use Astro Icon for logo, import into `ReactLayout` in [#92](https://github.com/AVGVSTVS96/astroSite/pull/92)
-* Fix #93 - delete `border-card` css, use shadcn border color in `Card`, `BlogIndex`, and `Footer` in [#94](https://github.com/AVGVSTVS96/astroSite/pull/94)
-* Styling: Update `NavBar`, `Footer`, and bg-color in `Baselayout` in [#95](https://github.com/AVGVSTVS96/astroSite/pull/95)
-* Increase `NavBar` height with `py-1` in [#96](https://github.com/AVGVSTVS96/astroSite/pull/96)
-* Eliminate FOUC by initializing and applying theme in BaseLayout in [#101](https://github.com/AVGVSTVS96/astroSite/pull/101)
-* Create `SideMenu` sidebar nav menu with shadcn sheet component in [#102](https://github.com/AVGVSTVS96/astroSite/pull/102)
+
+- Create rainbow ring around theme switcher icon in [#75](https://github.com/AVGVSTVS96/astroSite/pull/75)
+- Add `mx-0.5` to dropdown menu items to fix #76 in [#78](https://github.com/AVGVSTVS96/astroSite/pull/78)
+- Add `flex-grow` to fix #82, add gradient to color icon, improve ThemeSwitcher code in [#83](https://github.com/AVGVSTVS96/astroSite/pull/83)
+- Add accent color gradient border to top of `NavBar` in [#88](https://github.com/AVGVSTVS96/astroSite/pull/88)
+- Add React and shadcn/ui page, create header on react page, update config and css in [#89](https://github.com/AVGVSTVS96/astroSite/pull/89)
+- Update nav, dropdown, and button styling in [#91](https://github.com/AVGVSTVS96/astroSite/pull/91)
+- Create `Reactheader` component, use Astro Icon for logo, import into `ReactLayout` in [#92](https://github.com/AVGVSTVS96/astroSite/pull/92)
+- Fix #93 - delete `border-card` css, use shadcn border color in `Card`, `BlogIndex`, and `Footer` in [#94](https://github.com/AVGVSTVS96/astroSite/pull/94)
+- Styling: Update `NavBar`, `Footer`, and bg-color in `Baselayout` in [#95](https://github.com/AVGVSTVS96/astroSite/pull/95)
+- Increase `NavBar` height with `py-1` in [#96](https://github.com/AVGVSTVS96/astroSite/pull/96)
+- Eliminate FOUC by initializing and applying theme in BaseLayout in [#101](https://github.com/AVGVSTVS96/astroSite/pull/101)
+- Create `SideMenu` sidebar nav menu with shadcn sheet component in [#102](https://github.com/AVGVSTVS96/astroSite/pull/102)
 
 ### Dependencies
-* chore(deps): bump astro from 4.4.9 to 4.4.15 in [#74](https://github.com/AVGVSTVS96/astroSite/pull/74)
-* chore(deps): bump `openai` to 4.29.1, `typescript` to 5.4.2, and `wrangler` to 3.34.2 by @dependabot in [#81](https://github.com/AVGVSTVS96/astroSite/pull/81)
-* chore(deps): bump the astro group with 3 updates by @dependabot in [#86](https://github.com/AVGVSTVS96/astroSite/pull/86)
-* chore(deps-dev): bump prettier-plugin-tailwindcss from 0.5.11 to 0.5.12 by @dependabot in [#79](https://github.com/AVGVSTVS96/astroSite/pull/79)
+
+- chore(deps): bump astro from 4.4.9 to 4.4.15 in [#74](https://github.com/AVGVSTVS96/astroSite/pull/74)
+- chore(deps): bump `openai` to 4.29.1, `typescript` to 5.4.2, and `wrangler` to 3.34.2 by @dependabot in [#81](https://github.com/AVGVSTVS96/astroSite/pull/81)
+- chore(deps): bump the astro group with 3 updates by @dependabot in [#86](https://github.com/AVGVSTVS96/astroSite/pull/86)
+- chore(deps-dev): bump prettier-plugin-tailwindcss from 0.5.11 to 0.5.12 by @dependabot in [#79](https://github.com/AVGVSTVS96/astroSite/pull/79)
 
 ### Documentation
-* Update README.md - Add `codespaces` link and update content in [#77](https://github.com/AVGVSTVS96/astroSite/pull/77)
+
+- Update README.md - Add `codespaces` link and update content in [#77](https://github.com/AVGVSTVS96/astroSite/pull/77)
 
 **Full Changelog**: [v0.8.2...v0.9.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.8.2...v0.9.0)
 
-
 ## v0.8.2
+
 ### Enhancements
-* Update `flaskSite` content and fix margin top in [70](https://github.com/AVGVSTVS96/astroSite/pull/70)
-* Create color icon SVG and use as `ThemeSwitcher` icon in [71](https://github.com/AVGVSTVS96/astroSite/pull/71)
-* Add `items-center` to `Button` component in [73](https://github.com/AVGVSTVS96/astroSite/pull/73)
+
+- Update `flaskSite` content and fix margin top in [70](https://github.com/AVGVSTVS96/astroSite/pull/70)
+- Create color icon SVG and use as `ThemeSwitcher` icon in [71](https://github.com/AVGVSTVS96/astroSite/pull/71)
+- Add `items-center` to `Button` component in [73](https://github.com/AVGVSTVS96/astroSite/pull/73)
 
 ### Dependencies
-* bump the misc group with 2 updates by @dependabot in [66](https://github.com/AVGVSTVS96/astroSite/pull/66)
-* bump the astro group with 1 update by @dependabot in [68](https://github.com/AVGVSTVS96/astroSite/pull/68)
-* bump astro from 4.4.8 to 4.4.9 by @dependabot in [72](https://github.com/AVGVSTVS96/astroSite/pull/72)
+
+- bump the misc group with 2 updates by @dependabot in [66](https://github.com/AVGVSTVS96/astroSite/pull/66)
+- bump the astro group with 1 update by @dependabot in [68](https://github.com/AVGVSTVS96/astroSite/pull/68)
+- bump astro from 4.4.8 to 4.4.9 by @dependabot in [72](https://github.com/AVGVSTVS96/astroSite/pull/72)
 
 **Full Changelog**: [v0.8.1...v0.8.2](https://github.com/AVGVSTVS96/astroSite/compare/v.0.8.1...v0.8.2)
 
 ## v0.8.1
-### Dependencies
-* Use my published `remark-sectionize` fork in [#54](https://github.com/AVGVSTVS96/astroSite/pull/54)
-* bump `ip` from 2.0.0 to 2.0.1 by @dependabot in [#55](https://github.com/AVGVSTVS96/astroSite/pull/55)
-* bump `@astrojs/check` from 0.5.4 to 0.5.6 by @dependabot in [#58](https://github.com/AVGVSTVS96/astroSite/pull/58)
-* bump the astro group with 2 updates by @dependabot in [#56](https://github.com/AVGVSTVS96/astroSite/pull/56)
-### Bug Fixes
-* fix: Add `overflow-x-hidden` to fix side scrolling in [#56](https://github.com/AVGVSTVS96/astroSite/pull/61)
 
+### Dependencies
+
+- Use my published `remark-sectionize` fork in [#54](https://github.com/AVGVSTVS96/astroSite/pull/54)
+- bump `ip` from 2.0.0 to 2.0.1 by @dependabot in [#55](https://github.com/AVGVSTVS96/astroSite/pull/55)
+- bump `@astrojs/check` from 0.5.4 to 0.5.6 by @dependabot in [#58](https://github.com/AVGVSTVS96/astroSite/pull/58)
+- bump the astro group with 2 updates by @dependabot in [#56](https://github.com/AVGVSTVS96/astroSite/pull/56)
+
+### Bug Fixes
+
+- fix: Add `overflow-x-hidden` to fix side scrolling in [#56](https://github.com/AVGVSTVS96/astroSite/pull/61)
 
 **Full Changelog**: [v0.8.0...v0.8.1](https://github.com/AVGVSTVS96/astroSite/compare/v0.8.0...v.0.8.1)
 
 ## v0.8.0
+
 ### Bug fixes
-* Stop scrollbar from shifting page layout and add GPT Chat link to mobile menu in https://github.com/AVGVSTVS96/astroSite/pull/51
+
+- Stop scrollbar from shifting page layout and add GPT Chat link to mobile menu in https://github.com/AVGVSTVS96/astroSite/pull/51
+
 ### Dependencies
-* bump Wrangler to 3.29.0 in https://github.com/AVGVSTVS96/astroSite/pull/53
+
+- bump Wrangler to 3.29.0 in https://github.com/AVGVSTVS96/astroSite/pull/53
 
 **Full Changelog**:[v0.7.6...v0.8.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.6...v0.8.0)
 
 ## v0.7.6
 
 ### Refactor
-* Add aria-labels and update Button + SVG colors in [#47](https://github.com/AVGVSTVS96/astroSite/pull/47)
-* implement class:list for better organization. of variable styles in [#48](https://github.com/AVGVSTVS96/astroSite/pull/48)
-* add HTML attributes, fix typo, match button hover colors in [#50](https://github.com/AVGVSTVS96/astroSite/pull/50)
+
+- Add aria-labels and update Button + SVG colors in [#47](https://github.com/AVGVSTVS96/astroSite/pull/47)
+- implement class:list for better organization. of variable styles in [#48](https://github.com/AVGVSTVS96/astroSite/pull/48)
+- add HTML attributes, fix typo, match button hover colors in [#50](https://github.com/AVGVSTVS96/astroSite/pull/50)
 
 ### Dependencies
-* bump ip from 2.0.0 to 2.0.1 by @dependabot in [#49](https://github.com/AVGVSTVS96/astroSite/pull/49)
+
+- bump ip from 2.0.0 to 2.0.1 by @dependabot in [#49](https://github.com/AVGVSTVS96/astroSite/pull/49)
 
 **Full Changelog**: [v0.7.5...v0.7.6](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.5...v0.7.6)
 
 ## v0.7.5
 
 ### Refactor
-* Use `Astro-icon` in `Button`, add `astro check` script, misc improvements in [#45](https://github.com/AVGVSTVS96/astroSite/pull/45)
+
+- Use `Astro-icon` in `Button`, add `astro check` script, misc improvements in [#45](https://github.com/AVGVSTVS96/astroSite/pull/45)
 
 ### Style
-* Update blog post line height and inline code styling in [#44](https://github.com/AVGVSTVS96/astroSite/pull/44)
+
+- Update blog post line height and inline code styling in [#44](https://github.com/AVGVSTVS96/astroSite/pull/44)
 
 ### Dependencies
-* Update astro to 4.4.0, wrangler to 3.28.3, openai to 4.28.0 in [#46](https://github.com/AVGVSTVS96/astroSite/pull/46)
+
+- Update astro to 4.4.0, wrangler to 3.28.3, openai to 4.28.0 in [#46](https://github.com/AVGVSTVS96/astroSite/pull/46)
 
 **Full Changelog**: [v0.7.4...v0.7.5](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.4...v0.7.5)
 
@@ -209,23 +292,24 @@
 
 ### Refactor
 
-* Refactor and format code in [#42](https://github.com/AVGVSTVS96/astroSite/pull/42)
+- Refactor and format code in [#42](https://github.com/AVGVSTVS96/astroSite/pull/42)
 
 ### Style
 
-* Update code theme, button colors, blog post widths, breakpoints, and refactor in [#43](https://github.com/AVGVSTVS96/astroSite/pull/43)
+- Update code theme, button colors, blog post widths, breakpoints, and refactor in [#43](https://github.com/AVGVSTVS96/astroSite/pull/43)
 
 **Full Changelog**: [v0.7.3...v0.7.4](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.3...v0.7.4)
+
 ## v0.7.3
 
 ### Refactor
 
-* Use recursive component for `TableOfContentsHeading` in [#38](https://github.com/AVGVSTVS96/astroSite/pull/38)
-* Improve TOC Icon rendering, use `hidden` class instead of conditional rendering in [#39](https://github.com/AVGVSTVS96/astroSite/pull/39)
+- Use recursive component for `TableOfContentsHeading` in [#38](https://github.com/AVGVSTVS96/astroSite/pull/38)
+- Improve TOC Icon rendering, use `hidden` class instead of conditional rendering in [#39](https://github.com/AVGVSTVS96/astroSite/pull/39)
 
 ### Content
 
-* Update blog content, update code block styling in [#41](https://github.com/AVGVSTVS96/astroSite/pull/41)
+- Update blog content, update code block styling in [#41](https://github.com/AVGVSTVS96/astroSite/pull/41)
 
 **Full Changelog**: [v0.7.2...v0.7.3](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.2...v0.7.3)
 
@@ -233,7 +317,7 @@
 
 ### Features
 
-* update to older gpt-4-0613 model [#36](https://github.com/AVGVSTVS96/astroSite/pull/36)
+- update to older gpt-4-0613 model [#36](https://github.com/AVGVSTVS96/astroSite/pull/36)
 
 **Full Changelog**: [v0.7.1...v0.7.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.7.1...v0.7.2)
 
@@ -252,6 +336,7 @@
 - Add GPT Chat page from [FastGPT](https://github.com/AVGVSTVS96/fastGPT) in [#34](https://github.com/AVGVSTVS96/astroSite/pull/34)
 
 ### Bug Fixes
+
 - Use Astro-icon for nav icons in [#31](https://github.com/AVGVSTVS96/astroSite/pull/31)
 - Fix `ThemeSwitcher` incorrect size [31604bb](https://github.com/AVGVSTVS96/astroSite/commit/31604bb01b8d4a9b9c38e073a95ee8eabdc6a8b8)
 
@@ -273,9 +358,6 @@
 
 - Add sharp dependency, remove `package-lock.json`, recreate `node_modules` and lock files in [#28](https://github.com/AVGVSTVS96/astroSite/pull/28)
 - Add my `remark-sectionize` repo as dependency [d33d6af](https://github.com/AVGVSTVS96/astroSite/commit/d33d6af3aed4138955f86a939ddadde35a1eef76)
-
-
-
 
 **Full Changelog**: [v0.6.0...v0.7.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.6.0...v0.7.0)
 
@@ -330,6 +412,7 @@
 - Bump Astro dependencies - 4 updates by [@dependabot](https://github.com/dependabot) in [#14](https://github.com/AVGVSTVS96/astroSite/pull/14) and [#17](https://github.com/AVGVSTVS96/astroSite/pull/17)
 
 ### Features and Enhancements
+
 - Add theme functionality using variables, optimize script logic, update NavBar layout in [#18](https://github.com/AVGVSTVS96/astroSite/pull/18)
   - Add theme switcher functionality
     - Add `ThemeSwitcher.astro` to switch accent color theme using `data-theme` attribute, add to `NavBar.astro`
@@ -362,6 +445,7 @@
 - Bump vite from 5.0.10 to 5.0.12 by [@dependabot](https://github.com/dependabot) in [#12](https://github.com/AVGVSTVS96/astroSite/pull/12)
 
 ### UI Enhancements
+
 - Add color variables, extend core border and text colors, remove prose from h1 in [#13](https://github.com/AVGVSTVS96/astroSite/pull/13)
   - Remove prose from h1 headings, create h1 class component to style them
   - Define primary and accent color shades 50-950 in `tailwind.config.cjs`
@@ -404,6 +488,7 @@
 - Update [`Navbar.astro`](https://github.com/AVGVSTVS96/astroSite/commit/fb40d7a5d5ad21271b4ed5d8212409b70d424179) styling, match color to bg, update margin and padding
 
 ### Dependencies
+
 - Add Astro-Icon [5eab63d](https://github.com/AVGVSTVS96/astroSite/commit/5eab63d3128228cabc5078221ee993b2bfbb7773)
 
 **Full Changelog**: [v0.2.0...v0.2.1](https://github.com/AVGVSTVS96/astroSite/compare/v0.2.0...v0.2.1)
@@ -411,7 +496,6 @@
 ## v0.2.0
 
 ### Features and Enhancements
-
 
 - Add table of contents to blog pages, update layout in [#6](https://github.com/AVGVSTVS96/astroSite/pull/6)
 - Create Dropdown menu, format code in [#7](https://github.com/AVGVSTVS96/astroSite/pull/7)
@@ -423,10 +507,10 @@
 
 ### Features and Enhancements
 
-* Migrated and Converted Flask Website to Astro Page in [#3](https://github.com/AVGVSTVS96/astroSite/pull/3)
-   - [Updated Favicon](https://github.com/AVGVSTVS96/astroSite/commit/5e95ebb1f99fa9b96d120ab2310395cf55ad1441) and [linked it in `flaskSite.astro`](https://github.com/AVGVSTVS96/astroSite/commit/90815ce73ec0e14df78c107608869b8b3b24e670)
+- Migrated and Converted Flask Website to Astro Page in [#3](https://github.com/AVGVSTVS96/astroSite/pull/3)
+  - [Updated Favicon](https://github.com/AVGVSTVS96/astroSite/commit/5e95ebb1f99fa9b96d120ab2310395cf55ad1441) and [linked it in `flaskSite.astro`](https://github.com/AVGVSTVS96/astroSite/commit/90815ce73ec0e14df78c107608869b8b3b24e670)
   - [Add Home Button to `flaskSite.astro` page](https://github.com/AVGVSTVS96/astroSite/commit/f26ef4d3776c916925b3f105786e7eef3a916307)
-  - [Added newly supported Chrome CSS scrollbar styles](https://github.com/AVGVSTVS96/astroSite/commit/a309dae62c9f8a4ff96cacc2e74409166bfc907b) 
+  - [Added newly supported Chrome CSS scrollbar styles](https://github.com/AVGVSTVS96/astroSite/commit/a309dae62c9f8a4ff96cacc2e74409166bfc907b)
   - [Imported `global.css` in `flaskSite.astro`](https://github.com/AVGVSTVS96/astroSite/commit/98261e8dd4bb160ea976acd53631e09491a562df)
   - [Refactored styles, moved page specific styles to layout pages](https://github.com/AVGVSTVS96/astroSite/commit/157d76b2aea2e290a1f09fd0b64ac52fbecba004)
   - [Added TypeScript types to `flaskSite.astro` script](https://github.com/AVGVSTVS96/astroSite/commit/973fbcb762f8ef0cea51a03645bedda1122aadae)
