@@ -4,7 +4,6 @@ import { ChevronDown } from 'lucide-react';
 import { DropdownMenuItem } from '@components/ui/dropdown-menu';
 import { projectLinks } from './navLinks';
 
-
 export const ProjectsDropdown: React.FC = () => {
   return (
     <Dropdown variant="link" ariaLabel="Open projects dropdown menu">

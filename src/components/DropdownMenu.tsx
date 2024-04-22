@@ -25,7 +25,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   variant,
   ariaLabel,
 }) => {
-  
   const [triggerChild, dropdownItem] = children;
 
   return (

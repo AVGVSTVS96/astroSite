@@ -4,6 +4,15 @@ bracketSameLine: true
 printWidth: 80
 singleQuote: true
 trailingComma: "es5"
+tailwindAttributes:
+  - Classes
+  - buttonStyles
+  - iconStyles
+tailwindFunctions:
+  - cn
+  - clsx
+  - cva
+  - tw
 
 plugins:
   - "prettier-plugin-astro"
