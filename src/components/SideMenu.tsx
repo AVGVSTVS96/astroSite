@@ -66,7 +66,7 @@ const ProjectNavButtons: React.FC = () => {
   );
 };
 
-export function SideMenu() {
+export const SideMenu: React.FC = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
