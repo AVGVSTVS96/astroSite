@@ -75,7 +75,7 @@ export const AccentColorSelector: React.FC = () => {
             </TooltipTrigger>
             <TooltipContent
               side="left"
-              sideOffset="0"
+              sideOffset={0}
               className="bg-muted text-foreground">
               {option.colorName}
               <Arrow className="fill-muted" width={12} height={6} />
