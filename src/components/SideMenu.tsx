@@ -1,17 +1,11 @@
 import React from 'react';
 
-import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from './ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from './ui/sheet';
 
 import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuTrigger,
   NavigationMenuLink,
 } from './ui/navigation-menu';
 
@@ -27,8 +21,11 @@ const MainNavButtons: React.FC = () => {
       <NavigationMenuList className="flex w-full flex-col items-start justify-start space-x-0">
         {mainLinks.map((link) => (
           <NavigationMenuItem key={link.name} className="w-full">
-            <NavigationMenuLink href={link.href} className="">
-              <Button variant="ghost" className="h-9 w-full justify-start px-3">
+            <NavigationMenuLink href={link.href} className="rounded-md">
+              <Button
+                tabIndex={-1}
+                variant="ghost"
+                className="h-9 w-full justify-start px-3">
                 {React.createElement(link.icon, {
                   className: iconStyles,
                 })}
@@ -50,7 +47,7 @@ const ProjectNavButtons: React.FC = () => {
       <NavigationMenuList className="flex w-full flex-col items-start justify-start space-x-0">
         {projectLinks.map((project) => (
           <NavigationMenuItem key={project.name} className="w-full">
-            <NavigationMenuLink href={project.href} className="">
+            <NavigationMenuLink href={project.href} className="rounded-md">
               <Button
                 tabIndex={-1}
                 variant="link"
@@ -89,4 +86,4 @@ export const SideMenu: React.FC = () => {
       </SheetContent>
     </Sheet>
   );
-}
+};
