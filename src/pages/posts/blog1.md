@@ -386,7 +386,7 @@ This example shows how I implemented the `<Card />` component on my `index.astro
 
 ## Projects component
 
-I created a `Projects` component to display web development projects I've worked on. In this component I used the `Card` component within a function that displays each project in it's in an unordered list. I customized the card for this component by setting it to `bordered`, with a custom padding value passed to the `padding` prop, and `noMargin` set to `true`
+I created a `Projects` component to display web development projects I've worked on. In this component I used the `Card` component within a function that maps over and displays each project in an unordered list. I customized the card for this component by setting it to `bordered`, with a custom padding value passed to the `padding` prop, and `noMargin` set to `true`
 
 ```astro title="components/projects.astro {3-4}
 <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
