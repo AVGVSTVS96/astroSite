@@ -6,6 +6,8 @@ import {
   DropdownMenuTrigger,
 } from '@components/ui/dropdown-menu';
 
+export { DropdownMenuItem } from '@components/ui/dropdown-menu';
+
 type DropdownProps = {
   children: [React.ReactNode, React.ReactNode];
   ariaLabel?: string;

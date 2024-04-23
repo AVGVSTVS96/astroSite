@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dropdown } from './DropdownMenu';
+import { Dropdown, DropdownMenuItem } from './DropdownMenu';
 import { Arrow } from '@radix-ui/react-tooltip';
 import {
   TooltipProvider,
@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from '@components/ui/tooltip';
-import { DropdownMenuItem } from '@components/ui/dropdown-menu';
+
 
 const themeOptions = [
   { colorName: 'Sky', colorClass: 'bg-sky-400', href: '#sky' },

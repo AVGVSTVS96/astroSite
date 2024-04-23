@@ -1,7 +1,6 @@
 import React from 'react';
-import { Dropdown } from '@components/DropdownMenu';
+import { Dropdown, DropdownMenuItem } from './DropdownMenu';
 import { ChevronDown } from 'lucide-react';
-import { DropdownMenuItem } from '@components/ui/dropdown-menu';
 import { projectLinks } from './navLinks';
 
 export const ProjectsDropdown: React.FC = () => {
