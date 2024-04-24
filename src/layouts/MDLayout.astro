@@ -6,13 +6,17 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 const { data, headings } = Astro.props;
 
-const isoDate = new Date(data.pubDate).toISOString().substring(0, 10);
+const isoDate = new Date(data.pubDate).toISOString();
+const formattedDate = new Date(data.pubDate).toLocaleDateString('en-us', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 
 const imageUrl = new URL(data.image?.url, Astro.request.url).href;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
 );
-console.log(images);
 
 if (data.image && !images[data.image.url])
   throw new Error(`"${data.image.url}" does not exist in images directory"`);
@@ -68,9 +72,9 @@ const schema = JSON.stringify(jsonLD, null, 2);
         {
           data.image && (
             <Image
-              src={data.image.url} 
-              width={data.image.width || 800}
-              height={data.image.height || 600}
+              src={images[data.image.url]()}
+              width={data.image.width}
+              height={data.image.height}
               alt={data.image.alt}
             />
           )
