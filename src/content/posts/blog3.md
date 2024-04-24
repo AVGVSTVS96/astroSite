@@ -1,10 +1,8 @@
 ---
 title: Building menus and buttons in Astro
 description: This is how I built my navigation menu, dropdown, and button components in Astro.
-pubDate: 'December 27, 2023'
+pubDate: 2023-12-27
 author: 'Bassim Shahidy'
-tags:
-layout: '@layouts/MDLayout.astro'
 ---
 
 <!-- TODO -->

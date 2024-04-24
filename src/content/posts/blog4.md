@@ -1,10 +1,8 @@
 ---
 title: How to use the new GitHub CLI
 description: How to use the new GitHub CLI, a command-line tool that makes it easier to work with GitHub directly from your terminal.
-pubDate: 'January 2, 2024'
+pubDate: 2024-01-02
 author: 'Bassim Shahidy'
-tags:
-layout: '@layouts/MDLayout.astro'
 ---
 
 `gh` is GitHub on the command line. It brings pull requests, issues, and other GitHub concepts to the terminal next to where you are already working with `git` and your code.
