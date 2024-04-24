@@ -8,7 +8,7 @@ const { data, headings } = Astro.props;
 
 const isoDate = new Date(data.pubDate).toISOString().substring(0, 10);
 
-const imageUrl = new URL(data.image.url, Astro.request.url).href;
+const imageUrl = new URL(data.image?.url, Astro.request.url).href;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
 );
