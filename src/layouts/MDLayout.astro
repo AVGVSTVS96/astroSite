@@ -4,23 +4,25 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Prose from '@components/Prose.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-const { frontmatter, headings } = Astro.props;
+const { data, headings } = Astro.props;
 
-const isoDate = new Date(frontmatter.pubDate).toISOString().substring(0, 10);
+const isoDate = new Date(data.pubDate).toISOString().substring(0, 10);
 
-const imageUrl = new URL(frontmatter.image, Astro.request.url).href;
+const imageUrl = new URL(data.image.url, Astro.request.url).href;
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
 );
-if (frontmatter.image && !images[frontmatter.image])
-  throw new Error(`"${frontmatter.image}" does not exist in images directory"`);
+console.log(images);
+
+if (data.image && !images[data.image.url])
+  throw new Error(`"${data.image.url}" does not exist in images directory"`);
 
 const jsonLD = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  headline: frontmatter.title,
-  description: frontmatter.description,
-  ...(frontmatter.image ? { image: imageUrl } : {}),
+  headline: data.title,
+  description: data.description,
+  ...(data.image ? { image: imageUrl } : {}),
   url: Astro.request.url,
   datePublished: isoDate + 'T08:00:00-05:00',
   author: {
@@ -49,7 +51,7 @@ const jsonLD = {
 const schema = JSON.stringify(jsonLD, null, 2);
 ---
 
-<BaseLayout {...frontmatter}>
+<BaseLayout {...data}>
   <script is:inline slot="head" type="application/ld+json" set:html={schema} />
   <div
     class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
@@ -59,21 +61,21 @@ const schema = JSON.stringify(jsonLD, null, 2);
         <div class="mb-1 flex justify-start">
           <span
             class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
-            Written by {frontmatter.author} on {frontmatter.pubDate}
+            Written by {data.author} on {data.pubDate}
           </span>
         </div>
-        <h1>{frontmatter.title}</h1>
+        <h1>{data.title}</h1>
         {
-          frontmatter.image && (
+          data.image && (
             <Image
-              src={images[frontmatter.image]()}
-              width={frontmatter.image.width}
-              height={frontmatter.image.height}
-              alt={frontmatter.title}
+              src={data.image.url} 
+              width={data.image.width || 800}
+              height={data.image.height || 600}
+              alt={data.image.alt}
             />
           )
         }
-        <p>{frontmatter.description}</p>
+        <p>{data.description}</p>
         <slot />
       </Prose>
     </article>
