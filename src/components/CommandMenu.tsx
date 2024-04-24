@@ -107,10 +107,16 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
                 slot="blogPosts"
                 key={index}
                 aria-label={`Link to blog post: ${post.data.title}`}
-                onSelect={() => navigate(post.url)}>
+                onSelect={() => navigate(`/posts/${post.slug}/`)}>
                 <NotebookText className={iconStyles} />
                 {post.data.title}
-                <CommandShortcut>{post.data.pubDate}</CommandShortcut>
+                <CommandShortcut>
+                  {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </CommandShortcut>
               </CommandItem>
             ))}
           </CommandGroup>
