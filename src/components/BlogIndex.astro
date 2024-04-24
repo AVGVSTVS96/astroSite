@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('posts');
 const { class: className, ...attrs } = Astro.props;
@@ -8,6 +8,13 @@ const { class: className, ...attrs } = Astro.props;
 let displayPosts = Astro.props.postCount
   ? allPosts.slice(-Astro.props.postCount)
   : allPosts;
+
+const formatDate = (date: Date) =>
+  new Date(date).toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
 interface Props extends HTMLAttributes<'ul'> {
   postCount?: number;
@@ -20,7 +27,7 @@ interface Props extends HTMLAttributes<'ul'> {
     displayPosts.map((post) => (
       <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3">
         <div class="col-span-1 self-center text-dark/75 dark:text-muted-light/60">
-          {post.data.pubDate}
+          {formatDate(post.data.pubDate)}
         </div>
         <div class="col-span-2 sm:text-right">
           <a
