@@ -106,11 +106,12 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
               <CommandItem
                 slot="blogPosts"
                 key={index}
+                className="mr-2 text-balance"
                 aria-label={`Link to blog post: ${post.data.title}`}
                 onSelect={() => navigate(`/posts/${post.slug}/`)}>
                 <NotebookText className={iconStyles} />
                 {post.data.title}
-                <CommandShortcut>
+                <CommandShortcut className="whitespace-nowrap tracking-wide">
                   {new Date(post.data.pubDate).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'short',
