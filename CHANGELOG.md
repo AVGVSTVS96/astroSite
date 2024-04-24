@@ -1,3 +1,25 @@
+## v0.11.0
+
+### Enhancements
+* Convert blog to content collection in [#252](https://github.com/AVGVSTVS96/astroSite/pull/252)
+  * Update date handling, use formatted `pubDate` for blog and `ISOString` for JSONLD in [#255](https://github.com/AVGVSTVS96/astroSite/pull/255)
+  * Use relative import in `blog5` to fix BAS-84 in [#250](https://github.com/AVGVSTVS96/astroSite/pull/250)
+  * Fixes #258 by formatting `pubDate` and updating `onSelect` to navigate to posts/slug in [#260](https://github.com/AVGVSTVS96/astroSite/pull/260)
+  * Fixes #259 by updating `CommandMenu` date and title styling in [#261](https://github.com/AVGVSTVS96/astroSite/pull/261)
+
+### Refactor
+* Export `DropdownMenuItem` directly from `DropdownMenu` in [#251](https://github.com/AVGVSTVS96/astroSite/pull/251)
+
+### Bug Fixes
+* Fix styles not loading in `ReactLayout` in [#257](https://github.com/AVGVSTVS96/astroSite/pull/257)
+  
+### Content
+* Fix blog typo + small update to `Projects component` section in [#247](https://github.com/AVGVSTVS96/astroSite/pull/247)
+* Add new blog post about tailwind regex in [#248](https://github.com/AVGVSTVS96/astroSite/pull/248)
+
+**Full Changelog**: [v0.10.6...v0.11.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.10.6...v0.11.0)
+
+
 ## v0.10.6
 
 ### Refactor
@@ -90,7 +112,7 @@
   - Add `margin-top` to icon to better align with text in [#170](https://github.com/AVGVSTVS96/astroSite/pull/170)
   - Set alignment for Dropdown and update `nav` margin-left in [#172](https://github.com/AVGVSTVS96/astroSite/pull/172)
 
-### Refactoring
+### Refactor
 
 - Refactor react `ModeToggle`, remove dropdown, fixes #128 in [#157](https://github.com/AVGVSTVS96/astroSite/pull/157)
 - Refactor Dropdown in [#171](https://github.com/AVGVSTVS96/astroSite/pull/171)
@@ -116,7 +138,7 @@
 - Update `ReactLayout` theme script and remove unneeded CSS import in [#142](https://github.com/AVGVSTVS96/astroSite/pull/142)
 - Use grid in `MDLayout` instead of flexbox to fix #130 in [#145](https://github.com/AVGVSTVS96/astroSite/pull/145)
 
-### Refactoring
+### Refactor
 
 - Refactor: base layout, KB shortcut script, and CSS in [#144](https://github.com/AVGVSTVS96/astroSite/pull/144)
 
@@ -179,7 +201,7 @@
 - Updated the name of `ThemeToggle` local storage variable to fix #106 in [#107](https://github.com/AVGVSTVS96/astroSite/pull/107)
 - Improve keyboard navigation accessibility by resolving tabindex in [#109](https://github.com/AVGVSTVS96/astroSite/pull/109)
 
-### Refactoring
+### Refactor
 
 - Re-organize components directory in [#108](https://github.com/AVGVSTVS96/astroSite/pull/108)
 
