@@ -1,10 +1,9 @@
 ---
 title: 'How I used Astro to build this website'
 description: 'This is my first blog post, it describes several fundamental concepts I learned and used to build this website using Astro and TailwindCSS, such as Astro layouts and components, markdown styling, and variables in Astro.'
-pubDate: 'June 7, 2023'
+pubDate: 2023-06-07
 author: 'Bassim Shahidy'
 tags: ['blog', 'astro', 'tailwindcss']
-layout: '@layouts/MDLayout.astro'
 ---
 
 ---
