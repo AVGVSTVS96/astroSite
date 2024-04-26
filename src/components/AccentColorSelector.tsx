@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dropdown, DropdownMenuItem } from './DropdownMenu';
+import { DropdownMenu, DropdownMenuItem } from './DropdownMenu';
 import { Arrow } from '@radix-ui/react-tooltip';
 import {
   TooltipProvider,
@@ -57,7 +57,7 @@ export const AccentColorSelector: React.FC = () => {
 
   return (
     <TooltipProvider>
-      <Dropdown ariaLabel="Open accent color selector menu" variant="outline">
+      <DropdownMenu ariaLabel="Open accent color selector menu" variant="outline">
         <div className="flex items-center">
           <div className="size-5 rounded-full bg-accent-400" />
         </div>
@@ -82,7 +82,7 @@ export const AccentColorSelector: React.FC = () => {
             </TooltipContent>
           </Tooltip>
         ))}
-      </Dropdown>
+      </DropdownMenu>
     </TooltipProvider>
   );
 };
