@@ -1,11 +1,11 @@
 import React from 'react';
-import { Dropdown, DropdownMenuItem } from './DropdownMenu';
+import { DropdownMenu, DropdownMenuItem } from './DropdownMenu';
 import { ChevronDown } from 'lucide-react';
 import { projectLinks } from './navLinks';
 
 export const ProjectsDropdown: React.FC = () => {
   return (
-    <Dropdown variant="link" ariaLabel="Open projects dropdown menu">
+    <DropdownMenu variant="link" ariaLabel="Open projects dropdown menu">
       <span className="flex items-center">
         Projects
         <ChevronDown
@@ -23,6 +23,6 @@ export const ProjectsDropdown: React.FC = () => {
           {link.name}
         </DropdownMenuItem>
       ))}
-    </Dropdown>
+    </DropdownMenu>
   );
 };
