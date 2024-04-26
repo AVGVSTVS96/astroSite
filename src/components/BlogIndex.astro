@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { getCollection } from 'astro:content';
+import { formatDate } from '@utils/formateDate';
 
 const allPosts = await getCollection('posts');
 const { class: className, ...attrs } = Astro.props;
@@ -8,13 +9,6 @@ const { class: className, ...attrs } = Astro.props;
 let displayPosts = Astro.props.postCount
   ? allPosts.slice(-Astro.props.postCount)
   : allPosts;
-
-const formatDate = (date: Date) =>
-  new Date(date).toLocaleDateString('en-us', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 
 interface Props extends HTMLAttributes<'ul'> {
   postCount?: number;

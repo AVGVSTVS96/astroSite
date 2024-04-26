@@ -12,12 +12,13 @@ import {
 } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
 
-import { cn } from '@/lib/utils';
-
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { NotebookText } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
+import { formatDate } from '@utils/formateDate';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
+
 
 type CommandMenuProps = {
   buttonStyles?: string;
@@ -112,10 +113,8 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
                 <NotebookText className={iconStyles} />
                 {post.data.title}
                 <CommandShortcut className="whitespace-nowrap tracking-wide">
-                  {new Date(post.data.pubDate).toLocaleDateString('en-US', {
-                    year: 'numeric',
+                  {formatDate(post.data.pubDate, {
                     month: 'short',
-                    day: 'numeric',
                   })}
                 </CommandShortcut>
               </CommandItem>
