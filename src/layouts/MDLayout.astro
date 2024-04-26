@@ -1,17 +1,14 @@
 ---
-import TableOfContents from '@components/TableOfContents.astro';
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Prose from '@components/Prose.astro';
-import { Image } from 'astro:assets';
+import TableOfContents from '@components/TableOfContents.astro';
+import { formatDate } from '@utils/formateDate';
 import type { ImageMetadata } from 'astro';
+
 const { data, headings } = Astro.props;
 
 const isoDate = new Date(data.pubDate).toISOString();
-const formattedDate = new Date(data.pubDate).toLocaleDateString('en-us', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
 
 const imageUrl = new URL(data.image?.url, Astro.request.url).href;
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -58,14 +55,20 @@ const schema = JSON.stringify(jsonLD, null, 2);
 <BaseLayout {...data}>
   <script is:inline slot="head" type="application/ld+json" set:html={schema} />
   <div
-    class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
+    class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]"
+  >
     <div class="hidden 2xl:block"></div>
     <article class="mx-6 xs:mx-10">
       <Prose>
         <div class="mb-1 flex justify-start">
           <span
-            class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
-            Written by {data.author} on {formattedDate}
+            class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400"
+          >
+            Written by {data.author} on {
+              formatDate(data.pubDate, {
+                weekday: 'long',
+              })
+            }
           </span>
         </div>
         <h1>{data.title}</h1>
