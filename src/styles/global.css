@@ -8,6 +8,8 @@
     /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
     scrollbar-width: thin; */
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
