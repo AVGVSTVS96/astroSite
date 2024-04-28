@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useThemeToggle } from '@hooks/useThemeToggle';
 
 import {
   CommandDialog,
@@ -14,11 +15,11 @@ import { Button } from '@/components/ui/button';
 
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { NotebookText } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { formatDate } from '@utils/formateDate';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
-
 
 type CommandMenuProps = {
   buttonStyles?: string;
@@ -27,6 +28,7 @@ type CommandMenuProps = {
 
 export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   const [open, setOpen] = React.useState(false);
+  const { toggleTheme } = useThemeToggle();
 
   const handleKeyDown = (event: KeyboardEvent) => {
     const { metaKey, ctrlKey, key, target } = event;
@@ -119,6 +121,14 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
                 </CommandShortcut>
               </CommandItem>
             ))}
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Settings">
+            <CommandItem onSelect={toggleTheme}>
+              <Sun className="size-4 mr-2 dark:hidden" />
+              <Moon className="hidden size-4 mr-2 dark:block" />
+              Toggle theme
+            </CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>
