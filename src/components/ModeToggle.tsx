@@ -2,11 +2,11 @@ import { Moon, Sun } from 'lucide-react';
 import { Button } from '@components/ui/button';
 import { useThemeToggle } from '@hooks/useThemeToggle';
 
-const ThemeIcon = () => {
+export const ThemeIcon = () => {
   return (
     <>
-      <Sun className="size-[22px] scale-100 dark:scale-0" />
-      <Moon className="absolute size-[22px] scale-0 dark:scale-100" />
+      <Sun className='size-5 scale-100 dark:scale-0' />
+      <Moon className='absolute size-5 scale-0 dark:scale-100' />
     </>
   );
 };

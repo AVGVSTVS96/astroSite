@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useThemeToggle } from '@hooks/useThemeToggle';
+import { ThemeIcon } from './ModeToggle';
 
 import {
   CommandDialog,
@@ -125,9 +126,8 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
           <CommandSeparator />
           <CommandGroup heading="Settings">
             <CommandItem onSelect={toggleTheme}>
-              <Sun className="size-4 mr-2 dark:hidden" />
-              <Moon className="hidden size-4 mr-2 dark:block" />
-              Toggle theme
+              <ThemeIcon />
+              <span className="ml-2">Toggle theme</span>
             </CommandItem>
           </CommandGroup>
         </CommandList>
