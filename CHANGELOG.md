@@ -1,3 +1,19 @@
+## v0.11.2
+### Enhancements
+* Disable CSS transitions when in dark mode in [#269](https://github.com/AVGVSTVS96/astroSite/pull/269)
+* Create `useThemeToggle` hook in new hooks directory and add import alias in [#273](https://github.com/AVGVSTVS96/astroSite/pull/273)
+  * Use `useThemeToggle` hook in `CommandMenu` and `ModeToggle` in [#274](https://github.com/AVGVSTVS96/astroSite/pull/274)
+* Improve keyboard navigation in `SideMenu` in [#276](https://github.com/AVGVSTVS96/astroSite/pull/276)
+* Add `font-smoothing` and `text-rendering` to improve text appearance in [#278](https://github.com/AVGVSTVS96/astroSite/pull/278)
+
+### Refactor
+* Refactor `DropdownMenu.tsx` to improve readability and code structure in [#265](https://github.com/AVGVSTVS96/astroSite/pull/265)
+* Extract `formatDate` to its own file, add options to configure when called in [#267](https://github.com/AVGVSTVS96/astroSite/pull/267)
+* Extract Sun and Moon icons to their own component in [#277](https://github.com/AVGVSTVS96/astroSite/pull/277)
+
+**Full Changelog**: [v0.11.0...v0.11.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.11.0...v0.11.2)
+
+
 ## v0.11.0
 
 ### Enhancements
