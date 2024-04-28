@@ -15,51 +15,43 @@ import { mainLinks, projectLinks, iconStyles } from './navLinks';
 
 const MainNavButtons: React.FC = () => {
   return (
-    <NavigationMenu
-      orientation="vertical"
-      className="min-w-full [&>div]:w-full">
-      <NavigationMenuList className="flex w-full flex-col items-start justify-start space-x-0">
-        {mainLinks.map((link) => (
-          <NavigationMenuItem key={link.name} className="w-full">
-            <NavigationMenuLink href={link.href} className="rounded-md">
-              <Button
-                tabIndex={-1}
-                variant="ghost"
-                className="h-9 w-full justify-start px-3">
-                {React.createElement(link.icon, {
-                  className: iconStyles,
-                })}
-                {link.name}
-              </Button>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </NavigationMenu>
+    <>
+      {mainLinks.map((link) => (
+        <NavigationMenuItem key={link.name} className="w-full">
+          <NavigationMenuLink href={link.href} className="rounded-md">
+            <Button
+              tabIndex={-1}
+              variant="ghost"
+              className="h-9 w-full justify-start px-3">
+              {React.createElement(link.icon, {
+                className: iconStyles,
+              })}
+              {link.name}
+            </Button>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      ))}
+    </>
   );
 };
 
 const ProjectNavButtons: React.FC = () => {
   return (
-    <NavigationMenu
-      orientation="vertical"
-      className="min-w-full [&>div]:w-full">
-      <NavigationMenuList className="flex w-full flex-col items-start justify-start space-x-0">
-        {projectLinks.map((project) => (
-          <NavigationMenuItem key={project.name} className="w-full">
-            <NavigationMenuLink href={project.href} className="rounded-md">
-              <Button
-                tabIndex={-1}
-                variant="link"
-                size="lg"
-                className="h-8 w-full justify-start px-3 text-muted-foreground hover:text-foreground hover:no-underline">
-                {project.name}
-              </Button>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </NavigationMenu>
+    <>
+      {projectLinks.map((project) => (
+        <NavigationMenuItem key={project.name} className="w-full">
+          <NavigationMenuLink href={project.href} className="rounded-md">
+            <Button
+              tabIndex={-1}
+              variant="link"
+              size="lg"
+              className="h-8 w-full justify-start px-3 text-muted-foreground hover:text-foreground hover:no-underline">
+              {project.name}
+            </Button>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      ))}
+    </>
   );
 };
 
@@ -74,14 +66,17 @@ export const SideMenu: React.FC = () => {
       <SheetContent side="left" className="w-64 overflow-y-auto">
         <SheetTitle className="font-bold">bassim</SheetTitle>
         <div className="mt-4 flex flex-col">
-          <section>
-            <MainNavButtons />
-          </section>
-          <hr className="my-4" />
-          <section>
-            <h4 className="mb-2 ml-2 mt-1 font-semibold">Projects</h4>
-            <ProjectNavButtons />
-          </section>
+          <NavigationMenu
+            orientation="vertical"
+            className="min-w-full [&>div]:w-full">
+            {' '}
+            <NavigationMenuList className="flex w-full flex-col items-start justify-start space-x-0">
+              <MainNavButtons />
+              <hr className="my-4 w-full" />
+              <h4 className="mb-2 ml-2 mt-1 font-semibold">Projects</h4>
+              <ProjectNavButtons />
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
       </SheetContent>
     </Sheet>
