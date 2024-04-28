@@ -3,7 +3,7 @@ title: 'Set up TailwindCSS intellisense for JavaScript and TypeScript'
 description: "Tailwind's VS Code extension doesn't detect utility classes in JavaScript or TypeScript declarations by default. But it can be configured to do so, we can add support for data types like strings, arrays, and objects using Regex. In this post, I'll show you how to configure Tailwind intellisense and autocomplete suggestions for Javascript and Typescript variables in VS Code."
 pubDate: 2024-04-22
 author: 'Bassim Shahidy'
-tags: ['TailwindCSS', 'VS Code', 'Intellisense', JavaScript', 'TypeScript', 'types', 'variables']
+tags: ['TailwindCSS', 'VS Code', 'Intellisense', 'JavaScript', 'TypeScript', 'types', 'variables']
 ---
 
 ---
