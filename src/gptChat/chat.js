@@ -22,7 +22,7 @@ if (modelName === 'gpt3') {
 } else if (modelName === 'gpt4') {
   modelName = 'gpt-4';
 }
-console.log(modelName);
+// console.log(modelName);
 
 let autoScrollState = true;
 let lastScrollTop = 0;
