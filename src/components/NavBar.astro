@@ -1,5 +1,4 @@
 ---
-import { getCollection } from "astro:content";
 import Button from './Button.astro';
 import DropdownMenu from './DropdownMenu.astro';
 import ThemeToggle from './ThemeToggle.astro';
@@ -8,19 +7,10 @@ import { CommandMenu } from '@components/CommandMenu';
 import { SideMenu } from '@components/SideMenu';
 import Logo from './Logo.astro';
 import { projectLinks } from './navLinks';
-
-const allPosts = await getCollection('posts');
-
-import type { HTMLAttributes } from 'astro/types';
-
-type Props = HTMLAttributes<'div'>;
-
-const { ...attrs } = Astro.props;
 ---
 
 <div
-  class="navbar-container sticky top-0 z-10 mb-8 w-full border-b border-border bg-background"
-  {...attrs}>
+  class="navbar-container sticky top-0 z-10 mb-8 w-full border-b border-border bg-background">
   <div
     class="h-1 w-full bg-gradient-to-r from-accent-300 via-accent-500 to-accent-400">
   </div>
@@ -28,7 +18,7 @@ const { ...attrs } = Astro.props;
     class="button-container flex items-center justify-between px-4 py-2 text-dark dark:text-light sm:px-6 md:px-10 xl:px-14">
     <span class="flex items-center">
       <Logo class="mr-4" />
-      <CommandMenu client:load buttonStyles="h-8 pr-1" posts={allPosts} />
+      <CommandMenu client:load buttonStyles="h-8 pr-1" />
     </span>
     <div class="button-theme-container flex items-center gap-1">
       <div class="gap-1 text-[15px] sm:flex">
