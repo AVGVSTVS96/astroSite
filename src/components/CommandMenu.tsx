@@ -18,7 +18,7 @@ import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { NotebookText } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { formatDate } from '@utils/formateDate';
+import { formatDate } from '@utils/formatDate';
 import { sortedBlogPosts } from '@utils/getSortedPosts';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
 
