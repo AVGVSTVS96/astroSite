@@ -1,24 +1,22 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import { getCollection } from 'astro:content';
 import { formatDate } from '@utils/formateDate';
+import { sortedBlogPosts } from '@utils/getSortedPosts.astro';
 
-const allPosts = await getCollection('posts');
-const { class: className, ...attrs } = Astro.props;
+const { class: className } = Astro.props;
 
-let displayPosts = Astro.props.postCount
-  ? allPosts.slice(-Astro.props.postCount)
-  : allPosts;
+let latestPosts = Astro.props.postCount
+  ? sortedBlogPosts.slice(0, Astro.props.postCount)
+  : sortedBlogPosts;
 
-interface Props extends HTMLAttributes<'ul'> {
+interface Props {
   postCount?: number;
   class?: string;
 }
 ---
 
-<ul class={`list-none pl-0 ${className}`} {...attrs}>
+<ul class={`list-none pl-0 ${className}`}>
   {
-    displayPosts.map((post) => (
+    latestPosts.map((post) => (
       <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3">
         <div class="col-span-1 self-center text-dark/75 dark:text-muted-light/60">
           {formatDate(post.data.pubDate)}
@@ -27,7 +25,7 @@ interface Props extends HTMLAttributes<'ul'> {
           <a
             href={`/posts/${post.slug}/`}
             aria-label={`Link to blog post: ${post.data.title}`}
-            class="block text-xl font-[600] text-dark underline decoration-accent-500 decoration-2 underline-offset-[5px] hover:text-dark/80 hover:decoration-accent-300 dark:text-light dark:decoration-accent-500 dark:hover:text-muted-light/75 dark:hover:underline dark:hover:decoration-accent-600/80">
+            class="block text-balance text-xl font-[600] text-dark underline decoration-accent-500 decoration-2 underline-offset-[5px] hover:text-dark/80 hover:decoration-accent-300 dark:text-light dark:decoration-accent-500 dark:hover:text-muted-light/75 dark:hover:underline dark:hover:decoration-accent-600/80">
             {post.data.title}
           </a>
         </div>
