@@ -1,4 +1,3 @@
----
 import { getCollection } from 'astro:content';
 
 export const sortedBlogPosts = (await getCollection('posts')).sort(
@@ -6,4 +5,3 @@ export const sortedBlogPosts = (await getCollection('posts')).sort(
     Date.parse(b.data.pubDate.toString()) -
     Date.parse(a.data.pubDate.toString())
 );
----
