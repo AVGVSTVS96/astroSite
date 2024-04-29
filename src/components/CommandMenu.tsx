@@ -16,12 +16,11 @@ import { Button } from '@/components/ui/button';
 
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { NotebookText } from 'lucide-react';
-import { Moon, Sun } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { formatDate } from '@utils/formateDate';
-import { mainLinks, projectLinks, iconStyles } from './navLinks';
 import { sortedBlogPosts } from '@utils/getSortedPosts';
+import { mainLinks, projectLinks, iconStyles } from './navLinks';
 
 type CommandMenuProps = {
   buttonStyles?: string;
@@ -110,12 +109,12 @@ export function CommandMenu({ buttonStyles }: CommandMenuProps) {
               <CommandItem
                 slot="blogPosts"
                 key={index}
-                className="mr-2 text-balance"
+                className="text-balance"
                 aria-label={`Link to blog post: ${post.data.title}`}
                 onSelect={() => navigate(`/posts/${post.slug}/`)}>
                 <NotebookText className={iconStyles} />
                 {post.data.title}
-                <CommandShortcut className="whitespace-nowrap tracking-wide">
+                <CommandShortcut className="whitespace-nowrap pl-4 tracking-wide">
                   {formatDate(post.data.pubDate, {
                     month: 'short',
                   })}
