@@ -21,7 +21,7 @@ import { Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatDate } from '@utils/formateDate';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
-import { sortedBlogPosts } from '@utils/getSortedPosts.astro';
+import { sortedBlogPosts } from '@utils/getSortedPosts';
 
 type CommandMenuProps = {
   buttonStyles?: string;
