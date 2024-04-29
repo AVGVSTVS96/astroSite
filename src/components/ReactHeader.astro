@@ -1,5 +1,4 @@
 ---
-import { getCollection } from "astro:content";
 import { Button } from '@components/ui/button';
 import { ModeToggle } from '@components/ModeToggle';
 import { SideMenu } from '@components/SideMenu';
@@ -8,8 +7,6 @@ import { mainLinks } from './navLinks';
 import Logo from './Logo.astro';
 import { AccentColorSelector } from './AccentColorSelector';
 import { ProjectsDropdown } from './ProjectsDropdown';
-
-const allPosts = await getCollection('posts');
 ---
 
 <header
@@ -37,7 +34,7 @@ const allPosts = await getCollection('posts');
       </span>
     </nav>
     <span class="flex items-center gap-2">
-      <CommandMenu client:load posts={allPosts} />
+      <CommandMenu client:load />
       <AccentColorSelector client:load />
       <SideMenu client:load />
       <ModeToggle client:load />

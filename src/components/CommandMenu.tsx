@@ -21,13 +21,13 @@ import { Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatDate } from '@utils/formateDate';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
+import { sortedBlogPosts } from '@utils/getSortedPosts.astro';
 
 type CommandMenuProps = {
   buttonStyles?: string;
-  posts?: any[];
 };
 
-export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
+export function CommandMenu({ buttonStyles }: CommandMenuProps) {
   const [open, setOpen] = React.useState(false);
   const { toggleTheme } = useThemeToggle();
 
@@ -106,7 +106,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Blog Posts">
-            {posts?.map((post, index) => (
+            {sortedBlogPosts.map((post, index) => (
               <CommandItem
                 slot="blogPosts"
                 key={index}
