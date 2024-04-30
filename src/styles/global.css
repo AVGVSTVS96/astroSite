@@ -10,7 +10,6 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -88,6 +87,20 @@
 
   ::-webkit-scrollbar-thumb:active {
     background-color: hsla(0, 0%, 60%, 0.3);
+  }
+
+  [data-theme='slate'] {
+    --accent-50: theme(colors.slate.50);
+    --accent-100: theme(colors.slate.100);
+    --accent-200: theme(colors.slate.200);
+    --accent-300: theme(colors.slate.300);
+    --accent-400: theme(colors.slate.400);
+    --accent-500: theme(colors.slate.500);
+    --accent-600: theme(colors.slate.600);
+    --accent-700: theme(colors.slate.700);
+    --accent-800: theme(colors.slate.800);
+    --accent-900: theme(colors.slate.900);
+    --accent-950: theme(colors.slate.950);
   }
 
   [data-theme='sky'] {

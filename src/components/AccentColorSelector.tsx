@@ -8,8 +8,8 @@ import {
   TooltipContent,
 } from '@components/ui/tooltip';
 
-
 const themeOptions = [
+  { colorName: 'Slate', colorClass: 'bg-slate-400', href: '#slate' },
   { colorName: 'Sky', colorClass: 'bg-sky-400', href: '#sky' },
   { colorName: 'Cyan', colorClass: 'bg-cyan-400', href: '#cyan' },
   { colorName: 'Teal', colorClass: 'bg-teal-400', href: '#teal' },
@@ -57,7 +57,9 @@ export const AccentColorSelector: React.FC = () => {
 
   return (
     <TooltipProvider>
-      <DropdownMenu ariaLabel="Open accent color selector menu" variant="outline">
+      <DropdownMenu
+        ariaLabel="Open accent color selector menu"
+        variant="outline">
         <div className="flex items-center">
           <div className="size-5 rounded-full bg-accent-400" />
         </div>
