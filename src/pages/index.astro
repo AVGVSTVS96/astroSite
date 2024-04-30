@@ -10,30 +10,16 @@ import Projects from '@components/Projects.astro';
   description="Bassim Shahidy's personal website">
   <body>
     <div class="max-w-3xl">
-      <Card
-        title="Bassim Shahidy"
-        subtitle="IT Specialist at the New York City BAR Association"
-        variant="borderless">
-        <p slot="content">
-          Based in NY, I'm an IT Professional with a wealth of experience in
-          hardware, software management, network operations, cybersecurity, and
-          audio-visual systems. Currently, my focus is on advancing my skillset
-          in software engineering and web development, utilizing the latest
-          programming technologies to enhance user experiences and system
-          performance.
-        </p>
-        <p slot="content">
-          In addition, I'm exploring AI and machine learning, seeking to
-          understand and apply these technologies in practical scenarios. My
-          technical repertoire also includes 3D printing—where I skillfully
-          build and maintain printers for precision parts—and drone building,
-          where I apply my electronics and software knowledge to create and
-          pilot high-performance drones.
-        </p>
-      </Card>
+      <section class="my-24 w-5/6">
+        <Card
+          title="hi, i'm bassim"
+          subtitle="I'm an IT/AV Specialist from New York learning web development"
+          variant="borderless"
+        />
+      </section>
       <div class="card-mx card-p">
-        <div class="h1 mb-3">
-          <h1>Latest Posts</h1>
+        <div class="mb-3 text-2xl font-extrabold">
+          <h1>blog</h1>
         </div>
         <BlogIndex postCount={3} />
       </div>
