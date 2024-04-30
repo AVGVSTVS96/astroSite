@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/plus-jakarta-sans';
+import jakarta from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
 import '@styles/global.css';
 import Meta from '@components/Meta.astro';
 import NavBar from '@components/NavBar.astro';
@@ -9,6 +11,13 @@ const { description, title } = Astro.props;
 
 <html lang="en" class="min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
   <head>
+    <link
+      rel="preload"
+      href={jakarta}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <Meta title={title} description={description} />
     <script is:inline>
       const preferredTheme =
