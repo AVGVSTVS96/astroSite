@@ -10,8 +10,8 @@ const { ...attrs } = Astro.props;
 ---
 
 <div class="card-mx card-p" {...attrs}>
-  <div class="h1 mb-4">
-    <h1>Projects</h1>
+  <div class="text-2xl font-extrabold mb-4">
+    <h1>projects</h1>
   </div>
   <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
     {
@@ -36,7 +36,7 @@ const { ...attrs } = Astro.props;
               </p>
               <div class="flex flex-wrap gap-2">
                 {project.data.tags.map((tag) => (
-                  <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-1 text-sm text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
+                  <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-[3px] text-xs text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
                     {tag}
                   </div>
                 ))}
