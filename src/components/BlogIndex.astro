@@ -17,15 +17,15 @@ interface Props {
 <ul class={`list-none pl-0 ${className}`}>
   {
     latestPosts.map((post) => (
-      <li class="grid grid-cols-1 border-b-[0.5px] p-2.5 sm:grid-cols-3">
-        <div class="col-span-1 self-center text-dark/75 dark:text-muted-light/60">
+      <li class="grid grid-cols-1 border-t pt-2 pb-8 px-2.5 sm:grid-cols-3">
+        <div class="col-span-1 text-dark/75 dark:text-muted-light/60">
           {formatDate(post.data.pubDate)}
         </div>
         <div class="col-span-2 sm:text-right">
           <a
             href={`/posts/${post.slug}/`}
             aria-label={`Link to blog post: ${post.data.title}`}
-            class="block text-balance text-xl font-[600] text-dark underline decoration-accent-500 decoration-2 underline-offset-[5px] hover:text-dark/80 hover:decoration-accent-300 dark:text-light dark:decoration-accent-500 dark:hover:text-muted-light/75 dark:hover:underline dark:hover:decoration-accent-600/80">
+            class="block text-balance text-xl font-[600] text-dark hover:text-dark/80 dark:text-light  dark:hover:text-muted-light/75">
             {post.data.title}
           </a>
         </div>
