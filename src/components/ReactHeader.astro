@@ -7,6 +7,7 @@ import { mainLinks } from './navLinks';
 import Logo from './Logo.astro';
 import { AccentColorSelector } from './AccentColorSelector';
 import { ProjectsDropdown } from './ProjectsDropdown';
+import { sortedBlogPosts } from '@utils/getSortedPosts';
 ---
 
 <header
@@ -34,7 +35,7 @@ import { ProjectsDropdown } from './ProjectsDropdown';
       </span>
     </nav>
     <span class="flex items-center gap-2">
-      <CommandMenu client:load />
+      <CommandMenu client:load posts={sortedBlogPosts} />
       <AccentColorSelector client:load />
       <SideMenu client:load />
       <ModeToggle client:load />
