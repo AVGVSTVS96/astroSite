@@ -19,14 +19,18 @@ import { NotebookText } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { formatDate } from '@utils/formatDate';
-import { sortedBlogPosts } from '@utils/getSortedPosts';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
+
+import type { CollectionEntry } from 'astro:content';
+type postsType = CollectionEntry<'posts'>[];
+
 
 type CommandMenuProps = {
   buttonStyles?: string;
+  posts?: postsType;
 };
 
-export function CommandMenu({ buttonStyles }: CommandMenuProps) {
+export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   const [open, setOpen] = React.useState(false);
   const { toggleTheme } = useThemeToggle();
 
@@ -105,7 +109,7 @@ export function CommandMenu({ buttonStyles }: CommandMenuProps) {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Blog Posts">
-            {sortedBlogPosts.map((post, index) => (
+            {posts?.map((post, index) => (
               <CommandItem
                 slot="blogPosts"
                 key={index}
