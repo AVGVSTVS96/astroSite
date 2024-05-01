@@ -4,8 +4,7 @@
 
 @layer base {
   :root {
-    font-family: 'Plus Jakarta Sans Variable', Tahoma;
-    /* @apply tracking-tight; */
+    font-family: 'Inter Variable', Tahoma;
     /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
     scrollbar-width: thin; */
     scroll-behavior: smooth;
