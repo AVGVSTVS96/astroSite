@@ -5,6 +5,7 @@
 @layer base {
   :root {
     font-family: 'Plus Jakarta Sans Variable', Tahoma;
+    font-weight: 500;
     /* @apply tracking-tight; */
     /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
     scrollbar-width: thin; */
