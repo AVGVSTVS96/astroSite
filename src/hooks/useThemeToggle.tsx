@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 const disableTransitions = () => {
   const css = document.createElement('style');
   css.textContent = `
