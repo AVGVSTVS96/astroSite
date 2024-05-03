@@ -1,7 +1,7 @@
 ---
 import '@styles/global.css';
 import Meta from '@components/Meta.astro';
-import NavBar from '@components/NavBar.astro';
+import ReactHeader from '@components/ReactHeader.astro';
 import Footer from '@components/Footer.astro';
 
 const { description, title } = Astro.props;
@@ -10,6 +10,11 @@ const { description, title } = Astro.props;
 <html lang="en" class="min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
   <head>
     <Meta title={title} description={description} />
+    <script is:inline>
+      const storedTheme = localStorage.getItem('themeSwitcher');
+      const theme = storedTheme || 'sky';
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
     <script is:inline>
       const preferredTheme =
         localStorage.getItem('themeToggle') ||
@@ -29,7 +34,7 @@ const { description, title } = Astro.props;
     <slot name="head" />
   </head>
   <body class="flex min-h-screen w-dvw flex-col items-center">
-    <NavBar />
+    <ReactHeader />
     <main class="grow">
       <slot />
     </main>
