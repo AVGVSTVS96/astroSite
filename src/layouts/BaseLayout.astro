@@ -9,7 +9,7 @@ import Footer from '@components/Footer.astro';
 const { description, title } = Astro.props;
 ---
 
-<html lang="en" class="min-h-dvh w-dvw scroll-pt-16 overflow-x-hidden">
+<html lang="en" class="min-h-dvh w-dvw scroll-pt-16">
   <head>
     <link
       rel="preload"
@@ -42,7 +42,7 @@ const { description, title } = Astro.props;
     </script>
     <slot name="head" />
   </head>
-  <body class="flex min-h-screen w-dvw flex-col items-center">
+  <body class="flex min-h-screen w-dvw flex-col items-center overflow-x-hidden">
     <ReactHeader />
     <main class="grow">
       <slot />
