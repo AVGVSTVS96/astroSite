@@ -18,14 +18,14 @@ interface Props {
   {
     latestPosts.map((post) => (
       <li class="grid grid-cols-1 border-t pt-2 pb-8 px-2.5 sm:grid-cols-3">
-        <div class="col-span-1 text-dark/75 dark:text-muted-light/60">
+        <div class="col-span-1 text-muted-foreground/80">
           {formatDate(post.data.pubDate)}
         </div>
         <div class="col-span-2 sm:text-right">
           <a
             href={`/posts/${post.slug}/`}
             aria-label={`Link to blog post: ${post.data.title}`}
-            class="block text-balance text-lg font-[600] text-dark hover:text-dark/80 dark:text-light  dark:hover:text-muted-light/75">
+            class="block text-balance text-lg font-[500] text-foreground hover:text-muted-foreground/80">
             {post.data.title}
           </a>
         </div>
