@@ -37,14 +37,14 @@ import { Icon } from 'astro-icon/components';
 
 <style>
   li:has(.active) > a {
-    @apply text-accent-400 hover:text-accent-300;
+    @apply text-accent-400;
   }
 
   :root:is(.dark) li:has(.active) > a {
-    @apply text-accent-300/70 hover:text-accent-300/90;
+    @apply text-accent-300;
   }
 
   a:hover {
-    @apply text-muted dark:text-muted-light/80;
+    @apply text-foreground/80;
   }
 </style>
