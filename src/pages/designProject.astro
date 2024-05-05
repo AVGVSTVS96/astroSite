@@ -1,6 +1,6 @@
 ---
 import '@styles/global.css';
-import MinimalNavBar from '@components/designProject1/MinimalNavBar.astro';
+import Button from '@components/Button.astro';
 ---
 
 <html lang="en">
@@ -34,14 +34,44 @@ import MinimalNavBar from '@components/designProject1/MinimalNavBar.astro';
       document.documentElement.classList.add('dark');
     </script>
   </head>
-  <MinimalNavBar />
-  <section class="container min-w-full px-10 py-10 text-muted-light">
-    <div class="container flex min-w-full flex-col gap-2 text-left">
-      <h1 class="font-sans text-4xl font-bold tracking-tight">
-        Hi, I'm Bassim
+
+  <header
+    class="minimal-navbar-container flex min-w-full flex-row-reverse border-b border-border border-opacity-40">
+    <div class="button-container mx-6 my-3 flex pl-4">
+      <Button
+        name="Home"
+        link="/"
+        class="text-xl font-semibold text-muted-foreground hover:text-foreground"
+      />
+    </div>
+  </header>
+  <section class="p-6 text-foreground">
+    <div class="grid min-w-full grid-cols-4 grid-rows-8 gap-4 text-left">
+      <h1
+        class="col-span-4 row-start-3 -mt-2 text-7xl font-bold tracking-tight">
+        Bassim Shahidy
       </h1>
-      <p class="text-xl opacity-60">
+      <p
+        class="col-span-2 row-start-4 min-h-24 pr-10 text-xl text-muted-foreground">
         I'm an IT/AV Specialist at the NYC BAR Association
+      </p>
+      <p
+        class="col-span-2 col-start-3 row-start-4 text-xl text-muted-foreground">
+        I'm also a self-taught web developer and aspiring designer with a
+        passion for creating beautiful and functional websites.
+      </p>
+      <h1
+        class="col-span-4 col-start-1 row-start-6 -mt-2 text-7xl font-bold tracking-tight text-foreground">
+        Experiemnts in Design
+      </h1>
+      <p
+        class="col-span-2 col-start-1 row-start-7 text-xl text-muted-foreground">
+        I started learning software development in Janusary 2023
+      </p>
+      <p
+        class="col-span-3 col-start-3 row-start-7 text-xl text-muted-foreground">
+        This website is my personal sandbox for experimenting and gaining
+        experience in design and development.
       </p>
     </div>
   </section>
