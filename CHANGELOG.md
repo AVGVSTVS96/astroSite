@@ -1,3 +1,33 @@
+## v0.12.0
+### Redesign
+* Add slate accent color option in [#296](https://github.com/AVGVSTVS96/astroSite/pull/296)
+* Add inter font via FontSource, extend Tailwind default theme in [#308](https://github.com/AVGVSTVS96/astroSite/pull/308)
+* Update styling for hero, card, logo, projects, and about page in [#309](https://github.com/AVGVSTVS96/astroSite/pull/309)
+* `BlogIndex.astro`: Update styling in [#310](https://github.com/AVGVSTVS96/astroSite/pull/310)
+* Use `ReactHeader.astro` everywhere, update styling in [#314](https://github.com/AVGVSTVS96/astroSite/pull/314)
+* Create new `BlogTimeline` component and `blogLine` page to replace `BlogIndex` in [#316](https://github.com/AVGVSTVS96/astroSite/pull/316)
+
+### Enhancements
+- Create `getSortedPosts.astro` util to sort blog posts by published date in [#284](https://github.com/AVGVSTVS96/astroSite/pull/284)
+  * Replace `getCollection` in `BlogIndex.astro` with `sortedBlogPosts` function, update styling in [#285](https://github.com/AVGVSTVS96/astroSite/pull/285)
+  * Convert `getSortedPosts` util from astro to TypeScript in [#288](https://github.com/AVGVSTVS96/astroSite/pull/288)
+  * Refactor post sorting, update blog post link in [#295](https://github.com/AVGVSTVS96/astroSite/pull/295)
+  * Remove direct `sortedBlogPosts` import from `CommandMenu.tsx` in [#299](https://github.com/AVGVSTVS96/astroSite/pull/299)
+
+### Refactoring
+* Move gpt chat files from utils to chat folder, update import in `gpt.astro` in [#286](https://github.com/AVGVSTVS96/astroSite/pull/286)
+* Add type to `getCollection`, remove unused imports, update styles in [#293](https://github.com/AVGVSTVS96/astroSite/pull/293)
+* Fix `formatDate.ts` typo in [#289](https://github.com/AVGVSTVS96/astroSite/pull/289)
+* Optimize imports, update blog post content in [#304](https://github.com/AVGVSTVS96/astroSite/pull/304)
+* `BaseLayout.astro`: Replace `ReactLayout.astro`, and fix BAS-102 in [#315](https://github.com/AVGVSTVS96/astroSite/pull/315)
+* Remove date options, already defined in `Intl.DateTimeFormatOptions` in [#287](https://github.com/AVGVSTVS96/astroSite/pull/287)
+  
+### Content
+* Add new blog post `ResetWindowsPassword` and update existing post titles in [#283](https://github.com/AVGVSTVS96/astroSite/pull/283)
+
+**Full Changelog**: [v0.11.2...v0.12.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.11.2...v0.12.0)
+
+
 ## v0.11.2
 ### Enhancements
 * Disable CSS transitions when in dark mode in [#269](https://github.com/AVGVSTVS96/astroSite/pull/269)
