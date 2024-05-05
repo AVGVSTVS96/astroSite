@@ -1,35 +1,28 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Card from '@components/Card.astro';
-import BlogIndex from '@components/BlogIndex.astro';
+import BlogTimeline from '@components/BlogTimeline.astro';
 import Projects from '@components/Projects.astro';
 ---
 
 <MainLayout
   title="Bassim Shahidy"
   description="Bassim Shahidy's personal website">
-  <body>
-    <div class="max-w-3xl">
-      <!-- <section class="my-24 w-5/6">
-        <Card
-          title="hi, i'm bassim"
-          subtitle="I'm an IT/AV Specialist from New York learning web development"
-          variant="borderless"
-        />
-      </section> -->
-      <section class="my-24 card-mx card-p">
-        <div class="w-5/6">
-          <h1 class="text-[2.5rem] font-extrabold mb-2">hi, i'm bassim</h1>
-          <h2 class="text-xl font-semibold text-muted-foreground ">I'm an IT/AV Specialist from New York learning web development</h2>
-        </div>
-      </section>
-      <div class="card-mx card-p">
-        <div class="mb-3 text-2xl font-extrabold">
-          <h1>blog</h1>
-        </div>
-        <BlogIndex postCount={3} />
+  <article class="card-mx card-p max-w-3xl">
+    <section id="hero section" class="my-24">
+      <h1 class="mb-2 text-[2.5rem] font-extrabold">hi, i'm bassim</h1>
+      <h2 class="text-xl font-semibold text-muted-foreground">
+        I'm an IT/AV Specialist from New York
+      </h2>
+    </section>
+    <section id="latest posts" class="mb-24"> 
+      <h1 class="text-xl font-bold">Latest Posts</h1>
+      <div>
+        <BlogTimeline postCount={3} lineClamp="line-clamp-2" />
       </div>
+    </section>
+    <section id="projects">
+      <h1 class="mb-6 text-xl font-bold text-foreground">Projects</h1>
       <Projects />
-    </div>
-  </body>
+    </section>
+  </article>
 </MainLayout>
