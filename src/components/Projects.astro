@@ -10,21 +10,19 @@ import { Icon } from 'astro-icon/components';
     {
       projects.map((project) => (
         <li>
-          <Card
-            variant="bordered"
-            padding="px-4 pt-3 pb-4"
-            noMargin={true}>
+          <Card variant="bordered" padding="px-4 pt-3 pb-4" noMargin={true}>
             <div slot="content">
               <a
                 aria-label="github project link"
-                class="flex items-center justify-between text-[1.1rem] font-extrabold no-underline"
+                class="group flex items-center justify-between font-bold text-foreground/85 no-underline hover:text-foreground"
                 href={project.data.url}>
-                <span class="dark:text-light hover:dark:text-muted-light/75">
-                  {project.data.title}
-                </span>
-                <Icon name="github" class="mx-2 opacity-70 hover:opacity-100" />
+                {project.data.title}
+                <Icon
+                  name="github"
+                  class="mx-2 text-muted-foreground group-hover:text-foreground"
+                />
               </a>
-              <p class="mb-4 mt-1.5 line-clamp-2 opacity-85 text-[0.925rem]">
+              <p class="mb-4 mt-1.5 line-clamp-2 text-[0.925rem] text-muted-foreground">
                 {project.data.description}
               </p>
               <div class="flex flex-wrap gap-2">
