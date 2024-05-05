@@ -27,14 +27,14 @@ const { lineClamp, split = false } = Astro.props;
         <div
           aria-hidden="true"
           class:list={[
-            'absolute left-2 top-[2.5rem] hidden h-[0.5625rem] w-[0.5625rem] rounded-full ring-2 ring-accent-300/50 sm:block',
+            'absolute left-2 top-[2.5rem] hidden h-[0.5625rem] w-[0.5625rem] rounded-full ring-2 ring-accent-300/70 sm:block',
             split ? 'lg:left-[12.5rem]' : '',
           ]}
         />
         <div
           aria-hidden="true"
           class:list={[
-            'absolute -bottom-[2.5rem] left-[0.75rem] top-[3.125rem] my-0.5 hidden w-px bg-accent-300/50 group-last:-bottom-2 group-last:bg-transparent group-last:bg-gradient-to-b group-last:from-accent-300/50 group-last:to-transparent sm:block',
+            'absolute -bottom-[2.5rem] left-[0.75rem] top-[3.125rem] my-0.5 hidden w-px bg-accent-300/70 group-last:-bottom-2 group-last:bg-transparent group-last:bg-gradient-to-b group-last:from-accent-300/70 group-last:to-transparent sm:block',
             split ? 'lg:left-[12.75rem]' : '',
           ]}
         />
@@ -67,8 +67,10 @@ const { lineClamp, split = false } = Astro.props;
               Read more
               <Icon
                 name="linkCaret"
-                size={16}
-                class:list={['-mb-0.5 ml-1.5 stroke-current stroke-[1.8]']}
+                size={20}
+                class:list={[
+                  '-mb-0.5 ml-0.5 stroke-accent-300/75 stroke-2 transition  group-hover:translate-x-0.5 group-hover:stroke-accent-300',
+                ]}
                 title="caret-icon"
               />
             </span>
