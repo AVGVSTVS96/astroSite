@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/inter';
+import inter from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import '@styles/global.css';
 import Meta from '@components/Meta.astro';
 import ReactHeader from '@components/ReactHeader.astro';
@@ -9,6 +11,13 @@ const { description, title } = Astro.props;
 
 <html lang="en" class="min-h-dvh w-dvw scroll-pt-16">
   <head>
+    <link
+      rel="preload"
+      href={inter}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <Meta title={title} description={description} />
     <script is:inline>
       const storedTheme = localStorage.getItem('themeSwitcher');

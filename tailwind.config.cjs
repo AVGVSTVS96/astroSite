@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-
+const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+
 const primaryColor = 'slate';
 
 const mix = (name) =>
@@ -16,6 +17,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
+      },
       screens: {
         '3xs': '380px',
         '2xs': '440px',
