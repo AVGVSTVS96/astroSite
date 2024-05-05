@@ -1,0 +1,16 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BlogTimeline from '@components/BlogTimeline.astro';
+---
+
+<BaseLayout>
+  <section class="card-mx card-p max-w-3xl">
+    <div class="mb-16 mt-24 sm:text-center">
+      <h1 class="mb-4 text-5xl font-bold">blog</h1>
+      <p class="mb-5 text-lg text-neutral-400">
+        my thoughts on software development.
+      </p>
+    </div>
+    <BlogTimeline lineClamp="line-clamp-3" split={true} />
+  </section>
+</BaseLayout>

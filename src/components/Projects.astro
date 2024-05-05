@@ -3,16 +3,9 @@ import { getCollection } from 'astro:content';
 const projects = await getCollection('projects');
 import Card from '@components/Card.astro';
 import { Icon } from 'astro-icon/components';
-import type { HTMLAttributes } from 'astro/types';
-
-type Props = HTMLAttributes<'div'>;
-const { ...attrs } = Astro.props;
 ---
 
-<div class="card-mx card-p" {...attrs}>
-  <div class="text-2xl font-extrabold mb-4">
-    <h1>projects</h1>
-  </div>
+<div>
   <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
     {
       projects.map((project) => (
