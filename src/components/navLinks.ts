@@ -18,16 +18,9 @@ export const mainLinks = [
   {
     name: 'Blog',
     icon: NotebookTabs,
-    href: '/blog',
+    href: '/blogPage',
     shortcut: '⌘B',
   },
-  {
-    name: 'BlogTimeline',
-    icon: NotebookTabs,
-    href: '/blogLine',
-    // shortcut: '⌘M',
-  },
-
 ];
 
 export const projectLinks = [
