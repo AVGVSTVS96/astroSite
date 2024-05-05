@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    font-family: 'Inter Variable', Tahoma;
+    @apply font-sans;
     /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
     scrollbar-width: thin; */
     scroll-behavior: smooth;
