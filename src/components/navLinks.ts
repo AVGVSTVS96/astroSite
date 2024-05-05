@@ -21,6 +21,13 @@ export const mainLinks = [
     href: '/blog',
     shortcut: '⌘B',
   },
+  {
+    name: 'BlogTimeline',
+    icon: NotebookTabs,
+    href: '/blogLine',
+    // shortcut: '⌘M',
+  },
+
 ];
 
 export const projectLinks = [
