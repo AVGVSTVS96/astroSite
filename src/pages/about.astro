@@ -1,31 +1,29 @@
 ---
 import MainLayout from '@layouts/MainLayout.astro';
-import Card from '@components/Card.astro';
 ---
 
 <MainLayout title="About Me" description="Bassim Shahidy's personal website">
-  <section>
-    <Card
-      title="Bassim Shahidy"
-      subtitle="IT/AV professional learning web development"
-      variant="bordered"
-      displayHr={true}>
-        <p slot="content">
-          Based in NY, I'm an IT Professional with a wealth of experience in
-          hardware, software management, network operations, cybersecurity, and
-          audio-visual systems. Currently, my focus is on advancing my skillset
-          in software engineering and web development, utilizing the latest
-          programming technologies to enhance user experiences and system
-          performance.
-        </p>
-        <p slot="content">
-          In addition, I'm exploring AI and machine learning, seeking to
-          understand and apply these technologies in practical scenarios. My
-          technical repertoire also includes 3D printing—where I skillfully
-          build and maintain printers for precision parts—and drone building,
-          where I apply my electronics and software knowledge to create and
-          pilot high-performance drones.
-        </p>
-    </Card>
+  <section class="card-mx mt-8 card-p max-w-3xl">
+    <h3 class="mb-4 text-2xl font-bold">About Me</h3>
+    <div slot="content" class="space-y-6">
+      <p class="text-muted-foreground">
+        Based in NY, I'm an IT Professional with a wealth of experience in
+        hardware, software management, network operations, cybersecurity, and
+        audio-visual systems.
+      </p>
+      <p class="text-muted-foreground">
+        Currently, my focus is on advancing my skillset in software engineering
+        and web development, utilizing the latest programming technologies to
+        enhance user experiences and system performance.
+      </p>
+      <p class="text-muted-foreground">
+        In addition, I'm exploring AI and machine learning, seeking to
+        understand and apply these technologies in practical scenarios. My
+        technical repertoire also includes 3D printing—where I skillfully build
+        and maintain printers for precision parts—and drone building, where I
+        apply my electronics and software knowledge to create and pilot
+        high-performance drones.
+      </p>
+    </div>
   </section>
 </MainLayout>
