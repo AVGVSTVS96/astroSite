@@ -1,52 +1,26 @@
 ---
 import '@styles/global.css';
-import Button from '@components/Button.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="" />
-    <title>Minimal Typography</title>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Bassim Shahidy",
-        "jobTitle": "IT Technician",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "NYC Bar Association"
-        },
-        "description": "Bassim Shahidy is an IT specialist with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.",
-        "url": "https://bassimshahidy.com",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "bassim@bassimshahidy.com",
-          "contactType": "professional"
-        }
-      }
-    </script>
-    <script>
-      document.documentElement.classList.add('dark');
-    </script>
-  </head>
-
-  <header
-    class="minimal-navbar-container flex min-w-full flex-row-reverse border-b border-border border-opacity-40">
-    <div class="button-container mx-6 my-3 flex pl-4">
-      <Button
-        name="Home"
-        link="/"
-        class="text-xl font-semibold text-muted-foreground hover:text-foreground"
-      />
-    </div>
-  </header>
-  <section class="p-6 text-foreground">
-    <div class="grid min-w-full grid-cols-4 grid-rows-8 gap-4 text-left">
+<BaseLayout>
+  <section class="p-6 max-w-6xl">
+    <div
+      class="relative px-16 grid min-w-full grid-cols-4 grid-rows-8 gap-4 text-left">
+      <div id="horizontal-lines">
+        <div
+          class="absolute top-0 col-span-4 row-start-3 h-px w-[calc(100%-10rem)] bg-gradient-to-r from-transparent via-accent-400/75 dark:via-accent-500/40 to-transparent">
+        </div>
+        <div
+          class="absolute top-14 col-span-4 row-start-3 mt-1 h-px w-[calc(100%-10rem)] bg-gradient-to-r from-transparent via-accent-400/75 dark:via-accent-500/40 to-transparent">
+        </div>
+        <div
+          class="absolute top-0 col-span-4 row-start-6 h-px w-[calc(100%-10rem)] bg-gradient-to-r from-transparent via-accent-400/75 dark:via-accent-500/40 to-transparent">
+        </div>
+        <div
+          class="absolute top-14 col-span-4 row-start-6 mt-1 h-px w-[calc(100%-10rem)] bg-gradient-to-r from-transparent via-accent-400/75 dark:via-accent-500/40 to-transparent">
+        </div>
+      </div>
       <h1
         class="col-span-4 row-start-3 -mt-2 text-7xl font-bold tracking-tight">
         Bassim Shahidy
@@ -75,17 +49,4 @@ import Button from '@components/Button.astro';
       </p>
     </div>
   </section>
-  <style>
-    html {
-      @apply bg-primary-950;
-      min-height: 100dvh;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-  </style>
-
-
-</html>
+</BaseLayout>
