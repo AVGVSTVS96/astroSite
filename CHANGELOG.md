@@ -1,3 +1,16 @@
+## v0.12.1
+### Redesign
+* Add 4x8 grid and new content to Minimal Typography in [#324](https://github.com/AVGVSTVS96/astroSite/pull/324)
+  * Fix typo in Minimal Typography in [#325](https://github.com/AVGVSTVS96/astroSite/pull/325)
+  * Use `BaseLayout` in Minimal Typography, add horizontal guidelines in [#326](https://github.com/AVGVSTVS96/astroSite/pull/326)
+
+### Enhancements
+* `BlogIndex.astro`, `index.astro`: Update font weights in [#327](https://github.com/AVGVSTVS96/astroSite/pull/327)
+* Update blog subheading and prose-code text color to be consistent with rest of site in [#329](https://github.com/AVGVSTVS96/astroSite/pull/329)
+
+**Full Changelog**: [v0.12.0...v0.12.1](https://github.com/AVGVSTVS96/astroSite/compare/v0.12.0...v0.12.1)
+
+
 ## v0.12.0
 ### Redesign
 * Add slate accent color option in [#296](https://github.com/AVGVSTVS96/astroSite/pull/296)
