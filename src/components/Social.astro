@@ -1,24 +1,24 @@
 ---
-const { platform, username, variant, ...attrs } = Astro.props;
 import { Icon } from 'astro-icon/components';
-import type { HTMLAttributes } from 'astro/types';
+const { platform } = Astro.props;
 
-interface Props extends HTMLAttributes<'a'> {
-  platform: string;
-  username?: string;
-  variant?: 'linkedIn';
+interface Props {
+  platform: 'github' | 'linkedin';
 }
+
+const socialLinks = {
+  github: 'https://github.com/avgvstvs96',
+  linkedin: 'https://www.linkedin.com/in/bassimshahidy',
+};
 ---
 
 <a
-  {...attrs}
-  href={`https://www.${
-    variant === 'linkedIn' ? 'linkedin.com/in' : `${platform}.com`
-  }/${username}`}
-  aria-label={`link to ${platform} profile for ${username}`}>
+  href={socialLinks[platform]}
+  aria-label={`Bassim's ${platform} profile`}>
   <Icon
     name={`${platform}`}
     size={20}
     class={`${platform}-icon hover:text-foreground`}
   />
 </a>
+
