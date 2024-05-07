@@ -18,7 +18,7 @@ export const mainLinks = [
   {
     name: 'Blog',
     icon: NotebookTabs,
-    href: '/blogPage',
+    href: '/blog',
     shortcut: '⌘B',
   },
 ];
