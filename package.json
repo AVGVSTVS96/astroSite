@@ -14,6 +14,7 @@
     "wrangler": "bunx wrangler pages dev -- bun run dev"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.9",
     "@astrojs/check": "^0.5.10",
     "@astrojs/cloudflare": "^10.2.5",
     "@astrojs/react": "^3.3.0",
@@ -29,6 +30,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
+    "ai": "^3.1.1",
     "astro": "^4.6.1",
     "astro-expressive-code": "^0.35.0",
     "astro-icon": "^1.0.3",
