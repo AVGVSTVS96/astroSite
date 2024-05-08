@@ -1,15 +1,18 @@
 import { streamText } from 'ai';
-import { openai } from '@ai-sdk/openai';
+import { createOpenAI } from '@ai-sdk/openai';
 
-export async function POST(req: Request) {
-  const { prompt }: { prompt: string } = await req.json();
+export const prerender = false;
 
-  const openai = new OpenAI({
-    apiKey: env.OPENAI_API_KEY,
-  });
+export async function POST(context) {
+  const { prompt, messages }: { prompt: string; messages: any[] } =
+    await context.request.json();
+
+const openai = createOpenAI({
+  apiKey: import.meta.env.OPENAI_API_KEY
+});
 
   const result = await streamText({
-    model: openai.openai('gpt-4'),
+    model: openai('gpt-4'),
     system: 'You are a helpful assistant.',
     messages,
   });
