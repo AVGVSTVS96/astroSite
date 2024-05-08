@@ -36,6 +36,6 @@ export default defineConfig({
     icon(),
     react(),
   ],
-  adapter: cloudflare({ imageService: 'compile', mode: 'directory'}),
+  adapter: cloudflare({ imageService: 'compile' }),
   output: 'hybrid',
 });
