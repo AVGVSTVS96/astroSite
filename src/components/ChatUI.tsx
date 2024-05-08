@@ -74,14 +74,15 @@ export function Chat() {
           onSubmit={handleSubmit}
           className="flex w-full items-center space-x-2">
           <Input
-            id="prompt"
+            id="input"
+            name="prompt"
             placeholder="Type your message..."
             className="flex-1"
             autoComplete="off"
             value={input}
             onChange={handleInputChange}
           />
-          <Button type="submit" size="icon" disabled={inputLength === 0}>
+          <Button type="submit" size="icon">
             <PaperPlaneIcon className="h-4 w-4" />
             <span className="sr-only">Send</span>
           </Button>
