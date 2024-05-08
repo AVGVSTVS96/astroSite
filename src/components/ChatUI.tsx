@@ -14,6 +14,8 @@ import {
   SelectItem,
 } from '@components/ui/select';
 
+import { useChat } from 'ai/react';
+
 const GptSelect: React.FC = () => {
   const [selectedModel, setSelectedModel] = React.useState('gpt3');
 
@@ -40,58 +42,9 @@ const GptSelect: React.FC = () => {
 };
 
 export function Chat() {
-  const [messages, setMessages] = React.useState([
-    {
-      role: 'agent',
-      content: 'Hi, how can I help you today?',
-    },
-    {
-      role: 'user',
-      content: "Hey, I'm having trouble with my account.",
-    },
-    {
-      role: 'agent',
-      content: 'What seems to be the problem?',
-    },
-    {
-      role: 'user',
-      content: "I can't log in.",
-    },
-    {
-      role: 'agent',
-      content: 'Hi, how can I help you today?',
-    },
-    {
-      role: 'user',
-      content: "Hey, I'm having trouble with my account.",
-    },
-    {
-      role: 'agent',
-      content: 'What seems to be the problem?',
-    },
-    {
-      role: 'user',
-      content: "I can't log in.",
-    },
-    {
-      role: 'agent',
-      content: 'Hi, how can I help you today?',
-    },
-    {
-      role: 'user',
-      content: "Hey, I'm having trouble with my account.",
-    },
-    {
-      role: 'agent',
-      content: 'What seems to be the problem?',
-    },
-    {
-      role: 'user',
-      content: "I can't log in.",
-    },
-  ]);
-  const [input, setInput] = React.useState('');
-  const inputLength = input.trim().length;
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    api: '/api/chatRoute',
+  });
 
   return (
     <Card className="flex h-[clamp(300px,70vh,700px)] w-[clamp(260px,60vw,700px)] flex-col">
@@ -103,9 +56,9 @@ export function Chat() {
       </CardHeader>
       <CardContent className="grow overflow-y-auto">
         <div className="space-y-4">
-          {messages.map((message, index) => (
+          {messages.map(message => (
             <div
-              key={index}
+              key={message.id}
               className={`flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
                 message.role === 'user'
                   ? 'ml-auto bg-primary text-primary-foreground'
@@ -118,20 +71,15 @@ export function Chat() {
       </CardContent>
       <CardFooter className="mt-6">
         <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (inputLength === 0) return;
-            setMessages([...messages, { role: 'user', content: input }]);
-            setInput('');
-          }}
+          onSubmit={handleSubmit}
           className="flex w-full items-center space-x-2">
           <Input
-            id="message"
+            id="prompt"
             placeholder="Type your message..."
             className="flex-1"
             autoComplete="off"
             value={input}
-            onChange={(event) => setInput(event.target.value)}
+            onChange={handleInputChange}
           />
           <Button type="submit" size="icon" disabled={inputLength === 0}>
             <PaperPlaneIcon className="h-4 w-4" />
