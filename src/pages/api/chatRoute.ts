@@ -1,7 +1,6 @@
 import type { APIContext } from 'astro';
-import type { CoreMessage } from 'ai'
+import { streamText, type CoreMessage } from 'ai'
 import { createOpenAI } from '@ai-sdk/openai';
-import { streamText } from 'ai';
 
 export const prerender = false;
 
