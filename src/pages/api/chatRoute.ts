@@ -12,7 +12,7 @@ const openai = createOpenAI({
 });
 
   const result = await streamText({
-    model: openai('gpt-4'),
+    model: openai('gpt-3.5-turbo'),
     system: 'You are a helpful assistant.',
     messages,
   });
