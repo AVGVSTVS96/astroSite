@@ -46,13 +46,16 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
 };
 
 export function Chat() {
-  let initialModel: string = 'gpt-3.5-turbo';
-  if (typeof window !== 'undefined' && window.localStorage) {
-    initialModel = localStorage.getItem('selectedModel') || 'gpt-3.5-turbo';
-  }
+  const defaultModel: string = 'gpt-3.5-turbo';
+  const localStorageAvailable =
+    typeof window !== 'undefined' && window.localStorage;
+  
+  const model = localStorageAvailable
+    ? localStorage.getItem('selectedModel') || defaultModel
+    : defaultModel;
 
   const [selectedModel, setSelectedModel] =
-    React.useState<string>(initialModel);
+    React.useState<string>(model);
 
   const chatOptions: UseChatOptions = {
     api: '/api/chatRoute',
@@ -63,9 +66,7 @@ export function Chat() {
 
   const handleModelChange = (model: string) => {
     setSelectedModel(model);
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('selectedModel', model);
-    }
+    localStorageAvailable ? localStorage.setItem('selectedModel', model) : null;
   };
 
   React.useEffect(() => {
@@ -98,7 +99,7 @@ export function Chat() {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
+              className={`flex w-max max-w-[75%] whitespace-pre-wrap flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
                 message.role === 'user'
                   ? 'ml-auto bg-primary text-primary-foreground'
                   : 'bg-muted'
