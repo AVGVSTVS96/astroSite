@@ -14,12 +14,17 @@ import {
   SelectItem,
 } from '@components/ui/select';
 
-import { useChat } from 'ai/react';
+import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
 
-const ModelSelector: React.FC<{
+interface ModelSelectorProps {
   selectedModel: string;
   onModelChange: (model: string) => void;
-}> = ({ selectedModel, onModelChange }) => {
+}
+
+const ModelSelector: React.FC<ModelSelectorProps> = ({
+  selectedModel,
+  onModelChange,
+}) => {
   const handleModelChange = (value: string) => {
     onModelChange(value);
   };
@@ -41,14 +46,20 @@ const ModelSelector: React.FC<{
 };
 
 export function Chat() {
-  let initialModel = 'gpt-3.5-turbo'; // default value
+  let initialModel: string = 'gpt-3.5-turbo';
   if (typeof window !== 'undefined' && window.localStorage) {
     initialModel = localStorage.getItem('selectedModel') || 'gpt-3.5-turbo';
   }
-  const [selectedModel, setSelectedModel] = React.useState(initialModel);
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+
+  const [selectedModel, setSelectedModel] =
+    React.useState<string>(initialModel);
+
+  const chatOptions: UseChatOptions = {
     api: '/api/chatRoute',
-  });
+  };
+
+  const { messages, input, handleInputChange, handleSubmit }: UseChatHelpers =
+    useChat(chatOptions);
 
   const handleModelChange = (model: string) => {
     setSelectedModel(model);
