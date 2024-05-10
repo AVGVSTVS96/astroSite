@@ -17,11 +17,17 @@ import {
 import { useChat } from 'ai/react';
 
 const GptSelect: React.FC = () => {
-  const [selectedModel, setSelectedModel] = React.useState('gpt3');
+  const initialModel =
+    typeof window !== 'undefined' && window.localStorage
+      ? localStorage.getItem('selectedModel') || 'gpt-3.5-turbo'
+      : 'gpt-3.5-turbo';
+  const [selectedModel, setSelectedModel] = React.useState(initialModel);
 
   const handleModelChange = (value: string) => {
     setSelectedModel(value);
-    localStorage.setItem('selectedModel', value);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('selectedModel', value);
+    }
   };
   console.log('Selected model:', selectedModel);
 
@@ -33,8 +39,8 @@ const GptSelect: React.FC = () => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel className="text-xs">OpenAI</SelectLabel>
-          <SelectItem value="gpt3">GPT-3.5</SelectItem>
-          <SelectItem value="gpt4">GPT-4-Turbo</SelectItem>
+          <SelectItem value="gpt-3.5-turbo">GPT-3.5</SelectItem>
+          <SelectItem value="gpt-4">GPT-4-Turbo</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -42,8 +48,13 @@ const GptSelect: React.FC = () => {
 };
 
 export function Chat() {
+  let selectedModel = 'gpt-3.5-turbo'; // default value
+  if (typeof window !== 'undefined' && window.localStorage) {
+    selectedModel = localStorage.getItem('selectedModel') || 'gpt-3.5-turbo';
+  }
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     api: '/api/chatRoute',
+    modelName: selectedModel,
   });
 
   return (
@@ -56,7 +67,7 @@ export function Chat() {
       </CardHeader>
       <CardContent className="grow overflow-y-auto">
         <div className="space-y-4">
-          {messages.map(message => (
+          {messages.map((message) => (
             <div
               key={message.id}
               className={`flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
