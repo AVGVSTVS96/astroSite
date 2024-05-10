@@ -16,20 +16,13 @@ import {
 
 import { useChat } from 'ai/react';
 
-const GptSelect: React.FC = () => {
-  const initialModel =
-    typeof window !== 'undefined' && window.localStorage
-      ? localStorage.getItem('selectedModel') || 'gpt-3.5-turbo'
-      : 'gpt-3.5-turbo';
-  const [selectedModel, setSelectedModel] = React.useState(initialModel);
-
+const GptSelect: React.FC<{
+  selectedModel: string;
+  onModelChange: (model: string) => void;
+}> = ({ selectedModel, onModelChange }) => {
   const handleModelChange = (value: string) => {
-    setSelectedModel(value);
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('selectedModel', value);
-    }
+    onModelChange(value);
   };
-  console.log('Selected model:', selectedModel);
 
   return (
     <Select value={selectedModel} onValueChange={handleModelChange}>
@@ -48,14 +41,35 @@ const GptSelect: React.FC = () => {
 };
 
 export function Chat() {
-  let selectedModel = 'gpt-3.5-turbo'; // default value
+  let initialModel = 'gpt-3.5-turbo'; // default value
   if (typeof window !== 'undefined' && window.localStorage) {
-    selectedModel = localStorage.getItem('selectedModel') || 'gpt-3.5-turbo';
+    initialModel = localStorage.getItem('selectedModel') || 'gpt-3.5-turbo';
   }
+  const [selectedModel, setSelectedModel] = React.useState(initialModel);
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     api: '/api/chatRoute',
-    modelName: selectedModel,
   });
+
+  const handleModelChange = (model: string) => {
+    setSelectedModel(model);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('selectedModel', model);
+    }
+  };
+
+  React.useEffect(() => {
+    const sendModelName = async () => {
+      await fetch('/api/chatRoute', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ modelName: selectedModel }),
+      });
+    };
+
+    sendModelName();
+  }, [selectedModel]);
 
   return (
     <Card className="flex h-[clamp(300px,70vh,700px)] w-[clamp(260px,60vw,700px)] flex-col">
@@ -63,7 +77,10 @@ export function Chat() {
         <div className="flex-1">
           <p className="font-bold leading-none tracking-tight">ChatGPT</p>
         </div>
-        <GptSelect />
+        <GptSelect
+          selectedModel={selectedModel}
+          onModelChange={handleModelChange}
+        />
       </CardHeader>
       <CardContent className="grow overflow-y-auto">
         <div className="space-y-4">

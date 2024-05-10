@@ -3,19 +3,34 @@ import { createOpenAI } from '@ai-sdk/openai';
 
 export const prerender = false;
 
+interface Message {
+  role: string;
+  content: string;
+}
+
+let modelName;
+
 export async function POST(context) {
-  const { prompt, messages }: { prompt: string; messages: any[] } =
-    await context.request.json();
+  const requestData = await context.request.json();
 
-const openai = createOpenAI({
-  apiKey: import.meta.env.OPENAI_API_KEY
-});
+  if (requestData.modelName) {
+    modelName = requestData.modelName;
+  } else {
+    const { prompt, messages }: { prompt: string; messages: Message[] } =
+      requestData;
 
-  const result = await streamText({
-    model: openai('gpt-3.5-turbo'),
-    system: 'You are a helpful assistant.',
-    messages,
-  });
+    const openai = createOpenAI({
+      apiKey: import.meta.env.OPENAI_API_KEY,
+    });
 
-  return result.toAIStreamResponse();
+    const result = await streamText({
+      model: openai(modelName),
+      system: 'You are a helpful assistant.',
+      messages,
+    });
+
+    return result.toAIStreamResponse();
+  }
+
+  return new Response(null, { status: 200 });
 }
