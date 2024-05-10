@@ -8,29 +8,37 @@ interface Message {
   content: string;
 }
 
-let modelName;
+interface ChatRequest {
+  modelName?: string;
+  prompt: string;
+  messages: Message[];
+}
+
+let modelName: string;
 
 export async function POST(context) {
-  const requestData = await context.request.json();
+  const {
+    modelName: newModelName,
+    prompt,
+    messages,
+  }: ChatRequest = await context.request.json();
 
-  if (requestData.modelName) {
-    modelName = requestData.modelName;
-  } else {
-    const { prompt, messages }: { prompt: string; messages: Message[] } =
-      requestData;
+  if (newModelName) {
+    modelName = newModelName;
+    return new Response(null, { status: 200 });
 
-    const openai = createOpenAI({
-      apiKey: import.meta.env.OPENAI_API_KEY,
-    });
-
-    const result = await streamText({
-      model: openai(modelName),
-      system: 'You are a helpful assistant.',
-      messages,
-    });
-
-    return result.toAIStreamResponse();
+    return;
   }
 
-  return new Response(null, { status: 200 });
+  const openai = createOpenAI({
+    apiKey: import.meta.env.OPENAI_API_KEY,
+  });
+
+  const result = await streamText({
+    model: openai(modelName),
+    system: 'You are a helpful assistant.',
+    messages,
+  });
+
+  return result.toAIStreamResponse();
 }
