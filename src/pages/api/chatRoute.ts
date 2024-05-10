@@ -1,34 +1,24 @@
-import { APIContext } from 'astro';
-import { streamText } from 'ai';
+import type { APIContext } from 'astro';
+import type { CoreMessage } from 'ai'
 import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
 
 export const prerender = false;
 
-interface Message {
-  role: string;
-  content: string;
-}
-
 interface ChatRequest {
   modelName?: string;
-  prompt: string;
-  messages: Message[];
+  messages: CoreMessage[];
 }
 
 let modelName: string;
 
 export async function POST(context: APIContext) {
-  const {
-    modelName: newModelName,
-    prompt,
-    messages,
-  }: ChatRequest = await context.request.json();
+  const { modelName: newModelName, messages }: ChatRequest =
+    await context.request.json();
 
   if (newModelName) {
     modelName = newModelName;
     return new Response(null, { status: 200 });
-
-    return;
   }
 
   const openai = createOpenAI({
