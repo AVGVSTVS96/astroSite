@@ -16,7 +16,7 @@ import {
 
 import { useChat } from 'ai/react';
 
-const GptSelect: React.FC<{
+const ModelSelector: React.FC<{
   selectedModel: string;
   onModelChange: (model: string) => void;
 }> = ({ selectedModel, onModelChange }) => {
@@ -77,7 +77,7 @@ export function Chat() {
         <div className="flex-1">
           <p className="font-bold leading-none tracking-tight">ChatGPT</p>
         </div>
-        <GptSelect
+        <ModelSelector
           selectedModel={selectedModel}
           onModelChange={handleModelChange}
         />
