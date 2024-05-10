@@ -1,3 +1,4 @@
+import { APIContext } from 'astro';
 import { streamText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 
@@ -16,7 +17,7 @@ interface ChatRequest {
 
 let modelName: string;
 
-export async function POST(context) {
+export async function POST(context: APIContext) {
   const {
     modelName: newModelName,
     prompt,
