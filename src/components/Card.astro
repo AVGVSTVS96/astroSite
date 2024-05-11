@@ -1,7 +1,7 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import { cn } from '@/lib/utils';
 
-interface Props extends HTMLAttributes<'div'> {
+interface Props {
   title?: string;
   subtitle?: string;
   heading?: string;
@@ -21,11 +21,10 @@ const {
   padding = 'card-p',
   class: className,
   noMargin = false,
-  ...attrs
 } = Astro.props;
 
 const baseStyles: string =
-  'prose prose-slate max-w-3xl rounded-lg dark:prose-invert prose-h2:font-semibold prose-h2:text-xl prose-h2:text-muted-foreground';
+  'prose prose-slate rounded-lg dark:prose-invert prose-h2:font-semibold prose-h2:text-xl prose-h2:text-muted-foreground';
 
 const variableStyles: (string | undefined)[] = [
   padding,
@@ -35,15 +34,10 @@ const variableStyles: (string | undefined)[] = [
 ];
 ---
 
-<div class:list={[baseStyles, variableStyles]} {...attrs}>
+<div class={cn(baseStyles, variableStyles)}>
   {title && <h1 class="mb-2">{title}</h1>}
   {subtitle && <h2 class="mt-0">{subtitle}</h2>}
   {displayHr && <hr class="mb-8 border-accent-500" />}
   {heading && <h3 class="mb-1">{heading}</h3>}
   <slot name="content" />
 </div>
-<style>
-  html.light {
-    @apply prose-headings:text-dark;
-  }
-</style>
