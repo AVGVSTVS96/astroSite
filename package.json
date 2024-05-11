@@ -16,7 +16,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^0.0.9",
     "@astrojs/check": "^0.5.10",
-    "@astrojs/cloudflare": "9.0.0",
+    "@astrojs/cloudflare": "9.2.0",
     "@astrojs/react": "^3.3.0",
     "@astrojs/tailwind": "^5.1.0",
     "@avgvstvs96/remark-sectionize": "^2.0.0",
