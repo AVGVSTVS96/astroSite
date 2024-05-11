@@ -9,12 +9,30 @@ import {
   SelectTrigger,
   SelectValue,
   SelectContent,
+  SelectSeparator,
   SelectGroup,
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
 
 import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
+
+const modelGroups = [
+  {
+    label: 'OpenAI',
+    models: [
+      { label: 'GPT-3.5-Turbo', value: 'gpt-3.5-turbo' },
+      { label: 'GPT-4-Turbo', value: 'gpt-4-turbo' },
+    ],
+  },
+  {
+    label: 'OpenAI Legacy',
+    models: [
+      { label: 'GPT-3.5-Turbo-0613', value: 'gpt-3.5-turbo-0613' },
+      { label: 'GPT-4-0613', value: 'gpt-4-0613' },
+    ],
+  },
+];
 
 interface ModelSelectorProps {
   selectedModel: string;
@@ -35,11 +53,21 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>
       <SelectContent>
-        <SelectGroup>
-          <SelectLabel className="text-xs">OpenAI</SelectLabel>
-          <SelectItem value="gpt-3.5-turbo">GPT-3.5</SelectItem>
-          <SelectItem value="gpt-4">GPT-4-Turbo</SelectItem>
-        </SelectGroup>
+        {modelGroups.map((group, index) => (
+          <SelectGroup key={index}>
+            <SelectLabel className="text-sm font-bold tracking-wide text-foreground">
+              {group.label}
+            </SelectLabel>
+            {group.models.map((item) => (
+              <SelectItem
+                className="text-muted-foreground data-[state=checked]:text-foreground"
+                value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
+            {index < modelGroups.length - 1 && <SelectSeparator />}
+          </SelectGroup>
+        ))}
       </SelectContent>
     </Select>
   );
@@ -49,13 +77,12 @@ export function Chat() {
   const defaultModel: string = 'gpt-3.5-turbo';
   const localStorageAvailable =
     typeof window !== 'undefined' && window.localStorage;
-  
+
   const model = localStorageAvailable
     ? localStorage.getItem('selectedModel') || defaultModel
     : defaultModel;
 
-  const [selectedModel, setSelectedModel] =
-    React.useState<string>(model);
+  const [selectedModel, setSelectedModel] = React.useState<string>(model);
 
   const chatOptions: UseChatOptions = {
     api: '/api/chatRoute',
@@ -99,7 +126,7 @@ export function Chat() {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex w-max max-w-[75%] whitespace-pre-wrap flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
+              className={`flex w-max max-w-[75%] flex-col gap-2 whitespace-pre-wrap rounded-lg px-3 py-2 text-sm ${
                 message.role === 'user'
                   ? 'ml-auto bg-primary text-primary-foreground'
                   : 'bg-muted'
