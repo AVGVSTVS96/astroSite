@@ -3,7 +3,6 @@ import { PaperPlaneIcon } from '@radix-ui/react-icons';
 
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card';
 import { Button } from '@components/ui/button';
-import { Input } from '@components/ui/input';
 import {
   Select,
   SelectTrigger,
@@ -14,8 +13,41 @@ import {
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
+import { Textarea } from './ui/textarea';
 
 import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
+
+const useModel = (defaultModel: string) => {
+  const localStorageAvailable =
+    typeof window !== 'undefined' && window.localStorage;
+    
+  const [selectedModel, setSelectedModel] = React.useState<string>(() => {
+    if (localStorageAvailable) {
+      return localStorage.getItem('selectedModel') || defaultModel;
+    }
+    return defaultModel;
+  });
+
+  const handleModelChange = (model: string) => {
+    setSelectedModel(model);
+    if (localStorageAvailable) {
+      localStorage.setItem('selectedModel', model);
+    }
+  };
+
+  React.useEffect(() => {
+    const sendModelName = async () => {
+      await fetch('/api/chatRoute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ modelName: selectedModel }),
+      });
+    };
+    sendModelName();
+  }, [selectedModel]);
+
+  return { selectedModel, handleModelChange };
+};
 
 const modelGroups = [
   {
@@ -49,7 +81,7 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
 
   return (
     <Select value={selectedModel} onValueChange={handleModelChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[180px] focus:ring-ring/20">
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>
       <SelectContent>
@@ -60,6 +92,7 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
             </SelectLabel>
             {group.models.map((item) => (
               <SelectItem
+                key={item.value}
                 className="text-muted-foreground data-[state=checked]:text-foreground"
                 value={item.value}>
                 {item.label}
@@ -73,16 +106,62 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
   );
 };
 
+interface ChatInputProps {
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  textareaRef: React.RefObject<HTMLTextAreaElement>;
+  input: string;
+  handleInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+const ChatInput: React.FC<ChatInputProps> = ({
+  handleSubmit,
+  textareaRef,
+  input,
+  handleInputChange,
+}) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      handleSubmit(event);
+    }
+  };
+
+  React.useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [input]);
+
+  return (
+    <form onSubmit={handleSubmit} className="relative flex w-full items-center">
+      <Textarea
+        ref={textareaRef}
+        id="input"
+        name="prompt"
+        rows={1}
+        placeholder="Type your message..."
+        className="max-h-28 flex-1 resize-none rounded-xl py-4 pr-10 text-[1rem] focus-visible:ring-ring/20"
+        autoComplete="off"
+        value={input}
+        onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
+      />
+      <Button
+        type="submit"
+        size="icon"
+        variant="secondary"
+        className="absolute bottom-3.5 right-3 size-8">
+        <PaperPlaneIcon className="h-4 w-4" />
+        <span className="sr-only">Send</span>
+      </Button>
+    </form>
+  );
+};
+
 export function Chat() {
-  const defaultModel: string = 'gpt-3.5-turbo';
-  const localStorageAvailable =
-    typeof window !== 'undefined' && window.localStorage;
-
-  const model = localStorageAvailable
-    ? localStorage.getItem('selectedModel') || defaultModel
-    : defaultModel;
-
-  const [selectedModel, setSelectedModel] = React.useState<string>(model);
+  const defaultModel = 'gpt-3.5-turbo';
+  const { selectedModel, handleModelChange } = useModel(defaultModel);
 
   const chatOptions: UseChatOptions = {
     api: '/api/chatRoute',
@@ -91,24 +170,7 @@ export function Chat() {
   const { messages, input, handleInputChange, handleSubmit }: UseChatHelpers =
     useChat(chatOptions);
 
-  const handleModelChange = (model: string) => {
-    setSelectedModel(model);
-    localStorageAvailable ? localStorage.setItem('selectedModel', model) : null;
-  };
-
-  React.useEffect(() => {
-    const sendModelName = async () => {
-      await fetch('/api/chatRoute', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ modelName: selectedModel }),
-      });
-    };
-
-    sendModelName();
-  }, [selectedModel]);
+  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
   return (
     <Card className="flex h-[calc(100dvh-165px)] w-[clamp(260px,60vw,1000px)] flex-col rounded-2xl">
@@ -138,24 +200,13 @@ export function Chat() {
           ))}
         </div>
       </CardContent>
-      <CardFooter className="mt-6">
-        <form
-          onSubmit={handleSubmit}
-          className="flex w-full items-center space-x-2">
-          <Input
-            id="input"
-            name="prompt"
-            placeholder="Type your message..."
-            className="flex-1"
-            autoComplete="off"
-            value={input}
-            onChange={handleInputChange}
-          />
-          <Button type="submit" size="icon">
-            <PaperPlaneIcon className="h-4 w-4" />
-            <span className="sr-only">Send</span>
-          </Button>
-        </form>
+      <CardFooter className="mt-6 ">
+        <ChatInput
+          handleSubmit={handleSubmit}
+          textareaRef={textareaRef}
+          input={input}
+          handleInputChange={handleInputChange}
+        />
       </CardFooter>
     </Card>
   );
