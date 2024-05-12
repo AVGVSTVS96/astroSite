@@ -111,22 +111,24 @@ export function Chat() {
   }, [selectedModel]);
 
   return (
-    <Card className="flex h-[clamp(300px,70vh,700px)] w-[clamp(260px,60vw,700px)] flex-col">
+    <Card className="flex h-[calc(100dvh-165px)] w-[clamp(260px,60vw,1000px)] flex-col rounded-2xl">
       <CardHeader className="h-18 flex flex-row items-center py-3">
         <div className="flex-1">
-          <p className="font-bold leading-none tracking-tight">ChatGPT</p>
+          <p className="text-lg font-bold leading-none tracking-tight">
+            ChatGPT
+          </p>
         </div>
         <ModelSelector
           selectedModel={selectedModel}
           onModelChange={handleModelChange}
         />
       </CardHeader>
-      <CardContent className="grow overflow-y-auto">
+      <CardContent className="flex grow flex-col-reverse overflow-y-auto">
         <div className="space-y-4">
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex w-max max-w-[75%] flex-col gap-2 whitespace-pre-wrap rounded-lg px-3 py-2 text-sm ${
+              className={`flex w-max max-w-[75%] flex-col gap-2 whitespace-pre-wrap rounded-lg px-3 py-2 ${
                 message.role === 'user'
                   ? 'ml-auto bg-primary text-primary-foreground'
                   : 'bg-muted'
