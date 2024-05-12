@@ -13,41 +13,9 @@ import {
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
-import { Textarea } from './ui/textarea';
-
+import { Textarea } from '@/components/ui/textarea';
+import { useModel } from '@/hooks/useModel';
 import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
-
-const useModel = (defaultModel: string) => {
-  const localStorageAvailable =
-    typeof window !== 'undefined' && window.localStorage;
-    
-  const [selectedModel, setSelectedModel] = React.useState<string>(() => {
-    if (localStorageAvailable) {
-      return localStorage.getItem('selectedModel') || defaultModel;
-    }
-    return defaultModel;
-  });
-
-  const handleModelChange = (model: string) => {
-    setSelectedModel(model);
-    if (localStorageAvailable) {
-      localStorage.setItem('selectedModel', model);
-    }
-  };
-
-  React.useEffect(() => {
-    const sendModelName = async () => {
-      await fetch('/api/chatRoute', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ modelName: selectedModel }),
-      });
-    };
-    sendModelName();
-  }, [selectedModel]);
-
-  return { selectedModel, handleModelChange };
-};
 
 const modelGroups = [
   {
