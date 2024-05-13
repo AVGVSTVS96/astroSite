@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@astrojs/cloudflare": "^10.2.5",
     "@astrojs/react": "^3.3.0",
     "@astrojs/tailwind": "^5.1.0",
     "@avgvstvs96/remark-sectionize": "^2.0.0",

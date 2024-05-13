@@ -6,7 +6,7 @@ import icon from 'astro-icon';
 import expressiveCode, {
   type AstroExpressiveCodeOptions,
 } from 'astro-expressive-code';
-
+import cloudflare from '@astrojs/cloudflare';
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
   themes: ['rose-pine-moon', 'rose-pine'],
   themeCssSelector: (theme) => `.${theme.type}`,
@@ -26,7 +26,7 @@ export default defineConfig({
   },
   prefetch: {
     defaultStrategy: 'load',
-    prefetchAll: true
+    prefetchAll: true,
   },
   integrations: [
     tailwind({
@@ -36,4 +36,6 @@ export default defineConfig({
     icon(),
     react(),
   ],
+  output: 'hybrid',
+  adapter: cloudflare({ imageService: 'compile'}),
 });
