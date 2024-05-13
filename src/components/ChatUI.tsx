@@ -119,8 +119,8 @@ const ChatInput: React.FC<ChatInputProps> = ({
         type="submit"
         size="icon"
         variant="secondary"
-        className="absolute bottom-3.5 right-3 size-8">
-        <PaperPlaneIcon className="h-4 w-4" />
+        className="absolute bottom-3 right-3">
+        <PaperPlaneIcon className="size-[17px]" />
         <span className="sr-only">Send</span>
       </Button>
     </form>
