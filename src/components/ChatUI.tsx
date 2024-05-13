@@ -14,14 +14,20 @@ import {
   SelectItem,
 } from '@components/ui/select';
 
-const GptSelect: React.FC = () => {
-  const [selectedModel, setSelectedModel] = React.useState('gpt3');
+import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
 
+interface ModelSelectorProps {
+  selectedModel: string;
+  onModelChange: (model: string) => void;
+}
+
+const ModelSelector: React.FC<ModelSelectorProps> = ({
+  selectedModel,
+  onModelChange,
+}) => {
   const handleModelChange = (value: string) => {
-    setSelectedModel(value);
-    localStorage.setItem('selectedModel', value);
+    onModelChange(value);
   };
-  console.log('Selected model:', selectedModel);
 
   return (
     <Select value={selectedModel} onValueChange={handleModelChange}>
@@ -31,8 +37,8 @@ const GptSelect: React.FC = () => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel className="text-xs">OpenAI</SelectLabel>
-          <SelectItem value="gpt3">GPT-3.5</SelectItem>
-          <SelectItem value="gpt4">GPT-4-Turbo</SelectItem>
+          <SelectItem value="gpt-3.5-turbo">GPT-3.5</SelectItem>
+          <SelectItem value="gpt-4">GPT-4-Turbo</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
@@ -40,58 +46,42 @@ const GptSelect: React.FC = () => {
 };
 
 export function Chat() {
-  const [messages, setMessages] = React.useState([
-    {
-      role: 'agent',
-      content: 'Hi, how can I help you today?',
-    },
-    {
-      role: 'user',
-      content: "Hey, I'm having trouble with my account.",
-    },
-    {
-      role: 'agent',
-      content: 'What seems to be the problem?',
-    },
-    {
-      role: 'user',
-      content: "I can't log in.",
-    },
-    {
-      role: 'agent',
-      content: 'Hi, how can I help you today?',
-    },
-    {
-      role: 'user',
-      content: "Hey, I'm having trouble with my account.",
-    },
-    {
-      role: 'agent',
-      content: 'What seems to be the problem?',
-    },
-    {
-      role: 'user',
-      content: "I can't log in.",
-    },
-    {
-      role: 'agent',
-      content: 'Hi, how can I help you today?',
-    },
-    {
-      role: 'user',
-      content: "Hey, I'm having trouble with my account.",
-    },
-    {
-      role: 'agent',
-      content: 'What seems to be the problem?',
-    },
-    {
-      role: 'user',
-      content: "I can't log in.",
-    },
-  ]);
-  const [input, setInput] = React.useState('');
-  const inputLength = input.trim().length;
+  const defaultModel: string = 'gpt-3.5-turbo';
+  const localStorageAvailable =
+    typeof window !== 'undefined' && window.localStorage;
+  
+  const model = localStorageAvailable
+    ? localStorage.getItem('selectedModel') || defaultModel
+    : defaultModel;
+
+  const [selectedModel, setSelectedModel] =
+    React.useState<string>(model);
+
+  const chatOptions: UseChatOptions = {
+    api: '/api/chatRoute',
+  };
+
+  const { messages, input, handleInputChange, handleSubmit }: UseChatHelpers =
+    useChat(chatOptions);
+
+  const handleModelChange = (model: string) => {
+    setSelectedModel(model);
+    localStorageAvailable ? localStorage.setItem('selectedModel', model) : null;
+  };
+
+  React.useEffect(() => {
+    const sendModelName = async () => {
+      await fetch('/api/chatRoute', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ modelName: selectedModel }),
+      });
+    };
+
+    sendModelName();
+  }, [selectedModel]);
 
   return (
     <Card className="flex h-[clamp(300px,70vh,700px)] w-[clamp(260px,60vw,700px)] flex-col">
@@ -99,14 +89,17 @@ export function Chat() {
         <div className="flex-1">
           <p className="font-bold leading-none tracking-tight">ChatGPT</p>
         </div>
-        <GptSelect />
+        <ModelSelector
+          selectedModel={selectedModel}
+          onModelChange={handleModelChange}
+        />
       </CardHeader>
       <CardContent className="grow overflow-y-auto">
         <div className="space-y-4">
-          {messages.map((message, index) => (
+          {messages.map((message) => (
             <div
-              key={index}
-              className={`flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
+              key={message.id}
+              className={`flex w-max max-w-[75%] whitespace-pre-wrap flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
                 message.role === 'user'
                   ? 'ml-auto bg-primary text-primary-foreground'
                   : 'bg-muted'
@@ -118,22 +111,18 @@ export function Chat() {
       </CardContent>
       <CardFooter className="mt-6">
         <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (inputLength === 0) return;
-            setMessages([...messages, { role: 'user', content: input }]);
-            setInput('');
-          }}
+          onSubmit={handleSubmit}
           className="flex w-full items-center space-x-2">
           <Input
-            id="message"
+            id="input"
+            name="prompt"
             placeholder="Type your message..."
             className="flex-1"
             autoComplete="off"
             value={input}
-            onChange={(event) => setInput(event.target.value)}
+            onChange={handleInputChange}
           />
-          <Button type="submit" size="icon" disabled={inputLength === 0}>
+          <Button type="submit" size="icon">
             <PaperPlaneIcon className="h-4 w-4" />
             <span className="sr-only">Send</span>
           </Button>
