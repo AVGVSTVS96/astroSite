@@ -87,10 +87,14 @@ const ChatInput: React.FC<ChatInputProps> = ({
   input,
   handleInputChange,
 }) => {
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      handleSubmit(event);
+      if (formRef.current) {
+        formRef.current.requestSubmit();
+      }
     }
   };
 
@@ -102,7 +106,10 @@ const ChatInput: React.FC<ChatInputProps> = ({
   }, [input]);
 
   return (
-    <form onSubmit={handleSubmit} className="relative flex w-full items-center">
+    <form
+      onSubmit={handleSubmit}
+      ref={formRef}
+      className="relative flex w-full items-center">
       <Textarea
         ref={textareaRef}
         id="input"
@@ -113,7 +120,7 @@ const ChatInput: React.FC<ChatInputProps> = ({
         autoComplete="off"
         value={input}
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleKeyDown}
       />
       <Button
         type="submit"
