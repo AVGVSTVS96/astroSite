@@ -75,11 +75,12 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
 };
 
 interface ChatInputProps {
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleSubmit: UseChatHelpers['handleSubmit'];
+  handleInputChange: UseChatHelpers['handleInputChange'];
+  input: UseChatHelpers['input'];
   textareaRef: React.RefObject<HTMLTextAreaElement>;
-  input: string;
-  handleInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
+
 
 const ChatInput: React.FC<ChatInputProps> = ({
   handleSubmit,
