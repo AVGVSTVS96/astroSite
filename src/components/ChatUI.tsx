@@ -90,12 +90,9 @@ const ChatInput: React.FC<ChatInputProps> = ({
 }) => {
   const formRef = React.useRef<HTMLFormElement>(null);
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      if (formRef.current) {
-        formRef.current.requestSubmit();
-      }
+      formRef.current?.requestSubmit();
     }
   };
 
