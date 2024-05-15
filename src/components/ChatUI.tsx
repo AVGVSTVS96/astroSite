@@ -14,8 +14,10 @@ import {
   SelectItem,
 } from '@components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { useModel } from '@/hooks/useModel';
+
 import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
+import { useModel } from '@/hooks/useModel';
+import { cn } from '@/lib/utils';
 
 const modelGroups = [
   {
@@ -78,24 +80,23 @@ interface ChatInputProps {
   handleSubmit: UseChatHelpers['handleSubmit'];
   handleInputChange: UseChatHelpers['handleInputChange'];
   input: UseChatHelpers['input'];
+  isLoading?: UseChatHelpers['isLoading'];
   textareaRef: React.RefObject<HTMLTextAreaElement>;
 }
-
 
 const ChatInput: React.FC<ChatInputProps> = ({
   handleSubmit,
   textareaRef,
   input,
+  isLoading,
   handleInputChange,
 }) => {
+  const disabled = isLoading || input.length === 0;
   const formRef = React.useRef<HTMLFormElement>(null);
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      if (formRef.current) {
-        formRef.current.requestSubmit();
-      }
+      formRef.current?.requestSubmit();
     }
   };
 
@@ -127,7 +128,8 @@ const ChatInput: React.FC<ChatInputProps> = ({
         type="submit"
         size="icon"
         variant="secondary"
-        className="absolute bottom-3 right-3">
+        disabled={disabled}
+        className={cn('absolute bottom-3 right-3', disabled && 'opacity-50 ')}>
         <PaperPlaneIcon className="size-[17px]" />
         <span className="sr-only">Send</span>
       </Button>
@@ -143,8 +145,13 @@ export function Chat() {
     api: '/api/chatRoute',
   };
 
-  const { messages, input, handleInputChange, handleSubmit }: UseChatHelpers =
-    useChat(chatOptions);
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+  }: UseChatHelpers = useChat(chatOptions);
 
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
@@ -178,6 +185,7 @@ export function Chat() {
       </CardContent>
       <CardFooter className="mt-6 ">
         <ChatInput
+          isLoading={isLoading}
           handleSubmit={handleSubmit}
           textareaRef={textareaRef}
           input={input}
