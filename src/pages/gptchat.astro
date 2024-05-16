@@ -1,8 +1,8 @@
 ---
-import { Chat } from '@components/ChatUI';
+import ChatUI from '@components/ChatUI.tsx';
 import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="GPT UI" description="Stylish Chat GPT User Interface">
-        <Chat client:load />
+  <ChatUI client:load />
 </BaseLayout>
