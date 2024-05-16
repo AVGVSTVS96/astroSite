@@ -1,7 +1,7 @@
 import React from 'react';
 import { PaperPlaneIcon } from '@radix-ui/react-icons';
 import { Button } from '@components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { Textarea } from '@components/ui/textarea';
 import { type UseChatHelpers } from 'ai/react';
 import { cn } from '@/lib/utils';
 
