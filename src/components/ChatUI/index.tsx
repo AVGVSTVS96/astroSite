@@ -5,7 +5,7 @@ const ChatUI: React.FC = () => {
   return (
     <div className="relative flex flex-row gap-4">
       <SettingsPanel />
-      <div>
+      <div className="flex grow">
         <Chat />
       </div>
     </div>
