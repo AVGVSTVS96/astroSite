@@ -45,7 +45,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         id="input"
         name="prompt"
         rows={1}
-        placeholder="Type your message..."
+        placeholder="Message GPT"
         className="max-h-28 flex-1 resize-none rounded-xl py-4 pr-10 text-[1rem] focus-visible:ring-ring/20"
         autoComplete="off"
         value={input}
@@ -57,8 +57,8 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         size="icon"
         variant="secondary"
         disabled={disabled}
-        className={cn('absolute bottom-3 right-3', disabled && 'opacity-50 ')}>
-        <PaperPlaneIcon className="size-[17px]" />
+        className={cn('absolute bottom-3 right-3 duration-200 ease-out')}>
+        <PaperPlaneIcon className="size-[17px] transition-colors duration-200 ease-out" />
         <span className="sr-only">Send</span>
       </Button>
     </form>
