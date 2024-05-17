@@ -27,7 +27,7 @@ export const Chat: React.FC = () => {
     <Card className="flex h-[calc(100dvh-165px)] w-[calc(100dvw-162px)] flex-col rounded-2xl lg:w-[clamp(260px,60vw,1000px)]">
       <CardHeader className="h-18 flex flex-row items-center py-3">
         <div className="flex-1">
-          <p className="text-lg font-bold leading-none tracking-tight">
+          <p className="text-lg hidden xs:block font-bold leading-none tracking-tight">
             ChatGPT
           </p>
         </div>

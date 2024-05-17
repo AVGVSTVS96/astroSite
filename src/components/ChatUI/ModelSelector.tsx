@@ -41,7 +41,7 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
 
   return (
     <Select value={selectedModel} onValueChange={handleModelChange}>
-      <SelectTrigger className="w-[180px] focus:ring-ring/20">
+      <SelectTrigger className="w-full xs:w-[180px] focus:ring-ring/20">
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>
       <SelectContent>
