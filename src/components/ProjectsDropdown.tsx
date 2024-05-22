@@ -7,10 +7,20 @@ import { isActiveLink } from '@utils/isActiveLink';
 export const ProjectsDropdown: React.FC = () => {
   const currentPath =
     typeof window !== 'undefined' ? window.location.pathname : '';
+  const [hasActiveLink, setHasActiveLink] = React.useState(false);
 
+  React.useEffect(() => {
+    setHasActiveLink(
+      projectLinks.some(
+        (link) => isActiveLink(currentPath, link.href) === 'text-foreground'
+      )
+    );
+  }, [currentPath]);
+ 
   return (
     <DropdownMenu variant="link" ariaLabel="Open projects dropdown menu">
-      <span className="flex items-center">
+      <span
+        className={`flex items-center ${hasActiveLink ? 'text-foreground' : ''}`}>
         Projects
         <ChevronDown
           size={12}
