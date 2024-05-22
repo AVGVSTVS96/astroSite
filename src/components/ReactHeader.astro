@@ -8,28 +8,34 @@ import Logo from './Logo.astro';
 import { AccentColorSelector } from './AccentColorSelector';
 import { ProjectsDropdown } from './ProjectsDropdown';
 import { sortedBlogPosts } from '@utils/getSortedPosts';
+import { isActiveLink } from '@utils/isActiveLink';
 ---
 
 <header
-  class="sticky top-0 z-10 flex mb-8 w-full bg-background items-center border-b border-border/50 px-[clamp(0.75rem,3vw,2.5rem)] py-2">
+  class="sticky top-0 z-10 mb-8 flex w-full items-center border-b border-border/50 bg-background px-[clamp(0.75rem,3vw,2.5rem)] py-2">
   <Logo />
   <div class="button-container ml-2 flex w-full items-center justify-between">
     <nav>
       <span class="hidden gap-2 px-4 sm:flex">
         {
-          mainLinks.map((link, index) => (
-            <a href={link.href} class="rounded-md">
-              <Button
-                client:load
-                aria-label={link.name}
-                key={index}
-                tabIndex={-1}
-                variant="link"
-                className="h-9 px-2 text-muted-foreground hover:text-foreground/80 hover:no-underline">
-                {link.name}
-              </Button>
-            </a>
-          ))
+          mainLinks.map((link, index) => {
+            const currentPath = new URL(Astro.request.url).pathname;
+            const activeClass = isActiveLink(currentPath, link.href);
+
+            return (
+              <a href={link.href} class="rounded-md">
+                <Button
+                  client:load
+                  aria-label={link.name}
+                  key={index}
+                  tabIndex={-1}
+                  variant="link"
+                  className={`h-9 px-2 hover:no-underline ${activeClass}`}>
+                  {link.name}
+                </Button>
+              </a>
+            );
+          })
         }
         <ProjectsDropdown client:load />
       </span>
