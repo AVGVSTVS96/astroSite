@@ -18,7 +18,6 @@ export async function POST(context: APIContext) {
   if (newModelName) {
     modelName = newModelName;
     return new Response(null, { status: 200 });
-    console.log(modelName);
   }
 
   const openai = createOpenAI({
