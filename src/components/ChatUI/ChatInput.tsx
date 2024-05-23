@@ -1,5 +1,6 @@
 import React from 'react';
 import { PaperPlaneIcon } from '@radix-ui/react-icons';
+import { Square } from 'lucide-react';
 import { Button } from '@components/ui/button';
 import { Textarea } from '@components/ui/textarea';
 import { type UseChatHelpers } from 'ai/react';
@@ -9,7 +10,8 @@ interface ChatInputProps {
   handleSubmit: UseChatHelpers['handleSubmit'];
   handleInputChange: UseChatHelpers['handleInputChange'];
   input: UseChatHelpers['input'];
-  isLoading?: UseChatHelpers['isLoading'];
+  isLoading: UseChatHelpers['isLoading'];
+  stop: UseChatHelpers['stop'];
   textareaRef: React.RefObject<HTMLTextAreaElement>;
 }
 export const ChatInput: React.FC<ChatInputProps> = ({
@@ -17,9 +19,10 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   textareaRef,
   input,
   isLoading,
+  stop,
   handleInputChange,
 }) => {
-  const disabled = isLoading || input.length === 0;
+  const disabled = !isLoading && input.length === 0;
   const formRef = React.useRef<HTMLFormElement>(null);
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -57,8 +60,11 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         size="icon"
         variant="secondary"
         disabled={disabled}
-        className={cn('absolute bottom-3 right-3 duration-200 ease-out')}>
-        <PaperPlaneIcon className="size-[17px] transition-colors duration-200 ease-out" />
+        onClick={isLoading ? stop : undefined}
+        className={cn(
+          'absolute bottom-3 right-3 transition-colors duration-200 ease-out [&_svg]:size-[17px]'
+        )}>
+        {isLoading ? <Square /> : <PaperPlaneIcon />}
         <span className="sr-only">Send</span>
       </Button>
     </form>
