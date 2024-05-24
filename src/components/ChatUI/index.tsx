@@ -1,12 +1,12 @@
 import { SettingsPanel } from './SettingsPanel';
-import { Chat } from './Chat';
+import { ChatBox } from './ChatBox';
 
 const ChatUI: React.FC = () => {
   return (
     <div className="relative flex flex-row gap-4">
       <SettingsPanel />
       <div className="flex grow">
-        <Chat />
+        <ChatBox />
       </div>
     </div>
   );
