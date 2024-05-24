@@ -43,7 +43,7 @@ export const Chat: React.FC = () => {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`prose prose-slate prose-invert flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2  ${
+              className={`prose prose-slate prose-ul:mt-0 prose-invert flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2  ${
                 message.role === 'user'
                   ? 'ml-auto bg-primary text-primary-foreground'
                   : 'bg-muted'
