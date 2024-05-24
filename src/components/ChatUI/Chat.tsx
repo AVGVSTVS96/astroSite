@@ -4,6 +4,7 @@ import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
 import { useModel } from '@hooks/useModel';
 import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
+import ReactMarkdown from 'react-markdown';
 
 export const Chat: React.FC = () => {
   const defaultModel = 'gpt-3.5-turbo';
@@ -42,12 +43,12 @@ export const Chat: React.FC = () => {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`flex w-max max-w-[75%] flex-col gap-2 whitespace-pre-wrap rounded-lg px-3 py-2 ${
+              className={`prose prose-slate prose-invert flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2  ${
                 message.role === 'user'
                   ? 'ml-auto bg-primary text-primary-foreground'
                   : 'bg-muted'
               }`}>
-              {message.content}
+              <ReactMarkdown>{message.content}</ReactMarkdown>
             </div>
           ))}
         </div>
