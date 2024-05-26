@@ -4,8 +4,9 @@ import { useChat, type UseChatHelpers, type UseChatOptions } from 'ai/react';
 import { useModel } from '@hooks/useModel';
 import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
+import { Messages } from './Messages';
 
-export const Chat: React.FC = () => {
+export const ChatBox: React.FC = () => {
   const defaultModel = 'gpt-3.5-turbo';
   const { selectedModel, handleModelChange } = useModel(defaultModel);
 
@@ -38,19 +39,7 @@ export const Chat: React.FC = () => {
         />
       </CardHeader>
       <CardContent className="flex grow flex-col-reverse overflow-y-auto">
-        <div className="space-y-4">
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex w-max max-w-[75%] flex-col gap-2 whitespace-pre-wrap rounded-lg px-3 py-2 ${
-                message.role === 'user'
-                  ? 'ml-auto bg-primary text-primary-foreground'
-                  : 'bg-muted'
-              }`}>
-              {message.content}
-            </div>
-          ))}
-        </div>
+        <Messages messages={messages} />
       </CardContent>
       <CardFooter className="mt-6 ">
         <ChatInput
