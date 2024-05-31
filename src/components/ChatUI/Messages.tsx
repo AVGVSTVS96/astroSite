@@ -41,7 +41,7 @@ const CodeHighlight = ({
 
 export const Messages: React.FC<MessagesProps> = ({ messages }) => {
   const baseMessageStyles =
-    'prose prose-slate prose-invert flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0';
+    'prose prose-slate prose-invert flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0 [&_pre>div]:rounded-md';
   const userMessageStyles =
     'ml-auto bg-primary text-primary-foreground prose-code:text-primary-foreground';
   const assistantMessageStyles = 'bg-muted text-foreground';
