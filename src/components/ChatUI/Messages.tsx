@@ -24,7 +24,7 @@ const CodeHighlight = ({
   const match = /language-(\w+)/.exec(className || '');
   const language = match ? match[1] : 'plaintext';
 
-  return !inline ? (
+  return !inline && language !== 'plaintext' ? (
     <SyntaxHighlighter
       language={language}
       style={nightOwl}
