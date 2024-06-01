@@ -5,6 +5,7 @@ import { useModel } from '@hooks/useModel';
 import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
 import { Messages } from './Messages';
+import { cn } from '@/lib/utils';
 
 export const ChatBox: React.FC = () => {
   const defaultModel = 'gpt-3.5-turbo';
@@ -25,8 +26,12 @@ export const ChatBox: React.FC = () => {
 
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
+  const chatHeight = 'min-h-72 max-h-[calc(100dvh-177px)]';
+  const chatWidth =
+    'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,75vw,1000px)]';
+
   return (
-    <Card className="flex h-full max-h-[calc(100dvh-12rem)] min-h-72 min-w-64 flex-col rounded-2xl max-lg:w-[calc(100dvw-4rem)] lg:w-[clamp(600px,60vw,1000px)]">
+    <Card className={cn(`grid grid-rows-[auto,1fr,auto] rounded-2xl`, chatHeight, chatWidth)}>
       <CardHeader className="h-18 flex flex-row items-center py-3">
         <div className="flex-1">
           <p className="hidden text-lg font-bold leading-none tracking-tight xs:block">
@@ -38,10 +43,10 @@ export const ChatBox: React.FC = () => {
           onModelChange={handleModelChange}
         />
       </CardHeader>
-      <CardContent className="flex grow flex-col-reverse overflow-y-auto">
+      <CardContent className="flex flex-col-reverse overflow-y-auto pb-0 pt-2">
         <Messages messages={messages} />
       </CardContent>
-      <CardFooter className="mt-6 ">
+      <CardFooter className="mt-6">
         <ChatInput
           isLoading={isLoading}
           stop={stop}
