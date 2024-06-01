@@ -28,7 +28,7 @@ export const ChatBox: React.FC = () => {
 
   const chatHeight = 'min-h-72 max-h-[calc(100dvh-177px)]';
   const chatWidth =
-    'min-w-64 max-lg:w-[calc(100dvw-4rem)] lg:w-[clamp(600px,60vw,1000px)]';
+    'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,75vw,1000px)]';
 
   return (
     <Card className={cn(`grid grid-rows-[auto,1fr,auto] rounded-2xl`, chatHeight, chatWidth)}>
