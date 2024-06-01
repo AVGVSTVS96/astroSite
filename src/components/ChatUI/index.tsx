@@ -3,11 +3,9 @@ import { ChatBox } from './ChatBox';
 
 const ChatUI: React.FC = () => {
   return (
-    <div className="relative flex flex-row gap-4">
+    <div className="flex flex-col-2 gap-4">
       <SettingsPanel />
-      <div className="flex grow">
-        <ChatBox />
-      </div>
+      <ChatBox />
     </div>
   );
 };
