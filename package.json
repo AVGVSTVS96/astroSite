@@ -14,7 +14,7 @@
     "wrangler": "bunx wrangler pages dev -- bun run dev"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.9",
+    "@ai-sdk/openai": "^0.0.18",
     "@astrojs/check": "^0.7.0",
     "@astrojs/cloudflare": "9.2.0",
     "@astrojs/react": "^3.3.0",
@@ -31,7 +31,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
-    "ai": "^3.1.1",
+    "ai": "^3.1.23",
     "astro": "^4.9.2",
     "astro-expressive-code": "^0.35.3",
     "astro-icon": "^1.0.3",
@@ -39,7 +39,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "lucide-react": "^0.368.0",
-    "openai": "^4.34.0",
+    "openai": "^4.47.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
@@ -56,8 +56,8 @@
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-tailwindcss": "^0.5.13",
     "tailwindcss": "^3.4.3",
-    "type-coverage": "^2.28.1",
-    "wrangler": "^3.50.0"
+    "type-coverage": "^2.29.0",
+    "wrangler": "^3.58.0"
   },
   "overrides": {
     "vite": "^5.2.8",
