@@ -1,3 +1,47 @@
+## v0.13.0
+
+### Features
+- Add Vercel AI SDK, create API route, implement in `ChatUI` in [#340](https://github.com/AVGVSTVS96/astroSite/pull/340)
+  * Downgrade @astrojs/cloudflare to 9.0.0, fixes build and deploy errors in [#341](https://github.com/AVGVSTVS96/astroSite/pull/341)
+  * Update `ChatUI` select styling, add more model options in [#343](https://github.com/AVGVSTVS96/astroSite/pull/343)
+  * Add settings panel to `ChatUI` in [#347](https://github.com/AVGVSTVS96/astroSite/pull/347)
+  * feat(`ChatUI`): Add `isLoading` state, improve code in [#354](https://github.com/AVGVSTVS96/astroSite/pull/354)
+  * feat(`ChatUI`): Add new GPT-4o model in [#355](https://github.com/AVGVSTVS96/astroSite/pull/355)
+  * feat(`ChatUI`): Add stop function to cancel GPT response in [#372](https://github.com/AVGVSTVS96/astroSite/pull/372)
+* Add `react-markdown`, implement markdown rendering in `ChatUI` [#375](https://github.com/AVGVSTVS96/astroSite/pull/375)
+* feat(`Messages.tsx`): Implement syntax highlighting with `react-syntax-highlighter` in [#381](https://github.com/AVGVSTVS96/astroSite/pull/381)
+* feat: Use new `isActiveLink` utility function to highlight active page link in [#369](https://github.com/AVGVSTVS96/astroSite/pull/369)
+
+### Refactor
+* `Social.astro`: Refactor and improve component in [#333](https://github.com/AVGVSTVS96/astroSite/pull/333)
+* Update blog page filename and path, refactor about page styling in [#332](https://github.com/AVGVSTVS96/astroSite/pull/332)
+* Rename `chat.tsx` to `ChatUI.tsx` in [#334](https://github.com/AVGVSTVS96/astroSite/pull/334)
+* refactor: Create `ChatUI` directory, separate components to their own files in [#356](https://github.com/AVGVSTVS96/astroSite/pull/356)
+* refactor: make imports consistent, use import aliases in [#359](https://github.com/AVGVSTVS96/astroSite/pull/359)
+* Refactor form submission logic, replace deprecated `onKeyPress` in [#352](https://github.com/AVGVSTVS96/astroSite/pull/352)
+* `Card.astro`: Update, use `cn` function in [#342](https://github.com/AVGVSTVS96/astroSite/pull/342)
+* Move TOC components to new TOC directory, export from `index.ts` file in [#364](https://github.com/AVGVSTVS96/astroSite/pull/364)
+
+### Content
+* Add new blog post `ResetWindowsPassword` and update existing post titles in [#283](https://github.com/AVGVSTVS96/astroSite/pull/283)
+
+### Config
+- Add cloudflare adapter, set to rendering mode to hybrid SSR in [#335](https://github.com/AVGVSTVS96/astroSite/pull/335)
+
+### Style
+* style(`Messages.tsx`): Add border radius to code blocks in [#383](https://github.com/AVGVSTVS96/astroSite/pull/383)
+* style: Change about page paragraph spacing in [#360](https://github.com/AVGVSTVS96/astroSite/pull/360)
+* style: Update `ModelSelector` styling in [#361](https://github.com/AVGVSTVS96/astroSite/pull/361)
+* style(`global.css`): Update horizontal scrollbar thickness to match vertical scrollbars in [#382](https://github.com/AVGVSTVS96/astroSite/pull/382)
+* style(`ChatBox.tsx`): Update `ChatBox` height, refactor styles in [#389](https://github.com/AVGVSTVS96/astroSite/pull/389)
+
+### Misc
+* Delete unused components, move to `ComponentArchive` repo in [#362](https://github.com/AVGVSTVS96/astroSite/pull/362)
+
+
+**Full Changelog**: [v0.12.1...v0.13.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.12.1...v0.13.0)
+
+
 ## v0.12.1
 ### Redesign
 * Add 4x8 grid and new content to Minimal Typography in [#324](https://github.com/AVGVSTVS96/astroSite/pull/324)
