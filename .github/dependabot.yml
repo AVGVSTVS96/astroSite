@@ -49,11 +49,7 @@ updates:
           - "patch"
       misc:
         patterns:
-          - "openai"
-          - "typescript"
-          - "wrangler"
-          - "type-coverage"
-          - "@avgvstvs96/remark-sectionize"
+          - "*"
         update-types:
           - "minor"
           - "patch"
