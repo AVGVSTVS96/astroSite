@@ -1,3 +1,15 @@
+## v0.13.1
+
+### Dependencies
+* Bump the astro group across 1 directory with 4 updates by @dependabot in [#386](https://github.com/AVGVSTVS96/astroSite/pull/386)
+* chore(deps): bump the tailwind group across 1 directory with 3 updates by @dependabot in [#292](https://github.com/AVGVSTVS96/astroSite/pull/292)
+* chore(deps): bump the misc group across 1 directory with 5 updates by @dependabot in [#395](https://github.com/AVGVSTVS96/astroSite/pull/395)
+* Bump the prettier group across 1 directory with 3 updates by @dependabot in [#390](https://github.com/AVGVSTVS96/astroSite/pull/390)
+* Bump the react group across 1 directory with 6 updates by @dependabot in [#394](https://github.com/AVGVSTVS96/astroSite/pull/394)
+
+**Full Changelog**: [v0.13.0...v0.13.1](https://github.com/AVGVSTVS96/astroSite/compare/v0.13.0...v0.13.1)
+
+
 ## v0.13.0
 
 ### Features
