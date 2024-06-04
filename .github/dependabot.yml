@@ -8,36 +8,40 @@ updates:
       astro:
         patterns:
           - "astro*"
-          - "@astrojs/check"
           - "sharp"
+        update-types:
+          - "minor"
+          - "patch"
+      astro-adapters:
+        patterns:
+          - "@astrojs/cloudflare"
+          - "@astrojs/react"
+          - "@astrojs/tailwind"
+        update-types:
+          - "minor"
+          - "patch"
+      ai:
+        patterns:
+          - "@ai-sdk/openai"
+          - "ai"
+          - "openai"
         update-types:
           - "minor"
           - "patch"
       tailwind:
         patterns:
-          - "tailwindcss"
           - "@tailwindcss/*"
-          - "@astrojs/tailwind"
-          - "clsx"
-          - "tailwind-merge"
-          - "tailwindcss-animate"
           - "class-variance-authority"
-        update-types:
-          - "minor"
-          - "patch"
-      prettier:
-        patterns:
-          - "prettier*"
+          - "clsx"
+          - "tailwindcss"
+          - "tailwindcss-animate"
+          - "tailwind-merge"
         update-types:
           - "minor"
           - "patch"
       react:
         patterns:
-          - "react"
-          - "react-dom"
-          - "@astrojs/react"
-          - "@types/react-dom"
-          - "@types/react"
+          - "react*"
           - "lucide-react"
         update-types:
           - "minor"
@@ -46,6 +50,17 @@ updates:
         patterns:
           - "@radix-ui/*"
           - "cmdk"
+        update-types:
+          - "minor"
+          - "patch"
+      development:
+        patterns:
+          - "@astrojs/check"
+          - "@types/*"
+          - "prettier*"
+          - "type-coverage"
+          - "typescript"
+          - "wrangler"
         update-types:
           - "minor"
           - "patch"
