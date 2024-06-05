@@ -26,6 +26,5 @@ export const mainLinks = [
 export const projectLinks = [
   { name: 'Minimal Typography', href: '/designProject' },
   { name: 'Old Flask Website', href: '/flaskSite' },
-  { name: 'React + shadcn/ui', href: '/react' },
   { name: 'Chat UI', href: '/gptchat' },
 ];
