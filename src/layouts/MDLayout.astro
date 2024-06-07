@@ -4,66 +4,24 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Prose from '@components/Prose.astro';
 import { TableOfContents } from '@components/TableOfContents';
 import { formatDate } from '@utils/formatDate';
-import type { ImageMetadata } from 'astro';
+import { images } from '@utils/imageHandler';
+import { generateJsonLD } from '@utils/generateBlogSchema';
 
 const { data, headings } = Astro.props;
 
-const isoDate = new Date(data.pubDate).toISOString();
-
-const imageUrl = new URL(data.image?.url, Astro.request.url).href;
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/images/*.{jpeg,jpg,png,gif}'
-);
-
-if (data.image && !images[data.image.url])
-  throw new Error(`"${data.image.url}" does not exist in images directory"`);
-
-const jsonLD = {
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: data.title,
-  description: data.description,
-  ...(data.image ? { image: imageUrl } : {}),
-  url: Astro.request.url,
-  datePublished: isoDate,
-  author: {
-    '@type': 'Person',
-    name: 'Bassim Shahidy',
-    jobTitle: 'IT Technician',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'NYC Bar Association',
-    },
-    description:
-      'Bassim Shahidy is an IT specialist with experience in information technologies, audio visual technologies, and computer science. Bassim also has a vast set of academic interests including history, political science, and philosophy.',
-    url: 'https://bassimshahidy.com',
-    sameAs: [
-      'https://www.linkedin.com/in/bassimshahidy',
-      'https://github.com/avgvstvs96',
-    ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      email: 'bassim@bassimshahidy.com',
-      contactType: 'professional',
-    },
-  },
-};
-
-const schema = JSON.stringify(jsonLD, null, 2);
+const schema = generateJsonLD(data, Astro.request.url);
 ---
 
 <BaseLayout {...data}>
   <script is:inline slot="head" type="application/ld+json" set:html={schema} />
   <div
-    class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]"
-  >
+    class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
     <div class="hidden 2xl:block"></div>
     <article class="mx-6 xs:mx-10">
       <Prose>
         <div class="mb-1 flex justify-start">
           <span
-            class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400"
-          >
+            class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
             Written by {data.author} on {
               formatDate(data.pubDate, {
                 weekday: 'long',
