@@ -4,19 +4,13 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Prose from '@components/Prose.astro';
 import { TableOfContents } from '@components/TableOfContents';
 import { formatDate } from '@utils/formatDate';
-import type { ImageMetadata } from 'astro';
+import { getImageUrl, images } from '@utils/imageHandler';
 
 const { data, headings } = Astro.props;
 
 const isoDate = new Date(data.pubDate).toISOString();
 
-const imageUrl = new URL(data.image?.url, Astro.request.url).href;
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/images/*.{jpeg,jpg,png,gif}'
-);
-
-if (data.image && !images[data.image.url])
-  throw new Error(`"${data.image.url}" does not exist in images directory"`);
+const imageUrl = getImageUrl(data, Astro.request.url);
 
 const jsonLD = {
   '@context': 'https://schema.org',
