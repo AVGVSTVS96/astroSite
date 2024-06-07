@@ -1,9 +1,5 @@
 import type { ImageMetadata } from 'astro';
 
-export function getImageUrl(data: any, baseUrl: string) {
-  return new URL(data.image?.url, baseUrl).href;
-}
-
 export const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
 );
