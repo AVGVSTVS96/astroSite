@@ -26,12 +26,17 @@ export const ChatBox: React.FC = () => {
 
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
-  const chatHeight = 'min-h-72 max-h-[calc(100dvh-177px)]';
-  const chatWidth =
+  const chatHeightStyles = 'min-h-72 max-h-[calc(100dvh-177px)]';
+  const chatWidthStyles =
     'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,75vw,1000px)]';
 
   return (
-    <Card className={cn(`grid grid-rows-[auto,1fr,auto] rounded-2xl`, chatHeight, chatWidth)}>
+    <Card
+      className={cn(
+        `grid grid-rows-[auto,1fr,auto] rounded-2xl`,
+        chatHeightStyles,
+        chatWidthStyles
+      )}>
       <CardHeader className="h-18 flex flex-row items-center py-3">
         <div className="flex-1">
           <p className="hidden text-lg font-bold leading-none tracking-tight xs:block">
