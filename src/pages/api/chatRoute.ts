@@ -1,5 +1,5 @@
 import type { APIContext } from 'astro';
-import { streamText, type CoreMessage } from 'ai'
+import { streamText, type CoreMessage } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 
 export const prerender = false;
@@ -22,12 +22,17 @@ export async function POST(context: APIContext) {
 
   const openai = createOpenAI({
     apiKey: import.meta.env.OPENAI_API_KEY,
+    compatibility: 'strict',
   });
 
   const result = await streamText({
     model: openai(modelName),
     system: 'You are a helpful assistant.',
     messages,
+    onFinish: ({ finishReason, usage }) => {
+      console.log('Finish reason:', finishReason);
+      console.log('Token usage:', usage);
+    },
   });
 
   return result.toAIStreamResponse();
