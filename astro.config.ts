@@ -4,11 +4,23 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
 import expressiveCode, {
-  type AstroExpressiveCodeOptions,
+  type AstroExpressiveCodeOptions, ExpressiveCodeTheme 
 } from 'astro-expressive-code';
+import fs from 'node:fs';
 import cloudflare from '@astrojs/cloudflare';
+
+const jsoncString = fs.readFileSync(
+  new URL(
+    `./src/styles/tokyoNight.jsonc`,
+    import.meta.url
+  ),
+  'utf-8'
+);
+const myTheme = ExpressiveCodeTheme.fromJSONString(jsoncString);
+
+
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
-  themes: ['rose-pine-moon', 'rose-pine'],
+  themes: [myTheme],
   themeCssSelector: (theme) => `.${theme.type}`,
   useThemedSelectionColors: true,
   styleOverrides: {
@@ -37,5 +49,5 @@ export default defineConfig({
     react(),
   ],
   output: 'hybrid',
-  adapter: cloudflare({ imageService: 'compile'}),
+  adapter: cloudflare({ imageService: 'compile' }),
 });
