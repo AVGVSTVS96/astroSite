@@ -11,7 +11,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 const jsoncString = fs.readFileSync(
   new URL(
-    `./src/styles/tokyoNight.jsonc`,
+    `./src/styles/rainglowAzure.jsonc`,
     import.meta.url
   ),
   'utf-8'
