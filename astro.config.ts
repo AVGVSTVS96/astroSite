@@ -28,6 +28,9 @@ const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
       markBackground: 'hsla(220, 25.00%, 30%, 0.4)',
       markBorderColor: 'hsla(220, 30.00%, 30%, 1)',
     },
+    frames: {
+      inlineButtonBorderOpacity: '0.0',
+    }
   },
 };
 
