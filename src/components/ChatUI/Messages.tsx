@@ -14,7 +14,7 @@ interface CodeComponentProps {
   className: string;
   children: React.ReactNode;
   // Add `any` type to avoid error when using custom theme
-  style?: {[key: string]: React.CSSProperties} | any;
+  style: {[key: string]: React.CSSProperties} | any;
 }
 
 const CodeHighlight = ({
