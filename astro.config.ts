@@ -9,18 +9,18 @@ import expressiveCode, {
 import fs from 'node:fs';
 import cloudflare from '@astrojs/cloudflare';
 
-const jsoncString = fs.readFileSync(
+const themeFile = fs.readFileSync(
   new URL(
     `./src/styles/rainglowAzure.jsonc`,
     import.meta.url
   ),
   'utf-8'
 );
-const myTheme = ExpressiveCodeTheme.fromJSONString(jsoncString);
+const codeTheme = ExpressiveCodeTheme.fromJSONString(themeFile);
 
 
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
-  themes: [myTheme],
+  themes: [codeTheme],
   themeCssSelector: (theme) => `.${theme.type}`,
   useThemedSelectionColors: true,
   styleOverrides: {
