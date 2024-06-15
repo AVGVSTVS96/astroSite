@@ -27,7 +27,11 @@ const CodeHighlight = ({
   return !inline && language !== 'plaintext' ? (
     <SyntaxHighlighter
       language={language}
-      style={rainglowAzureContrast as any}
+      style={
+        rainglowAzureContrast as {
+          [key: string]: React.CSSProperties;
+        }
+      }
       PreTag="div"
       {...props}>
       {String(children).replace(/\n$/, '')}
