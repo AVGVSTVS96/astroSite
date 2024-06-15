@@ -13,8 +13,6 @@ interface CodeComponentProps {
   inline: boolean;
   className: string;
   children: React.ReactNode;
-  // Add `any` type to avoid error when using custom theme
-  style: {[key: string]: React.CSSProperties} | any;
 }
 
 const CodeHighlight = ({
@@ -29,7 +27,7 @@ const CodeHighlight = ({
   return !inline && language !== 'plaintext' ? (
     <SyntaxHighlighter
       language={language}
-      style={rainglowAzureContrast}
+      style={rainglowAzureContrast as any}
       PreTag="div"
       {...props}>
       {String(children).replace(/\n$/, '')}
