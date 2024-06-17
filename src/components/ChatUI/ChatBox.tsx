@@ -26,23 +26,22 @@ export const ChatBox: React.FC = () => {
 
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
-  const chatHeightStyles = 'min-h-72 max-h-[calc(100dvh-177px)]';
-  const chatWidthStyles =
-    'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,75vw,1000px)]';
+  const styles: Record<string, string> = {
+    chatCardHeight: 'min-h-72 max-h-[calc(100dvh-177px)]',
+    chatCardWidth:
+      'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,75vw,1000px)]',
+    headerText: 'hidden text-lg font-bold leading-none tracking-tight xs:block',
+  };
 
   return (
     <Card
       className={cn(
-        `grid grid-rows-[auto,1fr,auto] rounded-2xl`,
-        chatHeightStyles,
-        chatWidthStyles
+        'grid grid-rows-[auto,1fr,auto] rounded-2xl',
+        styles.chatCardHeight,
+        styles.chatCardWidth
       )}>
-      <CardHeader className="h-18 flex flex-row items-center py-3">
-        <div className="flex-1">
-          <p className="hidden text-lg font-bold leading-none tracking-tight xs:block">
-            ChatGPT
-          </p>
-        </div>
+      <CardHeader className="h-18 flex flex-row items-center justify-between py-3">
+        <span className={styles.headerText}>ChatGPT</span>
         <ModelSelector
           selectedModel={selectedModel}
           onModelChange={handleModelChange}
