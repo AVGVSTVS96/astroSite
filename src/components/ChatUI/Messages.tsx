@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { type UseChatHelpers } from 'ai/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
 import { cn } from '@/lib/utils';
 
 interface MessagesProps {
@@ -27,7 +27,11 @@ const CodeHighlight = ({
   return !inline && language !== 'plaintext' ? (
     <SyntaxHighlighter
       language={language}
-      style={nightOwl}
+      style={
+        rainglowAzureContrast as {
+          [key: string]: React.CSSProperties;
+        }
+      }
       PreTag="div"
       {...props}>
       {String(children).replace(/\n$/, '')}
