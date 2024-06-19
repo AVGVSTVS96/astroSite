@@ -27,32 +27,33 @@
     },
     {
       "groupName": "Components, icons, and styling libraries",
-      "matchPackagePatterns": [
-        "^@radix-ui/",
+      "matchPackagePrefixes": ["@radix-ui/"],
+      "matchPackageNames": [
         "cmdk",
         "lucide-react",
         "framer-motion"
       ]
     },
     {
-      "groupName": "TailwindCSS",
-      "matchPackagePatterns": ["^tailwind", "clsx", "class-variance-authority"],
-      "commitMessageSuffix": "dependencies"
+      "groupName": "TailwindCSS and related tools",
+      "matchPackagePrefixes": ["tailwind", "tailwindcss", "@tailwindcss"],
+      "matchPackageNames": ["clsx", "class-variance-authority"]
     },
     {
       "groupName": "AI",
-      "matchPackagePatterns": ["^@ai-sdk/openai", "ai", "openai"],
+      "matchPackageNames": ["@ai-sdk/openai", "ai", "openai"],
       "commitMessageSuffix": "dependencies"
     },
     {
       "groupName": "Astro, Integrations, and Adapters",
       "extends": ["monorepo:astro"],
-      "matchPackagePatterns": ["^@astrojs/", "sharp", "^astro"]
+      "matchPackagePrefixes": ["@astrojs/", "astro"],
+      "matchPackageNames": ["astro-icon", "sharp", "@astrojs/cloudflare"]
     },
     {
       "groupName": "React",
       "extends": ["monorepo:react"],
-      "matchPackagePatterns": ["^react"],
+      "matchPackagePrefixes": ["react"],
       "commitMessageSuffix": "dependencies"
     }
   ]
