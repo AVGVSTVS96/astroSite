@@ -3,6 +3,7 @@
   "extends": [
     ":dependencyDashboard",
     ":ignoreModulesAndTests",
+    ":rebaseStalePrs",
     ":semanticCommitType(chore)",
     ":separateMajorReleases",
     "group:definitelyTyped",
