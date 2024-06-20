@@ -1,0 +1,61 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":dependencyDashboard",
+    ":ignoreModulesAndTests",
+    ":rebaseStalePrs",
+    ":semanticCommitType(chore)",
+    ":separateMajorReleases",
+    "group:definitelyTyped",
+    "group:monorepos",
+    "group:recommended",
+    "replacements:all",
+    "schedule:weekends",
+    "workarounds:all"
+  ],
+  "prHourlyLimit": 10,
+  "rangeStrategy": "bump",
+  "labels": ["dependencies"],
+  "commitMessageTopic": "{{depName}}",
+  "commitBodyTable": true,
+  "timezone": "America/New_York",
+  "packageRules": [
+    {
+      "groupName": "dev-dependencies",
+      "matchDepTypes": ["devDependencies"],
+      "semanticCommitScope": "dev-deps",
+      "commitMessageSuffix": "group"
+    },
+    {
+      "groupName": "Components, icons, and styling libraries",
+      "matchPackagePrefixes": ["@radix-ui/"],
+      "matchPackageNames": [
+        "cmdk",
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "groupName": "TailwindCSS and related tools",
+      "matchPackagePrefixes": ["tailwind", "tailwindcss", "@tailwindcss"],
+      "matchPackageNames": ["clsx", "class-variance-authority"]
+    },
+    {
+      "groupName": "AI",
+      "matchPackageNames": ["@ai-sdk/openai", "ai", "openai"],
+      "commitMessageSuffix": "dependencies"
+    },
+    {
+      "groupName": "Astro, Integrations, and Adapters",
+      "extends": ["monorepo:astro"],
+      "matchPackagePrefixes": ["@astrojs/", "astro"],
+      "matchPackageNames": ["astro-icon", "sharp", "@astrojs/cloudflare"]
+    },
+    {
+      "groupName": "React",
+      "extends": ["monorepo:react"],
+      "matchPackagePrefixes": ["react"],
+      "commitMessageSuffix": "dependencies"
+    }
+  ]
+}
