@@ -2346,9 +2346,9 @@ astro-expressive-code@^0.35.3:
   dependencies:
     rehype-expressive-code "^0.35.3"
 
-astro-icon@^1.0.3:
+astro-icon@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.npmjs.org/astro-icon/-/astro-icon-1.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/astro-icon/-/astro-icon-1.1.0.tgz#b1f13282c3a266797fdec93bc87d6c0bcb569fbe"
   integrity sha512-Nksc09p7UuHeMcPNS9w1pKqRw3+wEmmh0A3FJW+FNXvqaeWI4RLvD1MCWErpY3Z5Cvad317rvLdik/Hg8GEk8Q==
   dependencies:
     "@iconify/tools" "^3.0.1"
