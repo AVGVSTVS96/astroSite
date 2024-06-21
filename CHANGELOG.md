@@ -1,3 +1,37 @@
+## v0.13.2
+
+### Features
+- feat(`chatRoute`): Set compatibility mode, log token usage and finish reason in [#406](https://github.com/AVGVSTVS96/astroSite/pull/406)
+- Set new custom expressive code theme, add several theme files in [#413](https://github.com/AVGVSTVS96/astroSite/pull/413)
+- Add vscode themes for prism in `ChatUI`, set new theme in [#416](https://github.com/AVGVSTVS96/astroSite/pull/416)
+
+### Refactor
+- refactor(`MDLayout.astro`): Separate image handling and schema to their own util files in [#405](https://github.com/AVGVSTVS96/astroSite/pull/405)
+- refactor(`ChatBox`): add styles suffix for Tailwind intellisense in [#407](https://github.com/AVGVSTVS96/astroSite/pull/407)
+- refactor: Use style object for Tailwind classes in [#419](https://github.com/AVGVSTVS96/astroSite/pull/419)
+- Delete old and unused gpt and react files in [#400](https://github.com/AVGVSTVS96/astroSite/pull/400)
+
+### Styling
+- style(`designProject`): Fix typo, update positioning in [#408](https://github.com/AVGVSTVS96/astroSite/pull/408)
+- Use `dvh` instead of `vh` in `BaseLayout` for dynamic mobile screen sizing in [#401](https://github.com/AVGVSTVS96/astroSite/pull/401)
+- Update code block copy button styling in [#414](https://github.com/AVGVSTVS96/astroSite/pull/414)
+
+### Dependencies
+- chore: Configure Renovate for dependency updates in [#424](https://github.com/AVGVSTVS96/astroSite/pull/424)
+- chore(deps): update ai dependencies in [#426](https://github.com/AVGVSTVS96/astroSite/pull/426)
+- chore(deps): update tailwindcss to ^3.4.4 in [#428](https://github.com/AVGVSTVS96/astroSite/pull/428)
+- chore(dev-deps): update dev-dependencies group in [#429](https://github.com/AVGVSTVS96/astroSite/pull/429)
+- chore(deps): update astro-icon to ^1.1.0 in [#427](https://github.com/AVGVSTVS96/astroSite/pull/427)
+- chore(deps): update astro, integrations, and adapters in [#430](https://github.com/AVGVSTVS96/astroSite/pull/430)
+- chore(deps): update components, icons, and styling libraries in [#431](https://github.com/AVGVSTVS96/astroSite/pull/431)
+- chore(deps): update astro to ^4.11.0 in [#433](https://github.com/AVGVSTVS96/astroSite/pull/433)
+- chore(deps): update @ai-sdk/openai to ^0.0.32 in [#434](https://github.com/AVGVSTVS96/astroSite/pull/434)
+- Update `@avgvstvs96/remark-sectionize` to `2.0.1` in [#402](https://github.com/AVGVSTVS96/astroSite/pull/402)
+
+
+**Full Changelog**: [v0.13.1...v0.13.2](https://github.com/AVGVSTVS96/astroSite/compare/v0.13.1...v0.13.2)
+
+
 ## v0.13.1
 
 ### Dependencies
