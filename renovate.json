@@ -19,21 +19,17 @@
   "commitMessageTopic": "{{depName}}",
   "commitBodyTable": true,
   "timezone": "America/New_York",
+  "transitiveRemediation": true,
   "packageRules": [
     {
       "groupName": "dev-dependencies",
       "matchDepTypes": ["devDependencies"],
-      "semanticCommitScope": "dev-deps",
-      "commitMessageSuffix": "group"
+      "semanticCommitScope": "dev-deps"
     },
     {
       "groupName": "Components, icons, and styling libraries",
       "matchPackagePrefixes": ["@radix-ui/"],
-      "matchPackageNames": [
-        "cmdk",
-        "lucide-react",
-        "framer-motion"
-      ]
+      "matchPackageNames": ["cmdk", "lucide-react", "framer-motion"]
     },
     {
       "groupName": "TailwindCSS and related tools",
@@ -41,21 +37,19 @@
       "matchPackageNames": ["clsx", "class-variance-authority"]
     },
     {
-      "groupName": "AI",
-      "matchPackageNames": ["@ai-sdk/openai", "ai", "openai"],
-      "commitMessageSuffix": "dependencies"
+      "groupName": "AI dependencies",
+      "matchPackageNames": ["@ai-sdk/openai", "ai", "openai"]
     },
     {
       "groupName": "Astro, Integrations, and Adapters",
-      "extends": ["monorepo:astro"],
+      "matchSourceUrls": ["https://github.com/withastro/astro"],
       "matchPackagePrefixes": ["@astrojs/", "astro"],
       "matchPackageNames": ["astro-icon", "sharp", "@astrojs/cloudflare"]
     },
     {
-      "groupName": "React",
-      "extends": ["monorepo:react"],
-      "matchPackagePrefixes": ["react"],
-      "commitMessageSuffix": "dependencies"
+      "groupName": "React dependencies",
+      "matchSourceUrls": ["https://github.com/facebook/react"],
+      "matchPackagePrefixes": ["react"]
     }
   ]
 }
