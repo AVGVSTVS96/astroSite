@@ -14,7 +14,7 @@
     "wrangler": "bunx wrangler pages dev -- bun run dev"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.31",
+    "@ai-sdk/openai": "^0.0.32",
     "@astrojs/cloudflare": "9.2.0",
     "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
