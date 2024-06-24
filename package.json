@@ -14,7 +14,7 @@
     "wrangler": "bunx wrangler pages dev -- bun run dev"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.32",
+    "@ai-sdk/openai": "^0.0.33",
     "@astrojs/cloudflare": "9.2.0",
     "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
@@ -29,7 +29,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.0",
     "@tailwindcss/typography": "^0.5.13",
-    "ai": "^3.2.1",
+    "ai": "^3.2.5",
     "astro": "^4.11.0",
     "astro-expressive-code": "^0.35.3",
     "astro-icon": "^1.1.0",
