@@ -20,18 +20,17 @@ export const CodeHighlight = ({
   const [highlightedCode, setHighlightedCode] = useState<string | null>(null);
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
-  const detectedLang = match ? match[1] : '';
 
   useEffect(() => {
-    if (!inline && detectedLang !== '') {
+    if (match) {
       codeToHtml(code, {
-        lang: detectedLang,
+        lang: match[1],
         theme,
       }).then(setHighlightedCode);
     }
-  }, [code, lang, theme, inline]);
+  }, [code]);
 
-  if (inline || !highlightedCode || detectedLang === '') {
+  if (!match || !highlightedCode) {
     return (
       <code className={className} {...props}>
         {children}
