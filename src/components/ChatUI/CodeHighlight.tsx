@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { codeToHtml, type BundledLanguage, type BundledTheme } from 'shiki';
+import parse from 'html-react-parser';
 
 interface CodeHighlightProps {
   inline: boolean;
   className?: string;
   children: React.ReactNode;
-  theme?: BundledTheme;
-  lang?: BundledLanguage;
+  theme: BundledTheme;
+  lang: BundledLanguage;
 }
 
 export const CodeHighlight = ({
@@ -17,7 +18,8 @@ export const CodeHighlight = ({
   theme = 'catppuccin-mocha',
   ...props
 }: CodeHighlightProps) => {
-  const [highlightedCode, setHighlightedCode] = useState<string | null>(null);
+  const [highlightedCode, setHighlightedCode] =
+    useState<React.ReactNode | null>(null);
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
 
@@ -26,23 +28,17 @@ export const CodeHighlight = ({
       codeToHtml(code, {
         lang: match[1],
         theme,
-      }).then(setHighlightedCode);
+      }).then((html) => setHighlightedCode(parse(html)));
     }
   }, [code]);
 
-  if (!match || !highlightedCode) {
-    return (
-      <code className={className} {...props}>
-        {children}
-      </code>
-    );
-  }
-
-  return (
-    <div
-      className={`shiki not-prose ${className || ''}`}
-      dangerouslySetInnerHTML={{ __html: highlightedCode }}
-      {...props}
-    />
+  return match && highlightedCode ? (
+    <div className={`shiki not-prose ${className || ''}`} {...props}>
+      {highlightedCode}
+    </div>
+  ) : (
+    <code className={className} {...props}>
+      {children}
+    </code>
   );
 };
