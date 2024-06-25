@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { type UseChatHelpers } from 'ai/react';
+import { type UseChatHelpers } from '@ai-sdk/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
 import { cn } from '@/lib/utils';
