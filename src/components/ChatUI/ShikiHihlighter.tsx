@@ -12,11 +12,12 @@ interface ShikiHighlighterProps {
 export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
   language,
   children,
-  theme = 'github-dark',
+  theme,
   PreTag = 'pre',
 }) => {
   const highlight = useShikiHighlighter(theme);
-  const [highlightedCode, setHighlightedCode] = useState<string | null>(null);
+  const [highlightedCode, setHighlightedCode] =
+    useState<React.ReactNode | null>(null);
 
   useEffect(() => {
     highlight(children, language).then(setHighlightedCode);
@@ -32,6 +33,6 @@ export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
 
   return React.createElement(PreTag, {
     className: 'shiki not-prose',
-    dangerouslySetInnerHTML: { __html: highlightedCode },
+    children: highlightedCode,
   });
 };
