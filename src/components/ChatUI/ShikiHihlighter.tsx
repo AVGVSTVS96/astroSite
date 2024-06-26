@@ -5,8 +5,8 @@ import { useShikiHighlighter } from '@hooks/useShikiHighlighter';
 interface ShikiHighlighterProps {
   language: BundledLanguage;
   children: string;
-  theme?: BundledTheme;
-  PreTag?: keyof JSX.IntrinsicElements;
+  theme: BundledTheme;
+  PreTag: keyof JSX.IntrinsicElements;
 }
 
 export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({

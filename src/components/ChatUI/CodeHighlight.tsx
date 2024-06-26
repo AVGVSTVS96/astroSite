@@ -60,7 +60,7 @@ export const CodeHighlight = ({
 
   return !inline && match ? (
     <ShikiHighlighter
-      language={match[1]}
+      language={match[1] as BundledLanguage}
       theme={'catppuccin-mocha'}
       PreTag="pre"
       {...props}>
