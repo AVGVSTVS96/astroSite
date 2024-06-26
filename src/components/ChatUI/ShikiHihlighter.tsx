@@ -17,19 +17,19 @@ export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
 }) => {
   const highlight = useShikiHighlighter(theme);
   const [highlightedCode, setHighlightedCode] =
-    useState<React.ReactNode | null>(null);
+    useState<React.ReactNode>(children);
 
   useEffect(() => {
-    highlight(children, language).then(setHighlightedCode);
+    let isMounted = true;
+    highlight(children, language).then((result) => {
+      if (isMounted) {
+        setHighlightedCode(result);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [highlight, children, language]);
-
-  if (!highlightedCode) {
-    return React.createElement(
-      PreTag,
-      null,
-      React.createElement('code', null, children)
-    );
-  }
 
   return React.createElement(PreTag, {
     className: 'shiki not-prose',
