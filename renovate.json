@@ -38,7 +38,8 @@
     },
     {
       "groupName": "AI dependencies",
-      "matchPackageNames": ["@ai-sdk/openai", "ai", "openai"]
+      "matchPackagePrefixes": ["@ai-sdk/"],
+      "matchPackageNames": ["ai", "openai"]
     },
     {
       "groupName": "Astro, Integrations, and Adapters",
