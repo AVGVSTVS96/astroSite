@@ -59,11 +59,5 @@
     "type-coverage": "^2.29.0",
     "typescript": "^5.5.2",
     "wrangler": "^3.62.0"
-  },
-  "overrides": {
-    "vite": "^5.2.8",
-    "ip": "^2.0.1",
-    "undici": "^5.28.4",
-    "tar": "^6.2.1"
   }
 }
