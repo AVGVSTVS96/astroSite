@@ -6,7 +6,7 @@ interface ShikiHighlighterProps {
   language: BundledLanguage;
   children: string;
   theme: BundledTheme;
-  preTag: keyof JSX.IntrinsicElements;
+  preTag?: keyof JSX.IntrinsicElements;
 }
 
 export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
@@ -24,7 +24,7 @@ export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
         setHighlightedCode(parse(html));
       });
     }
-  }, [children, language, theme]);
+  }, [children]);
 
   if (!highlightedCode) {
     return React.createElement(
@@ -36,6 +36,6 @@ export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
 
   return React.createElement(preTag, {
     className: 'shiki not-prose',
-    dangerouslySetInnerHTML: { __html: highlightedCode },
+    children: highlightedCode,
   });
 };
