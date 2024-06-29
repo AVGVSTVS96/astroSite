@@ -12,7 +12,7 @@ export const CodeHighlight = ({
   children,
   ...props
 }: CodeHighlightProps) => {
-  const theme = 'catppuccin-mocha';
+  const theme = 'houston';
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
   const language = match && (match[1] as BundledLanguage);
