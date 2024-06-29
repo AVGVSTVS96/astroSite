@@ -1,47 +1,14 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { type UseChatHelpers } from '@ai-sdk/react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
 import { cn } from '@/lib/utils';
+import { CodeHighlight } from './CodeHighlight';
 
 interface MessagesProps {
   messages: UseChatHelpers['messages'];
 }
-
-interface CodeComponentProps {
-  inline: boolean;
-  className: string;
-  children: React.ReactNode;
-}
-
-const CodeHighlight = ({
-  inline,
-  className,
-  children,
-  ...props
-}: CodeComponentProps) => {
-  const match = /language-(\w+)/.exec(className || '');
-  const language = match ? match[1] : 'plaintext';
-
-  return !inline && language !== 'plaintext' ? (
-    <SyntaxHighlighter
-      language={language}
-      style={
-        rainglowAzureContrast as {
-          [key: string]: React.CSSProperties;
-        }
-      }
-      PreTag="div"
-      {...props}>
-      {String(children).replace(/\n$/, '')}
-    </SyntaxHighlighter>
-  ) : (
-    <code className={className} {...props}>
-      {children}
-    </code>
-  );
-};
 
 export const Messages: React.FC<MessagesProps> = ({ messages }) => {
   const messageStyles: Record<string, string> = {
