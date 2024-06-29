@@ -60,6 +60,7 @@ export const Messages: React.FC<MessagesProps> = ({ messages }) => {
             message.role === 'user' ? userMessageStyles : assistantMessageStyles
           )}>
           <ReactMarkdown
+            className={'prose-p:my-0 prose-pre:my-2'}
             components={{
               code: CodeHighlight,
             }}>
