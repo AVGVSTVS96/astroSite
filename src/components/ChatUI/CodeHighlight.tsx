@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { codeToHtml, type BundledLanguage, type BundledTheme } from 'shiki';
 import parse from 'html-react-parser';
 
 interface CodeHighlightProps {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const CodeHighlight = ({
