@@ -1,6 +1,6 @@
 import { useShikiHighlighter } from '@hooks/useShiki';
 import { type ReactNode } from 'react';
-import { type BundledLanguage, type BundledTheme } from 'shiki';
+import { type BundledLanguage } from 'shiki';
 
 interface CodeHighlightProps {
   className: string;
@@ -22,7 +22,7 @@ export const CodeHighlight = ({
     theme
   );
 
-  return match && highlightedCode ? (
+  return language && highlightedCode ? (
     <div
       className={`shiki not-prose [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:p-4 ${className || ''}`}
       {...props}>
