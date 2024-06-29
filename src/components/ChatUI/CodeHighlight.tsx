@@ -16,6 +16,7 @@ export const CodeHighlight = ({
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
   const language = match && (match[1] as BundledLanguage);
+  
   const highlightedCode: ReactNode | null = useShikiHighlighter(
     code,
     language,
