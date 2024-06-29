@@ -1,12 +1,12 @@
-import { useState, useEffect, type ReactNode } from 'react';
-import { codeToHtml, type BundledLanguage, type BundledTheme } from 'shiki';
-import parse from 'html-react-parser';
+import type { ReactNode } from 'react';
+import type { BundledLanguage } from 'shiki';
 import type { Element } from 'hast';
 import { isInlineCode } from '@utils/isInlineCode';
-import { removeTabIndexFromPre } from '@utils/shikiTransformers';
+import { useShikiHighlighter } from '@hooks/useShiki';
+
 
 interface CodeHighlightProps {
-  className?: string;
+  className: string;
   children: ReactNode;
   node: Element;
 }
@@ -17,25 +17,18 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps) => {
-  const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
-    null
-  );
-  const theme: BundledTheme = 'catppuccin-mocha';
+  const theme = 'houston';
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
-  const language = match ? match[1] : undefined;
+  const language = match ? (match[1] as BundledLanguage) : undefined;
 
   const isInline: boolean = isInlineCode(node);
 
-  useEffect(() => {
-    if (!isInline) {
-      codeToHtml(code, {
-        lang: language as BundledLanguage,
-        theme,
-        transformers: [removeTabIndexFromPre],
-      }).then((html) => setHighlightedCode(parse(html)));
-    }
-  }, [code]);
+  const highlightedCode: ReactNode | null = useShikiHighlighter(
+    code,
+    language,
+    theme,
+  );
 
   return !isInline ? (
     <div
