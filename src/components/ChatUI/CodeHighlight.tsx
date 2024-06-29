@@ -16,10 +16,7 @@ export const CodeHighlight = ({
   const language = match ? (match[1] as BundledLanguage) : undefined;
 
   return language ? (
-    <ShikiHighlighter
-      language={language}
-      theme={'catppuccin-mocha'}
-      {...props}>
+    <ShikiHighlighter language={language} theme={'houston'} {...props}>
       {String(children)}
     </ShikiHighlighter>
   ) : (

@@ -35,7 +35,8 @@ export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
   }
 
   return React.createElement(preTag, {
-    className: 'shiki not-prose',
+    className:
+      'shiki not-prose [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:p-4',
     children: highlightedCode,
   });
 };
