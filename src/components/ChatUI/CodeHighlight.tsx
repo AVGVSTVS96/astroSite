@@ -1,14 +1,17 @@
+import { useState, useEffect, type ReactNode } from 'react';
 import {
-  PrismAsync as SyntaxHighlighter,
-  type SyntaxHighlighterProps,
-} from 'react-syntax-highlighter';
-import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
+  codeToHtml,
+  ShikiError,
+  type BundledLanguage,
+  type BundledTheme,
+} from 'shiki';
+import parse from 'html-react-parser';
 import type { Element } from 'hast';
 import { isInlineCode } from '@/lib/utils';
 
 interface CodeHighlightProps {
   className?: string | undefined;
-  children?: React.ReactNode | undefined;
+  children?: ReactNode | undefined;
   node?: Element | undefined;
 }
 
@@ -18,10 +21,23 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps): JSX.Element => {
+  const [highlightedCode, setHighlightedCode] =
+    useState<ReactNode | null>(null);
+  const theme: BundledTheme = 'catppuccin-mocha';
+  const code = String(children);
   const match = className?.match(/language-(\w+)/);
   const language = match ? match[1] : undefined;
 
   const isInline: boolean | undefined = node ? isInlineCode(node) : undefined;
+
+  useEffect(() => {
+    if (!isInline) {
+      codeToHtml(code, {
+        lang: language as BundledLanguage,
+        theme,
+      }).then((html) => setHighlightedCode(parse(html)));
+    }
+  }, [code]);
 
   return !isInline ? (
     <div className='relative'>
