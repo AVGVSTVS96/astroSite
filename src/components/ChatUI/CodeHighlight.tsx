@@ -1,6 +1,6 @@
 import { useShikiHighlighter } from '@hooks/useShiki';
 import { type ReactNode } from 'react';
-import { type BundledLanguage, type BundledTheme } from 'shiki';
+import { type BundledLanguage } from 'shiki';
 
 interface CodeHighlightProps {
   className: string;
