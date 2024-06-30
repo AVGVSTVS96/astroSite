@@ -22,18 +22,23 @@ export const CodeHighlight = ({
     useState<React.ReactNode | null>(null);
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
+  const language = match ? match[1] : undefined;
 
   useEffect(() => {
-    if (match) {
+    if (language) {
       codeToHtml(code, {
-        lang: match[1],
+        lang: language,
         theme,
       }).then((html) => setHighlightedCode(parse(html)));
     }
   }, [code]);
 
-  return match && highlightedCode ? (
-    <div className={`shiki not-prose ${className || ''}`} {...props}>
+  return language && highlightedCode ? (
+    <div
+      className={`shiki not-prose relative [&_pre]:overflow-auto [&_pre]:px-6 [&_pre]:py-5 ${className || ''}`}>
+      <span className="absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85">
+        {language}
+      </span>
       {highlightedCode}
     </div>
   ) : (
