@@ -3,26 +3,21 @@ import { codeToHtml, type BundledLanguage, type BundledTheme } from 'shiki';
 import parse from 'html-react-parser';
 
 interface CodeHighlightProps {
-  inline: boolean;
   className?: string;
   children: React.ReactNode;
-  theme: BundledTheme;
-  lang: BundledLanguage;
 }
 
 export const CodeHighlight = ({
-  inline,
   className,
   children,
-  lang,
-  theme = 'catppuccin-mocha',
   ...props
 }: CodeHighlightProps) => {
   const [highlightedCode, setHighlightedCode] =
     useState<React.ReactNode | null>(null);
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
-  const language = match ? match[1] : undefined;
+  const language = match ? (match[1] as BundledLanguage) : undefined;
+  const theme: BundledTheme = 'catppuccin-mocha';
 
   useEffect(() => {
     if (language) {
