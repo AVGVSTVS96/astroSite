@@ -44,11 +44,11 @@ const CodeHighlight = ({
 };
 
 export const Messages: React.FC<MessagesProps> = ({ messages }) => {
-  const baseMessageStyles =
-    'prose prose-slate prose-invert flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0 [&_pre>div]:rounded-md';
-  const userMessageStyles =
-    'ml-auto bg-primary text-primary-foreground prose-code:text-primary-foreground';
-  const assistantMessageStyles = 'bg-muted text-foreground';
+  const messageStyles: Record<string, string> = {
+    base: 'prose prose-slate flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 prose-p:my-0 prose-pre:my-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0',
+    user: 'ml-auto bg-primary text-primary-foreground prose-headings:text-primary-foreground prose-code:text-primary-foreground prose-blockquote:text-primary-foreground prose-a:text-primary-foreground prose-strong:text-primary-foreground',
+    assistant: 'bg-muted dark:prose-invert prose-code:text-foreground',
+  };
 
   return (
     <div className="space-y-4">
@@ -56,11 +56,10 @@ export const Messages: React.FC<MessagesProps> = ({ messages }) => {
         <div
           key={message.id}
           className={cn(
-            baseMessageStyles,
-            message.role === 'user' ? userMessageStyles : assistantMessageStyles
+            messageStyles.base,
+            messageStyles[message.role],
           )}>
           <ReactMarkdown
-            className={'prose-p:my-0 prose-pre:my-2'}
             components={{
               code: CodeHighlight,
             }}>
