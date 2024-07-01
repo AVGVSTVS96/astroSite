@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { codeToHtml, type BundledLanguage, type BundledTheme } from 'shiki';
-import parse from 'html-react-parser';
+import { useShikiHighlighter } from '@hooks/useShiki';
+import { type ReactNode } from 'react';
+import { type BundledLanguage } from 'shiki';
 
 interface CodeHighlightProps {
-  className?: string;
-  children: React.ReactNode;
+  className: string;
+  children: ReactNode;
 }
 
 export const CodeHighlight = ({
@@ -12,21 +12,16 @@ export const CodeHighlight = ({
   children,
   ...props
 }: CodeHighlightProps) => {
-  const [highlightedCode, setHighlightedCode] =
-    useState<React.ReactNode | null>(null);
+  const theme = 'houston';
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
-  const language = match ? (match[1] as BundledLanguage) : undefined;
-  const theme: BundledTheme = 'catppuccin-mocha';
-
-  useEffect(() => {
-    if (language) {
-      codeToHtml(code, {
-        lang: language,
-        theme,
-      }).then((html) => setHighlightedCode(parse(html)));
-    }
-  }, [code]);
+  const language = match && (match[1] as BundledLanguage);
+  
+  const highlightedCode: ReactNode | null = useShikiHighlighter(
+    code,
+    language,
+    theme
+  );
 
   return language && highlightedCode ? (
     <div
