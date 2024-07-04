@@ -8,6 +8,7 @@ import {
 import parse from 'html-react-parser';
 import type { Element } from 'hast';
 import { isInlineCode } from '@/lib/utils';
+import { removeTabIndexFromPre } from '@/lib/utils/shikiTransformers';
 
 interface CodeHighlightProps {
   className?: string | undefined;
@@ -35,6 +36,7 @@ export const CodeHighlight = ({
       codeToHtml(code, {
         lang: language as BundledLanguage,
         theme,
+        transformers: [removeTabIndexFromPre],
       }).then((html) => setHighlightedCode(parse(html)));
     }
   }, [code]);
