@@ -11,7 +11,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 const themeFile = fs.readFileSync(
   new URL(
-    `./src/styles/rainglowAzure.jsonc`,
+    './src/styles/rainglowAzure.jsonc',
     import.meta.url
   ),
   'utf-8'

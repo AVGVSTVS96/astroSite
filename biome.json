@@ -17,7 +17,16 @@
         "useNamingConvention": {
           "level": "info",
           "options": {
-            "strictCase": true
+            "strictCase": true,
+            "conventions": [
+              {
+                "selector": {
+                  "kind": "objectLiteralMember",
+                  "scope": "any"
+                },
+                "formats": ["CONSTANT_CASE", "camelCase"]
+              }
+            ]
           }
         }
       },
@@ -27,7 +36,14 @@
         "useSemanticElements": "warn"
       }
     },
-    "ignore": ["src/styles/*.js"]
+    "ignore": [
+      "src/styles/*.js",
+      "node_modules",
+      "dist",
+      ".wrangler",
+      ".astro",
+      ".vscode"
+    ]
   },
   "formatter": {
     "enabled": false

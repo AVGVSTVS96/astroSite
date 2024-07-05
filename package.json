@@ -11,7 +11,8 @@
     "check": "astro check",
     "astro": "astro",
     "release": "semantic-release",
-    "wrangler": "bunx wrangler pages dev -- bun run dev"
+    "lint": "bunx @biomejs/biome lint .",
+    "lint:fix": "bunx @biomejs/biome lint . --write"
   },
   "dependencies": {
     "@ai-sdk/openai": "0.0.33",
