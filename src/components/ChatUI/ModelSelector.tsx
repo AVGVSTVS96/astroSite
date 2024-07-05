@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import {
   Select,
   SelectTrigger,
@@ -46,7 +46,7 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
       </SelectTrigger>
       <SelectContent>
         {modelGroups.map((group, index) => (
-          <SelectGroup key={index}>
+          <SelectGroup key={group.label}>
             <SelectLabel className="text-sm font-bold tracking-wide text-foreground">
               {group.label}
             </SelectLabel>
