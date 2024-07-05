@@ -22,12 +22,11 @@ import { formatDate } from '@utils/formatDate';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
 
 import type { CollectionEntry } from 'astro:content';
-type postsType = CollectionEntry<'posts'>[];
-
+type PostsType = CollectionEntry<'posts'>[];
 
 type CommandMenuProps = {
   buttonStyles?: string;
-  posts?: postsType;
+  posts?: PostsType;
 };
 
 export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
@@ -101,7 +100,9 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
           <CommandSeparator />
           <CommandGroup heading="Projects">
             {projectLinks.map((project) => (
-              <CommandItem key={project.name} onSelect={() => navigate(project.href)}>
+              <CommandItem
+                key={project.name}
+                onSelect={() => navigate(project.href)}>
                 <ArrowTopRightIcon className={iconStyles} />
                 {project.name}
               </CommandItem>

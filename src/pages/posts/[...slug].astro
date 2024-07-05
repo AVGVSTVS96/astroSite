@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import MDLayout from '@layouts/MDLayout.astro';
+import MdLayout from '@layouts/MdLayout.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('posts');
@@ -14,6 +14,6 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 ---
 
-<MDLayout data={entry.data} headings={headings}>
+<MdLayout data={entry.data} headings={headings}>
   <Content />
-</MDLayout>
+</MdLayout>

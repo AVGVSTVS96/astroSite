@@ -1,4 +1,4 @@
-interface jsonLD {
+interface JsonLd {
   title: string;
   pubDate: Date;
   description: string;
@@ -10,11 +10,11 @@ interface jsonLD {
   tags: string[];
 }
 
-export function generateJsonLD(data: jsonLD, url: string) {
+export function generateJsonLd(data: JsonLd, url: string) {
   const isoDate = new Date(data.pubDate).toISOString();
   const imageUrl = new URL(data.image?.url, url).href;
 
-  const jsonLD = {
+  const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: data.title,
@@ -45,5 +45,5 @@ export function generateJsonLD(data: jsonLD, url: string) {
     },
   };
 
-  return JSON.stringify(jsonLD, null, 2);
+  return JSON.stringify(jsonLd, null, 2);
 }
