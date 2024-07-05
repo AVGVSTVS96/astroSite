@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { codeToHtml, type BundledLanguage, type BundledTheme } from 'shiki';
 import parse from 'html-react-parser';
 import type { Element } from 'hast';
@@ -7,7 +7,7 @@ import { removeTabIndexFromPre } from '@utils/shikiTransformers';
 
 interface CodeHighlightProps {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   node: Element;
 }
 
@@ -17,8 +17,9 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps) => {
-  const [highlightedCode, setHighlightedCode] =
-    useState<React.ReactNode | null>(null);
+  const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
+    null
+  );
   const theme: BundledTheme = 'catppuccin-mocha';
   const code = String(children);
   const match = /language-(\w+)/.exec(className || '');
