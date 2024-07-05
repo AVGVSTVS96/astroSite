@@ -10,6 +10,15 @@
 	  "correctness": {
 		"useExhaustiveDependencies": "off",
 		"useHookAtTopLevel": "error"
+	  },
+	  "style": {
+		"noImplicitBoolean": "off",
+		"useFragmentSyntax": "warn"
+	  },
+	  "nursery": {
+		"useFocusableInteractive": "warn",
+		"noLabelWithoutControl": "warn",
+		"useSemanticElements": "warn"
 	  }
     }
   },
