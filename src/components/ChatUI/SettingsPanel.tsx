@@ -72,12 +72,14 @@ const TemperatureInput: React.FC = () => (
     <Input id="temperature" type="number" placeholder="0.4" />
   </div>
 );
+// biome-ignore lint: not possible to correct naming convention without changing name
 const TopPInput: React.FC = () => (
   <div className="grid gap-3">
     <Label htmlFor="top-p">Top P</Label>
     <Input id="top-p" type="number" placeholder="0.7" />
   </div>
 );
+// biome-ignore lint: not possible to correct naming convention without changing name
 const TopKInput: React.FC = () => (
   <div className="grid gap-3">
     <Label htmlFor="top-k">Top K</Label>

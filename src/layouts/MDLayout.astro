@@ -5,11 +5,11 @@ import Prose from '@components/Prose.astro';
 import { TableOfContents } from '@components/TableOfContents';
 import { formatDate } from '@utils/formatDate';
 import { images } from '@utils/imageHandler';
-import { generateJsonLD } from '@utils/generateBlogSchema';
+import { generateJsonLd } from '@utils/generateBlogSchema';
 
 const { data, headings } = Astro.props;
 
-const schema = generateJsonLD(data, Astro.request.url);
+const schema = generateJsonLd(data, Astro.request.url);
 ---
 
 <BaseLayout {...data}>
