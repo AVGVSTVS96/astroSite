@@ -1,0 +1,28 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+	  "correctness": {
+		"useExhaustiveDependencies": "off",
+		"useHookAtTopLevel": "error"
+	  },
+	  "style": {
+		"noImplicitBoolean": "off",
+		"useFragmentSyntax": "warn"
+	  },
+	  "nursery": {
+		"useFocusableInteractive": "warn",
+		"noLabelWithoutControl": "warn",
+		"useSemanticElements": "warn"
+	  }
+    }
+  },
+  "formatter": {
+    "enabled": false
+  }
+}
