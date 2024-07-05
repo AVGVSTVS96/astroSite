@@ -3,7 +3,7 @@ import { formatDate } from '@utils/formatDate';
 import { sortedBlogPosts } from '@utils/getSortedPosts';
 import { Icon } from 'astro-icon/components';
 
-let latestPosts = Astro.props.postCount
+const latestPosts = Astro.props.postCount
   ? sortedBlogPosts.slice(0, Astro.props.postCount)
   : sortedBlogPosts;
 

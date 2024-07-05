@@ -3,7 +3,7 @@ import { PaperPlaneIcon } from '@radix-ui/react-icons';
 import { Square } from 'lucide-react';
 import { Button } from '@components/ui/button';
 import { Textarea } from '@components/ui/textarea';
-import { type UseChatHelpers } from '@ai-sdk/react';
+import type { UseChatHelpers } from '@ai-sdk/react';
 import { cn } from '@/lib/utils';
 
 interface ChatInputProps {
