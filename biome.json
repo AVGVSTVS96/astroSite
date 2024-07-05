@@ -7,20 +7,27 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-	  "correctness": {
-		"useExhaustiveDependencies": "off",
-		"useHookAtTopLevel": "error"
-	  },
-	  "style": {
-		"noImplicitBoolean": "off",
-		"useFragmentSyntax": "warn"
-	  },
-	  "nursery": {
-		"useFocusableInteractive": "warn",
-		"noLabelWithoutControl": "warn",
-		"useSemanticElements": "warn"
-	  }
-    }
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "useHookAtTopLevel": "error"
+      },
+      "style": {
+        "noImplicitBoolean": "off",
+        "useFragmentSyntax": "warn",
+        "useNamingConvention": {
+          "level": "info",
+          "options": {
+            "strictCase": true
+          }
+        }
+      },
+      "nursery": {
+        "useFocusableInteractive": "warn",
+        "noLabelWithoutControl": "warn",
+        "useSemanticElements": "warn"
+      }
+    },
+    "ignore": ["src/styles/*.js"]
   },
   "formatter": {
     "enabled": false
