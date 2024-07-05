@@ -90,8 +90,8 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            {mainLinks.map((link, index) => (
-              <CommandItem key={index} onSelect={() => navigate(link.href)}>
+            {mainLinks.map((link) => (
+              <CommandItem key={link.name} onSelect={() => navigate(link.href)}>
                 {React.createElement(link.icon, { className: iconStyles })}
                 {link.name}
                 <CommandShortcut>{link.shortcut}</CommandShortcut>
@@ -100,8 +100,8 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Projects">
-            {projectLinks.map((project, index) => (
-              <CommandItem key={index} onSelect={() => navigate(project.href)}>
+            {projectLinks.map((project) => (
+              <CommandItem key={project.name} onSelect={() => navigate(project.href)}>
                 <ArrowTopRightIcon className={iconStyles} />
                 {project.name}
               </CommandItem>
@@ -109,10 +109,10 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Blog Posts">
-            {posts?.map((post, index) => (
+            {posts?.map((post) => (
               <CommandItem
                 slot="blogPosts"
-                key={index}
+                key={post.data.title}
                 className="text-balance"
                 aria-label={`Link to blog post: ${post.data.title}`}
                 onSelect={() => navigate(`/posts/${post.slug}/`)}>
