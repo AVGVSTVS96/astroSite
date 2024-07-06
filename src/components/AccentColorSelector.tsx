@@ -20,11 +20,11 @@ const themeOptions = [
   { colorName: 'Amber', colorClass: 'bg-amber-400', href: '#amber' },
 ];
 
-export const AccentColorSelector: React.FC = () => {
+export const AccentColorSelector = () => {
+  const isBrowser = typeof window !== 'undefined' && window.localStorage;
   const [selectedTheme, setSelectedTheme] = useState(() => {
     const storedTheme =
-      typeof window !== 'undefined' &&
-      window.localStorage?.getItem('themeSwitcher');
+      isBrowser && window.localStorage.getItem('themeSwitcher');
     return storedTheme;
   });
 
@@ -34,20 +34,16 @@ export const AccentColorSelector: React.FC = () => {
     };
   }, []);
 
-  const localStorageAccessible =
-    typeof window !== 'undefined' && window.localStorage;
-
   const handleStorageChange = () => {
     const storedTheme = localStorage.getItem('themeSwitcher') || 'sky';
 
-    if (localStorageAccessible && storedTheme !== selectedTheme) {
+    if (isBrowser && storedTheme !== selectedTheme) {
       setSelectedTheme(storedTheme);
       document.documentElement.setAttribute('data-theme', storedTheme);
     }
   };
 
-  if (localStorageAccessible)
-    window.addEventListener('storage', handleStorageChange);
+  isBrowser && window.addEventListener('storage', handleStorageChange);
 
   const handleThemeChange = (href: string) => {
     const theme = href.substring(1);
