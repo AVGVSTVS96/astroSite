@@ -16,7 +16,7 @@ interface Props {
 const { lineClamp, split = false } = Astro.props;
 ---
 
-<div class="">
+<div>
   {
     latestPosts.map((post) => (
       <article
@@ -25,6 +25,7 @@ const { lineClamp, split = false } = Astro.props;
           split ? 'lg:pl-64' : '',
         ]}>
         <div
+          id="timeline-marker"
           aria-hidden="true"
           class:list={[
             'absolute left-2 top-[2.5rem] hidden h-[0.5625rem] w-[0.5625rem] rounded-full ring-2 ring-accent-300/70 sm:block',
@@ -32,6 +33,7 @@ const { lineClamp, split = false } = Astro.props;
           ]}
         />
         <div
+          id="timeline-vertical-line"
           aria-hidden="true"
           class:list={[
             'absolute -bottom-[2.5rem] left-[0.75rem] top-[3.125rem] my-0.5 hidden w-px bg-accent-300/70 group-last:-bottom-2 group-last:bg-transparent group-last:bg-gradient-to-b group-last:from-accent-300/70 group-last:to-transparent sm:block',
@@ -41,6 +43,7 @@ const { lineClamp, split = false } = Astro.props;
 
         <header>
           <div
+            id="timeline-date"
             class:list={[
               'mb-2 mt-px text-sm text-muted-foreground',
               split ? 'lg:absolute lg:left-0 lg:w-[10rem] lg:text-right' : '',
@@ -57,19 +60,19 @@ const { lineClamp, split = false } = Astro.props;
         <div>
           <a href={`/posts/${post.slug}`}>
             <span
+              id="timeline-item-hover-background"
               class:list={[
-                "absolute inset-y-3 left-0 right-0 after:absolute after:inset-0 after:-z-10 after:rounded-md after:bg-accent/20  after:opacity-0 after:transition-opacity after:content-[''] hover:after:opacity-100 sm:left-8",
+                "absolute inset-y-3 left-0 right-0 after:absolute after:inset-0 after:-z-10 after:rounded-md after:bg-accent/20 after:opacity-0 after:transition-opacity after:content-[''] hover:after:opacity-100 sm:left-8",
                 split ? 'lg:left-[14.5rem]' : '',
               ]}
             />
-
             <span class="inline-flex items-center text-sm font-medium">
               Read more
               <Icon
                 name="linkCaret"
                 size={20}
                 class:list={[
-                  '-mb-0.5 ml-0.5 stroke-accent-300/75 stroke-2 transition  group-hover:translate-x-0.5 group-hover:stroke-accent-300',
+                  '-mb-0.5 ml-0.5 stroke-accent-300/75 stroke-2 transition group-hover:translate-x-0.5 group-hover:stroke-accent-300',
                 ]}
                 title="caret-icon"
               />
