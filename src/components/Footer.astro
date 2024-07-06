@@ -4,9 +4,9 @@ import Social from '@components/Social.astro';
 const name = 'Bassim';
 ---
 
-<div
+<footer
   class="footer-container mt-8 pb-4 flex w-[calc(100%-32px)] sm:px-4 md:px-8">
-  <footer
+  <div
     class="m-3 flex w-full items-center justify-between gap-4 text-sm text-muted-foreground/90">
     <div class="flex gap-4">
       <Social platform="github" />
@@ -15,5 +15,5 @@ const name = 'Bassim';
     <div class="flex gap-4 text-balance">
       <span>Made by {name} &ThickSpace; &bull; &ThickSpace; <time>{new Date().getFullYear()}</time></span>
     </div>
-  </footer>
-</div>
+  </div>
+</footer>
