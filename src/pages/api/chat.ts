@@ -26,7 +26,7 @@ export async function POST(context: APIContext) {
   });
 
   const result = await streamText({
-    model: openai(modelName),
+    model: openai(modelName || 'gpt-3.5-turbo'),
     system: 'You are a helpful assistant.',
     messages,
     onFinish: ({ finishReason, usage }) => {
