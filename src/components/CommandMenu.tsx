@@ -120,9 +120,11 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
                 <NotebookText className={iconStyles} />
                 {post.data.title}
                 <CommandShortcut className="whitespace-nowrap pl-4 tracking-wide">
-                  {formatDate(post.data.pubDate, {
-                    month: 'short',
-                  })}
+                  <time>
+                    {formatDate(post.data.pubDate, {
+                      month: 'short',
+                    })}
+                  </time>
                 </CommandShortcut>
               </CommandItem>
             ))}
