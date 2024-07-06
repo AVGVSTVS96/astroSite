@@ -11,10 +11,6 @@ export const ChatBox: React.FC = () => {
   const defaultModel = 'gpt-3.5-turbo';
   const { selectedModel, handleModelChange } = useModel(defaultModel);
 
-  const chatOptions: UseChatOptions = {
-    api: '/api/chatRoute',
-  };
-
   const {
     messages,
     input,
@@ -22,7 +18,7 @@ export const ChatBox: React.FC = () => {
     handleSubmit,
     isLoading,
     stop,
-  }: UseChatHelpers = useChat(chatOptions);
+  }: UseChatHelpers = useChat();
 
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 

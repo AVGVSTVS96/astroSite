@@ -20,7 +20,7 @@ export const useModel = (defaultModel: string) => {
 
   useEffect(() => {
     const sendModelName = async () => {
-      await fetch('/api/chatRoute', {
+      await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
