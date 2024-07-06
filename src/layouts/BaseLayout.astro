@@ -3,7 +3,7 @@ import '@fontsource-variable/inter';
 import inter from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import '@styles/global.css';
 import Meta from '@components/Meta.astro';
-import ReactHeader from '@components/ReactHeader.astro';
+import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
 const { description, title } = Astro.props;
@@ -43,7 +43,7 @@ const { description, title } = Astro.props;
     <slot name="head" />
   </head>
   <body class="flex min-h-dvh w-dvw flex-col items-center overflow-x-hidden">
-    <ReactHeader />
+    <Header />
     <main class="flex grow">
       <slot />
     </main>
