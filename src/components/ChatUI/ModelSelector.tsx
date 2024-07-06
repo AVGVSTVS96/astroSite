@@ -9,6 +9,7 @@ import {
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
+import { useModel } from '@hooks/useModel';
 
 const modelGroups = [
   {
@@ -27,21 +28,14 @@ const modelGroups = [
     ],
   },
 ];
-interface ModelSelectorProps {
-  selectedModel: string;
-  onModelChange: (model: string) => void;
-}
-export const ModelSelector: React.FC<ModelSelectorProps> = ({
-  selectedModel,
-  onModelChange,
-}) => {
-  const handleModelChange = (value: string) => {
-    onModelChange(value);
-  };
+
+export const ModelSelector = () => {
+  const defaultModel = 'gpt-3.5-turbo';
+  const { selectedModel, handleModelChange } = useModel(defaultModel);
 
   return (
     <Select value={selectedModel} onValueChange={handleModelChange}>
-      <SelectTrigger className="w-full xs:w-[180px] focus:ring-ring/20">
+      <SelectTrigger className="w-full focus:ring-ring/20 xs:w-[180px]">
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>
       <SelectContent>
