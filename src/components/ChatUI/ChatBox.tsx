@@ -1,16 +1,15 @@
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card';
-import { useChat, type UseChatHelpers, type UseChatOptions } from '@ai-sdk/react';
-import { useModel } from '@hooks/useModel';
+import {
+  useChat,
+  type UseChatHelpers,
+} from '@ai-sdk/react';
 import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
 import { Messages } from './Messages';
 import { cn } from '@/lib/utils';
 
 export const ChatBox: React.FC = () => {
-  const defaultModel = 'gpt-3.5-turbo';
-  const { selectedModel, handleModelChange } = useModel(defaultModel);
-
   const {
     messages,
     input,
@@ -38,10 +37,7 @@ export const ChatBox: React.FC = () => {
       )}>
       <CardHeader className="h-18 flex flex-row items-center justify-between py-3">
         <span className={styles.headerText}>ChatGPT</span>
-        <ModelSelector
-          selectedModel={selectedModel}
-          onModelChange={handleModelChange}
-        />
+        <ModelSelector />
       </CardHeader>
       <CardContent className="flex flex-col-reverse overflow-y-auto pb-0 pt-2">
         <Messages messages={messages} />
