@@ -44,21 +44,23 @@ const CodeHighlight = ({
 };
 
 export const Messages: React.FC<MessagesProps> = ({ messages }) => {
-  const messageStyles: Record<string, string> = {
-    base: 'prose prose-slate flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 prose-p:my-0 prose-pre:my-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0',
-    user: 'ml-auto bg-primary text-primary-foreground prose-headings:text-primary-foreground prose-code:text-primary-foreground prose-blockquote:text-primary-foreground prose-a:text-primary-foreground prose-strong:text-primary-foreground',
-    assistant: 'bg-muted dark:prose-invert prose-code:text-foreground',
+  const baseMessageStyles: string =
+    'prose prose-slate flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 prose-p:my-0 prose-pre:my-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0';
+  const messageStyles: Record<string, string | Array<string>> = {
+    user: [
+      baseMessageStyles,
+      'ml-auto bg-primary text-primary-foreground prose-headings:text-primary-foreground prose-code:text-primary-foreground prose-blockquote:text-primary-foreground prose-a:text-primary-foreground prose-strong:text-primary-foreground',
+    ],
+    assistant: [
+      baseMessageStyles,
+      'bg-muted dark:prose-invert prose-code:text-foreground',
+    ],
   };
 
   return (
     <div className="space-y-4">
       {messages.map((message) => (
-        <div
-          key={message.id}
-          className={cn(
-            messageStyles.base,
-            messageStyles[message.role],
-          )}>
+        <div key={message.id} className={cn(messageStyles[message.role])}>
           <ReactMarkdown
             components={{
               code: CodeHighlight,
