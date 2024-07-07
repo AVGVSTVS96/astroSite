@@ -11,8 +11,8 @@
     "check": "astro check",
     "astro": "astro",
     "release": "semantic-release",
-    "lint": "bunx @biomejs/biome lint .",
-    "lint:fix": "bunx @biomejs/biome lint . --write"
+    "lint": "biome lint",
+    "lint:fix": "biome lint --write"
   },
   "dependencies": {
     "@ai-sdk/openai": "0.0.33",
