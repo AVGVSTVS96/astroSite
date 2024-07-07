@@ -8,7 +8,79 @@ import {
   TooltipContent,
 } from '@components/ui/tooltip';
 
-const themeOptions = [
+type ThemeOption = {
+  colorName:
+    | 'Slate'
+    | 'Gray'
+    | 'Zinc'
+    | 'Neutral'
+    | 'Stone'
+    | 'Red'
+    | 'Orange'
+    | 'Amber'
+    | 'Yellow'
+    | 'Lime'
+    | 'Green'
+    | 'Emerald'
+    | 'Teal'
+    | 'Cyan'
+    | 'Sky'
+    | 'Blue'
+    | 'Indigo'
+    | 'Violet'
+    | 'Purple'
+    | 'Fuchsia'
+    | 'Pink'
+    | 'Rose';
+  colorClass:
+    | 'bg-slate-400'
+    | 'bg-gray-400'
+    | 'bg-zinc-400'
+    | 'bg-neutral-400'
+    | 'bg-stone-400'
+    | 'bg-red-400'
+    | 'bg-orange-400'
+    | 'bg-amber-400'
+    | 'bg-yellow-400'
+    | 'bg-lime-400'
+    | 'bg-green-400'
+    | 'bg-emerald-400'
+    | 'bg-teal-400'
+    | 'bg-cyan-400'
+    | 'bg-sky-400'
+    | 'bg-blue-400'
+    | 'bg-indigo-400'
+    | 'bg-violet-400'
+    | 'bg-purple-400'
+    | 'bg-fuchsia-400'
+    | 'bg-pink-400'
+    | 'bg-rose-400';
+  href:
+    | '#slate'
+    | '#gray'
+    | '#zinc'
+    | '#neutral'
+    | '#stone'
+    | '#red'
+    | '#orange'
+    | '#amber'
+    | '#yellow'
+    | '#lime'
+    | '#green'
+    | '#emerald'
+    | '#teal'
+    | '#cyan'
+    | '#sky'
+    | '#blue'
+    | '#indigo'
+    | '#violet'
+    | '#purple'
+    | '#fuchsia'
+    | '#pink'
+    | '#rose';
+};
+
+const themeOptions: ThemeOption[] = [
   { colorName: 'Slate', colorClass: 'bg-slate-400', href: '#slate' },
   { colorName: 'Sky', colorClass: 'bg-sky-400', href: '#sky' },
   { colorName: 'Cyan', colorClass: 'bg-cyan-400', href: '#cyan' },
