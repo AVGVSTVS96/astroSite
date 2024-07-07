@@ -431,7 +431,7 @@ import Button from '@components/Button.astro';
 
     let iteration: number = 0;
 
-    const interval: NodeJS.Timeout = setInterval(() => {
+    const interval: ReturnType<typeof setInterval> = setInterval(() => {
       element.innerText = element.innerText
         .split('')
         .map((_letter: string, index: number) => {
