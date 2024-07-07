@@ -1,4 +1,3 @@
-import type React from 'react';
 import { useState, useEffect } from 'react';
 import { DropdownMenu, DropdownMenuItem } from './DropdownMenu';
 import { Arrow } from '@radix-ui/react-tooltip';
