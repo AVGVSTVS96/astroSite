@@ -46,7 +46,6 @@ export function CommandMenu({
   sortedPosts?: PostsType;
 }) {
   const [open, setOpen] = React.useState(false);
-  const { toggleTheme } = useThemeToggle();
   
   useHotkeys('mod+k', () => setOpen((open) => !open), {
     enableOnFormTags: true,
