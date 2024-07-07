@@ -25,12 +25,26 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import type { CollectionEntry } from 'astro:content';
 type PostsType = CollectionEntry<'posts'>[];
 
-type CommandMenuProps = {
-  buttonStyles?: string;
-  posts?: PostsType;
+const SettingsGroup = () => {
+  const { toggleTheme } = useThemeToggle();
+  return (
+    <CommandGroup heading="Settings">
+      <CommandItem onSelect={toggleTheme}>
+        <ThemeIcon />
+        <span className="ml-2">Toggle theme</span>
+        <CommandShortcut>T</CommandShortcut>
+      </CommandItem>
+    </CommandGroup>
+  );
 };
 
-export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
+export function CommandMenu({
+  buttonStyles,
+  sortedPosts,
+}: {
+  buttonStyles?: string;
+  sortedPosts?: PostsType;
+}) {
   const [open, setOpen] = React.useState(false);
   const { toggleTheme } = useThemeToggle();
   
@@ -88,8 +102,8 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
             ))}
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Blog Posts">
-            {posts?.map((post) => (
+          <CommandGroup heading="Blog posts">
+            {sortedPosts?.map((post) => (
               <CommandItem
                 slot="blogPosts"
                 key={post.data.title}
@@ -109,12 +123,7 @@ export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
             ))}
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem onSelect={toggleTheme}>
-              <ThemeIcon />
-              <span className="ml-2">Toggle theme</span>
-            </CommandItem>
-          </CommandGroup>
+          <SettingsGroup />
         </CommandList>
       </CommandDialog>
     </>
