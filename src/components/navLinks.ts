@@ -7,19 +7,19 @@ export const mainLinks = [
     name: 'Home',
     icon: HomeIcon,
     href: '/',
-    shortcut: '⌘E',
+    shortcut: 'H',
   },
   {
     name: 'About',
     icon: User,
     href: '/about',
-    shortcut: '⌘A',
+    shortcut: 'A',
   },
   {
     name: 'Blog',
     icon: NotebookTabs,
     href: '/blog',
-    shortcut: '⌘B',
+    shortcut: 'B',
   },
 ];
 

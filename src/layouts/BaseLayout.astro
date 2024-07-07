@@ -5,6 +5,7 @@ import '@styles/global.css';
 import Meta from '@components/Meta.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import GlobalHotKeys from '@components/GlobalHotKeys';
 
 const { description, title } = Astro.props;
 ---
@@ -43,6 +44,7 @@ const { description, title } = Astro.props;
     <slot name="head" />
   </head>
   <body class="flex min-h-dvh w-dvw flex-col items-center overflow-x-hidden">
+    <GlobalHotKeys client:load />
     <Header />
     <main class="flex grow">
       <slot />

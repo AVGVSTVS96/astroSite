@@ -20,6 +20,7 @@ import { NotebookText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatDate } from '@utils/formatDate';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 import type { CollectionEntry } from 'astro:content';
 type PostsType = CollectionEntry<'posts'>[];
@@ -32,41 +33,19 @@ type CommandMenuProps = {
 export function CommandMenu({ buttonStyles, posts }: CommandMenuProps) {
   const [open, setOpen] = React.useState(false);
   const { toggleTheme } = useThemeToggle();
+  
+  useHotkeys('mod+k', () => setOpen((open) => !open), {
+    enableOnFormTags: true,
+    preventDefault: true,
+  });
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    const { metaKey, ctrlKey, key, target } = event;
-
-    const isEditable =
-      (target instanceof HTMLElement && target.isContentEditable) ||
-      target instanceof HTMLInputElement ||
-      target instanceof HTMLTextAreaElement ||
-      target instanceof HTMLSelectElement;
-
-    const linkShortcut = mainLinks.find((link) =>
-      link.shortcut.toLowerCase().endsWith(key.toLowerCase())
-    );
-
-    if (
-      ((metaKey || ctrlKey) && (key === 'k' || linkShortcut)) ||
-      (key === '/' && !isEditable)
-    ) {
-      event.preventDefault();
-      key === 'k' || key === '/'
-        ? setOpen((open) => !open)
-        : linkShortcut && navigate(linkShortcut.href);
-    }
-  };
+  useHotkeys('/', () => setOpen((open) => !open), {
+    preventDefault: true,
+  });
 
   const navigate = (href: string) => {
     window.location.href = href;
   };
-
-  React.useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   return (
     <>
