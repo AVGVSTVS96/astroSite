@@ -1,10 +1,9 @@
+import { useState, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { CodeHighlight } from '@components/ChatUI/CodeHighlight';
 import { cn } from '@/lib/utils';
-import { useChat, type UseChatHelpers } from '@ai-sdk/react';
-import { useState, useEffect } from 'react';
+import type { Message } from '@ai-sdk/react';
 
-export const useFormattedMessages = (messages) => {
   const baseMessageStyles: string =
     'prose prose-slate flex w-max max-w-[75%] flex-col rounded-lg px-3 py-2 prose-p:my-0 prose-pre:my-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0';
   const messageStyles: Record<string, string | Array<string>> = {
@@ -17,38 +16,37 @@ export const useFormattedMessages = (messages) => {
       'bg-muted dark:prose-invert prose-code:text-foreground',
     ],
   };
-  const [historicMessages, setHistoricMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState([]);
+
+const FormattedMessage: React.FC<{ message: Message }> = ({ message }) => (
+  <div className={cn(messageStyles[message.role])}>
+    <ReactMarkdown components={{ code: CodeHighlight }}>
+      {message.content}
+    </ReactMarkdown>
+  </div>
+);
+
+export const useFormattedMessages = (messages: Message[]) => {
+  const [historicMessages, setHistoricMessages] = useState<Message[]>([]);
+  const [newMessage, setNewMessage] = useState<Message | null>(null);
 
   useEffect(() => {
-    const message = messages.map((message, idx, array) => (
-      <div key={message.id} className={cn(messageStyles[message.role])}>
-        {idx !== array.length - 1 && (
-          <ReactMarkdown>{message.content}</ReactMarkdown>
-        )}
-      </div>
-    ));
+    if (messages.length > historicMessages.length) {
+      setHistoricMessages(messages.slice(0, -1));
+      setNewMessage(messages[messages.length - 1]);
+    }
+  }, [messages, historicMessages.length]);
 
-    setHistoricMessages(message);
+  const formattedHistoricMessages = useMemo(
+    () =>
+      historicMessages.map((message) => (
+        <FormattedMessage key={message.id} message={message} />
+      )),
+    [historicMessages]
+  );
 
-    const newMessage = messages.map((message, idx, array) => (
-      <div key={message.id} className={cn(messageStyles[message.role])}>
-        {idx === array.length - 1 && (
-          <ReactMarkdown
-            components={{
-              code: CodeHighlight,
-            }}>
-            {message.content}
-          </ReactMarkdown>
-        )}
-      </div>
-    ));
+  const formattedNewMessage = newMessage ? (
+    <FormattedMessage key={newMessage.id} message={newMessage} />
+  ) : null;
 
-    setNewMessage(newMessage);
-    setHistoricMessages([...historicMessages, ...newMessage] as any);
-  }, [messages]);
-
-  return { historicMessages };
+  return { formattedHistoricMessages, formattedNewMessage };
 };
-
-export default useFormattedMessages;
