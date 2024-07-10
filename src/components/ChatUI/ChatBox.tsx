@@ -1,9 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card';
-import {
-  useChat,
-  type UseChatHelpers,
-} from '@ai-sdk/react';
+import { useChat, type UseChatHelpers } from '@ai-sdk/react';
 import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
 import { ChatMessages } from './Messages';
