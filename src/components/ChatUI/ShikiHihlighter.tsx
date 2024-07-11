@@ -6,29 +6,25 @@ interface ShikiHighlighterProps {
   language: BundledLanguage;
   children: string;
   theme: BundledTheme;
-  PreTag?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
 }
 
-export const ShikiHighlighter: React.FC<ShikiHighlighterProps> = ({
+export const ShikiHighlighter = ({
   language,
-  children,
   theme,
-  PreTag = 'pre',
-}) => {
-  const highlightedCode = useShikiHighlighter(
-    children,
-    language,
-    theme,
-  );
-
+  children: code,
+  as: Element = 'pre',
+}: ShikiHighlighterProps) => {
+  const highlightedCode = useShikiHighlighter(code, language, theme);
+  
   return (
-    <PreTag className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
+    <Element className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
         <span className="absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85">
           {language}
         </span>
       ) : null}
       {highlightedCode}
-    </PreTag>
+    </Element>
   );
 };
