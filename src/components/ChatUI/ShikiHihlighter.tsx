@@ -5,7 +5,7 @@ import type { BundledTheme, BundledLanguage } from 'shiki';
 interface ShikiHighlighterProps {
   language: BundledLanguage;
   children: string;
-  theme: BundledTheme;
+  theme?: BundledTheme;
   as?: React.ElementType;
 }
 
@@ -15,9 +15,9 @@ export const ShikiHighlighter = ({
   children: code,
   as: Element = 'pre',
 }: ShikiHighlighterProps) => {
-  const highlightedCode = useShikiHighlighter(code, language, theme);
+  const highlightedCode = useShikiHighlighter(code, language, theme as BundledTheme);
   
-  return (
+  return highlightedCode && (
     <Element className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
         <span className="absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85">

@@ -24,7 +24,6 @@ export const CodeHighlight = ({
   return !isInline ? (
     <ShikiHighlighter
       language={language as BundledLanguage}
-      theme={'houston'}
       {...props}>
       {String(children)}
     </ShikiHighlighter>

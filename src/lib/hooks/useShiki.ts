@@ -1,11 +1,13 @@
 import { useState, useEffect, type ReactNode } from 'react';
 import {
-  codeToHtml,
+  createHighlighter,
   type BundledLanguage,
   type BundledTheme,
+  type Highlighter,
 } from 'shiki';
 import parse from 'html-react-parser';
 import { removeTabIndexFromPre } from '@/lib/utils';
+import customTheme from '@styles/rainglow-azure-constrast.mjs';
 
 export const useShikiHighlighter = (
   code: string,
@@ -15,28 +17,36 @@ export const useShikiHighlighter = (
   const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
     null
   );
+  const [highlighter, setHighlighter] = useState<Highlighter | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const highlightCode = async () => {
-      try {
-        const html = await codeToHtml(code, {
-          lang: lang as BundledLanguage,
-          theme,
-          transformers: [removeTabIndexFromPre],
+    const initializeHighlighter = async () => {
+      if (!highlighter) {
+        const newHighlighter = await createHighlighter({
+          langs: [lang as BundledLanguage],
+          themes: [customTheme as unknown as BundledTheme],
         });
-        setHighlightedCode(parse(html));
-      } catch (error) {
-        const fallbackHtml = await codeToHtml(code, {
-          lang: 'plaintext',
-          theme,
-          transformers: [removeTabIndexFromPre],
-        });
-        setHighlightedCode(parse(fallbackHtml));
+        setHighlighter(newHighlighter);
+        setIsReady(true);
       }
     };
 
-    highlightCode();
-  }, [code]);
+    initializeHighlighter();
+  }, [lang]);
 
-  return highlightedCode;
+  useEffect(() => {
+    if (isReady && highlighter && lang) {
+      console.time('shiki');
+      const html = highlighter.codeToHtml(code, {
+        lang: lang,
+        theme: customTheme.name as BundledTheme,
+        transformers: [removeTabIndexFromPre],
+      });
+      setHighlightedCode(parse(html));
+    }
+    console.timeEnd('shiki');
+  }, [code, lang, highlighter, isReady]);
+
+  return isReady ? highlightedCode : null;
 };
