@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { cn } from '@/lib/utils';
 import { CodeHighlight } from './CodeHighlight';
@@ -17,18 +18,19 @@ const messageStyles: Record<string, Array<string>> = {
   ],
 };
 
-export const Messages = ({ messages }: { messages: Message[] }) => {
+const RenderedMessage = React.memo(({ message }: { message: Message }) => (
+  <div className={cn(messageStyles[message.role])}>
+    <ReactMarkdown components={{ code: CodeHighlight }}>
+      {message.content}
+    </ReactMarkdown>
+  </div>
+));
+
+export const ChatMessages = ({ messages }: { messages: Message[] }) => {
   return (
     <div className="space-y-4">
       {messages.map((message) => (
-        <div key={message.id} className={cn(messageStyles[message.role])}>
-          <ReactMarkdown
-            components={{
-              code: CodeHighlight,
-            }}>
-            {message.content}
-          </ReactMarkdown>
-        </div>
+        <RenderedMessage key={message.id} message={message} />
       ))}
     </div>
   );
