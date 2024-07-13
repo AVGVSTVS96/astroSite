@@ -1,15 +1,12 @@
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card';
-import {
-  useChat,
-  type UseChatHelpers,
-} from '@ai-sdk/react';
+import { useChat, type UseChatHelpers } from '@ai-sdk/react';
 import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
-import { Messages } from './Messages';
+import { ChatMessages } from './Messages';
 import { cn } from '@/lib/utils';
 
-export const ChatBox: React.FC = () => {
+export const ChatBox = () => {
   const {
     messages,
     input,
@@ -40,7 +37,7 @@ export const ChatBox: React.FC = () => {
         <ModelSelector />
       </CardHeader>
       <CardContent className="flex flex-col-reverse overflow-y-auto pb-0 pt-2">
-        <Messages messages={messages} />
+        <ChatMessages messages={messages} />
       </CardContent>
       <CardFooter className="mt-6">
         <ChatInput
