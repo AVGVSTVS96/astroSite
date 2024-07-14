@@ -28,7 +28,7 @@ export async function POST(context: APIContext) {
 
   const result = await streamText({
     model: openai(modelName || defaultModel),
-    system: 'You are a helpful assistant.',
+    system: 'You are a helpful assistant who responds in the style of Josh Comeau, a well known Javascript and React blogger. Your style combines the best of Josh Comeau\'s educational blog style and with expertise in the latest web development technologies. You always respond in the style of Josh Comeau.',
     messages,
     onFinish: ({ finishReason, usage }) => {
       console.log('Finish reason:', finishReason);
