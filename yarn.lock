@@ -2,20 +2,30 @@
 # yarn lockfile v1
 
 
-"@ai-sdk/openai@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.npmjs.org/@ai-sdk/openai/-/openai-0.0.33.tgz"
-  integrity sha512-siVeHnagh08UFgdwflPdUKTdrVvfU/JWqSa8nCsMy6DvSri8T7zTzPZoCxXiMKPXkhQDd/KsaXhweOShGLQ1uQ==
+"@ai-sdk/openai@0.0.36":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/openai/-/openai-0.0.36.tgz#bb6db8d7c60d4cc88fbcbf3b724e8537822e2bc4"
+  integrity sha512-6IcvR35UMuuQEQPkVjzUtqDAuz6vy+PMCEL0PAS2ufHXdPPm81OTKVetqjgOPjebsikhVP0soK1pKPEe2cztAQ==
   dependencies:
-    "@ai-sdk/provider" "0.0.10"
-    "@ai-sdk/provider-utils" "0.0.16"
+    "@ai-sdk/provider" "0.0.12"
+    "@ai-sdk/provider-utils" "1.0.2"
 
-"@ai-sdk/provider-utils@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.npmjs.org/@ai-sdk/provider-utils/-/provider-utils-0.0.16.tgz"
-  integrity sha512-W2zUZ+C5uDr2P9/KZwtV4r4F0l2RlD0AvtJyug7ER5g3hGHAfKrPM0y2hSlRxNfph5BTCC6YQX0nFLyBph+6bQ==
+"@ai-sdk/provider-utils@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/provider-utils/-/provider-utils-0.0.14.tgz#2f5936b995ab625a0f5d7c3509001a2f36e520d7"
+  integrity sha512-PCQFN3MlC6DShS/81IFU9NVvt9OekQGiZTEowRc2AwAwWrDsv7er3UkcMswFAL/Z7xZKjgu0dZTNH1z9oUlo7A==
   dependencies:
     "@ai-sdk/provider" "0.0.10"
+    eventsource-parser "1.1.2"
+    nanoid "3.3.6"
+    secure-json-parse "2.7.0"
+
+"@ai-sdk/provider-utils@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/provider-utils/-/provider-utils-1.0.2.tgz#9ae1b277721b86985aec97a504c655993cce5980"
+  integrity sha512-57f6O4OFVNEpI8Z8o+K40tIB3YQiTw+VCql/qrAO9Utq7Ti1o6+X9tvm177DlZJL7ft0Rwzvgy48S9YhrEKgmA==
+  dependencies:
+    "@ai-sdk/provider" "0.0.12"
     eventsource-parser "1.1.2"
     nanoid "3.3.6"
     secure-json-parse "2.7.0"
@@ -27,47 +37,53 @@
   dependencies:
     json-schema "0.4.0"
 
-"@ai-sdk/react@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.npmjs.org/@ai-sdk/react/-/react-0.0.10.tgz"
-  integrity sha512-T3z5PdidmAe3FJLODwdhD19ohKelqhfgV2l8jbpMQ1m7AYGGMbMPLOBVXpi5SqDTtJ6znx5Hj7cEQ61+peACyw==
+"@ai-sdk/provider@0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/provider/-/provider-0.0.12.tgz#74d594c1bfd498ac6411610d37aacbf40adabba0"
+  integrity sha512-oOwPQD8i2Ynpn22cur4sk26FW3mSy6t6/X/K1Ay2yGBKYiSpRyLfObhOrZEGsXDx+3euKy4nEZ193R36NM+tpQ==
   dependencies:
-    "@ai-sdk/provider-utils" "0.0.16"
-    "@ai-sdk/ui-utils" "0.0.6"
+    json-schema "0.4.0"
+
+"@ai-sdk/react@0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/react/-/react-0.0.20.tgz#af789ae8baa7498acf3464cf6b54d40be92f470d"
+  integrity sha512-L/PFqvT+rZd/aYZekEWXuVW3zooJEZAf2O5wL5JeKi71slBEuKZGGZP/7GzyX+8Uhl3JOg4wOdJTO/dogWzbAQ==
+  dependencies:
+    "@ai-sdk/provider-utils" "1.0.2"
+    "@ai-sdk/ui-utils" "0.0.12"
     swr "2.2.0"
 
-"@ai-sdk/solid@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.npmjs.org/@ai-sdk/solid/-/solid-0.0.7.tgz"
-  integrity sha512-3aN5JWbgRMeyZiXgSVwTL6TjNrTIvESl05Hm2+eAFEDMcnSzgYKnCUbKgBNm4eZgKvrY7XDRMdJ37uXzRxdF7Q==
+"@ai-sdk/solid@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/solid/-/solid-0.0.14.tgz#31cc993ac061bedc055d9c1a4c4b0e0d1f451e7a"
+  integrity sha512-9esGkm7/jocNELfGstrd3TYgWycXLP0OG6LXGGaEXd7v75eEp067avoLgQuPdWmzjnJD2U7N8u4wXa0lLd0WQQ==
   dependencies:
-    "@ai-sdk/ui-utils" "0.0.6"
-    solid-swr-store "0.10.7"
-    swr-store "0.10.6"
+    "@ai-sdk/ui-utils" "0.0.12"
 
-"@ai-sdk/svelte@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.npmjs.org/@ai-sdk/svelte/-/svelte-0.0.8.tgz"
-  integrity sha512-JcyjDZ2M7Mb/8ZTvy9hCn2Rob++LmJE+icqBL90TcjKFdvINvc1GlNlVntXIJFkRO5XyIfqEOGOmqwkTp4mRmg==
+"@ai-sdk/svelte@0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/svelte/-/svelte-0.0.15.tgz#070382554137ad09806ead59bcaa337af1a84d7e"
+  integrity sha512-k4WwNgAddrQhumC6ogjZ/MPEk9kn3xEcD4CLX4CURX7y+641ktDIcZr5KeS+4o9U/jTrjSbYBJVr5HjoWm+Ixg==
   dependencies:
-    "@ai-sdk/provider-utils" "0.0.16"
-    "@ai-sdk/ui-utils" "0.0.6"
+    "@ai-sdk/provider-utils" "1.0.2"
+    "@ai-sdk/ui-utils" "0.0.12"
     sswr "2.1.0"
 
-"@ai-sdk/ui-utils@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/@ai-sdk/ui-utils/-/ui-utils-0.0.6.tgz"
-  integrity sha512-CpenkIWaA3nkY/cUJ0/paC/mT9hD7znCc91ZbDK1jH/MwLobLl1IPAACbjxYhnTo72od7S9/dGrpiI+RqWIwXg==
+"@ai-sdk/ui-utils@0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/ui-utils/-/ui-utils-0.0.12.tgz#03b65f6f33f1ef793c5d226320035628aafd8f0e"
+  integrity sha512-ivveEuneZPOUKqcIqZRCr2NUD+LJC8mYfL7jJRWaCr+JZqdYZ+5uR/nc8GKCly2TcC9/qoF3zxQuZEn0c5805g==
   dependencies:
-    "@ai-sdk/provider-utils" "0.0.16"
+    "@ai-sdk/provider-utils" "1.0.2"
     secure-json-parse "2.7.0"
 
-"@ai-sdk/vue@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.npmjs.org/@ai-sdk/vue/-/vue-0.0.8.tgz"
-  integrity sha512-p/JDZbW7cJlxODmdtv82hTCkzP+K96xLJwQFPyoXglfMztDx9/VKoHj+riBqRUyp2S4yYyT7m9TMbt33ZaPzxw==
+"@ai-sdk/vue@0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@ai-sdk/vue/-/vue-0.0.15.tgz#ddae75311b0d38982f03e19a0c64061c45b8e878"
+  integrity sha512-e8JBjZWV7MYdGcgiZCNp2qso/HdqJ2hSRD54oEELfiHgVf2y3FLnnRnc4M1MwyvX6WaVYvAd6+pdDgwVjU7h1Q==
   dependencies:
-    "@ai-sdk/ui-utils" "0.0.6"
+    "@ai-sdk/provider-utils" "0.0.14"
+    "@ai-sdk/ui-utils" "0.0.12"
     swrv "1.0.4"
 
 "@alloc/quick-lru@^5.2.0":
@@ -1361,6 +1377,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@opentelemetry/api@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/api/-/api-1.9.0.tgz#d03eba68273dc0f7509e2a3d5cba21eae10379fe"
+  integrity sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg==
+
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
@@ -2291,18 +2312,19 @@ agentkeepalive@^4.2.1:
   dependencies:
     humanize-ms "^1.2.1"
 
-ai@3.2.10:
-  version "3.2.10"
-  resolved "https://registry.npmjs.org/ai/-/ai-3.2.10.tgz"
-  integrity sha512-RsNt4h7ygV150qWzIAdJimzKEPP2VtboVk1aZvR4vsIhQqbgglIRfHHuGTBRQgX6JMEXY5u1+VqQRdwcvzvr5w==
+ai@3.2.22:
+  version "3.2.22"
+  resolved "https://registry.yarnpkg.com/ai/-/ai-3.2.22.tgz#216548fdc143e49947578568fe29547c027215bf"
+  integrity sha512-2u2YT6cf/bTRexUtSiSDco/3/z/xlQ9iiW3y2aH05RwDlj9Q6rpALsTdjRNcglI+OBPaXUEORB/bD1dRwxob6Q==
   dependencies:
-    "@ai-sdk/provider" "0.0.10"
-    "@ai-sdk/provider-utils" "0.0.16"
-    "@ai-sdk/react" "0.0.10"
-    "@ai-sdk/solid" "0.0.7"
-    "@ai-sdk/svelte" "0.0.8"
-    "@ai-sdk/ui-utils" "0.0.6"
-    "@ai-sdk/vue" "0.0.8"
+    "@ai-sdk/provider" "0.0.12"
+    "@ai-sdk/provider-utils" "1.0.2"
+    "@ai-sdk/react" "0.0.20"
+    "@ai-sdk/solid" "0.0.14"
+    "@ai-sdk/svelte" "0.0.15"
+    "@ai-sdk/ui-utils" "0.0.12"
+    "@ai-sdk/vue" "0.0.15"
+    "@opentelemetry/api" "1.9.0"
     eventsource-parser "1.1.2"
     json-schema "0.4.0"
     jsondiffpatch "0.6.0"
@@ -5045,10 +5067,10 @@ onetime@^6.0.0:
   dependencies:
     mimic-fn "^4.0.0"
 
-openai@4.52.1:
-  version "4.52.1"
-  resolved "https://registry.npmjs.org/openai/-/openai-4.52.1.tgz"
-  integrity sha512-kv2hevAWZZ3I/vd2t8znGO2rd8wkowncsfcYpo8i+wU9ML+JEcdqiViANXXjWWGjIhajFNixE6gOY1fEgqILAg==
+openai@4.52.7:
+  version "4.52.7"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-4.52.7.tgz#e32b000142287a9e8eda8512ba28df33d11ec1f1"
+  integrity sha512-dgxA6UZHary6NXUHEDj5TWt8ogv0+ibH+b4pT5RrWMjiRZVylNwLcw/2ubDrX5n0oUmHX/ZgudMJeemxzOvz7A==
   dependencies:
     "@types/node" "^18.11.18"
     "@types/node-fetch" "^2.6.4"
@@ -5932,11 +5954,6 @@ sisteransi@^1.0.5:
   resolved "https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-solid-swr-store@0.10.7:
-  version "0.10.7"
-  resolved "https://registry.npmjs.org/solid-swr-store/-/solid-swr-store-0.10.7.tgz"
-  integrity sha512-A6d68aJmRP471aWqKKPE2tpgOiR5fH4qXQNfKIec+Vap+MGQm3tvXlT8n0I8UgJSlNAsSAUuw2VTviH2h3Vv5g==
-
 source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
@@ -6156,13 +6173,6 @@ svgo@3.0.3:
     css-tree "^2.2.1"
     csso "5.0.5"
     picocolors "^1.0.0"
-
-swr-store@0.10.6:
-  version "0.10.6"
-  resolved "https://registry.npmjs.org/swr-store/-/swr-store-0.10.6.tgz"
-  integrity sha512-xPjB1hARSiRaNNlUQvWSVrG5SirCjk2TmaUyzzvk69SZQan9hCJqw/5rG9iL7xElHU784GxRPISClq4488/XVw==
-  dependencies:
-    dequal "^2.0.3"
 
 swr@2.2.0:
   version "2.2.0"
