@@ -27,16 +27,16 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      formRef.current?.requestSubmit();
+      if (!disabled) {
+        formRef.current?.requestSubmit();
+      }
     }
   };
 
-  React.useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [input]);
+  if (textareaRef.current) {
+    textareaRef.current.style.height = 'auto';
+    textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+  }
 
   return (
     <form
@@ -49,7 +49,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         name="prompt"
         rows={1}
         placeholder="Message GPT"
-        className="max-h-28 flex-1 resize-none rounded-xl py-4 pr-10 text-[1rem] focus-visible:ring-ring/20"
+        className="max-h-52 flex-1 resize-none rounded-xl py-4 pr-10 text-[1rem] focus-visible:ring-ring/20"
         autoComplete="off"
         value={input}
         onChange={handleInputChange}
