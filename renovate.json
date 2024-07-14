@@ -34,7 +34,7 @@
     {
       "groupName": "TailwindCSS and related tools",
       "matchPackagePrefixes": ["tailwind", "tailwindcss", "@tailwindcss"],
-      "matchPackageNames": ["clsx", "class-variance-authority"]
+      "matchPackageNames": ["clsx", "class-variance-authority", "tailwind-merge"]
     },
     {
       "groupName": "AI dependencies",
