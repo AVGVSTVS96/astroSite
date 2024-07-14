@@ -18,7 +18,7 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps) => {
-  const match = /language-(\w+)/.exec(className || '');
+  const match = className?.match(/language-(\w+)/);
   const language = match ? match[1] : undefined;
 
   const isInline: boolean = isInlineCode(node);
