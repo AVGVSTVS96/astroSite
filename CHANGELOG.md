@@ -1,3 +1,47 @@
+## v0.15.0
+
+### Features
+* feat(ChatUI): Add language to code blocks, add inline code check, and refactor in [#497](https://github.com/AVGVSTVS96/astroSite/pull/497)
+
+### Performance
+* perf(rendering): Optimize message rendering performance with fine-grained memoization in [#498](https://github.com/AVGVSTVS96/astroSite/pull/498)
+
+### Refactor
+* refactor(semantic-html): Update dates to use time tags in [#479](https://github.com/AVGVSTVS96/astroSite/pull/479)
+  * Use `footer` tag instead of `div` in [#485](https://github.com/AVGVSTVS96/astroSite/pull/485)
+* refactor(BlogTimeline): Add id's to elements, remove empty class attribute in [#480](https://github.com/AVGVSTVS96/astroSite/pull/480)
+* refactor(chat-api): Rename `chatRoute.ts` to `chat.ts` in [#481](https://github.com/AVGVSTVS96/astroSite/pull/481)
+* refactor(accentColorS.., useModel): Remove React.FC type and rename consts in [#482](https://github.com/AVGVSTVS96/astroSite/pull/482)
+* refactor(chat-model-state): Move chat model selection state and logic down to `ModelSelector` in [#483](https://github.com/AVGVSTVS96/astroSite/pull/483)
+* refactor(filenames): Convert hooks from `.tsx` to `.ts` in [#484](https://github.com/AVGVSTVS96/astroSite/pull/484)
+* refactor(header-name): Rename `ReactHeader` to `Header` in [#486](https://github.com/AVGVSTVS96/astroSite/pull/486)
+* refactor(hotkey-logic): Use `useHotkeys` hook, update and organize logic in [#491](https://github.com/AVGVSTVS96/astroSite/pull/491)
+* refactor(CommandMenu): Modularize and update prop name in [#492](https://github.com/AVGVSTVS96/astroSite/pull/492)
+
+### Styling
+* styling: Update margins for markdown and code blocks in [#459](https://github.com/AVGVSTVS96/astroSite/pull/459)
+* refactor(ChatUI-styling): Use objects for classes, fix markdown text colors in [#464](https://github.com/AVGVSTVS96/astroSite/pull/464)
+* refactor(styling): Use `baseMessageStyles` as separate const, include in both roles in [#478](https://github.com/AVGVSTVS96/astroSite/pull/478)
+
+### Dependencies
+* chore(deps): Migrate `ai/react` package to `@ai-sdk/react` in [#451](https://github.com/AVGVSTVS96/astroSite/pull/451)
+* chore(deps): Disable dependabot, delete config in [#450](https://github.com/AVGVSTVS96/astroSite/pull/450)
+* chore(deps): update ai dependencies by @renovate in [#436](https://github.com/AVGVSTVS96/astroSite/pull/436)
+* chore(deps): update components, icons, and styling libraries by @renovate in [#437](https://github.com/AVGVSTVS96/astroSite/pull/437)
+* chore(deps): Pin all dependencies in package.json in [#462](https://github.com/AVGVSTVS96/astroSite/pull/462)
+* chore(dev-deps): update dev-dependencies by @renovate in [#439](https://github.com/AVGVSTVS96/astroSite/pull/439)
+
+### Linting
+* chore(lint): Install and init Biome, setup for linting in [#470](https://github.com/AVGVSTVS96/astroSite/pull/470)
+  * Add `useNamingConvention` rule to Biome config in [#475](https://github.com/AVGVSTVS96/astroSite/pull/475)
+  * Update biome config in [#477](https://github.com/AVGVSTVS96/astroSite/pull/477)
+* refactor(lint): Apply fixes to resolve lint errors in [#471](https://github.com/AVGVSTVS96/astroSite/pull/471)
+  * Apply fixes to follow `useNamingConvention` rules in [#476](https://github.com/AVGVSTVS96/astroSite/pull/476)
+* refactor(lint): Update Biome config and minor changes in [#493](https://github.com/AVGVSTVS96/astroSite/pull/493)
+
+**Full Changelog**: [v0.13.2...v0.15.0](https://github.com/AVGVSTVS96/astroSite/compare/v0.13.2...v0.15.0)
+
+
 ## v0.13.2
 
 ### Features
