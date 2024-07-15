@@ -9,6 +9,7 @@ import parse from 'html-react-parser';
 import type { Element } from 'hast';
 import { isInlineCode } from '@/lib/utils';
 import { removeTabIndexFromPre } from '@/lib/utils/shikiTransformers';
+import { useShikiHighlighter } from './useCustomThemeShikiHighlighter';
 
 interface CodeHighlightProps {
   className?: string | undefined;
@@ -21,10 +22,8 @@ export const CodeHighlight = ({
   children,
   node,
   ...props
-}: CodeHighlightProps): JSX.Element => {
-  const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
-    null
-  );
+}: CodeHighlightProps) => {
+  // const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(null);
   const theme: BundledTheme = 'catppuccin-mocha';
   const code = String(children);
   const match = className?.match(/language-(\w+)/);
@@ -32,37 +31,11 @@ export const CodeHighlight = ({
 
   const isInline: boolean | undefined = node ? isInlineCode(node) : undefined;
 
-  useEffect(() => {
-    if (!isInline) {
-      const highlightCode = async () => {
-        try {
-          const html = await codeToHtml(code, {
-            lang: language as BundledLanguage,
-            theme,
-            transformers: [removeTabIndexFromPre],
-          });
-          setHighlightedCode(parse(html));
-        } catch (error) {
-          if (
-            error instanceof ShikiError &&
-            error.message.includes('Language')
-          ) {
-            const fallbackHtml = await codeToHtml(code, {
-              lang: 'plaintext',
-              theme,
-              transformers: [removeTabIndexFromPre],
-            });
-            setHighlightedCode(parse(fallbackHtml));
-          } else {
-            console.error('Unexpected Shiki error:', error);
-            throw error;
-          }
-        }
-      };
+  // console.time('hook call');
+  const highlightedCode = useShikiHighlighter(language as BundledLanguage, code);
+  // console.timeEnd('hook call');
 
-      highlightCode();
-    }
-  }, [code]);
+  const parsedCode = highlightedCode ? parse(highlightedCode) : null;
 
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
@@ -71,7 +44,7 @@ export const CodeHighlight = ({
           {language}
         </span>
       ) : null}
-      {highlightedCode}
+      {parsedCode}
     </div>
   ) : (
     <code className={className} {...props}>
