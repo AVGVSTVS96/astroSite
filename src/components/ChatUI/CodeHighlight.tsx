@@ -17,7 +17,7 @@ export const CodeHighlight = ({
   children,
   node,
   ...props
-}: CodeHighlightProps) => {
+}: CodeHighlightProps): JSX.Element => {
   const match = className?.match(/language-(\w+)/);
   const language = match ? match[1] : undefined;
 
