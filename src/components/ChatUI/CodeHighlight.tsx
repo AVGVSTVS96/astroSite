@@ -7,9 +7,9 @@ import type { Element } from 'hast';
 import { isInlineCode } from '@/utils/isInlineCode';
 
 interface CodeHighlightProps {
-  className?: string;
-  children: React.ReactNode;
-  node: Element;
+  className?: string | undefined;
+  children?: React.ReactNode | undefined;
+  node?: Element | undefined;
 }
 
 export const CodeHighlight = ({
@@ -21,20 +21,20 @@ export const CodeHighlight = ({
   const match = className?.match(/language-(\w+)/);
   const language = match ? match[1] : undefined;
 
-  const isInline: boolean = isInlineCode(node);
+  const isInline: boolean | undefined = node ? isInlineCode(node) : undefined;
 
   return !isInline ? (
-    <div className="relative">
+    <div className='relative'>
       {language ? (
-        <span className="absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85">
+        <span className='absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85'>
           {language}
         </span>
       ) : null}
       <SyntaxHighlighter
-        className="rounded-lg !py-5"
+        className='rounded-lg !py-5'
         language={language}
         style={rainglowAzureContrast as SyntaxHighlighterProps['style']}
-        PreTag="div"
+        PreTag='div'
         {...props}>
         {String(children).trimEnd()}
       </SyntaxHighlighter>
