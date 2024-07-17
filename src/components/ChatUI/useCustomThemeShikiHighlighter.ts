@@ -6,7 +6,7 @@ import {
   type BundledTheme,
   bundledLanguages,
 } from 'shiki';
-import customTheme from '@styles/rainglow-azure-contrast.mjs';
+import customTheme from '@styles/tokyo-night.mjs';
 
 const highlighter: Promise<Highlighter> = createHighlighter({
   themes: [customTheme as unknown as BundledTheme],
