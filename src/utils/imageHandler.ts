@@ -1,16 +1,16 @@
 import type { ImageMetadata } from 'astro';
 
-export const images = import.meta.glob<{ default: ImageMetadata }>(
+export const imagesImport = import.meta.glob<{ default: ImageMetadata }>(
   '/src/images/*.{jpeg,jpg,png,gif}'
 );
 
-// const resolvedImages = await Promise.all(
-//   Object.entries(images).map(async ([key, value]) => [
-//     key.split('/').pop(),
-//     (await value()).default,
-//   ])
-// );
-// export const imagesMap = Object.fromEntries(resolvedImages);
+const resolvedImages = await Promise.all(
+  Object.entries(imagesImport).map(async ([key, value]) => [
+    key.split('/').pop(),
+    (await value()).default,
+  ])
+);
+export const images = Object.fromEntries(resolvedImages);
 
 //////////////////////////////////////////////
 
