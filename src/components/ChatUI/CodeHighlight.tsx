@@ -1,15 +1,10 @@
-import { useState, useEffect, type ReactNode } from 'react';
-import {
-  codeToHtml,
-  ShikiError,
-  type BundledLanguage,
-  type BundledTheme,
-} from 'shiki';
-import parse from 'html-react-parser';
+import type { ReactNode } from 'react';
+import type { BundledLanguage, BundledTheme } from 'shiki';
 import type { Element } from 'hast';
+import parse from 'html-react-parser';
 import { isInlineCode } from '@/lib/utils';
-import { removeTabIndexFromPre } from '@/lib/utils/shikiTransformers';
-import { useShikiHighlighter } from './useCustomThemeShikiHighlighter';
+import { useShikiHighlighter } from '@hooks/useShiki';
+import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
   className?: string | undefined;
@@ -23,17 +18,18 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps) => {
-  // const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(null);
-  const theme: BundledTheme = 'catppuccin-mocha';
+  const theme: BundledTheme = customTheme as unknown as BundledTheme;
   const code = String(children);
   const match = className?.match(/language-(\w+)/);
   const language = match ? match[1] : undefined;
 
   const isInline: boolean | undefined = node ? isInlineCode(node) : undefined;
 
-  // console.time('hook call');
-  const highlightedCode = useShikiHighlighter(language as BundledLanguage, code);
-  // console.timeEnd('hook call');
+  const highlightedCode = useShikiHighlighter(
+    language as BundledLanguage,
+    code,
+    theme
+  );
 
   const parsedCode = highlightedCode ? parse(highlightedCode) : null;
 
