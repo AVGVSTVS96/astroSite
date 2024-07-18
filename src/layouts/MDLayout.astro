@@ -6,6 +6,12 @@ import { TableOfContents } from '@components/TableOfContents';
 import { formatDate } from '@utils/formatDate';
 import { images } from '@utils/imageHandler';
 import { generateJsonLd } from '@utils/generateBlogSchema';
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  data: CollectionEntry<'posts'>['data'];
+  headings: string[];
+};
 
 const { data, headings } = Astro.props;
 
