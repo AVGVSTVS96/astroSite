@@ -1,18 +1,11 @@
-interface JsonLd {
-  title: string;
-  pubDate: Date;
-  description: string;
-  author: string;
-  image: {
-    url: string;
-    alt: string;
-  };
-  tags: string[];
-}
+import type { CollectionEntry } from "astro:content";
 
-export function generateJsonLd(data: JsonLd, url: string) {
+type DataType = CollectionEntry<'posts'>['data'];
+
+
+export function generateJsonLd(data: DataType, url: string) {
   const isoDate = new Date(data.pubDate).toISOString();
-  const imageUrl = new URL(data.image?.url, url).href;
+  const imageUrl = data.image ? new URL(data.image.url, url).href : undefined;
 
   const jsonLd = {
     '@context': 'https://schema.org',
