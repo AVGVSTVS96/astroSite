@@ -1,21 +1,15 @@
 import type { ImageMetadata } from 'astro';
 
-export const imagesImport = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/images/*.{jpeg,jpg,png,gif}'
-);
+type ImageModule = { default: ImageMetadata };
 
-const resolvedImages = await Promise.all(
-  Object.entries(imagesImport).map(async ([key, value]) => [
-    key.split('/').pop(),
-    (await value()).default,
-  ])
-);
-export const images = Object.fromEntries(resolvedImages);
+const images: Record<string, () => Promise<ImageModule>> =
+  import.meta.glob<ImageModule>('/src/images/*.{jpeg,jpg,png,gif}');
 
-//////////////////////////////////////////////
+export function getImage(
+  url: string | undefined
+): Promise<ImageMetadata> | undefined {
+  if (!url) return undefined;
+  const imageModule = images[url];
 
-// export function validateImage(data: any) {
-//   if (data.image && !images[data.image.url]) {
-//     throw new Error(`"${data.image.url}" does not exist in images directory"`);
-//   }
-// }
+  return imageModule ? imageModule().then((mod) => mod.default) : undefined;
+}
