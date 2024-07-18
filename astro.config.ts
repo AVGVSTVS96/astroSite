@@ -4,20 +4,17 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
 import expressiveCode, {
-  type AstroExpressiveCodeOptions, ExpressiveCodeTheme 
+  type AstroExpressiveCodeOptions,
+  ExpressiveCodeTheme,
 } from 'astro-expressive-code';
 import fs from 'node:fs';
 import cloudflare from '@astrojs/cloudflare';
 
 const themeFile = fs.readFileSync(
-  new URL(
-    './src/styles/rainglowAzure.jsonc',
-    import.meta.url
-  ),
+  new URL('./src/styles/rainglowAzure.jsonc', import.meta.url),
   'utf-8'
 );
 const codeTheme = ExpressiveCodeTheme.fromJSONString(themeFile);
-
 
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
   themes: [codeTheme],
@@ -30,7 +27,7 @@ const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
     },
     frames: {
       inlineButtonBorderOpacity: '0.0',
-    }
+    },
   },
 };
 

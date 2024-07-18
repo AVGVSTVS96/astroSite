@@ -35,17 +35,31 @@
         "noLabelWithoutControl": "warn",
         "useSemanticElements": "warn"
       }
-    },
+    }
+  },
+  "formatter": {
+    "enabled": false,
+    "indentStyle": "space",
+    "formatWithErrors": true
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "trailingCommas": "es5",
+      "bracketSameLine": true
+    }
+  },
+  "files": {
     "ignore": [
       "src/styles/*.js",
+      "src/styles/*.jsonc",
+      "src/components/ui/*",
       "node_modules",
       "dist",
       ".wrangler",
       ".astro",
       ".vscode"
     ]
-  },
-  "formatter": {
-    "enabled": false
   }
 }
