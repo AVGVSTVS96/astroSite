@@ -18,22 +18,6 @@ const { description, title } = Astro.props;
       const theme = storedTheme || 'sky';
       document.documentElement.setAttribute('data-theme', theme);
     </script>
-    <script is:inline>
-      const preferredTheme =
-        localStorage.getItem('themeToggle') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light');
-      document.documentElement.classList.toggle(
-        'dark',
-        preferredTheme === 'dark'
-      );
-
-      window.addEventListener('storage', () => {
-        const isDark = localStorage.getItem('themeToggle') === 'dark';
-        document.documentElement.classList.toggle('dark', isDark);
-      });
-    </script>
     <slot name="head" />
   </head>
   <body class="flex min-h-dvh w-dvw flex-col items-center overflow-x-hidden">
