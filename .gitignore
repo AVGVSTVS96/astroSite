@@ -1,7 +1,11 @@
 # build output
 dist/
+
 # generated types
 .astro/
+
+# Vercel
+.vercel
 
 # dependencies
 node_modules/
@@ -19,8 +23,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-
-
-# Cloudfare
-.wrangler
-.dev.vars
