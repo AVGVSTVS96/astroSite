@@ -1,14 +1,11 @@
 ---
 const { headings } = Astro.props;
-const toc = buildToc(headings);
-import TableOfContentsHeading from './TableOfContentsHeading.astro';
+import type { MarkdownHeading } from 'astro';
+import TableOfContentsHeading, {
+  type Heading,
+} from './TableOfContentsHeading.astro';
 
-interface Heading {
-  depth: number;
-  subheadings: Heading[];
-}
-
-function buildToc(headings: Heading[]) {
+function buildToc(headings: MarkdownHeading[]) {
   const toc: Heading[] = [];
   const parentHeadings = new Map<number, Heading>();
   for (const h of headings) {
@@ -26,15 +23,17 @@ function buildToc(headings: Heading[]) {
   }
   return toc;
 }
+
+const toc = buildToc(headings);
 ---
 
 <nav
-  class="toc prose sticky top-28 mt-28 w-[240px] text-[0.8em] leading-normal dark:prose-invert prose-a:text-muted-foreground prose-a:transition-colors lg:pl-2 xl:pl-4">
-  <ul class="grid list-none">
+  class='toc prose sticky top-28 mt-28 w-[240px] text-[0.8em] leading-normal dark:prose-invert prose-a:text-muted-foreground prose-a:transition-colors lg:pl-2 xl:pl-4'>
+  <ul class='grid list-none'>
     {
       toc.map((heading) => (
         <TableOfContentsHeading
-          class="toc-item my-[0.15rem]"
+          class='toc-item my-[0.15rem]'
           heading={heading}
         />
       ))

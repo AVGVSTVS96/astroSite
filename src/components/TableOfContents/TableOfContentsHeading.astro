@@ -1,6 +1,17 @@
 ---
 const { class: className, heading, isSubheading, level = 0 } = Astro.props;
+import type { MarkdownHeading } from 'astro';
 import { Icon } from 'astro-icon/components';
+export interface Heading extends MarkdownHeading {
+  subheadings: Heading[];
+}
+interface Props {
+  class?: string;
+  isSubheading?: boolean;
+  level?: number;
+  heading: Heading;
+}
+
 ---
 
 <li class={className}>
@@ -22,9 +33,9 @@ import { Icon } from 'astro-icon/components';
   {
     heading.subheadings.length > 0 && (
       <ul class={`${isSubheading ? 'ml-2' : ''} my-0 list-none px-0`}>
-        {heading.subheadings.map((subheading: string) => (
+        {heading.subheadings.map((subheading: Heading) => (
           <Astro.self
-            className="px-0"
+            class="px-0"
             heading={subheading}
             isSubheading={true}
             level={level + 1}

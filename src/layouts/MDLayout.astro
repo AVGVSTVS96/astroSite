@@ -7,10 +7,11 @@ import { formatDate } from '@utils/formatDate';
 import { getImage } from '@utils/imageHandler';
 import { generateJsonLd } from '@utils/generateBlogSchema';
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 
 type Props = {
   data: CollectionEntry<'posts'>['data'];
-  headings: string[];
+  headings: MarkdownHeading[];
 };
 
 const { data, headings } = Astro.props;
@@ -19,7 +20,7 @@ const schema = generateJsonLd(data, Astro.request.url);
 const image = data.image ? await getImage(data.image.url) : undefined;
 ---
 
-<BaseLayout {...data}>
+<BaseLayout {...Astro.props}>
   <script is:inline slot='head' type='application/ld+json' set:html={schema} />
   <div
     class='grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]'>
