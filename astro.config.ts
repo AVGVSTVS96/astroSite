@@ -8,7 +8,7 @@ import expressiveCode, {
   ExpressiveCodeTheme,
 } from 'astro-expressive-code';
 import fs from 'node:fs';
-import cloudflare from '@astrojs/cloudflare';
+import vercel from '@astrojs/vercel/serverless';
 
 const themeFile = fs.readFileSync(
   new URL('./src/styles/rainglowAzure.jsonc', import.meta.url),
@@ -49,5 +49,5 @@ export default defineConfig({
     react(),
   ],
   output: 'hybrid',
-  adapter: cloudflare({ imageService: 'compile' }),
+  adapter: vercel(),
 });
