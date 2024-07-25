@@ -30,7 +30,6 @@ const modelGroups = [
 ];
 
 export const ModelSelector = () => {
-  const defaultModel = 'gpt-3.5-turbo';
   const { selectedModel, handleModelChange } = useModel(defaultModel);
 
   return (
