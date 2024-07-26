@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card';
 import { useChat, type UseChatHelpers } from '@ai-sdk/react';
 import { ChatInput } from './ChatInput';
@@ -15,8 +14,6 @@ export const ChatBox = () => {
     isLoading,
     stop,
   }: UseChatHelpers = useChat();
-
-  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
   const styles: Record<string, string> = {
     chatCardHeight: 'min-h-72 max-h-[calc(100dvh-177px)]',
@@ -44,7 +41,6 @@ export const ChatBox = () => {
           isLoading={isLoading}
           stop={stop}
           handleSubmit={handleSubmit}
-          textareaRef={textareaRef}
           input={input}
           handleInputChange={handleInputChange}
         />
