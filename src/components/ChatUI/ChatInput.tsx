@@ -14,16 +14,16 @@ interface ChatInputProps {
   stop: UseChatHelpers['stop'];
 }
 
-export const ChatInput: React.FC<ChatInputProps> = ({
+export const ChatInput = ({
   handleSubmit,
   input,
   isLoading,
   stop,
   handleInputChange,
-}) => {
+}: ChatInputProps): React.ReactElement => {
   const disabled = !isLoading && input.length === 0;
   const formRef = React.useRef<HTMLFormElement>(null);
-  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -34,12 +34,19 @@ export const ChatInput: React.FC<ChatInputProps> = ({
     }
   };
 
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [input]);
+  const useAutosizeTextArea = (
+    textAreaRef: HTMLTextAreaElement | null,
+    value: string
+  ) => {
+    useEffect(() => {
+      if (textAreaRef) {
+        textAreaRef.style.height = '0px';
+        textAreaRef.style.height = `${textAreaRef.scrollHeight}px`;
+      }
+    }, [textAreaRef, value]);
+  };
+
+  useAutosizeTextArea(textAreaRef.current, input);
 
   return (
     <form
@@ -47,7 +54,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       ref={formRef}
       className='relative flex w-full items-center'>
       <Textarea
-        ref={textareaRef}
+        ref={textAreaRef}
         id='input'
         name='prompt'
         rows={1}
