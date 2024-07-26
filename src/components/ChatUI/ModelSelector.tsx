@@ -29,6 +29,8 @@ const modelGroups = [
   },
 ];
 
+export const defaultModel = 'gpt-4o-mini';
+
 export const ModelSelector = () => {
   const { selectedModel, handleModelChange } = useModel(defaultModel);
 

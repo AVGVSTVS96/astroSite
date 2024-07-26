@@ -1,6 +1,7 @@
 import type { APIContext } from 'astro';
 import { streamText, type CoreMessage } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
+import { defaultModel } from '@components/ChatUI/ModelSelector';
 
 export const prerender = false;
 
