@@ -1,5 +1,5 @@
 import {
-  Prism as SyntaxHighlighter,
+  PrismAsync as SyntaxHighlighter,
   type SyntaxHighlighterProps,
 } from 'react-syntax-highlighter';
 import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
