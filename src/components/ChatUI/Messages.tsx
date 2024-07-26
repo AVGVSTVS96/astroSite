@@ -10,7 +10,7 @@ const baseMessageStyles: string =
 const messageStyles: Record<string, Array<string>> = {
   user: [
     baseMessageStyles,
-    'ml-auto bg-primary text-primary-foreground prose-headings:text-primary-foreground prose-code:text-primary-foreground prose-blockquote:text-primary-foreground prose-a:text-primary-foreground prose-strong:text-primary-foreground',
+    'ml-auto bg-primary text-primary-foreground break-words prose-headings:text-primary-foreground prose-code:text-primary-foreground prose-blockquote:text-primary-foreground prose-a:text-primary-foreground prose-strong:text-primary-foreground',
   ],
   assistant: [
     baseMessageStyles,
