@@ -38,14 +38,14 @@
     }
   },
   "formatter": {
-    "enabled": false,
+    "enabled": true,
     "indentStyle": "space",
     "formatWithErrors": true
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "jsxQuoteStyle": "single",
+      "jsxQuoteStyle": "double",
       "trailingCommas": "es5",
       "bracketSameLine": true
     }

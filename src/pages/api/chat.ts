@@ -1,6 +1,7 @@
 import type { APIContext } from 'astro';
 import { streamText, type CoreMessage } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
+import { defaultModel } from '@components/ChatUI/ModelSelector';
 
 export const prerender = false;
 
@@ -26,7 +27,7 @@ export async function POST(context: APIContext) {
   });
 
   const result = await streamText({
-    model: openai(modelName || 'gpt-3.5-turbo'),
+    model: openai(modelName || defaultModel),
     system: 'You are a helpful assistant.',
     messages,
     onFinish: ({ finishReason, usage }) => {
