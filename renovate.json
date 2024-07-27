@@ -10,7 +10,6 @@
     "group:monorepos",
     "group:recommended",
     "replacements:all",
-    "schedule:weekends",
     "workarounds:all"
   ],
   "prHourlyLimit": 10,
@@ -19,6 +18,7 @@
   "commitMessageTopic": "{{depName}}",
   "commitBodyTable": true,
   "timezone": "America/New_York",
+  "schedule": ["every 2 weeks on friday at 8pm"],
   "transitiveRemediation": true,
   "packageRules": [
     {
