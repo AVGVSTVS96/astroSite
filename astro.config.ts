@@ -48,7 +48,7 @@ export default defineConfig({
     expressiveCode(astroExpressiveCodeOptions),
     icon(),
     react(),
-    foucKiller(),
+    foucKiller({ includeStorageListener: true }),
   ],
   output: 'hybrid',
   adapter: vercel(),
