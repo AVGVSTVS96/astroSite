@@ -6,7 +6,7 @@ import {
   type BundledTheme,
   bundledLanguages,
 } from 'shiki';
-import Purify from 'dompurify';
+// import Purify from 'dompurify';
 
 const highlighter: Promise<Highlighter> = createHighlighter({
   themes: [],
@@ -34,5 +34,5 @@ export const useShikiHighlighter = (
   // console.timeEnd('highlight');
 }, [code]);
 
-  return highlightedCode ? Purify.sanitize(highlightedCode) : '';
+  return highlightedCode ? highlightedCode : '';
 };

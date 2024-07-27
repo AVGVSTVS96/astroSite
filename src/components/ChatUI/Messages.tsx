@@ -26,12 +26,10 @@ const RenderedMessage = React.memo(({ message }: { message: Message }) => (
   </div>
 ));
 
-export const ChatMessages = ({ messages }: { messages: Message[] }) => {
-  return (
-    <div className='space-y-4'>
-      {messages.map((message) => (
-        <RenderedMessage key={message.id} message={message} />
-      ))}
-    </div>
-  );
-};
+export const ChatMessages = ({ messages }: { messages: Message[] }) => (
+  <div className="space-y-4">
+    {messages.map((message) => (
+      <RenderedMessage key={message.id} message={message} />
+    ))}
+  </div>
+);
