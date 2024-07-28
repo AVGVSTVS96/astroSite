@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import type { BundledLanguage, BundledTheme } from 'shiki';
 import type { Element } from 'hast';
-import parse from 'html-react-parser';
 import { isInlineCode } from '@utils/isInlineCode';
 import { useShikiHighlighter } from '@hooks/useShiki';
 import customTheme from '@styles/tokyo-night.mjs';
@@ -31,8 +30,6 @@ export const CodeHighlight = ({
     theme
   );
 
-  const parsedCode = highlightedCode ? parse(highlightedCode) : null;
-
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
@@ -40,7 +37,9 @@ export const CodeHighlight = ({
           {language}
         </span>
       ) : null}
-      {parsedCode}
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: HTML is sanitized by DOMPurify */}
+      {/* biome-ignore lint/style/useNamingConvention: __html is correct for trusted HTML */}
+      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
     </div>
   ) : (
     <code className={className} {...props}>
