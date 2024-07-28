@@ -12,7 +12,6 @@ import customTheme from '@styles/rainglow-azure-constrast.mjs';
 export const useShikiHighlighter = (
   code: string,
   lang: BundledLanguage | undefined,
-  theme: BundledTheme
 ) => {
   const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
     null
