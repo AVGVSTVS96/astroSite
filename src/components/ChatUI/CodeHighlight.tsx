@@ -22,8 +22,9 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps): JSX.Element => {
-  const [highlightedCode, setHighlightedCode] =
-    useState<ReactNode | null>(null);
+  const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
+    null
+  );
   const theme: BundledTheme = 'catppuccin-mocha';
   const code = String(children);
   const match = className?.match(/language-(\w+)/);
@@ -33,18 +34,40 @@ export const CodeHighlight = ({
 
   useEffect(() => {
     if (!isInline) {
-      codeToHtml(code, {
-        lang: language as BundledLanguage,
-        theme,
-        transformers: [removeTabIndexFromPre],
-      }).then((html) => setHighlightedCode(parse(html)));
+      const highlightCode = async () => {
+        try {
+          const html = await codeToHtml(code, {
+            lang: language as BundledLanguage,
+            theme,
+            transformers: [removeTabIndexFromPre],
+          });
+          setHighlightedCode(parse(html));
+        } catch (error) {
+          if (
+            error instanceof ShikiError &&
+            error.message.includes('Language')
+          ) {
+            const fallbackHtml = await codeToHtml(code, {
+              lang: 'plaintext',
+              theme,
+              transformers: [removeTabIndexFromPre],
+            });
+            setHighlightedCode(parse(fallbackHtml));
+          } else {
+            console.error('Unexpected Shiki error:', error);
+            throw error;
+          }
+        }
+      };
+
+      highlightCode();
     }
   }, [code]);
 
   return !isInline ? (
-    <div className='shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5'>
+    <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
-        <span className='absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85'>
+        <span className="absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85">
           {language}
         </span>
       ) : null}
