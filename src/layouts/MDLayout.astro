@@ -3,9 +3,9 @@ import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Prose from '@components/Prose.astro';
 import { TableOfContents } from '@components/TableOfContents';
-import { formatDate } from '@utils/formatDate';
-import { getImage } from '@utils/imageHandler';
-import { generateJsonLd } from '@utils/generateBlogSchema';
+import { formatDate } from '@/lib/utils';
+import { getImage } from '@/lib/utils';
+import { generateJsonLd } from '@/lib/utils';
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
 
@@ -21,15 +21,15 @@ const image = data.image ? await getImage(data.image.url) : undefined;
 ---
 
 <BaseLayout {...Astro.props}>
-  <script is:inline slot='head' type='application/ld+json' set:html={schema} />
+  <script is:inline slot="head" type="application/ld+json" set:html={schema} />
   <div
-    class='grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]'>
-    <div class='hidden 2xl:block'></div>
-    <article class='mx-6 xs:mx-10'>
+    class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
+    <div class="hidden 2xl:block"></div>
+    <article class="mx-6 xs:mx-10">
       <Prose>
-        <div class='mb-1 flex justify-start'>
+        <div class="mb-1 flex justify-start">
           <span
-            class='written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400'>
+            class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
             Written by {data.author} on
             <time>
               {formatDate(data.pubDate, { weekday: 'long' })}
@@ -52,7 +52,7 @@ const image = data.image ? await getImage(data.image.url) : undefined;
       </Prose>
     </article>
     <div
-      class='hidden min-h-full prose-a:transition-colors prose-a:duration-100 lg:block'>
+      class="hidden min-h-full prose-a:transition-colors prose-a:duration-100 lg:block">
       <TableOfContents headings={headings} />
     </div>
   </div>

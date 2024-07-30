@@ -2,7 +2,7 @@ import React from 'react';
 import { DropdownMenu, DropdownMenuItem } from './DropdownMenu';
 import { ChevronDown } from 'lucide-react';
 import { projectLinks } from './navLinks';
-import { isActiveLink } from '@utils/isActiveLink';
+import { isActiveLink } from '@/lib/utils';
 
 export const ProjectsDropdown: React.FC = () => {
   const currentPath =
@@ -16,7 +16,7 @@ export const ProjectsDropdown: React.FC = () => {
       )
     );
   }, [currentPath]);
- 
+
   return (
     <DropdownMenu variant="link" ariaLabel="Open projects dropdown menu">
       <span

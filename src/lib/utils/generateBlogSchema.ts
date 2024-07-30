@@ -1,7 +1,6 @@
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
 type DataType = CollectionEntry<'posts'>['data'];
-
 
 export function generateJsonLd(data: DataType, url: string) {
   const isoDate = new Date(data.pubDate).toISOString();
