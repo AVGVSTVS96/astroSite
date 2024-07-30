@@ -6,3 +6,4 @@ export * from './generateBlogSchema';
 export * from './imageHandler';
 export * from './shikiTransformers';
 export * from './isActiveLink';
+export * from './toggleTheme';

@@ -1,6 +1,6 @@
 import { useHotkeys } from 'react-hotkeys-hook';
 import { mainLinks } from '@components/navLinks';
-import { useThemeToggle } from '@hooks/useThemeToggle';
+import { toggleTheme } from '@/lib/utils';
 
 const GlobalHotKeys = () => {
   // Main link hotkeys
@@ -23,7 +23,6 @@ const GlobalHotKeys = () => {
   useHotkeys(hotkeyString, executeHotKeyAction);
 
   // Theme toggle hotkey
-  const { toggleTheme } = useThemeToggle();
   useHotkeys('t', toggleTheme);
 
   return null;
