@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import type { BundledLanguage, BundledTheme } from 'shiki';
 import type { Element } from 'hast';
-import parse from 'html-react-parser';
 import { isInlineCode } from '@/lib/utils';
 import { useShikiHighlighter } from '@hooks/useShiki';
 import customTheme from '@styles/tokyo-night.mjs';
@@ -18,20 +17,14 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps) => {
-  const theme: BundledTheme = customTheme as unknown as BundledTheme;
+  const theme = customTheme;
   const code = String(children);
   const match = className?.match(/language-(\w+)/);
-  const language = match ? match[1] : undefined;
+  const language = match ? (match[1] as BundledLanguage) : undefined;
 
   const isInline: boolean | undefined = node ? isInlineCode(node) : undefined;
 
-  const highlightedCode = useShikiHighlighter(
-    language as BundledLanguage,
-    code,
-    theme
-  );
-
-  const parsedCode = highlightedCode ? parse(highlightedCode) : null;
+  const highlightedCode = useShikiHighlighter(language, code, theme);
 
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
@@ -40,7 +33,7 @@ export const CodeHighlight = ({
           {language}
         </span>
       ) : null}
-      {parsedCode}
+      {highlightedCode}
     </div>
   ) : (
     <code className={className} {...props}>
