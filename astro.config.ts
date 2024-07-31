@@ -9,6 +9,7 @@ import expressiveCode, {
 } from 'astro-expressive-code';
 import fs from 'node:fs';
 import vercel from '@astrojs/vercel/serverless';
+import foucKiller from 'astro-fouc-killer';
 
 const themeFile = fs.readFileSync(
   new URL('./src/styles/rainglowAzure.jsonc', import.meta.url),
@@ -47,6 +48,7 @@ export default defineConfig({
     expressiveCode(astroExpressiveCodeOptions),
     icon(),
     react(),
+    foucKiller({ includeStorageListener: true }),
   ],
   output: 'hybrid',
   adapter: vercel(),
