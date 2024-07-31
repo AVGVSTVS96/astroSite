@@ -4,7 +4,7 @@ import {
 } from 'react-syntax-highlighter';
 import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
 import type { Element } from 'hast';
-import { isInlineCode } from '@/utils/isInlineCode';
+import { isInlineCode } from '@/lib/utils';
 
 interface CodeHighlightProps {
   className?: string | undefined;
