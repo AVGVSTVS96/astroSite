@@ -16,11 +16,16 @@ import { Icon } from 'astro-icon/components';
                 aria-label="github project link"
                 class="group flex items-center justify-between font-bold text-foreground/85 no-underline hover:text-foreground"
                 href={project.data.url}>
-                {project.data.title}
-                <Icon
-                  name="github"
-                  class="mx-2 text-muted-foreground group-hover:text-foreground"
-                />
+                <span class="flex items-center gap-1">
+                    {project.data.package ?
+                  "Package:"
+                    : null}
+                  {project.data.title}
+                </span>
+                  <Icon
+                    name="github"
+                    class="mx-2 text-muted-foreground group-hover:text-foreground"
+                  />
               </a>
               <p class="mb-4 mt-1.5 line-clamp-2 text-[0.925rem] text-muted-foreground">
                 {project.data.description}

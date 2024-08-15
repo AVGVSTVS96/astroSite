@@ -1,4 +1,5 @@
-title: flaskWebsite
-description: The second version of my personal website built with Flask and TailwindCSS
-tags: [Flask, TailwindCSS, JavaScript]
-url: https://github.com/AVGVSTVS96/flaskWebsite
+title: astro-fouc-killer
+description: 'An Astro integration which eliminates flash of unstyled content when using class-based dark mode.'
+tags: [Astro, TailwindCSS, NPM]
+package: True
+url: https://github.com/AVGVSTVS96/astro-fouc-killer
