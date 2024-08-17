@@ -2,22 +2,33 @@ import { useState, useEffect, type ReactNode } from 'react';
 import {
   createHighlighter,
   type BundledLanguage,
-  type BundledTheme,
   type Highlighter,
 } from 'shiki';
 import parse from 'html-react-parser';
 import { removeTabIndexFromPre } from '@/lib/utils';
 
-// This will store all created highlighter instances
+type HexColor = string;
+
+type CustomTheme = {
+    name: string;
+    displayName: string;
+    colors: Record<string, HexColor>;
+    tokenColors: {
+      scope: string | string[];
+      settings: {
+        fontStyle?: string;
+        foreground?: HexColor;
+      };
+    }[];
+  };
+
+// Store all created highlighter instances
 const highlighters = new Map<BundledLanguage, Promise<Highlighter>>();
 
 export const useShikiHighlighter = (
-  lang: BundledLanguage | undefined,
+  lang: any,
   code: string,
-  theme: {
-    name: BundledTheme;
-    displayName: string;
-  }
+  theme: CustomTheme
 ) => {
   const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
     null
@@ -33,7 +44,7 @@ export const useShikiHighlighter = (
           lang,
           createHighlighter({
             themes: [theme],
-            langs: [lang],
+            langs: [lang as BundledLanguage],
           })
         );
       }
@@ -42,12 +53,11 @@ export const useShikiHighlighter = (
 
       const html = highlighter?.codeToHtml(code, {
         lang: lang as BundledLanguage,
-        theme: theme.name as BundledTheme,
+        theme: theme.name as CustomTheme['name'],
         transformers: [removeTabIndexFromPre],
       });
-      // console.time('shiki');
+
       setHighlightedCode(parse(html ? html : code));
-      // console.timeEnd('shiki');
     };
 
     highlight();
