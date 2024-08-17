@@ -1,14 +1,13 @@
 import type { ReactNode } from 'react';
-import type { BundledLanguage, BundledTheme } from 'shiki';
 import type { Element } from 'hast';
 import { isInlineCode } from '@/lib/utils';
 import { useShikiHighlighter } from '@hooks/useShiki';
 import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
-  className?: string | undefined;
-  children?: ReactNode | undefined;
-  node?: Element | undefined;
+  className: string;
+  children: ReactNode | undefined;
+  node: Element;
 }
 
 export const CodeHighlight = ({
@@ -20,9 +19,9 @@ export const CodeHighlight = ({
   const theme = customTheme;
   const code = String(children);
   const match = className?.match(/language-(\w+)/);
-  const language = match ? (match[1] as BundledLanguage) : undefined;
+  const language = match ? match[1] : undefined;
 
-  const isInline: boolean | undefined = node ? isInlineCode(node) : undefined;
+  const isInline: boolean = isInlineCode(node);
 
   const highlightedCode = useShikiHighlighter(language, code, theme);
 
