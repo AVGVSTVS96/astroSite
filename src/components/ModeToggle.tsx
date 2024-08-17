@@ -1,6 +1,6 @@
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@components/ui/button';
-import { useThemeToggle } from '@hooks/useThemeToggle';
+import { toggleTheme } from '@/lib/utils';
 
 export const ThemeIcon = () => {
   return (
@@ -12,8 +12,6 @@ export const ThemeIcon = () => {
 };
 
 export function ModeToggle() {
-  const { toggleTheme } = useThemeToggle();
-
   return (
     <Button
       variant="outline"

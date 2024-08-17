@@ -8,7 +8,7 @@ import {
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
-import { useModel } from '@hooks/useModel';
+import { useModel } from '@/hooks/useModel';
 
 const modelGroups = [
   {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useThemeToggle } from '@hooks/useThemeToggle';
+import { toggleTheme } from '@/lib/utils';
 import { ThemeIcon } from './ModeToggle';
 
 import {
@@ -26,7 +26,6 @@ import type { CollectionEntry } from 'astro:content';
 type PostsType = CollectionEntry<'posts'>[];
 
 const SettingsGroup = () => {
-  const { toggleTheme } = useThemeToggle();
   return (
     <CommandGroup heading="Settings">
       <CommandItem onSelect={toggleTheme}>
