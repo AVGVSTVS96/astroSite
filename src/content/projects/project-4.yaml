@@ -1,5 +1,4 @@
-title: astro-fouc-killer
-description: 'An Astro integration which eliminates flash of unstyled content when using class-based dark mode.'
-tags: [Astro, TailwindCSS, NPM]
-package: True
-url: https://github.com/AVGVSTVS96/astro-fouc-killer
+title: FastGPT
+description: A high performance OpenAI GPT-4 chat app built with FastAPI. Featuring asynchronous requests, streaming responses, syntax highlighting, and more!
+tags: [FastAPI, OpenAI, Python, JavaScript]
+url: https://github.com/AVGVSTVS96/FastGPT
