@@ -1,8 +1,39 @@
 ---
 import { getCollection } from 'astro:content';
-const projects = await getCollection('projects');
 import Card from '@components/Card.astro';
 import { Icon } from 'astro-icon/components';
+import type { CollectionEntry } from 'astro:content';
+
+type Project = CollectionEntry<'projects'>;
+
+const fetchPackageVersion = async (packageName: string): Promise<string | null> => {
+  try {
+    const response = await fetch(`https://registry.npmjs.org/${packageName}/latest`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.version;
+  } catch (error) {
+    console.error(`Error fetching version for ${packageName}:`, error instanceof Error ? error.message : String(error));
+    return null;
+  }
+};
+
+const getPackageVersions = async (projects: Project[]): Promise<Map<string, string | null>> => {
+  const versions = new Map<string, string | null>();
+  for (const project of projects) {
+    if (project.data.package) {
+      const version = await fetchPackageVersion(project.data.title);
+      versions.set(project.id, version);
+    }
+  }
+  return versions;
+};
+
+// Usage
+const projects = await getCollection('projects');
+const versions = await getPackageVersions(projects);
 ---
 
 <div>
@@ -17,15 +48,17 @@ import { Icon } from 'astro-icon/components';
                 class="group flex items-center justify-between font-bold text-foreground/85 no-underline hover:text-foreground"
                 href={project.data.url}>
                 <span class="flex items-center gap-1">
-                    {project.data.package ?
-                  "Package:"
-                    : null}
                   {project.data.title}
+                  {project.data.package && (
+                    <span class="ml-2 rounded border border-accent-700 bg-slate-800 px-1 py-0.5 text-xs font-semibold">
+                      v{versions.get(project.id)}
+                    </span>
+                  )}
                 </span>
-                  <Icon
-                    name="github"
-                    class="mx-2 text-muted-foreground group-hover:text-foreground"
-                  />
+                <Icon
+                  name="github"
+                  class="mx-2 text-muted-foreground group-hover:text-foreground"
+                />
               </a>
               <p class="mb-4 mt-1.5 line-clamp-2 text-[0.925rem] text-muted-foreground">
                 {project.data.description}
