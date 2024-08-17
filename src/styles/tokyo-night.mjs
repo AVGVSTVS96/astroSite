@@ -1,4 +1,4 @@
-const tokeyoNight = Object.freeze({
+const tokyoNight = Object.freeze({
   colors: {
     'activityBar.background': '#16161e',
     'activityBar.border': '#16161e',
@@ -1839,4 +1839,4 @@ const tokeyoNight = Object.freeze({
   ],
 });
 
-export default tokeyoNight;
+export default tokyoNight;
