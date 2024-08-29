@@ -17,12 +17,14 @@ const versions = await getPackageVersions(projects);
             <div slot="content">
               <span class="flex items-center justify-between font-bold [&>span]:gap-2">
                 <span class="flex items-center">
-                  {project.data.package && (
-                    <span class="rounded-md border border-accent-700/55 bg-slate-800 px-1 py-0.5 text-xs font-semibold">
-                      v{versions.get(project.id)}
-                    </span>
-                  )}
                   {project.data.title}
+                  {project.data.package && (
+                    <a href={`https://www.npmjs.com/package/${project.data.title}`} class="no-underline">
+                      <span class="rounded-md border border-border hover:border-accent-400 dark:hover:border-accent-400 px-1 py-0.5 text-xs font-semibold">
+                        {versions.get(project.id)}
+                      </span>
+                    </a>
+                  )}
                 </span>
                 <span class="flex items-center">
                   <a
