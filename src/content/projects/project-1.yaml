@@ -1,4 +1,5 @@
-title: FlaskGPT
-description: A customizable GPT-3.5/4 chat application built with Flask and plain HTML, CSS, and JavaScript
-tags: [Flask, OpenAI, Python, JavaScript]
-url: https://github.com/AVGVSTVS96/flaskGPT
+title: react-shiki
+description: An NPM package which utilizes Shiki to implement syntax highlighting in React. Exports a React component and a hook.
+tags: [React, Shiki, TypeScript, NPM]
+package: True
+url: https://github.com/AVGVSTVS96/react-shiki

@@ -1,8 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-const projects = await getCollection('projects');
 import Card from '@components/Card.astro';
 import { Icon } from 'astro-icon/components';
+import { getPackageVersions } from '@/lib/utils';
+
+const projects = await getCollection('projects');
+const versions = await getPackageVersions(projects);
 ---
 
 <div>
@@ -12,16 +15,32 @@ import { Icon } from 'astro-icon/components';
         <li>
           <Card variant="bordered" padding="px-4 pt-3 pb-4" noMargin={true}>
             <div slot="content">
-              <a
-                aria-label="github project link"
-                class="group flex items-center justify-between font-bold text-foreground/85 no-underline hover:text-foreground"
-                href={project.data.url}>
-                {project.data.title}
-                <Icon
-                  name="github"
-                  class="mx-2 text-muted-foreground group-hover:text-foreground"
-                />
-              </a>
+              <span class="flex items-center justify-between font-bold [&>span]:gap-2">
+                <span class="flex items-center">
+                  {project.data.title}
+                  {project.data.package && (
+                    <a href={`https://www.npmjs.com/package/${project.data.title}`} class="no-underline">
+                      <span class="rounded-md border border-border hover:border-accent-400 dark:hover:border-accent-400 px-1 py-0.5 text-xs font-semibold">
+                        {versions.get(project.id)}
+                      </span>
+                    </a>
+                  )}
+                </span>
+                <span class="flex items-center">
+                  <a
+                    aria-label="github project link"
+                    class="flex items-center justify-between text-muted-foreground no-underline hover:text-foreground"
+                    href={project.data.url}>
+                    <Icon name="github" class="size-4" />
+                  </a>
+                  {project.data.package && (<a
+                    aria-label="npm package link"
+                    class="flex items-center justify-between text-muted-foreground no-underline hover:text-foreground"
+                    href={`https://www.npmjs.com/package/${project.data.title}`}>
+                    <Icon name="npm" class="size-6" />
+                  </a>)}
+                </span>
+              </span>
               <p class="mb-4 mt-1.5 line-clamp-2 text-[0.925rem] text-muted-foreground">
                 {project.data.description}
               </p>
