@@ -1,18 +1,17 @@
+/**
+ * Disable transitions during theme toggle to prevent transitioning between
+ * light and dark mode.
+ */
 const disableTransitions = () => {
   const css = document.createElement('style');
-  css.textContent = `
-    * {
-      -webkit-transition: none !important;
-      -moz-transition: none !important;
-      -o-transition: none !important;
-      -ms-transition: none !important;
-      transition: none !important;
-    }
-  `;
+  css.textContent = `* { transition: none !important; }`;
   document.head.appendChild(css);
-  requestAnimationFrame(() => {
+
+  // setTimeout(0) schedules style removal for the next event loop,
+  // allowing the disabling styles to be applied successfully before removal
+  setTimeout(() => {
     document.head.removeChild(css);
-  });
+  }, 0);
 };
 
 export const toggleTheme = () => {
