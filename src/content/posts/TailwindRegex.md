@@ -6,8 +6,6 @@ author: 'Bassim Shahidy'
 tags: ['TailwindCSS', 'VS Code', 'Intellisense', 'JavaScript', 'TypeScript', 'types', 'variables']
 ---
 
----
-
 A common pattern in web development is setting CSS in Javascript for more control over dynamic styling. However, some custom Regex and configuration is required for Tailwind's VS Code extension to detect utility classes in Javascript and Typescript. 
 
 ![Example image showing an array declaration called `variableStyles` with typescript types, strings, and conditional class assignments.](../../images/variableStylesExample.png)

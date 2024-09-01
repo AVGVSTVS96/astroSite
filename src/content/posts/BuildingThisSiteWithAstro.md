@@ -6,8 +6,6 @@ author: 'Bassim Shahidy'
 tags: ['blog', 'astro', 'tailwindcss']
 ---
 
----
-
 [Astro]: https://astro.build
 [TailwindCSS]: https://tailwindcss.com/
 
