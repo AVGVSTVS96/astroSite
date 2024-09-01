@@ -8,7 +8,19 @@ tags: ['TailwindCSS', 'VS Code', 'Intellisense', 'JavaScript', 'TypeScript', 'ty
 
 A common pattern in web development is setting CSS in Javascript for more control over dynamic styling. However, some custom Regex and configuration is required for Tailwind's VS Code extension to detect utility classes in Javascript and Typescript. 
 
-![Example image showing an array declaration called `variableStyles` with typescript types, strings, and conditional class assignments.](../../images/variableStylesExample.png)
+```ts
+// full tailwind intellisense support for tailwind in typescript!
+const messageStyles: Record<string, string | string[]> = {
+  user: [
+    baseMessageStyles,
+    'ml-auto bg-primary text-primary-foreground break-words',
+  ],
+  assistant: [
+    baseMessageStyles,
+    'bg-muted dark:prose-invert prose-code:text-foreground',
+  ],
+};
+```
 
 ## Open your VS Code `settings.json` file
 This setting is accessed and edited through the `settings.json` file in VS Code. To open it, press `Ctrl + Shift + P` or `Cmd + Shift + P` open the command palette and type `Preferences: Open User Settings (JSON)` and press enter. This will open the JSON file containing all global settings for VS Code.
@@ -32,10 +44,10 @@ I like using a special name for all my utility class variables. I typically suff
 ]
 ```
 
-This regex is a combination of several options I've found through searching online.
+This regex is a combination of several options I've found through searching and experimentation.
 
 **It'll capture tailwind classes within:**
- - Variables ending with a "Styles" suffix and with or without TypeScript types
+ - Variables ending with a "Styles" suffix, with or without TypeScript types
  - Strings, arrays, or objects
  - Single quotes, double quotes, or backticks
 
