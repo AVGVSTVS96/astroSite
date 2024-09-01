@@ -3,9 +3,8 @@ import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Prose from '@components/Prose.astro';
 import { TableOfContents } from '@components/TableOfContents';
-import { formatDate } from '@/lib/utils';
-import { getImage } from '@/lib/utils';
-import { generateJsonLd } from '@/lib/utils';
+import { formatDate, getImage } from '@/lib/utils';
+import { generateJsonLd } from '@/lib/utils/generateBlogSchema';
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
 

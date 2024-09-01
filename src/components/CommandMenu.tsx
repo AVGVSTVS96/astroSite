@@ -17,8 +17,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { NotebookText } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
-import { formatDate } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
 import { useHotkeys } from 'react-hotkeys-hook';
 
