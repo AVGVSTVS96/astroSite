@@ -27,8 +27,8 @@
       "semanticCommitScope": "dev-deps"
     },
     {
-      "groupName": "Components, icons, and styling libraries",
-      "matchPackagePrefixes": ["@radix-ui/"],
+      "groupName": "Components, icons, fonts, and styling libraries",
+      "matchPackagePrefixes": ["@radix-ui/", "@fontsource/"],
       "matchPackageNames": ["cmdk", "lucide-react", "framer-motion"]
     },
     {
@@ -43,9 +43,9 @@
     },
     {
       "groupName": "Astro, Integrations, and Adapters",
-      "matchSourceUrls": ["https://github.com/withastro/astro"],
+      "matchSourceUrls": ["https://github.com/withastro/astro", "https://github.com/withastro/adapters/"],
       "matchPackagePrefixes": ["@astrojs/", "astro"],
-      "matchPackageNames": ["astro-icon", "sharp", "@astrojs/cloudflare"]
+      "matchPackageNames": ["astro-icon", "sharp", "@astrojs/vercel"]
     },
     {
       "groupName": "React dependencies",
