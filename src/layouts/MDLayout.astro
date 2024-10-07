@@ -27,11 +27,9 @@ const image = data.image ? await getImage(data.image.url) : undefined;
     <article class="mx-6 xs:mx-10">
       <Prose>
         <div class="mb-1 flex justify-start">
-          <span
-            class="written-by max-w-fit rounded-md bg-accent-300/25 px-2 py-1 text-sm text-accent-500 dark:bg-accent-700/25 dark:text-accent-400">
-            Written by {data.author} on
+          <span class="text-sm mb-0 text-muted-foreground">
             <time>
-              {formatDate(data.pubDate, { weekday: 'long' })}
+              {formatDate(data.pubDate)}
             </time>
           </span>
         </div>
