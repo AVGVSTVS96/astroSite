@@ -1,12 +1,12 @@
 ---
-title: 'Breaking into a Windows PC without a password'
-description: "Local Windows password are hilariously easy to reset. Here's how to easily reset a Windows password without knowing the password or logging in."
+title: 'How to reset a Windows Password without knowing it'
+description: "Local Windows passwords are super easy to reset. This post explains how to reset a Windows password without knowing the password or needing to log in."
 pubDate: 2024-04-28
 author: 'Bassim Shahidy'
 tags: ['Windows', 'Password', 'Reset', 'Hacking']
 ---
 
-To reset a windows password without knowing the password or logging in, you'll need to boot into advanced options or a Windows installation USB to access the command prompt.
+To reset a windows password without knowing the password or logging in, all you need to do is boot into advanced options or use a Windows installation USB, to access the command prompt.
    
 ## How to reset a Windows password
 

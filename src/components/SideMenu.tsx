@@ -12,6 +12,7 @@ import {
 import { Button } from './ui/button';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
+import { sortedBlogPosts } from '@/lib/utils/getSortedPosts';
 
 const MainNavButtons: React.FC = () => {
   return (
@@ -55,6 +56,30 @@ const ProjectNavButtons: React.FC = () => {
   );
 };
 
+const BlogPostList: React.FC = () => {
+  return (
+    <>
+      {sortedBlogPosts.slice(0, 5).map((post) => (
+        <NavigationMenuItem key={post.slug} className="w-full">
+          <NavigationMenuLink href={`/posts/${post.slug}`} className="rounded-md">
+            <Button
+              tabIndex={-1}
+              variant="link"
+              size="sm"
+              className="h-8 w-full justify-start px-3 text-left text-muted-foreground hover:text-foreground hover:no-underline">
+              <div className="truncate text-sm">
+                {post.data.title.length > 21
+                  ? `${post.data.title.slice(0, 21)}...`
+                  : post.data.title}
+              </div>
+            </Button>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      ))}
+    </>
+  );
+};
+
 export const SideMenu: React.FC = () => {
   return (
     <Sheet>
@@ -75,6 +100,9 @@ export const SideMenu: React.FC = () => {
               <hr className="my-4 w-full" />
               <h4 className="mb-2 ml-2 mt-1 font-semibold">Projects</h4>
               <ProjectNavButtons />
+              <hr className="my-4 w-full" />
+              <h4 className="mb-2 ml-2 mt-1 font-semibold">Recent Posts</h4>
+              <BlogPostList />
             </NavigationMenuList>
           </NavigationMenu>
         </div>
