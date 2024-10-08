@@ -23,34 +23,31 @@
   "packageRules": [
     {
       "groupName": "dev-dependencies",
+      "semanticCommitScope": "dev-deps",
       "matchDepTypes": ["devDependencies"],
-      "semanticCommitScope": "dev-deps"
+      "matchPackageNames": ["!/^@types/"]
     },
     {
       "groupName": "Components, icons, fonts, and styling libraries",
-      "matchPackagePrefixes": ["@radix-ui/", "@fontsource/"],
-      "matchPackageNames": ["cmdk", "lucide-react", "framer-motion"]
+      "matchPackageNames": ["cmdk", "lucide-react", "framer-motion", "/^@radix-ui/", "/^@fontsource/"]
     },
     {
       "groupName": "TailwindCSS and related tools",
-      "matchPackagePrefixes": ["tailwind", "tailwindcss", "@tailwindcss"],
-      "matchPackageNames": ["clsx", "class-variance-authority", "tailwind-merge"]
+      "matchPackageNames": ["clsx", "class-variance-authority", "/tailwind/"]
     },
     {
       "groupName": "AI dependencies",
-      "matchPackagePrefixes": ["@ai-sdk/"],
-      "matchPackageNames": ["ai", "openai"]
+      "matchSourceUrls": ["https://github.com/vercel/ai"],
+      "matchPackageNames": ["openai"]
     },
     {
       "groupName": "Astro, Integrations, and Adapters",
       "matchSourceUrls": ["https://github.com/withastro/astro", "https://github.com/withastro/adapters/"],
-      "matchPackagePrefixes": ["@astrojs/", "astro"],
-      "matchPackageNames": ["astro-icon", "sharp", "@astrojs/vercel"]
+      "matchPackageNames": ["astro-icon", "sharp"]
     },
     {
-      "groupName": "React dependencies",
-      "matchSourceUrls": ["https://github.com/facebook/react"],
-      "matchPackagePrefixes": ["react"]
+      "groupName": "React and related dependencies",
+      "matchPackageNames": ["/react/", "!lucide-react", "!/^@types/"]
     }
   ]
 }
