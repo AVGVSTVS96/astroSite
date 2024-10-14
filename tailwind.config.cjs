@@ -18,7 +18,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-family)', ...defaultTheme.fontFamily.sans],
       },
       screens: {
         '3xs': '380px',
