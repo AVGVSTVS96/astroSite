@@ -7,6 +7,7 @@ import expressiveCode, {
   type AstroExpressiveCodeOptions,
 } from 'astro-expressive-code';
 import vercel from '@astrojs/vercel/serverless';
+import foucKiller from 'astro-fouc-killer';
 
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
   themes: ['github-dark-default'],
@@ -39,6 +40,7 @@ export default defineConfig({
     expressiveCode(astroExpressiveCodeOptions),
     icon(),
     react(),
+    foucKiller({ includeStorageListener: true }),
   ],
   output: 'hybrid',
   adapter: vercel(),
