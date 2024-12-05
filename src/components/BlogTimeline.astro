@@ -36,7 +36,7 @@ const { lineClamp, split = false } = Astro.props;
           id="timeline-vertical-line"
           aria-hidden="true"
           class:list={[
-            'absolute -bottom-[2.5rem] left-[0.75rem] top-[3.125rem] my-0.5 hidden w-px bg-accent-300/70 group-last:-bottom-2 group-last:bg-transparent group-last:bg-gradient-to-b group-last:from-accent-300/70 group-last:to-transparent sm:block',
+            'absolute -bottom-[2.5rem] left-[0.75rem] top-[3.125rem] my-0.5 hidden w-px bg-accent-300/70 group-last:-bottom-2 group-last:bg-transparent group-last:bg-linear-to-b group-last:from-accent-300/70 group-last:to-transparent sm:block',
             split ? 'lg:left-[12.75rem]' : '',
           ]}
         />
