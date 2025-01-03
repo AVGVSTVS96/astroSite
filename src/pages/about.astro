@@ -3,27 +3,37 @@ import MainLayout from '@layouts/MainLayout.astro';
 ---
 
 <MainLayout title="About Me" description="Bassim Shahidy's personal website">
-  <section class="card-mx mt-8 card-p max-w-3xl">
-    <h3 class="mb-4 text-xl font-semibold">About Me</h3>
-    <div slot="content" class="space-y-4 text-muted-foreground">
-      <p>
-        Based in NY, I'm an IT Professional with a wealth of experience in
-        hardware, software management, network operations, cybersecurity, and
-        audio-visual systems.
-      </p>
-      <p>
-        Currently, my focus is on advancing my skillset in software engineering
-        and web development, utilizing the latest programming technologies to
-        enhance user experiences and system performance.
-      </p>
-      <p>
-        In addition, I'm exploring AI and machine learning, seeking to
-        understand and apply these technologies in practical scenarios. My
-        technical repertoire also includes 3D printing—where I skillfully build
-        and maintain printers for precision parts—and drone building, where I
-        apply my electronics and software knowledge to create and pilot
-        high-performance drones.
-      </p>
-    </div>
-  </section>
+  <div>
+    <section class="card-mx card-p mt-8 max-w-3xl">
+      <h3 class="mb-4 text-xl font-semibold">About Me</h3>
+      <div slot="content" class="space-y-4 text-muted-foreground">
+        <p>
+          Based in NY, I'm a multifaceted tech enthusiast with experience in
+          hardware, software, network operations, cybersecurity, and
+          audio-visual systems. In my spare time, I love tinkering with 3D
+          printers and drones, using my electronics and software background to
+          build everything from custom parts to high performance racing drones.
+        </p>
+        <p>
+          Currently, I'm advancing my skillset in software engineering and web
+          development, using technologies like React, TypeScript, Astro, and
+          Next.js to build performant web applications. I'm also experimenting
+          with large language models, building infrastructure around models to
+          improve output quality and flexibility for creative use cases.
+        </p>
+      </div>
+    </section>
+    <section class="card-mx card-p mt-4 max-w-3xl">
+      <h3 class="mb-4 text-xl font-semibold">About This Website</h3>
+      <div slot="content" class="space-y-4 text-muted-foreground">
+        <p>
+          This is website is built with Astro, Tailwind CSS, and React. It
+          serves as my portfolio website, showcasing my technical skills, blog
+          posts, and projects, while also acting as a sandbox to try things and
+          add new features as I continue to learn and grow as a software
+          developer.
+        </p>
+      </div>
+    </section>
+  </div>
 </MainLayout>
