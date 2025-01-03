@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import remarkSectionize from '@avgvstvs96/remark-sectionize';
-// import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
 import expressiveCode, {
@@ -38,10 +37,6 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
-    // tailwind({
-    //   applyBaseStyles: false,
-    // }),
-
     expressiveCode(astroExpressiveCodeOptions),
     icon(),
     react(),
