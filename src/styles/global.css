@@ -12,7 +12,6 @@
   --breakpoint-3xs: 380px;
   --breakpoint-2xs: 440px;
   --breakpoint-xs: 520px;
-  --breakpoint-2xl: 1400px;
 
   --color-mycustom-100: #15162e;
   --color-mycustom-200: #191d2d;
@@ -28,64 +27,33 @@
   --color-primary-800: #1e293b;
   --color-primary-900: #0f172a;
   --color-primary-950: #020617;
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+  --color-accent-950: var(--accent-950);
+
+  --border-color-light: #e2e8f0;
+  --border-color-base: #94a3b8;
+  --border-color-dark: #1e293b;
+
+  --text-color-light: #f8fafc;
+  --text-color-muted-light: #e2e8f0;
+  --text-color-muted-dark: #64748b;
+  --text-color-dark: #0f172a;
+
+
+  /* shadcn-ui */
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
 
-  --color-accent-50: color-mix(
-    in srgb,
-    var(--accent-50),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-100: color-mix(
-    in srgb,
-    var(--accent-100),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-200: color-mix(
-    in srgb,
-    var(--accent-200),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-300: color-mix(
-    in srgb,
-    var(--accent-300),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-400: color-mix(
-    in srgb,
-    var(--accent-400),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-500: color-mix(
-    in srgb,
-    var(--accent-500),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-600: color-mix(
-    in srgb,
-    var(--accent-600),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-700: color-mix(
-    in srgb,
-    var(--accent-700),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-800: color-mix(
-    in srgb,
-    var(--accent-800),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-900: color-mix(
-    in srgb,
-    var(--accent-900),
-    transparent calc(100% * (1 - 1))
-  );
-  --color-accent-950: color-mix(
-    in srgb,
-    var(--accent-950),
-    transparent calc(100% * (1 - 1))
-  );
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
 
@@ -109,15 +77,6 @@
 
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
-
-  --border-color-light: #e2e8f0;
-  --border-color-base: #94a3b8;
-  --border-color-dark: #1e293b;
-
-  --text-color-light: #f8fafc;
-  --text-color-muted-light: #e2e8f0;
-  --text-color-muted-dark: #64748b;
-  --text-color-dark: #0f172a;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -184,13 +143,8 @@
 }
 
 @layer base {
+  /* shadcn-ui */
   :root {
-    @apply font-sans;
-    /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
-    scrollbar-width: thin; */
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -251,6 +205,16 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+
+  :root {
+    @apply font-sans;
+    /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
+    scrollbar-width: thin; */
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
 
   ::-webkit-scrollbar {
     background-color: transparent;
@@ -385,17 +349,7 @@
 }
 
 @layer base {
-  /* li:has(.active) > a { */
-  /*   @apply !text-accent-400; */
-  /* } */
-  /**/
-  /* :root:is(.dark) li:has(.active) > a { */
-  /*   @apply !text-accent-300; */
-  /* } */
-  /**/
-  /* a:hover { */
-  /*   @apply !text-foreground/80; */
-  /* } */
+  /* fix by setting tw border to border var directly */
   * {
     @apply border-border;
   }
