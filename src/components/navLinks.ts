@@ -27,4 +27,5 @@ export const projectLinks = [
   { name: 'Minimal Typography', href: '/designProject' },
   { name: 'Old Flask Website', href: '/flaskSite' },
   { name: 'Chat UI', href: '/gptchat' },
+  { name: 'VoidZero', href: '/voidZero' },
 ];

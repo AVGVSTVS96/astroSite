@@ -1,0 +1,38 @@
+---
+import '@styles/global.css';
+import Meta from '@components/Meta.astro';
+import GlobalHotKeys from '@components/GlobalHotKeys';
+import FontSource from '@components/FontSource.astro';
+
+const { description, title } = Astro.props;
+---
+
+<html lang="en" class="min-h-screen w-screen">
+  <head>
+    <FontSource />
+    <Meta title={title} description={description} />
+    <script is:inline>
+      const preferredTheme =
+        localStorage.getItem('themeToggle') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.classList.toggle(
+        'dark',
+        preferredTheme === 'dark'
+      );
+
+      window.addEventListener('storage', () => {
+        const isDark = localStorage.getItem('themeToggle') === 'dark';
+        document.documentElement.classList.toggle('dark', isDark);
+      });
+    </script>
+    <slot name="head" />
+  </head>
+  <body class="min-h-dvh w-screen">
+    <GlobalHotKeys client:load />
+    <main class="">
+      <slot />
+    </main>
+  </body>
+</html>
