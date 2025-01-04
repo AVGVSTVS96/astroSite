@@ -120,6 +120,21 @@
   }
 }
 
+@utility grid-background {
+  background-size: 14px 14px;
+  background-image: linear-gradient(to right, #f6f6f6 1px, transparent 1px),
+    linear-gradient(to bottom, #f6f6f6 1px, transparent 1px);
+
+  .dark & {
+    background-image: linear-gradient(
+        to right,
+        hsla(217, 20%, 12%, 0.6) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, hsla(217, 25%, 12%, 0.6) 1px, transparent 1px);
+  }
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
