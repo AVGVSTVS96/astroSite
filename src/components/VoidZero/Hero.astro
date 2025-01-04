@@ -1,13 +1,14 @@
 ---
-
+import StartupTime from '@components/VoidZero/StartupTime';
 ---
 
 <section class="border-b-1">
   <div
     class="box grid-background flex flex-col items-center justify-center py-20">
-    <code class="text-muted-foreground mb-2 text-[10px]"
-      >v1.0 started in 27ms</code
-    >
+    <code class="text-muted-foreground mb-2 text-[10px]">
+      Astro started in
+      <span id="startup-time-value">…</span>ms
+    </code>
     <h1
       class="mb-8 text-center text-4xl leading-normal font-bold tracking-tight text-balance">
       Next Generation Tooling <br /> for
@@ -15,6 +16,7 @@
         >[TypeScript]</code
       >
     </h1>
+
     <p
       class="text-muted-foreground w-[386px] text-center text-[14px] tracking-tight text-balance">
       Our mission is to make web developers more productive than ever before.
@@ -22,3 +24,16 @@
     <StartupTime client:load />
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const startupTimeSpan = document.getElementById(
+      'startup-time-value'
+    ) as HTMLSpanElement | null;
+
+    if (startupTimeSpan) {
+      const startupTime = performance.now().toFixed(0);
+      startupTimeSpan.textContent = startupTime;
+    }
+  });
+</script>
