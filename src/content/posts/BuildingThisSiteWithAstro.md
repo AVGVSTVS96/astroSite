@@ -173,8 +173,8 @@ const schema = JSON.stringify(jsonLD, null, 2);
   <div class="mx-6 flex justify-center">
     <div class="xl:w-[240px]"></div>
     <article
-      class="prose max-w-sm dark:prose-invert prose-h1:pt-2 prose-a:decoration-accent-400 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 hover:prose-a:text-accent-300 prose-code:font-normal prose-code:text-accent-600
-      prose-hr:border-accent-500 prose-code:dark:text-accent-400 dark:prose-hr:border-accent-400 dark:prose-hr:border-opacity-60 sm:max-w-lg
+      class="prose max-w-sm dark:prose-invert prose-h1:pt-2 prose-a:decoration-accent-400 prose-a:underline-offset-[3px] prose-a:transition-colors prose-a:duration-100 prose-a:hover:text-accent-300 prose-code:font-normal prose-code:text-accent-600
+      prose-hr:border-accent-500 dark:prose-code:text-accent-400 dark:prose-hr:border-accent-400 dark:prose-hr:border-opacity-60 sm:max-w-lg
       md:max-w-xl
       lg:max-w-2xl xl:max-w-3xl">
       <div class="mb-1 flex justify-start">
@@ -394,7 +394,7 @@ I created a `Projects` component to display web development projects I've worked
           <a
             class="flex items-center justify-between text-[1.2rem] font-semibold no-underline"
             href={project.data.url}>
-            <span class="dark:text-light hover:dark:text-muted-light/75">
+            <span class="dark:text-light dark:hover:text-muted-light/75">
               {project.data.title}
             </span>
             <Icon

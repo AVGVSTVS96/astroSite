@@ -1,15 +1,150 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-animate';
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-family), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --breakpoint-3xs: 380px;
+  --breakpoint-2xs: 440px;
+  --breakpoint-xs: 520px;
+
+  --color-mycustom-100: #15162e;
+  --color-mycustom-200: #191d2d;
+
+  --color-primary-50: #f8fafc;
+  --color-primary-100: #f1f5f9;
+  --color-primary-200: #e2e8f0;
+  --color-primary-300: #cbd5e1;
+  --color-primary-400: #94a3b8;
+  --color-primary-500: #64748b;
+  --color-primary-600: #475569;
+  --color-primary-700: #334155;
+  --color-primary-800: #1e293b;
+  --color-primary-900: #0f172a;
+  --color-primary-950: #020617;
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+  --color-accent-950: var(--accent-950);
+
+  --border-color-light: #e2e8f0;
+  --border-color-base: #94a3b8;
+  --border-color-dark: #1e293b;
+
+  --text-color-light: #f8fafc;
+  --text-color-muted-light: #e2e8f0;
+  --text-color-muted-dark: #64748b;
+  --text-color-dark: #0f172a;
+
+
+  /* shadcn-ui */
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility blue-underline {
+  @apply underline decoration-accent-500 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:decoration-accent-600/80;
+}
+
+@utility card-mx {
+  @apply mx-4;
+}
+
+@utility card-p {
+  @apply p-6;
+}
+
+@utility h1 {
+  @apply dark:text-light text-dark text-4xl font-extrabold;
+}
 
 @layer base {
+  /* shadcn-ui */
   :root {
-    @apply font-sans;
-    /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
-    scrollbar-width: thin; */
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -71,6 +206,16 @@
     --ring: 212.7 26.8% 83.9%;
   }
 
+  :root {
+    @apply font-sans;
+    /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
+    scrollbar-width: thin; */
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+
   ::-webkit-scrollbar {
     background-color: transparent;
     width: 8px;
@@ -91,142 +236,125 @@
   }
 
   [data-theme='slate'] {
-    --accent-50: theme(colors.slate.50);
-    --accent-100: theme(colors.slate.100);
-    --accent-200: theme(colors.slate.200);
-    --accent-300: theme(colors.slate.300);
-    --accent-400: theme(colors.slate.400);
-    --accent-500: theme(colors.slate.500);
-    --accent-600: theme(colors.slate.600);
-    --accent-700: theme(colors.slate.700);
-    --accent-800: theme(colors.slate.800);
-    --accent-900: theme(colors.slate.900);
-    --accent-950: theme(colors.slate.950);
+    --accent-50: var(--color-slate-50);
+    --accent-100: var(--color-slate-100);
+    --accent-200: var(--color-slate-200);
+    --accent-300: var(--color-slate-300);
+    --accent-400: var(--color-slate-400);
+    --accent-500: var(--color-slate-500);
+    --accent-600: var(--color-slate-600);
+    --accent-700: var(--color-slate-700);
+    --accent-800: var(--color-slate-800);
+    --accent-900: var(--color-slate-900);
+    --accent-950: var(--color-slate-950);
   }
 
   [data-theme='sky'] {
-    --accent-50: theme(colors.sky.50);
-    --accent-100: theme(colors.sky.100);
-    --accent-200: theme(colors.sky.200);
-    --accent-300: theme(colors.sky.300);
-    --accent-400: theme(colors.sky.400);
-    --accent-500: theme(colors.sky.500);
-    --accent-600: theme(colors.sky.600);
-    --accent-700: theme(colors.sky.700);
-    --accent-800: theme(colors.sky.800);
-    --accent-900: theme(colors.sky.900);
-    --accent-950: theme(colors.sky.950);
+    --accent-50: var(--color-sky-50);
+    --accent-100: var(--color-sky-100);
+    --accent-200: var(--color-sky-200);
+    --accent-300: var(--color-sky-300);
+    --accent-400: var(--color-sky-400);
+    --accent-500: var(--color-sky-500);
+    --accent-600: var(--color-sky-600);
+    --accent-700: var(--color-sky-700);
+    --accent-800: var(--color-sky-800);
+    --accent-900: var(--color-sky-900);
+    --accent-950: var(--color-sky-950);
   }
 
   [data-theme='violet'] {
-    --accent-50: theme(colors.violet.50);
-    --accent-100: theme(colors.violet.100);
-    --accent-200: theme(colors.violet.200);
-    --accent-300: theme(colors.violet.300);
-    --accent-400: theme(colors.violet.400);
-    --accent-500: theme(colors.violet.500);
-    --accent-600: theme(colors.violet.600);
-    --accent-700: theme(colors.violet.700);
-    --accent-800: theme(colors.violet.800);
-    --accent-900: theme(colors.violet.900);
-    --accent-950: theme(colors.violet.950);
+    --accent-50: var(--color-violet-50);
+    --accent-100: var(--color-violet-100);
+    --accent-200: var(--color-violet-200);
+    --accent-300: var(--color-violet-300);
+    --accent-400: var(--color-violet-400);
+    --accent-500: var(--color-violet-500);
+    --accent-600: var(--color-violet-600);
+    --accent-700: var(--color-violet-700);
+    --accent-800: var(--color-violet-800);
+    --accent-900: var(--color-violet-900);
+    --accent-950: var(--color-violet-950);
   }
 
   [data-theme='emerald'] {
-    --accent-50: theme(colors.emerald.50);
-    --accent-100: theme(colors.emerald.100);
-    --accent-200: theme(colors.emerald.200);
-    --accent-300: theme(colors.emerald.300);
-    --accent-400: theme(colors.emerald.400);
-    --accent-500: theme(colors.emerald.500);
-    --accent-600: theme(colors.emerald.600);
-    --accent-700: theme(colors.emerald.700);
-    --accent-800: theme(colors.emerald.800);
-    --accent-900: theme(colors.emerald.900);
-    --accent-950: theme(colors.emerald.950);
+    --accent-50: var(--color-emerald-50);
+    --accent-100: var(--color-emerald-100);
+    --accent-200: var(--color-emerald-200);
+    --accent-300: var(--color-emerald-300);
+    --accent-400: var(--color-emerald-400);
+    --accent-500: var(--color-emerald-500);
+    --accent-600: var(--color-emerald-600);
+    --accent-700: var(--color-emerald-700);
+    --accent-800: var(--color-emerald-800);
+    --accent-900: var(--color-emerald-900);
+    --accent-950: var(--color-emerald-950);
   }
 
   [data-theme='teal'] {
-    --accent-50: theme(colors.teal.50);
-    --accent-100: theme(colors.teal.100);
-    --accent-200: theme(colors.teal.200);
-    --accent-300: theme(colors.teal.300);
-    --accent-400: theme(colors.teal.400);
-    --accent-500: theme(colors.teal.500);
-    --accent-600: theme(colors.teal.600);
-    --accent-700: theme(colors.teal.700);
-    --accent-800: theme(colors.teal.800);
-    --accent-900: theme(colors.teal.900);
-    --accent-950: theme(colors.teal.950);
+    --accent-50: var(--color-teal-50);
+    --accent-100: var(--color-teal-100);
+    --accent-200: var(--color-teal-200);
+    --accent-300: var(--color-teal-300);
+    --accent-400: var(--color-teal-400);
+    --accent-500: var(--color-teal-500);
+    --accent-600: var(--color-teal-600);
+    --accent-700: var(--color-teal-700);
+    --accent-800: var(--color-teal-800);
+    --accent-900: var(--color-teal-900);
+    --accent-950: var(--color-teal-950);
   }
 
   [data-theme='cyan'] {
-    --accent-50: theme(colors.cyan.50);
-    --accent-100: theme(colors.cyan.100);
-    --accent-200: theme(colors.cyan.200);
-    --accent-300: theme(colors.cyan.300);
-    --accent-400: theme(colors.cyan.400);
-    --accent-500: theme(colors.cyan.500);
-    --accent-600: theme(colors.cyan.600);
-    --accent-700: theme(colors.cyan.700);
-    --accent-800: theme(colors.cyan.800);
-    --accent-900: theme(colors.cyan.900);
-    --accent-950: theme(colors.cyan.950);
+    --accent-50: var(--color-cyan-50);
+    --accent-100: var(--color-cyan-100);
+    --accent-200: var(--color-cyan-200);
+    --accent-300: var(--color-cyan-300);
+    --accent-400: var(--color-cyan-400);
+    --accent-500: var(--color-cyan-500);
+    --accent-600: var(--color-cyan-600);
+    --accent-700: var(--color-cyan-700);
+    --accent-800: var(--color-cyan-800);
+    --accent-900: var(--color-cyan-900);
+    --accent-950: var(--color-cyan-950);
   }
 
   [data-theme='fuchsia'] {
-    --accent-50: theme(colors.fuchsia.50);
-    --accent-100: theme(colors.fuchsia.100);
-    --accent-200: theme(colors.fuchsia.200);
-    --accent-300: theme(colors.fuchsia.300);
-    --accent-400: theme(colors.fuchsia.400);
-    --accent-500: theme(colors.fuchsia.500);
-    --accent-600: theme(colors.fuchsia.600);
-    --accent-700: theme(colors.fuchsia.700);
-    --accent-800: theme(colors.fuchsia.800);
-    --accent-900: theme(colors.fuchsia.900);
-    --accent-950: theme(colors.fuchsia.950);
+    --accent-50: var(--color-fuchsia-50);
+    --accent-100: var(--color-fuchsia-100);
+    --accent-200: var(--color-fuchsia-200);
+    --accent-300: var(--color-fuchsia-300);
+    --accent-400: var(--color-fuchsia-400);
+    --accent-500: var(--color-fuchsia-500);
+    --accent-600: var(--color-fuchsia-600);
+    --accent-700: var(--color-fuchsia-700);
+    --accent-800: var(--color-fuchsia-800);
+    --accent-900: var(--color-fuchsia-900);
+    --accent-950: var(--color-fuchsia-950);
   }
 
   [data-theme='amber'] {
-    --accent-50: theme(colors.amber.50);
-    --accent-100: theme(colors.amber.100);
-    --accent-200: theme(colors.amber.200);
-    --accent-300: theme(colors.amber.300);
-    --accent-400: theme(colors.amber.400);
-    --accent-500: theme(colors.amber.500);
-    --accent-600: theme(colors.amber.600);
-    --accent-700: theme(colors.amber.700);
-    --accent-800: theme(colors.amber.800);
-    --accent-900: theme(colors.amber.900);
-    --accent-950: theme(colors.amber.950);
+    --accent-50: var(--color-amber-50);
+    --accent-100: var(--color-amber-100);
+    --accent-200: var(--color-amber-200);
+    --accent-300: var(--color-amber-300);
+    --accent-400: var(--color-amber-400);
+    --accent-500: var(--color-amber-500);
+    --accent-600: var(--color-amber-600);
+    --accent-700: var(--color-amber-700);
+    --accent-800: var(--color-amber-800);
+    --accent-900: var(--color-amber-900);
+    --accent-950: var(--color-amber-950);
   }
 }
 
 @layer base {
+  /* fix by setting tw border to border var directly */
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer components {
-  .blue-underline {
-    @apply underline decoration-accent-500 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:decoration-accent-600/80;
-  }
-
-  .card-mx {
-    @apply mx-4;
-  }
-
-  .card-p {
-    @apply p-6;
-  }
-
-  .h1 {
-    @apply dark:text-light text-dark text-4xl font-extrabold;
   }
 }

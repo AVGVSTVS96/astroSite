@@ -1,12 +1,13 @@
 import { defineConfig } from 'astro/config';
 import remarkSectionize from '@avgvstvs96/remark-sectionize';
-import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
 import expressiveCode, {
   type AstroExpressiveCodeOptions,
 } from 'astro-expressive-code';
 import vercel from '@astrojs/vercel/serverless';
+import tailwindcss from '@tailwindcss/vite';
+
 
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
   themes: ['github-dark-default'],
@@ -25,6 +26,9 @@ const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
   markdown: {
     remarkPlugins: [remarkSectionize],
   },
@@ -33,9 +37,6 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
     expressiveCode(astroExpressiveCodeOptions),
     icon(),
     react(),

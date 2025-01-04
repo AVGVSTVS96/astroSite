@@ -25,7 +25,7 @@ export const ChatBox = () => {
   return (
     <Card
       className={cn(
-        'grid grid-rows-[auto,1fr,auto] rounded-2xl',
+        'grid grid-rows-[auto_1fr_auto] rounded-2xl',
         styles.chatCardHeight,
         styles.chatCardWidth
       )}>
