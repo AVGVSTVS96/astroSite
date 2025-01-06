@@ -12,7 +12,7 @@ import { isActiveLink } from '@/lib/utils';
 ---
 
 <header
-  class="sticky top-0 z-10 mb-8 flex w-full items-center border-b border-border/50 bg-background px-[clamp(0.75rem,3vw,2.5rem)] py-2">
+  class="border-border/50 bg-background sticky top-0 z-10 mb-8 flex w-full items-center border-b px-[clamp(0.75rem,3vw,2.5rem)] py-2">
   <Logo />
   <div class="button-container ml-2 flex w-full items-center justify-between">
     <nav>
@@ -23,17 +23,15 @@ import { isActiveLink } from '@/lib/utils';
             const activeClass = isActiveLink(currentPath, link.href);
 
             return (
-              <a href={link.href} class="rounded-md">
-                <Button
-                  client:load
-                  aria-label={link.name}
-                  key={index}
-                  tabIndex={-1}
-                  variant="link"
-                  className={`h-9 px-2 hover:no-underline ${activeClass}`}>
-                  {link.name}
-                </Button>
-              </a>
+              <Button
+                client:load
+                aria-label={link.name}
+                key={index}
+                href={link.href}
+                variant="link"
+                className={`h-9 px-2 hover:no-underline ${activeClass}`}>
+                {link.name}
+              </Button>
             );
           })
         }
