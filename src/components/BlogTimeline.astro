@@ -2,6 +2,7 @@
 import { formatDate } from '@/lib/utils';
 import { sortedBlogPosts } from '@/lib/utils/getSortedPosts';
 import { Icon } from 'astro-icon/components';
+import { Button } from './ui/button';
 
 const latestPosts = Astro.props.postCount
   ? sortedBlogPosts.slice(0, Astro.props.postCount)
@@ -58,7 +59,7 @@ const { lineClamp, split = false } = Astro.props;
         </p>
 
         <div>
-          <a href={`/posts/${post.slug}`}>
+          <Button client:load variant="link" className='hover:no-underline' href={`/posts/${post.slug}`}>
             <span
               id="timeline-item-hover-background"
               class:list={[
@@ -77,7 +78,7 @@ const { lineClamp, split = false } = Astro.props;
                 title="caret-icon"
               />
             </span>
-          </a>
+          </>
         </div>
       </article>
     ))
