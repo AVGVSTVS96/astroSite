@@ -1,5 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
+import ProjectCard from '../VoidZero/ProjectCard.astro';
+import { projects } from './projectData';
 ---
 
 <section class="border-b-1">
@@ -15,102 +16,7 @@ import { Icon } from 'astro-icon/components';
     </p>
     <ul
       class="before:dashed-border after:dashed-border relative before:top-0 after:bottom-0">
-      <li class="project-card">
-        <div class="project-card-logo">
-          <a href="https://vite.dev">
-            <Icon name="vite" class="size-28" />
-          </a>
-        </div>
-        <div class="project-card-content">
-          <h6>THE BUILD TOOL FOR THE WEB</h6>
-          <h3>Vite</h3>
-        </div>
-        <div class="project-card-stats">
-          <h5>69.8k</h5>
-          <p>GitHub Stars</p>
-        </div>
-        <div class="project-card-stats">
-          <h5>1082</h5>
-          <p>Contributors</p>
-        </div>
-        <div class="project-card-github">
-          <a href="https://github.com/vitejs/vite">
-            <Icon name="github" class="size-6" />
-          </a>
-        </div>
-      </li>
-      <li class="project-card">
-        <div class="project-card-logo">
-          <a href="https://vitest.dev">
-            <Icon name="vitest" class="size-28" />
-          </a>
-        </div>
-        <div class="project-card-content">
-          <h6>NEXT-GENERATION TEST RUNNER</h6>
-          <h3>Vitest</h3>
-        </div>
-        <div class="project-card-stats">
-          <h5>13.58k</h5>
-          <p>GitHub Stars</p>
-        </div>
-        <div class="project-card-stats">
-          <h5>541</h5>
-          <p>Contributors</p>
-        </div>
-        <div class="project-card-github">
-          <a href="https://github.com/vitest-dev/vitest">
-            <Icon name="github" class="size-6" />
-          </a>
-        </div>
-      </li>
-      <li class="project-card">
-        <div class="project-card-logo">
-          <a href="https://rolldown.rs">
-            <Icon name="rolldown" class="size-28" />
-          </a>
-        </div>
-        <div class="project-card-content">
-          <h6>THE FASTEST JAVASCRIPT BUNDLER</h6>
-          <h3>Rolldown</h3>
-        </div>
-        <div class="project-card-stats">
-          <h5>9.6k</h5>
-          <p>GitHub Stars</p>
-        </div>
-        <div class="project-card-stats">
-          <h5>95</h5>
-          <p>Contributors</p>
-        </div>
-        <div class="project-card-github">
-          <a href="https://github.com/rolldown/rolldown">
-            <Icon name="github" class="size-6" />
-          </a>
-        </div>
-      </li>
-      <li class="project-card">
-        <div class="project-card-logo">
-          <a href="https://oxc.rs">
-            <Icon name="oxc" class="size-28" />
-          </a>
-        </div>
-        <div class="project-card-content">
-          <h6>THE FASTEST JAVASCRIPT BUNDLER</h6>
-          <h3>Oxc</h3>
-        </div>
-        <div class="project-card-stats">
-          <h5>13.0k</h5>
-          <p>GitHub Stars</p>
-        </div>
-        <div class="project-card-stats">
-          <h5>179</h5>
-          <p>Contributors</p>
-        </div>
-        <div class="project-card-github">
-          <a href="https://github.com/oxc/oxc">
-            <Icon name="github" class="size-6" />
-          </a>
-        </div>
-      </li>
+      {projects.map((project) => <ProjectCard {...project} />)}
     </ul>
   </div>
 </section>
