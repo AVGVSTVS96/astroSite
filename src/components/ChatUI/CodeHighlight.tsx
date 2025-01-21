@@ -1,13 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Element } from 'hast';
-<<<<<<< HEAD
-import { isInlineCode } from '@/lib/utils';
-||||||| parent of 0584649 (perf: Remove HTML parsing, instead sanitize and set dangerously)
-import parse from 'html-react-parser';
-import { isInlineCode } from '@utils/isInlineCode';
-=======
-import { isInlineCode } from '@utils/isInlineCode';
->>>>>>> 0584649 (perf: Remove HTML parsing, instead sanitize and set dangerously)
+import { isInlineCode } from '../../lib/utils/isInlineCode.ts';
 import { useShikiHighlighter } from '@hooks/useShiki';
 import customTheme from '@styles/tokyo-night.mjs';
 
@@ -31,6 +24,7 @@ export const CodeHighlight = ({
   const isInline = node ? isInlineCode(node) : false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const highlightedCode = useShikiHighlighter(language, code, theme, { debounceMs: 150 });
 ||||||| parent of 04a22eb (perf: Remove HTML parsing, instead sanitize and set dangerously)
   const highlightedCode = useShikiHighlighter(language, code, theme);
@@ -40,22 +34,19 @@ export const CodeHighlight = ({
 >>>>>>> 04a22eb (perf: Remove HTML parsing, instead sanitize and set dangerously)
 
 ||||||| parent of 0584649 (perf: Remove HTML parsing, instead sanitize and set dangerously)
-  const highlightedCode = useShikiHighlighter(
-    language as BundledLanguage,
-    code,
-    theme
-  );
+||||||| parent of dfbea96 (fix conflict markers, break code)
+<<<<<<< HEAD
+  const highlightedCode = useShikiHighlighter(language, code, theme);
 
-  const parsedCode = highlightedCode ? parse(highlightedCode) : null;
-
+||||||| parent of 0584649 (perf: Remove HTML parsing, instead sanitize and set dangerously)
 =======
+>>>>>>> dfbea96 (fix conflict markers, break code)
   const highlightedCode = useShikiHighlighter(
-    language as BundledLanguage,
+    language,
     code,
     theme
   );
 
->>>>>>> 0584649 (perf: Remove HTML parsing, instead sanitize and set dangerously)
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
@@ -63,16 +54,10 @@ export const CodeHighlight = ({
           {language}
         </span>
       ) : null}
-<<<<<<< HEAD
-      {highlightedCode}
-||||||| parent of 0584649 (perf: Remove HTML parsing, instead sanitize and set dangerously)
-      {parsedCode}
-=======
       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: HTML is sanitized by DOMPurify */}
       {/* biome-ignore lint/style/useNamingConvention: __html is correct for trusted HTML */}
       <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
->>>>>>> 0584649 (perf: Remove HTML parsing, instead sanitize and set dangerously)
-    </div>
+    </div >
   ) : (
     <code className={className} {...props}>
       {children}
