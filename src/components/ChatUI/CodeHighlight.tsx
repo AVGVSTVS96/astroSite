@@ -5,9 +5,9 @@ import { useShikiHighlighter } from '@hooks/useShiki';
 import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
-  className: string;
-  children: ReactNode | undefined;
-  node: Element;
+  className?: string | undefined;
+  children?: ReactNode | undefined;
+  node?: Element | undefined;
 }
 
 export const CodeHighlight = ({
@@ -20,8 +20,6 @@ export const CodeHighlight = ({
   const code = String(children);
   const match = className?.match(/language-(\w+)/);
   const language = match ? match[1] : undefined;
-
-  const isInline: boolean = isInlineCode(node);
 
   const highlightedCode = useShikiHighlighter(language, code, theme);
 
