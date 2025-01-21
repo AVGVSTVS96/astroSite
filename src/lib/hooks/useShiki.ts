@@ -10,17 +10,17 @@ import { removeTabIndexFromPre } from '@/lib/utils';
 type HexColor = string;
 
 type CustomTheme = {
-    name: string;
-    displayName: string;
-    colors: Record<string, HexColor>;
-    tokenColors: {
-      scope: string | string[];
-      settings: {
-        fontStyle?: string;
-        foreground?: HexColor;
-      };
-    }[];
-  };
+  name: string;
+  displayName: string;
+  colors: Record<string, HexColor>;
+  tokenColors: {
+    scope: string | string[];
+    settings: {
+      fontStyle?: string;
+      foreground?: HexColor;
+    };
+  }[];
+};
 
 // Store all created highlighter instances
 const highlighters = new Map<BundledLanguage, Promise<Highlighter>>();
@@ -35,8 +35,6 @@ export const useShikiHighlighter = (
   );
 
   useEffect(() => {
-    if (!lang) return;
-
     const highlight = async () => {
       if (!highlighters.has(lang)) {
         // Create a new highlighter for this language
