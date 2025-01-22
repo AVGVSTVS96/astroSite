@@ -23,7 +23,7 @@ export const CodeHighlight = ({
 
   const isInline = node ? isInlineCode(node) : false;
 
-  const highlightedCode = useShikiHighlighter(language, code, theme);
+  const highlightedCode = useShikiHighlighter(language, code, theme, { debounceMs: 150 });
 
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
