@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from 'react';
+import { useState, useEffect, useRef, type ReactNode } from 'react';
 import {
   createHighlighter,
   type BundledLanguage,
@@ -22,43 +22,74 @@ type CustomTheme = {
   }[];
 };
 
+type HighlighterOptions = {
+  debounceMs?: number;
+};
+
 // Store all created highlighter instances
 const highlighters = new Map<BundledLanguage, Promise<Highlighter>>();
+
+// Track last highlight time for rate limiting
+let lastHighlightTime = 0;
 
 export const useShikiHighlighter = (
   lang: any,
   code: string,
-  theme: CustomTheme
+  theme: CustomTheme,
+  options: HighlighterOptions = {}
 ) => {
-  const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(
-    null
-  );
+  const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(null);
+  const pendingHighlight = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const highlight = async () => {
-      if (!highlighters.has(lang)) {
-        // Create a new highlighter for this language
-        highlighters.set(
-          lang,
-          createHighlighter({
-            themes: [theme],
-            langs: [lang as BundledLanguage],
-          })
-        );
+      const performHighlight = async () => {
+        if (!highlighters.has(lang)) {
+          highlighters.set(
+            lang,
+            createHighlighter({
+              themes: [theme],
+              langs: [lang as BundledLanguage],
+            })
+          );
+        }
+
+        const highlighter = await highlighters.get(lang);
+
+        const html = highlighter?.codeToHtml(code, {
+          lang: lang as BundledLanguage,
+          theme: theme.name as CustomTheme['name'],
+          transformers: [removeTabIndexFromPre],
+        });
+
+        lastHighlightTime = Date.now();
+        setHighlightedCode(parse(html ? html : code));
+      };
+
+      // If debouncing is enabled, handle timing
+      if (options.debounceMs) {
+        const now = Date.now();
+        const timeSinceLastHighlight = now - lastHighlightTime;
+        const delayNeeded = Math.max(0, options.debounceMs - timeSinceLastHighlight);
+
+        if (pendingHighlight.current) {
+          clearTimeout(pendingHighlight.current);
+        }
+
+        pendingHighlight.current = setTimeout(performHighlight, delayNeeded);
+      } else {
+        // No debouncing, just highlight immediately
+        await performHighlight();
       }
-
-      const highlighter = await highlighters.get(lang);
-
-      const html = highlighter?.codeToHtml(code, {
-        lang: lang as BundledLanguage,
-        theme: theme.name as CustomTheme['name'],
-        transformers: [removeTabIndexFromPre],
-      });
-
-      setHighlightedCode(parse(html ? html : code));
     };
 
     highlight();
+
+    return () => {
+      if (pendingHighlight.current) {
+        clearTimeout(pendingHighlight.current);
+      }
+    };
   }, [code, lang]);
 
   return highlightedCode;
