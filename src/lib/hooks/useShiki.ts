@@ -32,6 +32,23 @@ const highlighters = new Map<BundledLanguage, Promise<Highlighter>>();
 // Track last highlight time for rate limiting
 let lastHighlightTime = 0;
 
+// Debounce function for rate limiting
+function scheduleDebounce(
+  performHighlight: () => Promise<void>,
+  pendingHighlight: React.MutableRefObject<NodeJS.Timeout | undefined>,
+  debounceMs: number
+) {
+  const now = Date.now();
+  const timeSinceLastHighlight = now - lastHighlightTime;
+  const delayNeeded = Math.max(0, debounceMs - timeSinceLastHighlight);
+
+  if (pendingHighlight.current) {
+    clearTimeout(pendingHighlight.current);
+  }
+
+  pendingHighlight.current = setTimeout(performHighlight, delayNeeded);
+}
+
 export const useShikiHighlighter = (
   lang: any,
   code: string,
@@ -66,19 +83,9 @@ export const useShikiHighlighter = (
         setHighlightedCode(parse(html ? html : code));
       };
 
-      // If debouncing is enabled, handle timing
       if (options.debounceMs) {
-        const now = Date.now();
-        const timeSinceLastHighlight = now - lastHighlightTime;
-        const delayNeeded = Math.max(0, options.debounceMs - timeSinceLastHighlight);
-
-        if (pendingHighlight.current) {
-          clearTimeout(pendingHighlight.current);
-        }
-
-        pendingHighlight.current = setTimeout(performHighlight, delayNeeded);
+        scheduleDebounce(performHighlight, pendingHighlight, options.debounceMs);
       } else {
-        // No debouncing, just highlight immediately
         await performHighlight();
       }
     };
