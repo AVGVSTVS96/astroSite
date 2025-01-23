@@ -91,8 +91,13 @@ export const useShikiHighlighter = (
 
   useEffect(() => {
     const performHighlight = async () => {
-      const highlighter = await getOrCreateHighlighter(lang, theme);
-      setHighlightedCode(convertCodeToHtml(highlighter, code, lang, theme));
+      try {
+        const highlighter = await getOrCreateHighlighter(lang, theme);
+        setHighlightedCode(convertCodeToHtml(highlighter, code, lang, theme));
+      } catch (error) {
+        console.error('Error highlighting code:', error);
+        setHighlightedCode(code);
+      }
     };
 
     const executeHighlight = () => {
