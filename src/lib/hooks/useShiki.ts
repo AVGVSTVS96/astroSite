@@ -28,25 +28,32 @@ type HighlighterOptions = {
 
 type Language = BundledLanguage | any;
 
-// Store all created highlighter instances
-const highlighters = new Map<Language, Promise<Highlighter>>();
+// Singleton highlighter instance
+let highlighterPromise: Promise<Highlighter> | null = null;
 
-const getOrCreateHighlighter = async (
+const makeHighlighter = async (
   lang: Language,
   theme: CustomTheme
 ): Promise<Highlighter> => {
-  if (!highlighters.has(lang)) {
-    highlighters.set(lang,
-      createHighlighter({
-        themes: [theme],
-        langs: [lang]
-      })
-    );
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter({
+      themes: [theme],
+      langs: [],
+    });
   }
-  return highlighters.get(lang)!;
+
+  const highlighter = await highlighterPromise;
+  const langId = typeof lang === 'string' ? lang : lang.id;
+
+  // Load languages on demand
+  if (!highlighter.getLoadedLanguages().includes(langId)) {
+    await highlighter.loadLanguage(lang);
+  }
+
+  return highlighter;
 };
 
-// Throttle management utilities
+// Highlighter throttling
 let lastHighlightTime = 0;
 
 const scheduleThrottledHighlight = (
@@ -65,7 +72,6 @@ const scheduleThrottledHighlight = (
   }, delay);
 };
 
-// Highlighting logic
 const convertCodeToHtml = (
   highlighter: Highlighter,
   code: string,
@@ -92,7 +98,7 @@ export const useShikiHighlighter = (
   useEffect(() => {
     const performHighlight = async () => {
       try {
-        const highlighter = await getOrCreateHighlighter(lang, theme);
+        const highlighter = await makeHighlighter(lang, theme);
         setHighlightedCode(convertCodeToHtml(highlighter, code, lang, theme));
       } catch (error) {
         console.error('Error highlighting code:', error);
