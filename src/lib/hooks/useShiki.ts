@@ -81,6 +81,9 @@ export const useShikiHighlighter = (
   const throttleStateRef = useRef<ThrottleState>({ lastHighlightTime: 0 });
 
   useEffect(() => {
+    // Avoid updating state on unmounted components
+    let isMounted = true;
+
     const performHighlight = async () => {
       try {
         const highlighter = await makeHighlighter(lang, theme);
@@ -91,12 +94,17 @@ export const useShikiHighlighter = (
           transformers: [removeTabIndexFromPre],
         });
 
-        setHighlightedCode(parse(html || code));
+        if (isMounted) {
+          setHighlightedCode(parse(html || code));
+        }
       } catch (error) {
-        console.error('Error highlighting code:', error);
-        setHighlightedCode(code);
+        if (isMounted) {
+          console.error('Error highlighting code:', error);
+          setHighlightedCode(code);
+        }
       }
     };
+
 
     const executeHighlight = () => {
       const { throttleMs } = options;
@@ -115,7 +123,10 @@ export const useShikiHighlighter = (
 
     executeHighlight();
 
-    return () => clearTimeout(pendingHighlight.current);
+    return () => {
+      isMounted = false; // Invalidate on unmount
+      clearTimeout(pendingHighlight.current);
+    };
   }, [code, lang, theme, options.throttleMs]);
 
   return highlightedCode;
