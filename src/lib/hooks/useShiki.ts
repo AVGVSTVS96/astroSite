@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react';
-import {
-  createHighlighter,
-  type BundledLanguage,
-  type Highlighter,
-} from 'shiki';
+import { createHighlighter, type BundledLanguage, type Highlighter, } from 'shiki';
 import parse from 'html-react-parser';
 import { removeTabIndexFromPre } from '@/lib/utils';
 
 type HexColor = string;
+
+type Language = BundledLanguage | any;
 
 type CustomTheme = {
   name: string;
@@ -23,10 +21,12 @@ type CustomTheme = {
 };
 
 type HighlighterOptions = {
-  debounceMs?: number;
+  throttleMs?: number;
 };
 
-type Language = BundledLanguage | any;
+type ThrottleState = {
+  lastHighlightTime: number;
+};
 
 // Singleton highlighter instance
 let highlighterPromise: Promise<Highlighter> | null = null;
@@ -54,36 +54,20 @@ const makeHighlighter = async (
 };
 
 // Highlighter throttling
-let lastHighlightTime = 0;
-
 const scheduleThrottledHighlight = (
   perform: () => Promise<void>,
   pendingRef: React.MutableRefObject<NodeJS.Timeout | undefined>,
-  throttleMs: number
+  throttleMs: number,
+  throttleStateRef: React.MutableRefObject<ThrottleState>
 ) => {
-  const now = Date.now();
-  const timeSinceLast = now - lastHighlightTime;
+  const timeSinceLast = Date.now() - throttleStateRef.current.lastHighlightTime;
   const delay = Math.max(0, throttleMs - timeSinceLast);
 
   clearTimeout(pendingRef.current);
   pendingRef.current = setTimeout(async () => {
     await perform();
-    lastHighlightTime = Date.now();
+    throttleStateRef.current.lastHighlightTime = Date.now();
   }, delay);
-};
-
-const convertCodeToHtml = (
-  highlighter: Highlighter,
-  code: string,
-  lang: Language,
-  theme: CustomTheme
-): ReactNode => {
-  const html = highlighter.codeToHtml(code, {
-    lang,
-    theme: theme.name,
-    transformers: [removeTabIndexFromPre],
-  });
-  return parse(html || code);
 };
 
 export const useShikiHighlighter = (
@@ -94,12 +78,20 @@ export const useShikiHighlighter = (
 ) => {
   const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(null);
   const pendingHighlight = useRef<NodeJS.Timeout>();
+  const throttleStateRef = useRef<ThrottleState>({ lastHighlightTime: 0 });
 
   useEffect(() => {
     const performHighlight = async () => {
       try {
         const highlighter = await makeHighlighter(lang, theme);
-        setHighlightedCode(convertCodeToHtml(highlighter, code, lang, theme));
+
+        const html = highlighter.codeToHtml(code, {
+          lang,
+          theme: theme.name,
+          transformers: [removeTabIndexFromPre],
+        });
+
+        setHighlightedCode(parse(html || code));
       } catch (error) {
         console.error('Error highlighting code:', error);
         setHighlightedCode(code);
@@ -107,8 +99,15 @@ export const useShikiHighlighter = (
     };
 
     const executeHighlight = () => {
-      if (options.debounceMs) {
-        scheduleThrottledHighlight(performHighlight, pendingHighlight, options.debounceMs);
+      const { throttleMs } = options;
+
+      if (throttleMs) {
+        scheduleThrottledHighlight(
+          performHighlight,
+          pendingHighlight,
+          throttleMs,
+          throttleStateRef
+        );
       } else {
         performHighlight().catch(console.error);
       }
@@ -117,7 +116,7 @@ export const useShikiHighlighter = (
     executeHighlight();
 
     return () => clearTimeout(pendingHighlight.current);
-  }, [code, lang, theme, options.debounceMs]);
+  }, [code, lang, theme, options.throttleMs]);
 
   return highlightedCode;
 };
