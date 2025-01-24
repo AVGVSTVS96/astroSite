@@ -85,26 +85,33 @@ export const useShikiHighlighter = (
     let isMounted = true;
 
     const performHighlight = async () => {
+      let highlightedCode: ReactNode | string;
+
       try {
         const highlighter = await makeHighlighter(lang, theme);
-
         const html = highlighter.codeToHtml(code, {
           lang,
           theme: theme.name,
           transformers: [removeTabIndexFromPre],
         });
-
-        if (isMounted) {
-          setHighlightedCode(parse(html || code));
-        }
+        highlightedCode = parse(html);
       } catch (error) {
-        if (isMounted) {
-          console.error('Error highlighting code:', error);
-          setHighlightedCode(code);
-        }
+        console.error('Error highlighting code:', error);
+        const highlighter = await makeHighlighter('plaintext', theme);
+
+        const plainText = highlighter.codeToHtml(code, {
+          lang: 'plaintext',
+          theme: theme.name,
+          transformers: [removeTabIndexFromPre]
+        });
+        highlightedCode = parse(plainText);
+      }
+
+      // Update state only if we're still mounted
+      if (isMounted) {
+        setHighlightedCode(highlightedCode);
       }
     };
-
 
     const executeHighlight = () => {
       const { throttleMs } = options;
