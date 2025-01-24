@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react';
-import { createHighlighter, type BundledLanguage, type Highlighter, } from 'shiki';
+import { createHighlighter, ShikiError, type BundledLanguage, type Highlighter, } from 'shiki';
 import parse from 'html-react-parser';
 import { removeTabIndexFromPre } from '@/lib/utils';
 
@@ -81,7 +81,6 @@ export const useShikiHighlighter = (
   const throttleStateRef = useRef<ThrottleState>({ lastHighlightTime: 0 });
 
   useEffect(() => {
-    // Avoid updating state on unmounted components
     let isMounted = true;
 
     const performHighlight = async () => {
@@ -96,18 +95,24 @@ export const useShikiHighlighter = (
         });
         highlightedCode = parse(html);
       } catch (error) {
-        console.error('Error highlighting code:', error);
-        const highlighter = await makeHighlighter('plaintext', theme);
-
-        const plainText = highlighter.codeToHtml(code, {
-          lang: 'plaintext',
-          theme: theme.name,
-          transformers: [removeTabIndexFromPre]
-        });
-        highlightedCode = parse(plainText);
+        if (
+          error instanceof ShikiError &&
+          error.message.includes('is not included in this bundle')
+        ) {
+          console.warn(`Language '${lang}' not supported, falling back to plaintext`);
+          const highlighter = await makeHighlighter('plaintext', theme);
+          const plainText = highlighter.codeToHtml(code, {
+            lang: 'plaintext',
+            theme: theme.name,
+            transformers: [removeTabIndexFromPre]
+          });
+          highlightedCode = parse(plainText);
+        } else {
+          throw error;
+        }
       }
 
-      // Update state only if we're still mounted
+      // Avoid setting state if unmounted
       if (isMounted) {
         setHighlightedCode(highlightedCode);
       }
@@ -131,7 +136,7 @@ export const useShikiHighlighter = (
     executeHighlight();
 
     return () => {
-      isMounted = false; // Invalidate on unmount
+      isMounted = false;
       clearTimeout(pendingHighlight.current);
     };
   }, [code, lang, theme, options.throttleMs]);
