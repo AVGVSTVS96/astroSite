@@ -31,26 +31,34 @@ type ThrottleState = {
 // Singleton highlighter instance
 let highlighterPromise: Promise<Highlighter> | null = null;
 
-const makeHighlighter = async (
-  lang: Language,
-  theme: CustomTheme
-): Promise<Highlighter> => {
+const makeHighlighter = async (theme: CustomTheme): Promise<Highlighter> => {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
       themes: [theme],
-      langs: [],
+      // Initialize with plaintext as our fallback language
+      langs: ['plaintext']
     });
   }
+  return highlighterPromise;
+};
 
-  const highlighter = await highlighterPromise;
-  const langId = typeof lang === 'string' ? lang : lang.id;
+// Determine and load language
+const resolveLanguage = async (
+  highlighter: Highlighter,
+  lang: Language
+): Promise<string> => {
+  const effectiveLang = typeof lang === 'string' ? lang : lang.id;
 
-  // Load languages on demand
-  if (!highlighter.getLoadedLanguages().includes(langId)) {
-    await highlighter.loadLanguage(lang);
+  try {
+    await highlighter.loadLanguage(effectiveLang);
+    return effectiveLang;
+  } catch (error) {
+    if (error instanceof ShikiError && error.message.includes('not included in this bundle')) {
+      console.warn(`Language '${effectiveLang}' not supported, falling back to plaintext`);
+      return 'plaintext';
+    }
+    throw error;
   }
-
-  return highlighter;
 };
 
 // Highlighter throttling
@@ -84,37 +92,17 @@ export const useShikiHighlighter = (
     let isMounted = true;
 
     const performHighlight = async () => {
-      let highlightedCode: ReactNode | string;
+      const highlighter = await makeHighlighter(theme);
+      const effectiveLang = await resolveLanguage(highlighter, lang);
 
-      try {
-        const highlighter = await makeHighlighter(lang, theme);
-        const html = highlighter.codeToHtml(code, {
-          lang,
-          theme: theme.name,
-          transformers: [removeTabIndexFromPre],
-        });
-        highlightedCode = parse(html);
-      } catch (error) {
-        if (
-          error instanceof ShikiError &&
-          error.message.includes('is not included in this bundle')
-        ) {
-          console.warn(`Language '${lang}' not supported, falling back to plaintext`);
-          const highlighter = await makeHighlighter('plaintext', theme);
-          const plainText = highlighter.codeToHtml(code, {
-            lang: 'plaintext',
-            theme: theme.name,
-            transformers: [removeTabIndexFromPre]
-          });
-          highlightedCode = parse(plainText);
-        } else {
-          throw error;
-        }
-      }
+      const html = highlighter.codeToHtml(code, {
+        lang: effectiveLang,
+        theme: theme.name,
+        transformers: [removeTabIndexFromPre],
+      });
 
-      // Avoid setting state if unmounted
       if (isMounted) {
-        setHighlightedCode(highlightedCode);
+        setHighlightedCode(parse(html));
       }
     };
 
