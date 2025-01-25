@@ -16,19 +16,17 @@ export const CodeHighlight = ({
   node,
   ...props
 }: CodeHighlightProps) => {
-  const theme = customTheme;
   const code = String(children);
-  const match = className?.match(/language-(\w+)/);
-  const language = match ? match[1] : undefined;
+  const language = className?.match(/language-(\w+)/)?.[1];
 
   const highlightedCode = useShikiHighlighter(
     language,
     code,
-    theme,
+    tokyoNight,
     { throttleMs: 150 }
   );
 
-  // FIX: Long inline code blocks are not wrapped
+  // TODO: Long inline code blocks are not wrapped
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
