@@ -1,32 +1,21 @@
-import { useState, useEffect, useRef, type ReactNode } from 'react';
-import { createHighlighter, ShikiError, type BundledLanguage, type Highlighter, } from 'shiki';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import parse from 'html-react-parser';
+
+import {
+  createHighlighter,
+  ShikiError,
+  type BundledLanguage,
+  type Highlighter
+} from 'shiki';
+
+import type {
+  CustomTheme,
+  Language,
+  HighlighterOptions,
+  ThrottleState
+} from './types';
+
 import { removeTabIndexFromPre } from '@/lib/utils';
-
-type HexColor = string;
-
-type Language = BundledLanguage | any;
-
-type CustomTheme = {
-  name: string;
-  displayName: string;
-  colors: Record<string, HexColor>;
-  tokenColors: {
-    scope: string | string[];
-    settings: {
-      fontStyle?: string;
-      foreground?: HexColor;
-    };
-  }[];
-};
-
-type HighlighterOptions = {
-  throttleMs?: number;
-};
-
-type ThrottleState = {
-  lastHighlightTime: number;
-};
 
 // Singleton highlighter instance
 let highlighterPromise: Promise<Highlighter> | null = null;
@@ -35,29 +24,28 @@ const makeHighlighter = async (theme: CustomTheme): Promise<Highlighter> => {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
       themes: [theme],
-      // Initialize with plaintext as our fallback language
-      langs: ['plaintext']
+      langs: []
     });
   }
   return highlighterPromise;
 };
 
 // Determine and load language
-const resolveLanguage = async (
+const loadLanguage = async (
   highlighter: Highlighter,
   lang: Language
 ): Promise<string> => {
-  const effectiveLang = typeof lang === 'string' ? lang : lang.id;
+  // Shiki can manage undefined languages, but we fallback to plaintext just in case
+  const resolvedLanguage: Language = (typeof lang === 'string' ? lang : lang?.id) ?? 'plaintext';
 
   try {
-    await highlighter.loadLanguage(effectiveLang);
-    return effectiveLang;
+    await highlighter.loadLanguage(resolvedLanguage as BundledLanguage);
+    return resolvedLanguage;
   } catch (error) {
     if (error instanceof ShikiError && error.message.includes('not included in this bundle')) {
-      console.warn(`Language '${effectiveLang}' not supported, falling back to plaintext`);
-      return 'plaintext';
+      console.warn(`Language '${resolvedLanguage}' not supported, falling back to plaintext`);
     }
-    throw error;
+    return 'plaintext';
   }
 };
 
@@ -91,12 +79,12 @@ export const useShikiHighlighter = (
   useEffect(() => {
     let isMounted = true;
 
-    const performHighlight = async () => {
+    const highlightCode = async () => {
       const highlighter = await makeHighlighter(theme);
-      const effectiveLang = await resolveLanguage(highlighter, lang);
+      const language = await loadLanguage(highlighter, lang);
 
       const html = highlighter.codeToHtml(code, {
-        lang: effectiveLang,
+        lang: language,
         theme: theme.name,
         transformers: [removeTabIndexFromPre],
       });
@@ -106,28 +94,28 @@ export const useShikiHighlighter = (
       }
     };
 
-    const executeHighlight = () => {
+    const runHighlight = () => {
       const { throttleMs } = options;
 
       if (throttleMs) {
         scheduleThrottledHighlight(
-          performHighlight,
+          highlightCode,
           pendingHighlight,
           throttleMs,
           throttleStateRef
         );
       } else {
-        performHighlight().catch(console.error);
+        highlightCode().catch(console.error);
       }
     };
 
-    executeHighlight();
+    runHighlight();
 
     return () => {
       isMounted = false;
       clearTimeout(pendingHighlight.current);
     };
-  }, [code, lang, theme, options.throttleMs]);
+  }, [code]);
 
   return highlightedCode;
 };

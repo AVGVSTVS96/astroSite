@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Element } from 'hast';
 import { isInlineCode } from '@/lib/utils';
-import { useShikiHighlighter } from '@hooks/useShiki';
+import { useShikiHighlighter } from '@/lib/hooks';
 import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
@@ -21,8 +21,14 @@ export const CodeHighlight = ({
   const match = className?.match(/language-(\w+)/);
   const language = match ? match[1] : undefined;
 
-  const highlightedCode = useShikiHighlighter(language, code, theme, { throttleMs: 150 });
+  const highlightedCode = useShikiHighlighter(
+    language,
+    code,
+    theme,
+    { throttleMs: 150 }
+  );
 
+  // FIX: Long inline code blocks are not wrapped
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
