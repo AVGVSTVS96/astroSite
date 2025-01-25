@@ -1,30 +1,43 @@
-import type { BundledLanguage } from 'shiki';
+import type { BundledLanguage, BundledTheme, ThemeRegistration } from 'shiki';
 
-type HexColor = string;
+/** 
+ * Languages for syntax highlighting.
+ * @see https://shiki.style/languages
+ */
 
-// Language can only be a BundledLanguage or plaintext, we define string to suppor
-type Language = BundledLanguage | string | undefined | { id: string };
+// `string & {}` allows any string while preserving 
+// union with other types for autocomplete
+type Language =
+  BundledLanguage
+  | "plaintext"
+  | (string & {})
+  | undefined;
 
-// TODO: Add support for multiple themes
-type CustomTheme = {
-  name: string;
-  displayName: string;
-  colors: Record<string, HexColor>;
-  tokenColors: {
-    scope: string | string[];
-    settings: {
-      fontStyle?: string;
-      foreground?: HexColor;
-    };
-  }[];
-};
+/**
+ * A textmate theme object or a Shiki BundledTheme
+ * @see https://shiki.style/themes
+ */
+type Theme = ThemeRegistration | BundledTheme;
 
+/**
+ * Configuration options for the syntax highlighter
+ */
 type HighlighterOptions = {
+  /** 
+   * Minimum time (in milliseconds) between highlight operations. 
+   * Defaults to undefined (no throttling)
+   */
   throttleMs?: number;
 };
 
+/**
+ * State for the throttling logic
+ */
 type ThrottleState = {
+  /** 
+   * Timestamp of the last highlight operation in milliseconds 
+   * */
   lastHighlightTime: number;
 };
 
-export type { CustomTheme, Language, HighlighterOptions, ThrottleState };
+export type { Language, Theme, HighlighterOptions, ThrottleState };

@@ -9,7 +9,7 @@ import {
 } from 'shiki';
 
 import type {
-  CustomTheme,
+  Theme,
   Language,
   HighlighterOptions,
   ThrottleState
@@ -20,7 +20,8 @@ import { removeTabIndexFromPre } from '@/lib/utils';
 // Singleton highlighter instance
 let highlighterPromise: Promise<Highlighter> | null = null;
 
-const makeHighlighter = async (theme: CustomTheme): Promise<Highlighter> => {
+// Make singleton highlighter with given theme
+const makeHighlighter = async (theme: Theme): Promise<Highlighter> => {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
       themes: [theme],
@@ -30,15 +31,16 @@ const makeHighlighter = async (theme: CustomTheme): Promise<Highlighter> => {
   return highlighterPromise;
 };
 
-// Determine and load language
+// Resolve and load languages on demand
 const loadLanguage = async (
   highlighter: Highlighter,
   lang: Language
 ): Promise<string> => {
-  // Shiki can manage undefined languages, but we fallback to plaintext just in case
-  const resolvedLanguage: Language = (typeof lang === 'string' ? lang : lang?.id) ?? 'plaintext';
+  // Shiki can manage null or undefined languages, but we fallback to plaintext to be explicit
+  const resolvedLanguage = lang ?? 'plaintext';
 
   try {
+    // Type assertion needed because Shiki expects a BundledLanguage
     await highlighter.loadLanguage(resolvedLanguage as BundledLanguage);
     return resolvedLanguage;
   } catch (error) {
@@ -69,7 +71,7 @@ const scheduleThrottledHighlight = (
 export const useShikiHighlighter = (
   lang: Language,
   code: string,
-  theme: CustomTheme,
+  theme: Theme,
   options: HighlighterOptions = {}
 ) => {
   const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(null);
@@ -85,7 +87,7 @@ export const useShikiHighlighter = (
 
       const html = highlighter.codeToHtml(code, {
         lang: language,
-        theme: theme.name,
+        theme: theme,
         transformers: [removeTabIndexFromPre],
       });
 
@@ -115,7 +117,7 @@ export const useShikiHighlighter = (
       isMounted = false;
       clearTimeout(pendingHighlight.current);
     };
-  }, [code]);
+  }, [code, lang]);
 
   return highlightedCode;
 };
