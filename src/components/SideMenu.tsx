@@ -12,9 +12,11 @@ import {
 import { Button } from './ui/button';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
-import { sortedBlogPosts } from '@/lib/utils/getSortedPosts';
 
-const MainNavButtons: React.FC = () => {
+import type { CollectionEntry } from 'astro:content';
+type PostsType = CollectionEntry<'posts'>[];
+
+const MainNavButtons = () => {
   return (
     <>
       {mainLinks.map((link) => (
@@ -36,7 +38,7 @@ const MainNavButtons: React.FC = () => {
   );
 };
 
-const ProjectNavButtons: React.FC = () => {
+const ProjectNavButtons = () => {
   return (
     <>
       {projectLinks.map((project) => (
@@ -56,10 +58,10 @@ const ProjectNavButtons: React.FC = () => {
   );
 };
 
-const BlogPostList: React.FC = () => {
+const BlogPostList = ({ sortedPosts }: { sortedPosts: PostsType }) => {
   return (
     <>
-      {sortedBlogPosts.slice(0, 5).map((post) => (
+      {sortedPosts.slice(0, 5).map((post) => (
         <NavigationMenuItem key={post.slug} className="w-full">
           <NavigationMenuLink href={`/posts/${post.slug}`} className="rounded-md">
             <Button
@@ -80,7 +82,7 @@ const BlogPostList: React.FC = () => {
   );
 };
 
-export const SideMenu: React.FC = () => {
+export const SideMenu = ({ sortedPosts }: { sortedPosts: PostsType }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -102,7 +104,7 @@ export const SideMenu: React.FC = () => {
               <ProjectNavButtons />
               <hr className="my-4 w-full" />
               <h4 className="mb-2 ml-2 mt-1 font-semibold">Recent Posts</h4>
-              <BlogPostList />
+              <BlogPostList sortedPosts={sortedPosts} />
             </NavigationMenuList>
           </NavigationMenu>
         </div>

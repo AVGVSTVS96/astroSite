@@ -43,7 +43,7 @@ import { isActiveLink } from '@/lib/utils';
     <span class="flex items-center gap-2">
       <CommandMenu client:load sortedPosts={sortedBlogPosts} />
       <AccentColorSelector client:load />
-      <SideMenu client:load />
+      <SideMenu client:load sortedPosts={sortedBlogPosts} />
       <ModeToggle client:load />
     </span>
   </div>
