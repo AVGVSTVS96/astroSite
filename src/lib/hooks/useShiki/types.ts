@@ -27,17 +27,21 @@ type HighlighterOptions = {
    * Minimum time (in milliseconds) between highlight operations. 
    * Defaults to undefined (no throttling)
    */
-  throttleMs?: number;
+  delay?: number;
 };
 
 /**
  * State for the throttling logic
  */
-type ThrottleState = {
-  /** 
-   * Timestamp of the last highlight operation in milliseconds 
-   * */
-  lastHighlightTime: number;
+type TimeoutState = {
+  /**
+   * Id of the timeout that is currently scheduled
+   */
+  timeoutId: NodeJS.Timeout | undefined;
+  /**
+   * Next time when the timeout can be scheduled
+   */
+  nextAllowedTime: number;
 };
 
-export type { Language, Theme, HighlighterOptions, ThrottleState };
+export type { Language, Theme, HighlighterOptions, TimeoutState };
