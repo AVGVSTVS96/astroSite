@@ -12,7 +12,7 @@ import type {
   Theme,
   Language,
   HighlighterOptions,
-  ThrottleState
+  TimeoutState,
 } from './types';
 
 import { removeTabIndexFromPre } from '@/lib/utils';
@@ -52,19 +52,19 @@ const loadLanguage = async (
 };
 
 // Highlighter throttling
-const scheduleThrottledHighlight = (
-  perform: () => Promise<void>,
-  pendingRef: React.MutableRefObject<NodeJS.Timeout | undefined>,
-  throttleMs: number,
-  throttleStateRef: React.MutableRefObject<ThrottleState>
+const throttleHighlighting = (
+  performHighlight: () => Promise<void>,
+  timeoutControl: React.MutableRefObject<TimeoutState>,
+  throttleMs: number
 ) => {
-  const timeSinceLast = Date.now() - throttleStateRef.current.lastHighlightTime;
-  const delay = Math.max(0, throttleMs - timeSinceLast);
+  const now = Date.now();
 
-  clearTimeout(pendingRef.current);
-  pendingRef.current = setTimeout(async () => {
-    await perform();
-    throttleStateRef.current.lastHighlightTime = Date.now();
+  clearTimeout(timeoutControl.current.timeoutId);
+  const delay = Math.max(0, timeoutControl.current.nextAllowedTime - now);
+
+  timeoutControl.current.timeoutId = setTimeout(() => {
+    performHighlight().catch(console.error);
+    timeoutControl.current.nextAllowedTime = now + throttleMs;
   }, delay);
 };
 
@@ -75,8 +75,10 @@ export const useShikiHighlighter = (
   options: HighlighterOptions = {}
 ) => {
   const [highlightedCode, setHighlightedCode] = useState<ReactNode | null>(null);
-  const pendingHighlight = useRef<NodeJS.Timeout>();
-  const throttleStateRef = useRef<ThrottleState>({ lastHighlightTime: 0 });
+  const delayRef = useRef<TimeoutState>({
+    nextAllowedTime: 0,
+    timeoutId: undefined
+  });
 
   useEffect(() => {
     let isMounted = true;
@@ -97,15 +99,10 @@ export const useShikiHighlighter = (
     };
 
     const runHighlight = () => {
-      const { throttleMs } = options;
+      const { delay } = options;
 
-      if (throttleMs) {
-        scheduleThrottledHighlight(
-          highlightCode,
-          pendingHighlight,
-          throttleMs,
-          throttleStateRef
-        );
+      if (delay) {
+        throttleHighlighting(highlightCode, delayRef, delay);
       } else {
         highlightCode().catch(console.error);
       }
@@ -115,7 +112,7 @@ export const useShikiHighlighter = (
 
     return () => {
       isMounted = false;
-      clearTimeout(pendingHighlight.current);
+      clearTimeout(delayRef.current.timeoutId);
     };
   }, [code, lang]);
 

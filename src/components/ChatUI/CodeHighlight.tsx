@@ -23,7 +23,7 @@ export const CodeHighlight = ({
     language,
     code,
     tokyoNight,
-    { throttleMs: 150 }
+    { delay: 150 }
   );
 
   // TODO: Long inline code blocks are not wrapped
