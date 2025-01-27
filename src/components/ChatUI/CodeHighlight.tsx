@@ -20,8 +20,8 @@ export const CodeHighlight = ({
   const language = className?.match(/language-(\w+)/)?.[1];
 
   const highlightedCode = useShikiHighlighter(
-    language,
     code,
+    language,
     tokyoNight,
     { delay: 150 }
   );

@@ -69,8 +69,8 @@ const throttleHighlighting = (
 };
 
 export const useShikiHighlighter = (
-  lang: Language,
   code: string,
+  lang: Language,
   theme: Theme,
   options: HighlighterOptions = {}
 ) => {
