@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Element } from 'hast';
 import { isInlineCode } from '@/lib/utils';
-import { useShikiHighlighter } from '@/lib/hooks';
+import { useShikiHighlighter } from 'react-shiki';
 import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
