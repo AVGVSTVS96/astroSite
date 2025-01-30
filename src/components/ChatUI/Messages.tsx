@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { cn } from '@/lib/utils';
 import { CodeHighlight } from './CodeHighlight';
+import { rehypeInlineCodeProperty } from '@/lib/utils/isInlineCode';
 import type { Message } from '@ai-sdk/react';
 
 const baseMessageStyles: string =
@@ -19,7 +20,10 @@ const messageStyles: Record<string, Array<string>> = {
 
 const RenderedMessage = React.memo(({ message }: { message: Message }) => (
   <div className={cn(messageStyles[message.role])}>
-    <ReactMarkdown components={{ code: CodeHighlight }}>
+    <ReactMarkdown
+      components={{ code: CodeHighlight }}
+      rehypePlugins={[rehypeInlineCodeProperty]}
+    >
       {message.content}
     </ReactMarkdown>
   </div>

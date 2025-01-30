@@ -7,14 +7,19 @@ interface CodeHighlightProps {
   className?: string | undefined;
   children?: ReactNode | undefined;
   node?: Element | undefined;
+  inline?: boolean | undefined;
 }
 
 export const CodeHighlight = ({
   className,
   children,
   node,
+  inline: inlineProp,
   ...props
 }: CodeHighlightProps) => {
+  if (!children) {
+    return null;
+  }
   const code = String(children);
   const language = className?.match(/language-(\w+)/)?.[1];
 
