@@ -17,9 +17,6 @@ export const CodeHighlight = ({
   inline: inlineProp,
   ...props
 }: CodeHighlightProps) => {
-  if (!children) {
-    return null;
-  }
   const code = String(children);
   const language = className?.match(/language-(\w+)/)?.[1];
 

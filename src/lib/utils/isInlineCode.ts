@@ -21,6 +21,7 @@ declare module 'hast' {
  * You can then access `inline` as a prop from ReactMarkdown.
  *
  * @example
+ * import ReactMarkdown from 'react-markdown';
  * import { rehypeInlineCodeProperty } from 'react-shiki';
  * <ReactMarkdown rehypePlugins={[rehypeInlineCodeProperty]} />
  */
