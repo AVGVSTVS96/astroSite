@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { setModel } from '../modelStore'; // Adjust the relative path as needed
 
 export const useModel = (defaultModel: string) => {
   const isBrowser = typeof window !== 'undefined' && window.localStorage;
@@ -6,32 +7,21 @@ export const useModel = (defaultModel: string) => {
     if (isBrowser) {
       return localStorage.getItem('selectedModel') || defaultModel;
     }
-
     return defaultModel;
   });
 
   const handleModelChange = (model: string) => {
     setSelectedModel(model);
-    isBrowser && localStorage.setItem('selectedModel', model);
+    if (isBrowser) {
+      localStorage.setItem('selectedModel', model);
+    }
+    // Update the global model store so that other parts (like our fetch function) see the new value.
+    setModel(model);
   };
 
-  useEffect(() => {
-    const sendModelName = async () => {
-      await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          modelName: selectedModel,
-        }),
-      });
-    };
-
-    sendModelName();
-  }, [selectedModel]);
   return {
     selectedModel,
     handleModelChange,
   };
 };
+

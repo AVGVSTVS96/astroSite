@@ -8,23 +8,29 @@ import {
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
-import { useModel } from '@/lib/hooks';
+import { useModel } from '@/lib/hooks/useModel';
 
 const modelGroups = [
   {
     label: 'OpenAI',
     models: [
-      { label: 'GPT-3.5-Turbo', value: 'gpt-3.5-turbo' },
-      { label: 'GPT-4-Turbo', value: 'gpt-4-turbo' },
-      { label: 'GPT-4o-Mini', value: 'gpt-4o-mini' },
+      { label: 'o1-mini', value: 'o1-mini' },
       { label: 'GPT-4o', value: 'gpt-4o' },
+      { label: 'GPT-4o-Mini', value: 'gpt-4o-mini' },
     ],
   },
   {
     label: 'OpenAI Legacy',
     models: [
       { label: 'GPT-3.5-Turbo-0613', value: 'gpt-3.5-turbo-0613' },
+      { label: 'GPT-3.5-Turbo', value: 'gpt-3.5-turbo' },
       { label: 'GPT-4-0613', value: 'gpt-4-0613' },
+      { label: 'GPT-4-Turbo', value: 'gpt-4-turbo' },
+    ],
+  },
+  {
+    label: 'Vercel AI',
+    models: [
     ],
   },
 ];
@@ -60,3 +66,4 @@ export const ModelSelector = () => {
     </Select>
   );
 };
+

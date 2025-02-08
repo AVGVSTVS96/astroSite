@@ -4,8 +4,28 @@ import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
 import { ChatMessages } from './Messages';
 import { cn } from '@/lib/utils';
+import { getModel } from '@/lib/modelStore';
 
 export const ChatBox = () => {
+  // Define a custom fetch function that consults the global model store on each call.
+  const customFetch: typeof fetch = (input: URL | RequestInfo, init?: RequestInit) => {
+    if (input instanceof URL) {
+      input = input.toString();
+    }
+    if (init?.body && typeof init.body === "string") {
+      try {
+        const parsedBody = JSON.parse(init.body);
+        // Inject the current model (from the global store) into the request payload.
+        parsedBody.modelName = getModel();
+        init.body = JSON.stringify(parsedBody);
+      } catch (err) {
+        console.error("Error parsing request body:", err);
+      }
+    }
+    return fetch(input, init);
+  };
+
+  // Initialize the chat hook with our custom fetch function.
   const {
     messages,
     input,
@@ -13,7 +33,9 @@ export const ChatBox = () => {
     handleSubmit,
     isLoading,
     stop,
-  }: UseChatHelpers = useChat();
+  }: UseChatHelpers = useChat({
+    fetch: customFetch,
+  });
 
   const styles: Record<string, string> = {
     chatCardHeight: 'min-h-72 max-h-[calc(100dvh-177px)]',
@@ -48,3 +70,4 @@ export const ChatBox = () => {
     </Card>
   );
 };
+
