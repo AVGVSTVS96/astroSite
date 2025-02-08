@@ -31,7 +31,7 @@ export const CodeHighlight = ({
         </span>
       ) : null}
       <SyntaxHighlighter
-        className='rounded-lg !py-5'
+        className='rounded-lg py-5!'
         language={language}
         style={rainglowAzureContrast as SyntaxHighlighterProps['style']}
         PreTag='div'
