@@ -7,8 +7,9 @@ import { cn } from '@/lib/utils';
 import { getModel } from '@/lib/modelStore';
 
 export const ChatBox = () => {
-  // Define a custom fetch function that consults the global model store on each call.
-  const customFetch: typeof fetch = (input: URL | RequestInfo, init?: RequestInit) => {
+  // Define a custom fetch function that consults the global model store on each call
+  // and injects the current model into the request payload.
+  const injectModel: typeof fetch = (input: URL | RequestInfo, init?: RequestInit) => {
     if (input instanceof URL) {
       input = input.toString();
     }
@@ -34,7 +35,7 @@ export const ChatBox = () => {
     isLoading,
     stop,
   }: UseChatHelpers = useChat({
-    fetch: customFetch,
+    fetch: injectModel,
   });
 
   const styles: Record<string, string> = {

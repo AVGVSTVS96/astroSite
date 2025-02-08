@@ -28,11 +28,6 @@ const modelGroups = [
       { label: 'GPT-4-Turbo', value: 'gpt-4-turbo' },
     ],
   },
-  {
-    label: 'Vercel AI',
-    models: [
-    ],
-  },
 ];
 
 export const defaultModel = 'gpt-4o-mini';

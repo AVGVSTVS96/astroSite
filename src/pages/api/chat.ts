@@ -35,7 +35,7 @@ export async function POST(context: APIContext) {
     compatibility: 'strict',
   });
 
-  const result = await streamText({
+  const result = streamText({
     model: openai(chosenModel),
     // system: 'You are a helpful assistant.',
     messages,
@@ -47,6 +47,6 @@ export async function POST(context: APIContext) {
     },
   });
 
-  return result.toAIStreamResponse();
+  return result.toDataStreamResponse();
 }
 
