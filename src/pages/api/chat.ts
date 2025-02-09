@@ -25,10 +25,10 @@ export async function POST(context: APIContext) {
   const chosenModel = modelName || defaultModel;
 
   // For the new o3-mini model, set provider options for reasoning effort
-  const additionalOptions =
-    chosenModel === 'o3-mini'
-      ? { providerOptions: { openai: { reasoningEffort: 'high' } } }
-      : {};
+  // const additionalOptions =
+  //   chosenModel === 'o3-mini'
+  //     ? { providerOptions: { openai: { reasoningEffort: 'high' } } }
+  //     : {};
 
   const openai = createOpenAI({
     apiKey: import.meta.env.OPENAI_API_KEY,
@@ -39,7 +39,7 @@ export async function POST(context: APIContext) {
     model: openai(chosenModel),
     // system: 'You are a helpful assistant.',
     messages,
-    ...additionalOptions,
+    // ...additionalOptions,
     onFinish: ({ finishReason, usage }) => {
       console.log('model:', chosenModel);
       console.log('Finish reason:', finishReason);
