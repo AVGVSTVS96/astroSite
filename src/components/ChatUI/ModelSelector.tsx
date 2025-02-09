@@ -8,7 +8,7 @@ import {
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
-import { useModel } from '@/lib/hooks/useModel';
+import { useModelContext } from './ModelContext';
 
 const modelGroups = [
   {
@@ -33,10 +33,10 @@ const modelGroups = [
 export const defaultModel = 'gpt-4o-mini';
 
 export const ModelSelector = () => {
-  const { selectedModel, handleModelChange } = useModel(defaultModel);
+  const { selectedModel, setSelectedModel } = useModelContext();
 
   return (
-    <Select value={selectedModel} onValueChange={handleModelChange}>
+    <Select value={selectedModel} onValueChange={setSelectedModel}>
       <SelectTrigger className="w-full focus:ring-ring/20 xs:w-[180px]">
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>

@@ -4,29 +4,30 @@ import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
 import { ChatMessages } from './Messages';
 import { cn } from '@/lib/utils';
-import { getModel } from '@/lib/modelStore';
+import { useModelContext } from './ModelContext';
 
 export const ChatBox = () => {
-  // Define a custom fetch function that consults the global model store on each call
-  // and injects the current model into the request payload.
-  const injectModel: typeof fetch = (input: URL | RequestInfo, init?: RequestInit) => {
-    if (input instanceof URL) {
-      input = input.toString();
-    }
+  const { selectedModel } = useModelContext();
+  /** 
+   * Custom fetch middleware that injects the current model name
+   * into API requests made by the useChat hook.
+   */
+  const injectModel: typeof fetch = (
+    input,
+    init?
+  ) => {
     if (init?.body && typeof init.body === "string") {
       try {
         const parsedBody = JSON.parse(init.body);
-        // Inject the current model (from the global store) into the request payload.
-        parsedBody.modelName = getModel();
+        parsedBody.modelName = selectedModel;
         init.body = JSON.stringify(parsedBody);
       } catch (err) {
-        console.error("Error parsing request body:", err);
+        console.error("JSON parsing failed:", err);
       }
     }
     return fetch(input, init);
   };
 
-  // Initialize the chat hook with our custom fetch function.
   const {
     messages,
     input,

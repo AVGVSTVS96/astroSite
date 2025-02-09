@@ -1,13 +1,12 @@
-// import { SettingsPanel } from './SettingsPanel';
 import { ChatBox } from './ChatBox';
+import { ModelProvider } from './ModelContext';
 
-const ChatUi: React.FC = () => {
+const ChatUi = () => {
   return (
-    // <div className="flex flex-col-2 gap-4">
-    // <SettingsPanel />
-    <ChatBox />
-    // </div>
+    <ModelProvider>
+      <ChatBox />
+    </ModelProvider>
   );
-};
+}; 
 
 export default ChatUi;
