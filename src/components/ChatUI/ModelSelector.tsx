@@ -33,12 +33,13 @@ const modelGroups = [
 type ModelValues = typeof modelGroups[number]['models'][number]['value'];
 
 export const DEFAULT_MODEL: ModelValues = 'gpt-4o-mini';
+
 export const ModelSelector = () => {
   const { selectedModel, setSelectedModel } = useModelContext();
 
   return (
     <Select value={selectedModel} onValueChange={setSelectedModel}>
-      <SelectTrigger className="w-full focus:ring-ring/20 xs:w-[180px]">
+      <SelectTrigger className="focus:ring-ring/20 shadow-none text-[18px] py-5 px-3 cursor-pointer rounded-lg font-semibold border-0 hover:bg-accent w-fit min-w-[180px]">
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>
       <SelectContent>
