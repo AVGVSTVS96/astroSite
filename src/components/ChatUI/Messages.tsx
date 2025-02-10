@@ -5,16 +5,15 @@ import { CodeHighlight } from './CodeHighlight';
 import type { Message } from '@ai-sdk/react';
 
 const baseMessageStyles: string =
-  'prose prose-slate flex w-full flex-col px-4 py-2.5 prose-p:my-0 prose-pre:my-2 prose-pre:bg-transparent prose-pre:p-0 prose-ul:mt-0';
-
+  'prose dark:prose-invert text-foreground prose-slate w-full px-4 py-2.5';
 const messageStyles: Record<string, Array<string>> = {
   user: [
     baseMessageStyles,
-    'ml-auto bg-accent max-w-[75%] !w-fit rounded-3xl text-foreground break-words prose-headings:text-primary-foreground prose-code:text-primary-foreground prose-blockquote:text-primary-foreground prose-a:text-primary-foreground prose-strong:text-primary-foreground',
+    'ml-auto bg-accent max-w-[75%] !w-fit rounded-3xl break-words',
   ],
   assistant: [
     baseMessageStyles,
-    'bg-transparent dark:prose-invert prose-code:text-foreground',
+    'bg-transparent min-w-full',
   ],
 };
 

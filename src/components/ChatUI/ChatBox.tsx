@@ -43,7 +43,7 @@ export const ChatBox = () => {
     // 177px is the sum of the height of the header and footer
     chatCardHeight: 'min-h-72 max-h-[calc(100dvh-177px)]',
     chatCardWidth:
-      'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,75vw,1000px)]',
+      'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,85vw,1000px)]',
     headerText: 'hidden text-lg mt-2 font-bold leading-none tracking-tight xs:block',
   };
 
