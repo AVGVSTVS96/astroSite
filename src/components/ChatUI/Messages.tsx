@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { cn } from '@/lib/utils';
 import { CodeHighlight } from './CodeHighlight';
-import { rehypeInlineCodeProperty } from '@/lib/utils/isInlineCode';
+import { rehypeInlineCodeProperty } from 'react-shiki';
 import type { Message } from '@ai-sdk/react';
 
 const baseMessageStyles: string =
