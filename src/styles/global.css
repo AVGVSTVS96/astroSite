@@ -49,7 +49,6 @@
   --text-color-muted-dark: #64748b;
   --text-color-dark: #0f172a;
 
-
   /* shadcn-ui */
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
@@ -89,45 +88,168 @@
     from {
       height: 0;
     }
+
     to {
       height: var(--radix-accordion-content-height);
     }
   }
+
   @keyframes accordion-up {
     from {
       height: var(--radix-accordion-content-height);
     }
+
     to {
       height: 0;
     }
   }
 }
 
-@utility container {
+@utility box {
   margin-inline: auto;
-  padding-inline: 2rem;
+  width: 100%;
+  @apply border-x;
+
+  @media (max-width: 570px) {
+    border-inline: none;
+  }
+
+  @media (min-width: 570px) {
+    width: calc(100vw - 100px);
+  }
+
+  @media (min-width: 1220px) {
+    width: 1120px;
+  }
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+@utility grid-background {
+  background-size: 14px 14px;
+  background-image: linear-gradient(to right, #f6f6f6 1px, transparent 1px),
+    linear-gradient(to bottom, #f6f6f6 1px, transparent 1px);
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+  .dark & {
+    background-image: linear-gradient(to right,
+        hsla(217, 20%, 12%, 0.6) 1px,
+        transparent 1px),
+      linear-gradient(to bottom, hsla(217, 25%, 12%, 0.6) 1px, transparent 1px);
+  }
+}
+
+@utility dashed-border {
+  /* &::before { */
+  content: '';
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, hsl(var(--border)) 0 15px, transparent 0 30px);
+  /* } */
+}
+
+@utility section-number {
+  @apply absolute top-0 left-0 translate-x-[-100%] max-[570px]:translate-none;
+  @apply border-b border-l max-[1220px]:border-l-0 max-[570px]:border-r;
+  font-family: IBM Plex Mono, monospace;
+  font-size: 18px;
+  font-weight: 600;
+  font-feature-settings: "ss03" 1;
+  font-variant-numeric: slashed-zero;
+  line-height: 23px;
+  letter-spacing: -0.3px;
+  cursor: default;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+@utility project-card {
+  display: grid;
+  grid-template-columns: 200px 1fr 130px 130px 70px;
+  grid-template-rows: 1fr;
+  border-bottom: 1px solid hsl(var(--border));
+  width: calc(100% - 200px);
+  max-width: 100%;
+  height: 200px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  >.project-card-logo {
+    border-right: 1px solid hsl(var(--border));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  >.project-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-right: 1px solid hsl(var(--border));
+    padding: 0 40px;
+
+    & h6 {
+      font-size: 13px;
+      font-weight: 600;
+      font-family: IBM Plex Mono, monospace;
+    }
+
+    & h3 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 50px;
+    }
+  }
+
+  >.project-card-stats {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-right: 1px solid hsl(var(--border));
+
+    & h5 {
+      color: hsl(var(--muted-foreground));
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      font-variant-numeric: dashed-zero;
+      font-feature-settings: 'ss03' 1;
+      font-family: IBM Plex Mono, monospace;
+      font-style: normal;
+      line-height: normal;
+      width: 100%;
+    }
+
+    & p {
+      font-feature-settings: 'salt' 1;
+      font-family: IBM Plex Mono, monospace;
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+
+  >.project-card-github {
+    border-right: 1px solid hsl(var(--border));
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 @utility blue-underline {
-  @apply underline decoration-accent-500 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:decoration-accent-600/80;
+  @apply decoration-accent-500 dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:decoration-accent-600/80 underline decoration-2 underline-offset-[5px];
 }
 
 @utility card-mx {
@@ -143,7 +265,54 @@
 }
 
 @layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: hsl(var(--border));
+  }
+
+  :root {
+    font-family: var(--font-sans);
+    font-display: block;
+    /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
+    scrollbar-width: thin; */
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 60%, 0.2);
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsla(0, 0%, 60%, 0.4);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: hsla(0, 0%, 60%, 0.3);
+  }
+
   /* shadcn-ui */
+  /* update by setting tw border to border var directly */
+  /* * { */
+  /*   @apply border-border; */
+  /* } */
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -204,35 +373,6 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-  }
-
-  :root {
-    @apply font-sans;
-    /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
-    scrollbar-width: thin; */
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-
-  ::-webkit-scrollbar {
-    background-color: transparent;
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: hsla(0, 0%, 60%, 0.2);
-    border-radius: 6px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: hsla(0, 0%, 60%, 0.4);
-  }
-
-  ::-webkit-scrollbar-thumb:active {
-    background-color: hsla(0, 0%, 60%, 0.3);
   }
 
   [data-theme='slate'] {
@@ -345,16 +485,5 @@
     --accent-800: var(--color-amber-800);
     --accent-900: var(--color-amber-900);
     --accent-950: var(--color-amber-950);
-  }
-}
-
-@layer base {
-  /* fix by setting tw border to border var directly */
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
   }
 }
