@@ -28,10 +28,11 @@ const modelGroups = [
       { label: 'GPT-4-Turbo', value: 'gpt-4-turbo' },
     ],
   },
-];
+] as const;
 
-export const defaultModel = 'gpt-4o-mini';
+type ModelValues = typeof modelGroups[number]['models'][number]['value'];
 
+export const DEFAULT_MODEL: ModelValues = 'gpt-4o-mini';
 export const ModelSelector = () => {
   const { selectedModel, setSelectedModel } = useModelContext();
 

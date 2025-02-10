@@ -1,7 +1,7 @@
 import type { APIContext } from 'astro';
 import { streamText, type CoreMessage } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
-import { defaultModel } from '@components/ChatUI/ModelSelector';
+import { DEFAULT_MODEL } from '@components/ChatUI/ModelSelector';
 
 export const prerender = false;
 
@@ -22,7 +22,7 @@ export async function POST(context: APIContext) {
   }
 
   // Use the provided model or fall back to the default
-  const chosenModel = modelName || defaultModel;
+  const chosenModel = modelName || DEFAULT_MODEL;
 
   // For the new o3-mini model, set provider options for reasoning effort
   // const additionalOptions =
@@ -37,7 +37,7 @@ export async function POST(context: APIContext) {
 
   const result = streamText({
     model: openai(chosenModel),
-    // system: 'You are a helpful assistant.',
+    system: 'You are a helpful assistant.',
     messages,
     // ...additionalOptions,
     onFinish: ({ finishReason, usage }) => {

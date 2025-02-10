@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-const DEFAULT_MODEL = 'gpt-4o';
+import { DEFAULT_MODEL } from './ModelSelector';
 
 interface ModelContextProps {
   selectedModel: string;
@@ -9,15 +8,10 @@ interface ModelContextProps {
 
 const ModelContext = createContext<ModelContextProps | undefined>(undefined);
 
-interface ModelProviderProps {
-  defaultModel?: string;
-  children: React.ReactNode;
-}
-
 export const ModelProvider = ({ children }: { children: React.ReactNode }) => {
   const [selectedModel, setSelectedModel] = useState<string>(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('selectedModel') ?? DEFAULT_MODEL;
+      return localStorage.getItem('selectedModel') || DEFAULT_MODEL;
     }
     return DEFAULT_MODEL;
   });
