@@ -8,34 +8,36 @@ import {
   SelectLabel,
   SelectItem,
 } from '@components/ui/select';
-import { useModel } from '@/lib/hooks';
+import { useModelContext } from './ModelContext';
 
 const modelGroups = [
   {
     label: 'OpenAI',
     models: [
-      { label: 'GPT-3.5-Turbo', value: 'gpt-3.5-turbo' },
-      { label: 'GPT-4-Turbo', value: 'gpt-4-turbo' },
-      { label: 'GPT-4o-Mini', value: 'gpt-4o-mini' },
+      { label: 'o1-mini', value: 'o1-mini' },
       { label: 'GPT-4o', value: 'gpt-4o' },
+      { label: 'GPT-4o-Mini', value: 'gpt-4o-mini' },
     ],
   },
   {
     label: 'OpenAI Legacy',
     models: [
       { label: 'GPT-3.5-Turbo-0613', value: 'gpt-3.5-turbo-0613' },
+      { label: 'GPT-3.5-Turbo', value: 'gpt-3.5-turbo' },
       { label: 'GPT-4-0613', value: 'gpt-4-0613' },
+      { label: 'GPT-4-Turbo', value: 'gpt-4-turbo' },
     ],
   },
-];
+] as const;
 
-export const defaultModel = 'gpt-4o-mini';
+type ModelValues = typeof modelGroups[number]['models'][number]['value'];
 
+export const DEFAULT_MODEL: ModelValues = 'gpt-4o-mini';
 export const ModelSelector = () => {
-  const { selectedModel, handleModelChange } = useModel(defaultModel);
+  const { selectedModel, setSelectedModel } = useModelContext();
 
   return (
-    <Select value={selectedModel} onValueChange={handleModelChange}>
+    <Select value={selectedModel} onValueChange={setSelectedModel}>
       <SelectTrigger className="w-full focus:ring-ring/20 xs:w-[180px]">
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>
@@ -60,3 +62,4 @@ export const ModelSelector = () => {
     </Select>
   );
 };
+

@@ -4,8 +4,30 @@ import { ChatInput } from './ChatInput';
 import { ModelSelector } from './ModelSelector';
 import { ChatMessages } from './Messages';
 import { cn } from '@/lib/utils';
+import { useModelContext } from './ModelContext';
 
 export const ChatBox = () => {
+  const { selectedModel } = useModelContext();
+  /** 
+   * Custom fetch middleware that injects the current model name
+   * into API requests made by the useChat hook.
+   */
+  const injectModel: typeof fetch = (
+    input,
+    init?
+  ) => {
+    if (init?.body && typeof init.body === "string") {
+      try {
+        const parsedBody = JSON.parse(init.body);
+        parsedBody.modelName = selectedModel;
+        init.body = JSON.stringify(parsedBody);
+      } catch (err) {
+        console.error("JSON parsing failed:", err);
+      }
+    }
+    return fetch(input, init);
+  };
+
   const {
     messages,
     input,
@@ -13,7 +35,9 @@ export const ChatBox = () => {
     handleSubmit,
     isLoading,
     stop,
-  }: UseChatHelpers = useChat();
+  }: UseChatHelpers = useChat({
+    fetch: injectModel,
+  });
 
   const styles: Record<string, string> = {
     chatCardHeight: 'min-h-72 max-h-[calc(100dvh-177px)]',
@@ -48,3 +72,4 @@ export const ChatBox = () => {
     </Card>
   );
 };
+

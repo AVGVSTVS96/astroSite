@@ -1,40 +1,52 @@
 import type { APIContext } from 'astro';
 import { streamText, type CoreMessage } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
-import { defaultModel } from '@components/ChatUI/ModelSelector';
+import { DEFAULT_MODEL } from '@components/ChatUI/ModelSelector';
 
 export const prerender = false;
 
 interface ChatRequest {
   modelName?: string;
-  messages: CoreMessage[];
+  messages?: CoreMessage[];
 }
 
-let modelName: string;
-
 export async function POST(context: APIContext) {
-  const { modelName: newModelName, messages }: ChatRequest =
-    await context.request.json();
+  const { modelName, messages } = await context.request.json() as ChatRequest;
 
-  if (newModelName) {
-    modelName = newModelName;
-    return new Response(null, { status: 200 });
+  // Ensure that messages are provided
+  if (!messages) {
+    return new Response(
+      JSON.stringify({ error: 'Messages not provided' }),
+      { status: 400 }
+    );
   }
+
+  // Use the provided model or fall back to the default
+  const chosenModel = modelName || DEFAULT_MODEL;
+
+  // For the new o3-mini model, set provider options for reasoning effort
+  // const additionalOptions =
+  //   chosenModel === 'o3-mini'
+  //     ? { providerOptions: { openai: { reasoningEffort: 'high' } } }
+  //     : {};
 
   const openai = createOpenAI({
     apiKey: import.meta.env.OPENAI_API_KEY,
     compatibility: 'strict',
   });
 
-  const result = await streamText({
-    model: openai(modelName || defaultModel),
+  const result = streamText({
+    model: openai(chosenModel),
     system: 'You are a helpful assistant.',
     messages,
+    // ...additionalOptions,
     onFinish: ({ finishReason, usage }) => {
+      console.log('model:', chosenModel);
       console.log('Finish reason:', finishReason);
       console.log('Token usage:', usage);
     },
   });
 
-  return result.toAIStreamResponse();
+  return result.toDataStreamResponse();
 }
+
