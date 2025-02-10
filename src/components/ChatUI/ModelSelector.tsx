@@ -39,10 +39,10 @@ export const ModelSelector = () => {
 
   return (
     <Select value={selectedModel} onValueChange={setSelectedModel}>
-      <SelectTrigger className="focus:ring-ring/20 shadow-none text-[18px] py-5 px-3 cursor-pointer rounded-lg font-semibold border-0 hover:bg-accent w-fit min-w-[180px]">
+      <SelectTrigger className="focus:ring-ring/20 focus:bg-accent shadow-none text-[18px] py-5 px-3 cursor-pointer rounded-lg font-semibold border-0 hover:bg-accent data-[state=open]:bg-accent w-fit min-w-[180px]">
         <SelectValue placeholder="Select a model" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className='rounded-xl' align='center'>
         {modelGroups.map((group, index) => (
           <SelectGroup key={group.label}>
             <SelectLabel className="text-sm font-bold tracking-wide text-foreground">
