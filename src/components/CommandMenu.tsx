@@ -20,21 +20,68 @@ import { NotebookText } from 'lucide-react';
 import { cn, formatDate } from '@/lib/utils';
 import { mainLinks, projectLinks, iconStyles } from './navLinks';
 import { useHotkeys } from 'react-hotkeys-hook';
+import { handleMouseDown } from '@/lib/utils';
 
 import type { CollectionEntry } from 'astro:content';
 type PostsType = CollectionEntry<'posts'>[];
 
-const SettingsGroup = () => {
-  return (
-    <CommandGroup heading="Settings">
-      <CommandItem onSelect={toggleTheme}>
-        <ThemeIcon />
-        <span className="ml-2">Toggle theme</span>
-        <CommandShortcut>T</CommandShortcut>
+const SuggestionsGroup = () => (
+  <CommandGroup heading="Suggestions">
+    {mainLinks.map((link) => (
+      <CommandItem key={link.name} onMouseDown={handleMouseDown({ href: link.href })}>
+        {React.createElement(link.icon, { className: iconStyles })}
+        {link.name}
+        <CommandShortcut>{link.shortcut}</CommandShortcut>
       </CommandItem>
-    </CommandGroup>
-  );
-};
+    ))}
+  </CommandGroup>
+);
+
+const ProjectsGroup = () => (
+  <CommandGroup heading="Projects">
+    {projectLinks.map((project) => (
+      <CommandItem
+        key={project.name}
+        onMouseDown={handleMouseDown({ href: project.href })}>
+        <ArrowTopRightIcon className={iconStyles} />
+        {project.name}
+      </CommandItem>
+    ))}
+  </CommandGroup>
+);
+
+const BlogGroup = ({ blogPosts: sortedPosts }: { blogPosts: PostsType }) => (
+  <CommandGroup heading="Blog posts">
+    {sortedPosts?.map((post) => (
+      <CommandItem
+        slot="blogPosts"
+        key={post.data.title}
+        className="text-balance"
+        aria-label={`Link to blog post: ${post.data.title}`}
+        onMouseDown={handleMouseDown({ href: `/posts/${post.slug}/` })} >
+        <NotebookText className={iconStyles} />
+        {post.data.title}
+        <CommandShortcut className="whitespace-nowrap pl-4 tracking-wide">
+          <time>
+            {formatDate(post.data.pubDate, {
+              month: 'short',
+            })}
+          </time>
+        </CommandShortcut>
+      </CommandItem>
+    ))}
+  </CommandGroup>
+);
+
+const SettingsGroup = () => (
+  <CommandGroup heading="Settings">
+    <CommandItem onMouseDown={(e) => e.button === 0 && toggleTheme()}>
+      <ThemeIcon />
+      <span className="ml-2">Toggle theme</span>
+      <CommandShortcut>T</CommandShortcut>
+    </CommandItem>
+  </CommandGroup>
+);
 
 export function CommandMenu({
   buttonStyles,
@@ -53,10 +100,6 @@ export function CommandMenu({
   useHotkeys('/', () => setOpen((open) => !open), {
     preventDefault: true,
   });
-
-  const navigate = (href: string) => {
-    window.location.href = href;
-  };
 
   return (
     <>
@@ -78,47 +121,11 @@ export function CommandMenu({
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            {mainLinks.map((link) => (
-              <CommandItem key={link.name} onSelect={() => navigate(link.href)}>
-                {React.createElement(link.icon, { className: iconStyles })}
-                {link.name}
-                <CommandShortcut>{link.shortcut}</CommandShortcut>
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          {mainLinks.length > 0 && <SuggestionsGroup />}
           <CommandSeparator />
-          <CommandGroup heading="Projects">
-            {projectLinks.map((project) => (
-              <CommandItem
-                key={project.name}
-                onSelect={() => navigate(project.href)}>
-                <ArrowTopRightIcon className={iconStyles} />
-                {project.name}
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          {projectLinks.length > 0 && <ProjectsGroup />}
           <CommandSeparator />
-          <CommandGroup heading="Blog posts">
-            {sortedPosts?.map((post) => (
-              <CommandItem
-                slot="blogPosts"
-                key={post.data.title}
-                className="text-balance"
-                aria-label={`Link to blog post: ${post.data.title}`}
-                onSelect={() => navigate(`/posts/${post.slug}/`)}>
-                <NotebookText className={iconStyles} />
-                {post.data.title}
-                <CommandShortcut className="whitespace-nowrap pl-4 tracking-wide">
-                  <time>
-                    {formatDate(post.data.pubDate, {
-                      month: 'short',
-                    })}
-                  </time>
-                </CommandShortcut>
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          {sortedPosts && <BlogGroup blogPosts={sortedPosts} />}
           <CommandSeparator />
           <SettingsGroup />
         </CommandList>

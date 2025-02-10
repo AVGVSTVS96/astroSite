@@ -21,9 +21,10 @@ const MainNavButtons = () => {
     <>
       {mainLinks.map((link) => (
         <NavigationMenuItem key={link.name} className="w-full">
-          <NavigationMenuLink href={link.href} className="rounded-md">
+          <NavigationMenuLink asChild className="rounded-md">
             <Button
               tabIndex={-1}
+              href={link.href}
               variant="ghost"
               className="h-9 w-full justify-start px-3">
               {React.createElement(link.icon, {
@@ -43,9 +44,10 @@ const ProjectNavButtons = () => {
     <>
       {projectLinks.map((project) => (
         <NavigationMenuItem key={project.name} className="w-full">
-          <NavigationMenuLink href={project.href} className="rounded-md">
+          <NavigationMenuLink asChild className="rounded-md">
             <Button
               tabIndex={-1}
+              href={project.href}
               variant="link"
               size="lg"
               className="h-8 w-full justify-start px-3 text-muted-foreground hover:text-foreground hover:no-underline">
@@ -63,9 +65,10 @@ const BlogPostList = ({ sortedPosts }: { sortedPosts: PostsType }) => {
     <>
       {sortedPosts.slice(0, 5).map((post) => (
         <NavigationMenuItem key={post.slug} className="w-full">
-          <NavigationMenuLink href={`/posts/${post.slug}`} className="rounded-md">
+          <NavigationMenuLink asChild className="rounded-md">
             <Button
               tabIndex={-1}
+              href={`/posts/${post.slug}`}
               variant="link"
               size="sm"
               className="h-8 w-full justify-start px-3 text-left text-muted-foreground hover:text-foreground hover:no-underline">

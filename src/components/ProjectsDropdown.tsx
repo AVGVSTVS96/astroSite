@@ -3,6 +3,7 @@ import { DropdownMenu, DropdownMenuItem } from './DropdownMenu';
 import { ChevronDown } from 'lucide-react';
 import { projectLinks } from './navLinks';
 import { isActiveLink } from '@/lib/utils';
+import { handleMouseDown } from '@/lib/utils';
 
 export const ProjectsDropdown: React.FC = () => {
   const currentPath =
@@ -27,16 +28,14 @@ export const ProjectsDropdown: React.FC = () => {
           className="ml-1.5 mt-[1.5px] transition-all group-data-[state=open]:rotate-180"
         />
       </span>
-      {projectLinks.map((link) => {
-        const activeClass = isActiveLink(currentPath, link.href);
+      {projectLinks.map(({ href, name }) => {
+        const activeClass = isActiveLink(currentPath, href);
         return (
           <DropdownMenuItem
-            key={link.href}
+            key={href}
             className={`py-2 ${activeClass}`}
-            onSelect={() => {
-              window.location.href = link.href;
-            }}>
-            {link.name}
+            onMouseDown={handleMouseDown({ href })}>
+            {name}
           </DropdownMenuItem>
         );
       })}
