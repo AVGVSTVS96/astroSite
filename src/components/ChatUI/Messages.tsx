@@ -5,7 +5,7 @@ import { CodeHighlight } from './CodeHighlight';
 import type { Message } from '@ai-sdk/react';
 
 const baseMessageStyles: string =
-  'prose dark:prose-invert text-foreground prose-slate w-full px-4 py-2.5';
+  'prose dark:prose-invert text-foreground prose-slate w-full px-4 py-2.5 prose-pre:p-0 prose-pre:bg-transparent';
 const messageStyles: Record<string, Array<string>> = {
   user: [
     baseMessageStyles,
