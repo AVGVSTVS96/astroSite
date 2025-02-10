@@ -33,7 +33,7 @@
     "@tailwindcss/typography": "0.5.13",
     "@tailwindcss/vite": "4.0.4",
     "ai": "4.1.26",
-    "astro": "4.11.5",
+    "astro": "4.16.18",
     "astro-expressive-code": "0.35.3",
     "astro-icon": "1.1.0",
     "class-variance-authority": "0.7.0",
