@@ -40,10 +40,11 @@ export const ChatBox = () => {
   });
 
   const styles: Record<string, string> = {
+    // 177px is the sum of the height of the header and footer
     chatCardHeight: 'min-h-72 max-h-[calc(100dvh-177px)]',
     chatCardWidth:
-      'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,75vw,1000px)]',
-    headerText: 'hidden text-lg font-bold leading-none tracking-tight xs:block',
+      'min-w-64 max-md:w-[calc(100dvw-4rem)] md:w-[clamp(700px,85vw,900px)]',
+    headerText: 'hidden text-lg mt-2 font-bold leading-none tracking-tight xs:block',
   };
 
   return (
@@ -53,8 +54,7 @@ export const ChatBox = () => {
         styles.chatCardHeight,
         styles.chatCardWidth
       )}>
-      <CardHeader className="h-18 flex flex-row items-center justify-between py-3">
-        <span className={styles.headerText}>ChatGPT</span>
+      <CardHeader className="flex flex-row justify-between py-3 px-4">
         <ModelSelector />
       </CardHeader>
       <CardContent className="flex flex-col-reverse overflow-y-auto pb-0 pt-2">
