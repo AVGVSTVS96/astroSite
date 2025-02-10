@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Element } from 'hast';
-import { isInlineCode } from '@/lib/utils';
-import { useShikiHighlighter } from 'react-shiki';
+import { useShikiHighlighter, isInlineCode } from 'react-shiki';
 import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
@@ -26,7 +25,8 @@ export const CodeHighlight = ({
     { delay: 150 }
   );
 
-  // TODO: Long inline code blocks are not wrapped
+  const isInline = node && isInlineCode(node);
+
   return !isInline ? (
     <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
