@@ -57,7 +57,7 @@ export const ChatBox = () => {
       <CardHeader className="flex flex-row justify-between py-3 px-4">
         <ModelSelector />
       </CardHeader>
-      <CardContent className="flex flex-col-reverse overflow-y-auto pb-0 pt-2">
+      <CardContent className="flex flex-col-reverse overflow-y-auto pb-0 pt-2 focus-visible:outline-0">
         <ChatMessages messages={messages} />
       </CardContent>
       <CardFooter className="mt-6">
