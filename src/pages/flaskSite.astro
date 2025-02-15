@@ -1,6 +1,6 @@
 ---
 import '@styles/global.css';
-import Button from '@components/Button.astro';
+import { Button } from '@components/ui/button';
 ---
 
 <html lang="en">
@@ -95,17 +95,14 @@ import Button from '@components/Button.astro';
     <div class="rotating-gradient-border h-1.5"></div>
     <div class="mt-6 mr-4 flex flex-row-reverse">
       <a href="/">
-        <button
+        <Button
+          client:load
           name="Home"
-          class="text-muted-foreground hover:text-foreground border border-slate-500/30 bg-slate-900/70 px-3 font-mono hover:border-slate-500/50"
-          >Home</button
-        >
+          variant="ghost"
+          className="text-muted-foreground hover:text-foreground border border-slate-500/30 bg-slate-900/70 px-3 font-mono hover:border-slate-500/50">
+          Home
+        </Button>
       </a>
-      <Button
-        name="Home"
-        class="text-muted-foreground hover:text-foreground border border-slate-500/30 bg-slate-900/70 px-3 font-mono hover:border-slate-500/50"
-        >Command Menu</Button
-      >
     </div>
     <div class="mx-auto max-w-5xl px-4 py-8 text-left font-mono">
       <div class="rotating-gradient-border rounded-lg p-1">
