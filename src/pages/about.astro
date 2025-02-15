@@ -6,26 +6,33 @@ import MainLayout from '@layouts/MainLayout.astro';
   <div>
     <section class="card-mx card-p mt-8 max-w-3xl">
       <h3 class="mb-4 text-xl font-semibold">About Me</h3>
-      <div slot="content" class="space-y-4 text-muted-foreground">
+      <div slot="content" class="text-muted-foreground space-y-4">
         <p>
-          Based in NY, I'm a multifaceted tech enthusiast with experience in
-          hardware, software, network operations, cybersecurity, and
-          audio-visual systems. In my spare time, I love tinkering with 3D
-          printers and drones, using my electronics and software background to
-          build everything from custom parts to high performance racing drones.
+          Based in NY, I'm a self taught web developer and multifaceted tech
+          enthusiast. I have a passion for open source software, and have been
+          learning and working with modern web technologies like React,
+          TypeScript, Astro, and Next.js to build beautiful, performant, and
+          accessible web applications and packages.
         </p>
-        <p>
-          Currently, I'm advancing my skillset in software engineering and web
-          development, using technologies like React, TypeScript, Astro, and
-          Next.js to build performant web applications. I'm also experimenting
-          with large language models, building infrastructure around models to
-          improve output quality and flexibility for creative use cases.
+        <p class="[&_a]:prose [&_a]:prose-slate dark:[&_a]:prose-invert">
+          I'm currently working on a project called
+          <a
+            href="https://github.com/AVGVSTVS96/react-shiki"
+            class="dark:hover:text-accent-300 hover:text-accent-400"
+            >react-shiki</a
+          >, which provides a React component and a hook for syntax highlighting
+          code blocks using the
+          <a
+            href="https://github.com/shikijs/shiki"
+            class="dark:hover:text-accent-300 hover:text-accent-400">Shiki</a
+          >
+          library.
         </p>
       </div>
     </section>
     <section class="card-mx card-p mt-4 max-w-3xl">
       <h3 class="mb-4 text-xl font-semibold">About This Website</h3>
-      <div slot="content" class="space-y-4 text-muted-foreground">
+      <div slot="content" class="text-muted-foreground space-y-4">
         <p>
           This is website is built with Astro, Tailwind CSS, and React. It
           serves as my portfolio website, showcasing my technical skills, blog
