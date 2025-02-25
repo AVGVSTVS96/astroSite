@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import type { Element } from 'hast';
 import { useShikiHighlighter, isInlineCode } from 'react-shiki';
 import tokyoNight from '@styles/tokyo-night.mjs';
+import mcfunction from './mcfunction.tmLanguage.json';
+import bosque from './bsq.tmLanguage.json';
 
 interface CodeHighlightProps {
   className?: string | undefined;
@@ -21,7 +23,8 @@ export const CodeHighlight = ({
   const language = className?.split('language-')?.[1];
 
   const highlightedCode = useShikiHighlighter(code, language, tokyoNight, {
-    tabindex: false,
+    delay: 150,
+    customLanguages: [bosque, mcfunction],
   });
 
   const isInline = node && isInlineCode(node);
