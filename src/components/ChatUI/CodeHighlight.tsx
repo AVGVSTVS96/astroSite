@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Element } from 'hast';
 import { useShikiHighlighter, isInlineCode } from 'react-shiki';
-import tokyoNight from '@styles/tokyo-night.mjs';
+import tokyoNight from '@styles/tokyoNight.json';
 import mcfunction from './mcfunction.tmLanguage.json';
 import bosque from './bsq.tmLanguage.json';
 
