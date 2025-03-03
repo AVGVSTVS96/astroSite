@@ -22,10 +22,22 @@ export const CodeHighlight = ({
   const code = String(children).trim();
   const language = className?.split('language-')?.[1];
 
-  const highlightedCode = useShikiHighlighter(code, language, tokyoNight, {
-    delay: 150,
-    customLanguages: [bosque, mcfunction],
-  });
+  const highlightedCode = useShikiHighlighter(
+    code,
+    language,
+    {
+      dark: tokyoNight,
+      light: 'github-light'
+    },
+    {
+      defaultColor: 'dark',
+      delay: 150,
+      customLanguages: [
+        bosque,
+        mcfunction,
+      ],
+    }
+  );
 
   const isInline = node && isInlineCode(node);
 
