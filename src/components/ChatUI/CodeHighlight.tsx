@@ -25,17 +25,16 @@ export const CodeHighlight = ({
   const highlightedCode = useShikiHighlighter(
     code,
     language,
+    // tokyoNight,
     {
       dark: tokyoNight,
-      light: 'github-light'
+      light: 'kanagawa-dragon',
+      dim: 'github-dark'
     },
     {
-      defaultColor: 'dark',
       delay: 150,
-      customLanguages: [
-        bosque,
-        mcfunction,
-      ],
+      customLanguages: [bosque, mcfunction],
+      defaultColor: 'dark'
     }
   );
 
