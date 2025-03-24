@@ -1,4 +1,6 @@
 {
+  "name": "tokyo-night",
+  "displayName": "Tokyo Night",
   "colors": {
     "activityBar.background": "#16161e",
     "activityBar.border": "#16161e",
