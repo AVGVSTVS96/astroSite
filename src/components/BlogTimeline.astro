@@ -68,6 +68,7 @@ const { lineClamp, split = false } = Astro.props;
             />
             <span class="inline-flex items-center text-sm font-medium">
               Read more
+              <span class="sr-only">{`about ${post.data.title}`}</span>
               <Icon
                 name="linkCaret"
                 size={20}
@@ -75,6 +76,7 @@ const { lineClamp, split = false } = Astro.props;
                   '-mb-0.5 ml-0.5 stroke-accent-300/75 stroke-2 transition group-hover:translate-x-0.5 group-hover:stroke-accent-300',
                 ]}
                 title="caret-icon"
+                aria-hidden="true"
               />
             </span>
           </a>
