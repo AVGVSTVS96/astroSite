@@ -9,7 +9,6 @@
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/lib/hooks/*"],
       "@/*": ["src/*"]
     },
     "jsx": "react-jsx",

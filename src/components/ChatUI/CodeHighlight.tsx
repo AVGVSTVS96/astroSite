@@ -1,43 +1,39 @@
-import {
-  PrismAsync as SyntaxHighlighter,
-  type SyntaxHighlighterProps,
-} from 'react-syntax-highlighter';
-import rainglowAzureContrast from '@/styles/rainglowAzureContrast';
+import type { ReactNode } from 'react';
 import type { Element } from 'hast';
-import { isInlineCode } from '@/lib/utils';
+import { useShikiHighlighter, isInlineCode } from 'react-shiki';
+import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
   className?: string | undefined;
-  children?: React.ReactNode | undefined;
+  children?: ReactNode | undefined;
   node?: Element | undefined;
+  inline?: boolean | undefined;
 }
 
 export const CodeHighlight = ({
   className,
   children,
+  inline,
   node,
   ...props
-}: CodeHighlightProps): JSX.Element => {
-  const match = className?.match(/language-(\w+)/);
-  const language = match ? match[1] : undefined;
+}: CodeHighlightProps) => {
+  const code = String(children).trim();
+  const language = className?.split('language-')?.[1];
 
-  const isInline: boolean | undefined = node ? isInlineCode(node) : undefined;
+  const highlightedCode = useShikiHighlighter(code, language, tokyoNight, {
+    tabindex: false,
+  });
 
-  return !isInline ? (
-    <div className='relative'>
+  const isInline = node && isInlineCode(node);
+
+  return !isInline || !inline ? (
+    <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
-        <span className='absolute right-3 top-2 text-xs tracking-tighter text-muted-foreground/85'>
+        <span className="text-muted-foreground/85 absolute top-2 right-3 text-xs tracking-tighter">
           {language}
         </span>
       ) : null}
-      <SyntaxHighlighter
-        className='rounded-lg py-5!'
-        language={language}
-        style={rainglowAzureContrast as SyntaxHighlighterProps['style']}
-        PreTag='div'
-        {...props}>
-        {String(children).trimEnd()}
-      </SyntaxHighlighter>
+      {highlightedCode}
     </div>
   ) : (
     <code className={className} {...props}>

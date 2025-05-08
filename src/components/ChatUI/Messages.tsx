@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { cn } from '@/lib/utils';
 import { CodeHighlight } from './CodeHighlight';
 import type { Message } from '@ai-sdk/react';
+import { rehypeInlineCodeProperty } from 'react-shiki';
 
 const baseMessageStyles: string =
   'prose dark:prose-invert text-foreground prose-slate w-full px-4 py-2.5 prose-pre:p-0 prose-pre:bg-transparent';
@@ -19,7 +20,9 @@ const messageStyles: Record<string, Array<string>> = {
 
 const RenderedMessage = React.memo(({ message }: { message: Message }) => (
   <div className={cn(messageStyles[message.role])}>
-    <ReactMarkdown components={{ code: CodeHighlight }}>
+    <ReactMarkdown
+      components={{ code: CodeHighlight }}
+      rehypePlugins={[rehypeInlineCodeProperty]}>
       {message.content}
     </ReactMarkdown>
   </div>
