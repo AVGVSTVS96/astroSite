@@ -1,0 +1,22 @@
+---
+import ProjectCard from '../VoidZero/ProjectCard.astro';
+import { projects } from './projectData';
+---
+
+<section class="border-b-1">
+  <div class="box relative flex flex-col py-8 max-[570px]:pt-20">
+    <span class="section-number">01</span>
+    <h2 class="mx-10 mb-4 text-3xl font-bold tracking-tight text-balance">
+      Projects
+    </h2>
+    <p
+      class="text-muted-foreground mx-10 mb-12 w-[660px] max-w-[calc(100%-80px)] text-sm">
+      We are the creators, maintainers, and contributors of some of the most
+      critical infrastructure projects in the JavaScript ecosystem.
+    </p>
+    <ul
+      class="before:dashed-border after:dashed-border relative before:top-0 after:bottom-0">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </ul>
+  </div>
+</section>

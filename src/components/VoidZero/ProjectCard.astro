@@ -1,0 +1,33 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Projects } from './projectData';
+
+type Props = Projects;
+
+const { name, description, url, github, icon, stats } = Astro.props;
+---
+
+<li class="project-card">
+  <div class="project-card-logo">
+    <a href={url}>
+      <Icon name={icon} class="size-28" />
+    </a>
+  </div>
+  <div class="project-card-content">
+    <h6>{description.toUpperCase()}</h6>
+    <h3>{name}</h3>
+  </div>
+  {
+    stats.map(({ label, value }) => (
+      <div class="project-card-stats">
+        <h5>{value}</h5>
+        <p>{label}</p>
+      </div>
+    ))
+  }
+  <div class="project-card-github">
+    <a href={github}>
+      <Icon name="github" class="size-6" />
+    </a>
+  </div>
+</li>
