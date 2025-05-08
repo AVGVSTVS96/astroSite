@@ -5,7 +5,7 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-@theme {
+@theme inline {
   --font-sans: var(--font-family), ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
@@ -128,6 +128,33 @@
 
 @utility blue-underline {
   @apply underline decoration-accent-500 decoration-2 underline-offset-[5px] dark:decoration-accent-500 dark:hover:text-primary-200/75 dark:hover:decoration-accent-600/80;
+}
+
+@utility animated-underline {
+  position: relative;
+  color: inherit;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    height: 2px;
+    background-color: var(--color-accent-500);
+    transition: height 200ms ease-in-out;
+  }
+
+  &:hover::after {
+    height: 4px;
+  }
+
+  &:where(.dark, .dark *) {
+    &::after {
+      background-color: var(--color-accent-500);
+    }
+  }
 }
 
 @utility card-mx {
