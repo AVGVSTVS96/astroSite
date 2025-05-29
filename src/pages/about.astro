@@ -6,15 +6,17 @@ import MainLayout from '@layouts/MainLayout.astro';
   <div>
     <section class="card-mx card-p mt-8 max-w-3xl">
       <h3 class="mb-4 text-xl font-semibold">About Me</h3>
-      <div slot="content" class="text-muted-foreground space-y-4">
+      <div
+        slot="content"
+        class="text-muted-foreground [&_a]:prose [&_a]:prose-slate dark:[&_a]:prose-invert space-y-4">
         <p>
-          Based in NY, I'm a self taught web developer and multifaceted tech
-          enthusiast. I have a passion for open source software, and have been
-          learning and working with modern web technologies like React,
-          TypeScript, Astro, and Next.js to build beautiful, performant, and
-          accessible web applications and packages.
+          Based in NY, I'm a self taught software engineer with a passion for
+          programming and open source software. I primarily work with modern web
+          technologies like React, TypeScript, Astro, and Next.js to build
+          beautiful, performant, and accessible web applications and open source
+          libraries.
         </p>
-        <p class="[&_a]:prose [&_a]:prose-slate dark:[&_a]:prose-invert">
+        <p class="">
           I'm currently working on a project called
           <a
             href="https://github.com/AVGVSTVS96/react-shiki"
@@ -28,11 +30,20 @@ import MainLayout from '@layouts/MainLayout.astro';
           >
           library.
         </p>
+        <p>
+          I’m also a Founding Engineer at
+          <a
+            href="https://github.com/assistant-ui/assistant-ui"
+            class="dark:hover:text-accent-300 hover:text-accent-400"
+            >assistant-ui</a
+          >, where we’re focused on setting the gold standard for developer
+          experience (DX) and accessibility in AI chat applications.
+        </p>
       </div>
     </section>
-    <section class="card-mx card-p mt-4 max-w-3xl">
+    <section class="card-mx card-p max-w-3xl">
       <h3 class="mb-4 text-xl font-semibold">About This Website</h3>
-      <div slot="content" class="text-muted-foreground space-y-4">
+      <div slot="content" class="text-muted-foreground">
         <p>
           This is website is built with Astro, Tailwind CSS, and React. It
           serves as my portfolio website, showcasing my technical skills, blog
