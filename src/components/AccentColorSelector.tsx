@@ -124,7 +124,7 @@ export const AccentColorSelector = () => {
   };
 
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={300}>
       <DropdownMenu
         ariaLabel="Open accent color selector menu"
         variant="outline">
@@ -132,7 +132,7 @@ export const AccentColorSelector = () => {
           <div className="size-5 rounded-full bg-accent-400" />
         </div>
         {themeOptions.map((option) => (
-          <Tooltip key={option.href} delayDuration={250}>
+          <Tooltip key={option.href}>
             <TooltipTrigger asChild>
               <DropdownMenuItem
                 className="py-2 text-muted-foreground"
@@ -145,10 +145,9 @@ export const AccentColorSelector = () => {
             </TooltipTrigger>
             <TooltipContent
               side="left"
-              sideOffset={0}
-              className="bg-muted text-foreground">
+              sideOffset={10}
+              className="bg-popover/95 text-popover-foreground border border-border/50 backdrop-blur-sm">
               {option.colorName}
-              <Arrow className="fill-muted" width={12} height={6} />
             </TooltipContent>
           </Tooltip>
         ))}

@@ -18,16 +18,16 @@ interface Props {
 <li class={className}>
   <a
     href={'#' + heading.slug}
-    class="group hover:text-foreground/80 mt-0 flex items-start no-underline">
+    class="group hover:text-foreground mt-0 flex items-start no-underline transition-colors duration-200">
     <Icon
       name="sideCaret"
       size={13}
       class:list={[
-        'dark:group-hover:stroke-primary-300 mx-1 mt-1 shrink-0',
+        'mx-1 mt-1 shrink-0 transition-all duration-200',
         isSubheading ? '' : 'hidden',
         level === 2
-          ? 'stroke-primary-400 group-hover:stroke-primary-400/50 dark:stroke-primary-500'
-          : 'stroke-primary-600 group-hover:stroke-primary-400/80 dark:stroke-primary-400',
+          ? 'stroke-muted-foreground/60 group-hover:stroke-muted-foreground/80'
+          : 'stroke-muted-foreground/40 group-hover:stroke-muted-foreground/60',
       ]}
       title="caret-icon"
     />
@@ -51,15 +51,21 @@ interface Props {
 
 <style>
   li:has(.active) > a {
-    color: var(--color-accent-400);
+    color: var(--color-foreground);
+    font-weight: 500;
+    opacity: 0.9;
   }
 
   :root.dark li:has(.active) > a {
-    color: var(--color-accent-300);
+    color: var(--color-foreground);
+    opacity: 0.85;
+  }
+
+  a {
+    color: var(--color-muted-foreground);
   }
 
   a:hover {
     color: var(--color-foreground);
-    opacity: 0.8;
   }
 </style>

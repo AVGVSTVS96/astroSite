@@ -6,8 +6,8 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: var(--font-family), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter',
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 
   --breakpoint-3xs: 380px;
   --breakpoint-2xs: 440px;
@@ -16,17 +16,18 @@
   --color-mycustom-100: #15162e;
   --color-mycustom-200: #191d2d;
 
-  --color-primary-50: #f8fafc;
-  --color-primary-100: #f1f5f9;
-  --color-primary-200: #e2e8f0;
-  --color-primary-300: #cbd5e1;
-  --color-primary-400: #94a3b8;
-  --color-primary-500: #64748b;
-  --color-primary-600: #475569;
-  --color-primary-700: #334155;
-  --color-primary-800: #1e293b;
-  --color-primary-900: #0f172a;
-  --color-primary-950: #020617;
+  /* Refined neutral palette */
+  --color-primary-50: #fafafa;
+  --color-primary-100: #f5f5f5;
+  --color-primary-200: #e5e5e5;
+  --color-primary-300: #d4d4d4;
+  --color-primary-400: #a3a3a3;
+  --color-primary-500: #737373;
+  --color-primary-600: #525252;
+  --color-primary-700: #404040;
+  --color-primary-800: #262626;
+  --color-primary-900: #171717;
+  --color-primary-950: #0a0a0a;
 
   --color-accent-50: var(--accent-50);
   --color-accent-100: var(--accent-100);
@@ -40,15 +41,28 @@
   --color-accent-900: var(--accent-900);
   --color-accent-950: var(--accent-950);
 
-  --border-color-light: #e2e8f0;
-  --border-color-base: #94a3b8;
-  --border-color-dark: #1e293b;
+  --border-color-light: #e5e5e7;
+  --border-color-base: #d1d1d6;
+  --border-color-dark: #2d2d30;
 
-  --text-color-light: #f8fafc;
-  --text-color-muted-light: #e2e8f0;
-  --text-color-muted-dark: #64748b;
-  --text-color-dark: #0f172a;
+  --text-color-light: #fafafa;
+  --text-color-muted-light: #e5e5e5;
+  --text-color-muted-dark: #737373;
+  --text-color-dark: #0a0a0a;
 
+  /* Modern shadow system */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Dark mode shadows with subtle blue tint */
+  --shadow-dark-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-dark-sm: 0 2px 4px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(30 58 138 / 0.1);
+  --shadow-dark-md: 0 4px 8px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(30 58 138 / 0.1);
+  --shadow-dark-lg: 0 10px 20px -3px rgb(0 0 0 / 0.4), 0 4px 8px -4px rgb(30 58 138 / 0.1);
+  --shadow-dark-xl: 0 20px 30px -5px rgb(0 0 0 / 0.4), 0 8px 16px -6px rgb(30 58 138 / 0.1);
 
   /* shadcn-ui */
   --color-primary: hsl(var(--primary));
@@ -108,6 +122,47 @@
   padding-inline: 2rem;
 }
 
+/* Custom shadow utilities for dark mode */
+@utility shadow-xs {
+  box-shadow: var(--shadow-xs);
+}
+
+@utility shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+@utility shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+@utility shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+@utility shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.dark .shadow-xs {
+  box-shadow: var(--shadow-dark-xs);
+}
+
+.dark .shadow-sm {
+  box-shadow: var(--shadow-dark-sm);
+}
+
+.dark .shadow-md {
+  box-shadow: var(--shadow-dark-md);
+}
+
+.dark .shadow-lg {
+  box-shadow: var(--shadow-dark-lg);
+}
+
+.dark .shadow-xl {
+  box-shadow: var(--shadow-dark-xl);
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -143,96 +198,113 @@
 }
 
 @layer base {
-  /* shadcn-ui */
+  /* shadcn-ui - refined for 2025 aesthetic */
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 3.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 
   :root {
     @apply font-sans;
-    /* scrollbar-color: hsla(0, 0%, 60%, 0.2) transparent;
-    scrollbar-width: thin; */
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
-
+  /* Refined scrollbar */
   ::-webkit-scrollbar {
     background-color: transparent;
-    width: 8px;
-    height: 8px;
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: hsla(0, 0%, 60%, 0.2);
-    border-radius: 6px;
+    background-color: hsla(0, 0%, 0%, 0.15);
+    border-radius: 20px;
+    border: 4px solid transparent;
+    background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: hsla(0, 0%, 60%, 0.4);
+    background-color: hsla(0, 0%, 0%, 0.25);
   }
 
   ::-webkit-scrollbar-thumb:active {
-    background-color: hsla(0, 0%, 60%, 0.3);
+    background-color: hsla(0, 0%, 0%, 0.3);
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 100%, 0.15);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background-color: hsla(0, 0%, 100%, 0.25);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:active {
+    background-color: hsla(0, 0%, 100%, 0.3);
   }
 
   [data-theme='slate'] {
@@ -356,5 +428,11 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
   }
 }
