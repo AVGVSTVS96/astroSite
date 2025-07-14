@@ -45,7 +45,7 @@ const versions = await getPackageVersions(projects);
                 {project.data.description}
               </p>
               <div class="flex flex-wrap gap-2">
-                {project.data.tags.map((tag) => (
+                {project.data.tags.map((tag: string) => (
                   <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-[3px] text-xs text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
                     {tag}
                   </div>
