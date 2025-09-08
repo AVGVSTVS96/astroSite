@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { DropdownMenu, DropdownMenuItem } from './DropdownMenu';
-import { Arrow } from '@radix-ui/react-tooltip';
 import {
   TooltipProvider,
   Tooltip,
@@ -89,6 +88,7 @@ const themeOptions: ThemeOption[] = [
   { colorName: 'Violet', colorClass: 'bg-violet-400', href: '#violet' },
   { colorName: 'Fuchsia', colorClass: 'bg-fuchsia-400', href: '#fuchsia' },
   { colorName: 'Amber', colorClass: 'bg-amber-400', href: '#amber' },
+  { colorName: 'Orange', colorClass: 'bg-orange-400', href: '#orange' },
 ];
 
 export const AccentColorSelector = () => {
@@ -106,7 +106,7 @@ export const AccentColorSelector = () => {
   }, []);
 
   const handleStorageChange = () => {
-    const storedTheme = localStorage.getItem('themeSwitcher') || 'sky';
+    const storedTheme = localStorage.getItem('themeSwitcher') || 'orange';
 
     if (isBrowser && storedTheme !== selectedTheme) {
       setSelectedTheme(storedTheme);

@@ -110,3 +110,17 @@
     --accent-900: var(--color-amber-900);
     --accent-950: var(--color-amber-950);
   }
+
+  [data-theme='orange'] {
+    --accent-50: var(--color-orange-50);
+    --accent-100: var(--color-orange-100);
+    --accent-200: var(--color-orange-200);
+    --accent-300: var(--color-orange-300);
+    --accent-400: var(--color-orange-400);
+    --accent-500: var(--color-orange-500);
+    --accent-600: var(--color-orange-600);
+    --accent-700: var(--color-orange-700);
+    --accent-800: var(--color-orange-800);
+    --accent-900: var(--color-orange-900);
+    --accent-950: var(--color-orange-950);
+  }

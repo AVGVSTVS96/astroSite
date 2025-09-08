@@ -29,16 +29,17 @@ const versions = await getPackageVersions(projects);
                 <span class="flex items-center">
                   <a
                     aria-label="github project link"
-                    class="flex items-center justify-between text-muted-foreground no-underline hover:text-foreground"
+                    class="text-muted-foreground no-underline hover:text-foreground"
                     href={project.data.url}>
                     <Icon name="github" class="size-4" />
                   </a>
-                  {project.data.package && (<a
-                    aria-label="npm package link"
-                    class="flex items-center justify-between text-muted-foreground no-underline hover:text-foreground"
-                    href={`https://www.npmjs.com/package/${project.data.title}`}>
-                    <Icon name="npm" class="size-6" />
-                  </a>)}
+              <!-- icon alignment is inconsistent between project cards, ridiculous -->
+                  <!-- {project.data.package && (<a -->
+                  <!--   aria-label="npm package link" -->
+                  <!--   class="text-muted-foreground no-underline hover:text-foreground" -->
+                  <!--   href={`https://www.npmjs.com/package/${project.data.title}`}> -->
+                  <!--   <Icon name="npm" class="size-6" /> -->
+                  <!-- </a>)} -->
                 </span>
               </span>
               <p class="mb-4 mt-1.5 line-clamp-2 text-[0.925rem] text-muted-foreground">

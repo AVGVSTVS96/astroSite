@@ -8,23 +8,29 @@ import Projects from '@components/Projects.astro';
   title="Bassim Shahidy"
   description="Bassim Shahidy's personal website">
   <article class="card-mx card-p max-w-3xl">
-    <section id="hero section" class="mb-24 mt-14">
-      <h1 class="mb-2 text-[2.5rem] font-bold tracking-tight leading-tight">
+    <section id="hero section" class="mt-16 mb-24">
+      <h1 class="mb-2 text-[2.5rem] leading-tight font-bold tracking-tight">
         Hi, I'm Bassim
       </h1>
-      <h2 class="text-xl font-medium text-muted-foreground">
-        I'm a software engineer from New York
+      <h2 class="text-muted-foreground text-xl font-medium">
+        I'm a founding engineer at <span class="">
+          <span class="text-foreground font-bold"> assistant-ui </span>
+          <span
+            class="ml-1 bg-gradient-to-r from-orange-500 from-15% via-orange-400 via-70% to-amber-400 bg-clip-text font-semibold text-transparent"
+            >YC W25</span
+          ></span
+        >
       </h2>
-    </section>
-    <section id="latest posts" class="mb-24">
-      <h1 class="text-xl font-semibold mb-6">Latest Posts</h1>
-      <div>
-        <BlogTimeline postCount={3} lineClamp="line-clamp-2" />
-      </div>
-    </section>
-    <section id="projects">
-      <h1 class="text-foreground mb-6 text-xl font-semibold">Projects</h1>
-      <Projects />
+      <section id="latest posts" class="my-24">
+        <h1 class="mb-6 text-xl font-semibold">Latest Posts</h1>
+        <div>
+          <BlogTimeline postCount={3} lineClamp="line-clamp-2" />
+        </div>
+      </section>
+      <section id="projects">
+        <h1 class="text-foreground mb-6 text-xl font-semibold">Projects</h1>
+        <Projects />
+      </section>
     </section>
   </article>
 </MainLayout>
