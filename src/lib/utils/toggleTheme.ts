@@ -25,5 +25,6 @@ export const toggleTheme = () => {
   disableTransitions();
 
   document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  document.documentElement.style.colorScheme = newTheme;
   localStorage.setItem('themeToggle', newTheme);
 };

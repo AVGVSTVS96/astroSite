@@ -238,7 +238,10 @@
 
   /* Selection color */
   ::selection {
-    background-color: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
+    background-color: theme('colors.gray.200');
+    
+  }
+  .dark ::selection {
+    background-color: theme('colors.gray.700');
   }
 }

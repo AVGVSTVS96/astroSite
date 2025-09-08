@@ -24,14 +24,15 @@ const { description, title } = Astro.props;
         (window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light');
-      document.documentElement.classList.toggle(
-        'dark',
-        preferredTheme === 'dark'
-      );
+      // Set class for Tailwind
+      document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
+      // Set color-scheme for light-dark() function
+      document.documentElement.style.colorScheme = preferredTheme;
 
       window.addEventListener('storage', () => {
-        const isDark = localStorage.getItem('themeToggle') === 'dark';
-        document.documentElement.classList.toggle('dark', isDark);
+        const theme = localStorage.getItem('themeToggle') || 'light';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.style.colorScheme = theme;
       });
     </script>
     <slot name="head" />
