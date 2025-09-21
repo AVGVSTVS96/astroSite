@@ -5,7 +5,7 @@ import icon from 'astro-icon';
 import expressiveCode, {
   type AstroExpressiveCodeOptions,
 } from 'astro-expressive-code';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
 
@@ -41,6 +41,6 @@ export default defineConfig({
     icon(),
     react(),
   ],
-  output: 'hybrid',
+  output: 'static',
   adapter: vercel(),
 });
