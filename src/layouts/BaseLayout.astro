@@ -17,7 +17,7 @@ const { description, title } = Astro.props;
     <Meta title={title} description={description} />
     <script is:inline>
       const storedTheme = localStorage.getItem('themeSwitcher');
-      const theme = storedTheme || 'sky';
+      const theme = storedTheme || 'orange';
       document.documentElement.setAttribute('data-theme', theme);
     </script>
     <script is:inline>
