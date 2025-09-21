@@ -4,14 +4,16 @@ import Meta from '@components/Meta.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import GlobalHotKeys from '@components/GlobalHotKeys';
-import FontSource from '@components/FontSource.astro';
+import { Font } from 'astro:assets';
+// import FontSource from '@components/FontSource.astro';
 
 const { description, title } = Astro.props;
 ---
 
 <html lang="en" class="min-h-dvh w-dvw scroll-pt-16">
   <head>
-    <FontSource />
+    <!-- <FontSource /> -->
+    <Font cssVariable="--font-family" preload />
     <Meta title={title} description={description} />
     <script is:inline>
       const storedTheme = localStorage.getItem('themeSwitcher');
@@ -24,9 +26,12 @@ const { description, title } = Astro.props;
         (window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light');
-      // Set class for Tailwind
-      document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
-      // Set color-scheme for light-dark() function
+
+      document.documentElement.classList.toggle(
+        'dark',
+        preferredTheme === 'dark'
+      );
+
       document.documentElement.style.colorScheme = preferredTheme;
 
       window.addEventListener('storage', () => {
@@ -44,5 +49,9 @@ const { description, title } = Astro.props;
       <slot />
     </main>
     <Footer />
-  </body>
+  </body><style>
+    body {
+      font-family: var(--font-inter);
+    }
+  </style>
 </html>
