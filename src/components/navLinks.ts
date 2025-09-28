@@ -24,6 +24,5 @@ export const mainLinks = [
 ];
 
 export const projectLinks = [
-  { name: 'First Website', href: '/flaskSite' },
   { name: 'Chat UI', href: '/gptchat' },
 ];
