@@ -1,11 +1,11 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import remarkSectionize from '@avgvstvs96/remark-sectionize';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
 import expressiveCode, {
   type AstroExpressiveCodeOptions,
 } from 'astro-expressive-code';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
 
@@ -26,6 +26,16 @@ const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    fonts: [{
+      provider: fontProviders.fontsource(),
+      name: 'Inter',
+      cssVariable: '--font-family',
+      weights: [400, 500, 600, 700, 800, 900],
+      styles: ['normal', 'italic'],
+      subsets: ['latin']
+    }]
+  },
   vite: {
     plugins: [tailwindcss()],
   },
@@ -41,6 +51,6 @@ export default defineConfig({
     icon(),
     react(),
   ],
-  output: 'hybrid',
+  output: 'static',
   adapter: vercel(),
 });

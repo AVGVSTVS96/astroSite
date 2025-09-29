@@ -4,7 +4,7 @@
  */
 const disableTransitions = () => {
   const css = document.createElement('style');
-  css.textContent = `* { transition: none !important; }`;
+  css.textContent = '* { transition: none !important; }';
   document.head.appendChild(css);
 
   // setTimeout(0) schedules style removal for the next event loop,
@@ -25,5 +25,6 @@ export const toggleTheme = () => {
   disableTransitions();
 
   document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  document.documentElement.style.colorScheme = newTheme;
   localStorage.setItem('themeToggle', newTheme);
 };

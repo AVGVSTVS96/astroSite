@@ -22,7 +22,7 @@ const image = data.image ? await getImage(data.image.url) : undefined;
 <BaseLayout {...Astro.props}>
   <script is:inline slot="head" type="application/ld+json" set:html={schema} />
   <div
-    class="grid grid-cols-1 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
+    class="grid grid-cols-1 mt-16 justify-center lg:grid-cols-[1fr_240px] 2xl:grid-cols-[240px_1fr_240px]">
     <div class="hidden 2xl:block"></div>
     <article class="mx-6 xs:mx-10">
       <Prose>

@@ -1,5 +1,5 @@
 title: react-shiki
 description: An NPM package which utilizes Shiki to implement syntax highlighting in React. Exports a React component and a hook.
-tags: [React, Shiki, TypeScript, NPM]
+tags: [React, Shiki, TypeScript]
 package: True
 url: https://github.com/AVGVSTVS96/react-shiki

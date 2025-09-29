@@ -1,4 +1,5 @@
-title: astroSite
-description: Built with Astro and TailwindCSS, this MPA portfolio & blog site is version 3 of my personal website, my first MPA.
-tags: [Astro, TailwindCSS, TypeScript]
-url: https://github.com/AVGVSTVS96/astroSite
+title: assistant-ui
+description: React framework and component library for building advanced, accessible AI-chat applications.
+tags: [React, TypeScript, AI, Framework]
+package: True
+url: https://github.com/!assistant-ui/assistant-ui

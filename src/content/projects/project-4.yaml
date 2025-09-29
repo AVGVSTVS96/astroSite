@@ -1,4 +1,4 @@
-title: FastGPT
-description: A high performance OpenAI GPT-4 chat app built with FastAPI. Featuring asynchronous requests, streaming responses, syntax highlighting, and more!
-tags: [FastAPI, OpenAI, Python, JavaScript]
-url: https://github.com/AVGVSTVS96/FastGPT
+title: astroSite
+description: Built with Astro and TailwindCSS, this MPA portfolio & blog site is version 3 of my personal website, my first MPA.
+tags: [Astro, TailwindCSS, TypeScript]
+url: https://github.com/AVGVSTVS96/astroSite

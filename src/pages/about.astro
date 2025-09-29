@@ -6,34 +6,62 @@ import MainLayout from '@layouts/MainLayout.astro';
   <div>
     <section class="card-mx card-p mt-8 max-w-3xl">
       <h3 class="mb-4 text-xl font-semibold">About Me</h3>
-      <div slot="content" class="space-y-4 text-muted-foreground">
+      <div
+        slot="content"
+        class="text-muted-foreground [&_a]:prose [&_a]:prose-neutral dark:[&_a]:prose-invert space-y-4">
         <p>
-          Based in NY, I'm a multifaceted tech enthusiast with experience in
-          hardware, software, network operations, cybersecurity, and
-          audio-visual systems. In my spare time, I love tinkering with 3D
-          printers and drones, using my electronics and software background to
-          build everything from custom parts to high performance racing drones.
+          Based in SF, I'm a software engineer and open source developer
+          obsessed with building tools that solve meaningful problems and push
+          the craft forward. I live for writing code that feels beautiful —
+          thoughtful interfaces, smart design, and tools that just work.
         </p>
-        <p>
-          Currently, I'm advancing my skillset in software engineering and web
-          development, using technologies like React, TypeScript, Astro, and
-          Next.js to build performant web applications. I'm also experimenting
-          with large language models, building infrastructure around models to
-          improve output quality and flexibility for creative use cases.
+        <p class="">
+          I'm building
+          <a
+            href="https://github.com/AVGVSTVS96/react-shiki"
+            class="dark:hover:text-accent-300 hover:text-accent-400"
+            >react-shiki</a
+          >, a fast and flexible client-focused syntax highlighter for React. It
+          provides a clean component API like
+          <a
+            href="https://github.com/react-syntax-highlighter/react-syntax-highlighter"
+            class="dark:hover:text-accent-300 hover:text-accent-400"
+            >react-syntax-highlighter</a
+          >, alongside a more flexible React hook, bringing the modern, powerful
+          <a
+            href="https://github.com/shikijs/shiki"
+            class="dark:hover:text-accent-300 hover:text-accent-400">Shiki</a
+          >
+          syntax highlighter to React in an elegant and intuitive package.
+          <p>
+            I'm also a Founding Engineer at
+            <a
+              href="https://github.com/assistant-ui/assistant-ui"
+              class="dark:hover:text-accent-300 hover:text-accent-400"
+              >assistant-ui</a
+            >, where we're raising the bar for developer experience (DX) and
+            accessibility in AI chat. It's a powerful SDK paired with a
+            shadcn-style UI library, giving you everything you need to spin up
+            an advanced, type-safe chat app with best-in-class design,
+            accessibility, and performance. From a production-grade app in
+            minutes to the most advanced workflows you can imagine, assistant-ui
+            covers the full spectrum with a clean, composable API and
+            exceptional DX.
+          </p>
         </p>
       </div>
-    </section>
-    <section class="card-mx card-p mt-4 max-w-3xl">
-      <h3 class="mb-4 text-xl font-semibold">About This Website</h3>
-      <div slot="content" class="space-y-4 text-muted-foreground">
-        <p>
-          This is website is built with Astro, Tailwind CSS, and React. It
-          serves as my portfolio website, showcasing my technical skills, blog
-          posts, and projects, while also acting as a sandbox to try things and
-          add new features as I continue to learn and grow as a software
-          developer.
-        </p>
-      </div>
+      <div class="mt-12">
+        <h3 class="mb-4 text-xl font-semibold">About This Website</h3>
+        <div slot="content" class="text-muted-foreground">
+          <p>
+            This is website is built with Astro, Tailwind CSS, and React. It
+            serves as my portfolio website, showcasing my technical skills, blog
+            posts, and projects, while also acting as a sandbox to try things
+            and add new features as I continue to learn and grow as a software
+            developer.
+          </p>
+        </div>
+      </section>
     </section>
   </div>
 </MainLayout>

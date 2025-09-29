@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Element } from 'hast';
 import { useShikiHighlighter, isInlineCode } from 'react-shiki';
-import tokyoNight from '@styles/tokyo-night.mjs';
+// import tokyoNight from '@styles/tokyo-night.mjs';
 
 interface CodeHighlightProps {
   className?: string | undefined;
@@ -20,14 +20,20 @@ export const CodeHighlight = ({
   const code = String(children).trim();
   const language = className?.split('language-')?.[1];
 
-  const highlightedCode = useShikiHighlighter(code, language, tokyoNight, {
-    tabindex: false,
-  });
+  const highlightedCode = useShikiHighlighter(
+    code,
+    language,
+    { dark: 'kanagawa-wave', light: 'kanagawa-lotus' },
+    {
+      tabindex: false,
+      defaultColor: 'light-dark()',
+    }
+  );
 
   const isInline = node && isInlineCode(node);
 
   return !isInline || !inline ? (
-    <div className="shiki not-prose relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
+    <div className="shiki not-prose [&_pre]:!bg-muted/95 dark:[&_pre]:!bg-muted/50 relative [&_pre]:overflow-auto [&_pre]:rounded-lg [&_pre]:px-6 [&_pre]:py-5">
       {language ? (
         <span className="text-muted-foreground/85 absolute top-2 right-3 text-xs tracking-tighter">
           {language}

@@ -4,18 +4,20 @@ import Meta from '@components/Meta.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import GlobalHotKeys from '@components/GlobalHotKeys';
-import FontSource from '@components/FontSource.astro';
+import { Font } from 'astro:assets';
+// import FontSource from '@components/FontSource.astro';
 
 const { description, title } = Astro.props;
 ---
 
 <html lang="en" class="min-h-dvh w-dvw scroll-pt-16">
   <head>
-    <FontSource />
+    <!-- <FontSource /> -->
+    <Font cssVariable="--font-family" preload />
     <Meta title={title} description={description} />
     <script is:inline>
       const storedTheme = localStorage.getItem('themeSwitcher');
-      const theme = storedTheme || 'sky';
+      const theme = storedTheme || 'orange';
       document.documentElement.setAttribute('data-theme', theme);
     </script>
     <script is:inline>
@@ -24,14 +26,18 @@ const { description, title } = Astro.props;
         (window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light');
+
       document.documentElement.classList.toggle(
         'dark',
         preferredTheme === 'dark'
       );
 
+      document.documentElement.style.colorScheme = preferredTheme;
+
       window.addEventListener('storage', () => {
-        const isDark = localStorage.getItem('themeToggle') === 'dark';
-        document.documentElement.classList.toggle('dark', isDark);
+        const theme = localStorage.getItem('themeToggle') || 'light';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.style.colorScheme = theme;
       });
     </script>
     <slot name="head" />
