@@ -238,10 +238,10 @@
 
   /* Selection color */
   ::selection {
-    background-color: theme('colors.gray.200');
+    background-color: theme('colors.zinc.200 / 75%');
     
   }
   .dark ::selection {
-    background-color: theme('colors.gray.700');
+    background-color: theme('colors.zinc.700 / 50%');
   }
 }
