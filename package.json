@@ -53,16 +53,16 @@
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.4",
-    "@biomejs/biome": "1.8.3",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
+    "@astrojs/check": "0.9.5",
+    "@biomejs/biome": "1.9.4",
+    "@types/react": "18.3.26",
+    "@types/react-dom": "18.3.7",
     "@types/react-syntax-highlighter": "15.5.13",
-    "prettier": "3.3.3",
-    "prettier-plugin-astro": "0.14.0",
-    "prettier-plugin-tailwindcss": "^0.6.9",
-    "type-coverage": "2.29.1",
-    "typescript": "5.5.3"
+    "prettier": "3.6.2",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "type-coverage": "2.29.7",
+    "typescript": "5.9.3"
   },
   "packageManager": "bun@1.2.0"
 }
