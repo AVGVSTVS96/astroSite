@@ -3,15 +3,11 @@ import Social from '@components/Social.astro';
 ---
 
 <footer class="w-full border-t border-border">
-  <div class="max-w-3xl mx-auto px-6 py-6">
-    <div class="flex items-center justify-between text-muted-foreground">
-      <div class="flex items-center gap-3">
-        <Social platform="github" />
-        <Social platform="linkedin" />
-      </div>
-      <span class="text-[11px] font-mono">
-        {new Date().getFullYear()}
-      </span>
+  <div class="px-6 lg:px-12 py-6 flex items-center justify-between text-muted-foreground">
+    <div class="flex items-center gap-4">
+      <Social platform="github" />
+      <Social platform="linkedin" />
     </div>
+    <span class="text-[11px] font-mono">{new Date().getFullYear()}</span>
   </div>
 </footer>

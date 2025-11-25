@@ -8,71 +8,62 @@ import { Icon } from 'astro-icon/components';
 <MainLayout
   title="Bassim Shahidy"
   description="Bassim Shahidy's personal website">
-  <div class="w-full">
-    {/* Hero */}
-    <section class="border-b border-border">
-      <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
-        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
+
+  {/* Full-width grid structure */}
+  <div class="w-full border-b border-border">
+    {/* Hero row */}
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-[50vh]">
+      <div class="flex flex-col justify-end p-8 lg:p-12 lg:border-r border-border">
+        <h1 class="text-4xl lg:text-5xl font-semibold tracking-tight">
           Bassim Shahidy
         </h1>
-        <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground max-w-lg">
+        <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground max-w-md">
           Founding engineer at{' '}
           <a href="https://github.com/assistant-ui/assistant-ui" class="link">assistant-ui</a>
-          <span class="ml-1.5 inline-flex items-baseline">
-            <span class="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-accent-500/10 text-accent-600 dark:text-accent-400">
-              YC W25
-            </span>
+          <span class="ml-1.5 px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-accent-500/10 text-accent-600 dark:text-accent-400">
+            YC W25
           </span>
         </p>
-        <div class="mt-6 flex items-center gap-3">
+        <div class="mt-6 flex items-center gap-4">
           <a href="https://github.com/AVGVSTVS96" class="link-subtle" aria-label="GitHub">
-            <Icon name="github" class="size-[18px]" />
+            <Icon name="github" class="size-5" />
           </a>
           <a href="https://linkedin.com/in/bassimshahidy" class="link-subtle" aria-label="LinkedIn">
-            <Icon name="linkedin" class="size-[18px]" />
+            <Icon name="linkedin" class="size-5" />
           </a>
         </div>
       </div>
-    </section>
-
-    {/* Content Grid */}
-    <section class="border-b border-border">
-      <div class="max-w-3xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          {/* Posts */}
-          <div class="px-6 py-10 md:border-r border-border">
-            <div class="flex items-baseline justify-between mb-6">
-              <span class="label">Writing</span>
-              <a href="/blog" class="text-[11px] font-mono text-muted-foreground hover:text-foreground transition-colors duration-150">
-                All posts →
-              </a>
-            </div>
-            <BlogTimeline postCount={3} />
-          </div>
-
-          {/* Projects */}
-          <div class="px-6 py-10 border-t md:border-t-0 border-border">
-            <div class="mb-6">
-              <span class="label">Projects</span>
-            </div>
-            <Projects />
-          </div>
-        </div>
+      <div class="hidden lg:flex flex-col justify-end p-12 border-t lg:border-t-0 border-border">
+        <p class="text-[15px] leading-relaxed text-muted-foreground max-w-sm">
+          Building{' '}
+          <a href="https://github.com/AVGVSTVS96/react-shiki" class="link">react-shiki</a>
+          {' '}and contributing to the AI chat ecosystem. Based in SF.
+        </p>
       </div>
-    </section>
+    </div>
+  </div>
 
-    {/* About */}
-    <section>
-      <div class="max-w-3xl mx-auto px-6 py-10">
-        <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-6">
-          <span class="label">About</span>
-          <p class="text-[15px] leading-relaxed text-muted-foreground">
-            Based in SF. Building{' '}
-            <a href="https://github.com/AVGVSTVS96/react-shiki" class="link">react-shiki</a>
-            {' '}and contributing to the AI chat ecosystem.
-          </p>
+  {/* Content grid */}
+  <div class="w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr]">
+      {/* Writing column */}
+      <div class="p-8 lg:p-12 lg:border-r border-border">
+        <div class="flex items-baseline justify-between mb-8">
+          <span class="label">Writing</span>
+          <a href="/blog" class="text-[11px] font-mono text-muted-foreground hover:text-foreground transition-colors duration-150">
+            All →
+          </a>
         </div>
+        <BlogTimeline postCount={4} />
       </div>
-    </section>
+
+      {/* Projects column */}
+      <div class="p-8 lg:p-12 border-t lg:border-t-0 border-border">
+        <div class="mb-8">
+          <span class="label">Projects</span>
+        </div>
+        <Projects />
+      </div>
+    </div>
   </div>
 </MainLayout>

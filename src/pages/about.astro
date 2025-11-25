@@ -3,55 +3,60 @@ import MainLayout from '@layouts/MainLayout.astro';
 ---
 
 <MainLayout title="About" description="About Bassim Shahidy">
+  {/* Hero */}
+  <div class="w-full border-b border-border">
+    <div class="p-8 lg:p-12 min-h-[30vh] flex flex-col justify-end">
+      <h1 class="text-4xl lg:text-5xl font-semibold tracking-tight">About</h1>
+    </div>
+  </div>
+
+  {/* Content */}
   <div class="w-full">
-    <section class="border-b border-border">
-      <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
-        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
-          About
-        </h1>
-      </div>
-    </section>
-
-    <section class="border-b border-border">
-      <div class="max-w-3xl mx-auto px-6 py-10">
-        <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr]">
+      {/* Bio */}
+      <div class="p-8 lg:p-12 lg:border-r border-border">
+        <div class="mb-8">
           <span class="label">Bio</span>
-          <div class="space-y-4 text-[15px] leading-relaxed text-muted-foreground">
-            <p>
-              Based in SF, I'm a software engineer and open source developer
-              obsessed with building tools that solve meaningful problems.
-            </p>
-            <p>
-              I'm building{' '}
-              <a href="https://github.com/AVGVSTVS96/react-shiki" class="link">react-shiki</a>,
-              a fast and flexible syntax highlighter for React, bringing{' '}
-              <a href="https://github.com/shikijs/shiki" class="link">Shiki</a>
-              {' '}to React with a clean component API.
-            </p>
-            <p>
-              I'm also a Founding Engineer at{' '}
-              <a href="https://github.com/assistant-ui/assistant-ui" class="link">assistant-ui</a>,
-              building the next generation of AI chat interfaces with
-              exceptional DX and accessibility.
-            </p>
-          </div>
+        </div>
+        <div class="space-y-4 text-[15px] leading-relaxed text-muted-foreground max-w-lg">
+          <p>
+            Based in SF, I'm a software engineer and open source developer
+            obsessed with building tools that solve meaningful problems.
+          </p>
+          <p>
+            I'm building{' '}
+            <a href="https://github.com/AVGVSTVS96/react-shiki" class="link">react-shiki</a>,
+            a fast and flexible syntax highlighter for React, bringing{' '}
+            <a href="https://github.com/shikijs/shiki" class="link">Shiki</a>
+            {' '}to React with a clean component API.
+          </p>
+          <p>
+            I'm also a Founding Engineer at{' '}
+            <a href="https://github.com/assistant-ui/assistant-ui" class="link">assistant-ui</a>,
+            building the next generation of AI chat interfaces with
+            exceptional DX and accessibility.
+          </p>
         </div>
       </div>
-    </section>
 
-    <section>
-      <div class="max-w-3xl mx-auto px-6 py-10">
-        <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-6">
+      {/* Stack */}
+      <div class="p-8 lg:p-12 border-t lg:border-t-0 border-border">
+        <div class="mb-8">
           <span class="label">Stack</span>
-          <div class="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-muted-foreground font-mono">
-            <span>TypeScript</span>
-            <span>React</span>
-            <span>Astro</span>
-            <span>Tailwind</span>
-            <span>Node.js</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4 text-[15px] text-muted-foreground">
+          <div class="space-y-3">
+            <p>TypeScript</p>
+            <p>React</p>
+            <p>Next.js</p>
+          </div>
+          <div class="space-y-3">
+            <p>Astro</p>
+            <p>Tailwind</p>
+            <p>Node.js</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </MainLayout>

@@ -10,9 +10,9 @@ import { sortedBlogPosts } from '@/lib/utils/getSortedPosts';
 import { isActiveLink } from '@/lib/utils';
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur-md">
-  <div class="max-w-3xl mx-auto px-6 h-12 flex items-center justify-between">
-    <div class="flex items-center gap-6">
+<header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm supports-[backdrop-filter]:bg-background/60">
+  <div class="h-12 px-6 lg:px-12 flex items-center justify-between">
+    <div class="flex items-center gap-8">
       <Logo />
       <nav class="hidden sm:flex items-center gap-1">
         {
@@ -24,7 +24,7 @@ import { isActiveLink } from '@/lib/utils';
               <a
                 href={link.href}
                 class:list={[
-                  'px-2.5 py-1 text-[13px] transition-colors duration-150',
+                  'px-3 py-1.5 text-[13px] transition-colors duration-150',
                   isActive
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground',
