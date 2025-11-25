@@ -1,5 +1,4 @@
 ---
-import { Button } from '@components/ui/button';
 import { ModeToggle } from '@components/ModeToggle';
 import { SideMenu } from '@components/SideMenu';
 import { CommandMenu } from '@components/CommandMenu';
@@ -11,13 +10,13 @@ import { sortedBlogPosts } from '@/lib/utils/getSortedPosts';
 import { isActiveLink } from '@/lib/utils';
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-    <div class="flex items-center gap-8">
+<header class="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur-md">
+  <div class="max-w-3xl mx-auto px-6 h-12 flex items-center justify-between">
+    <div class="flex items-center gap-6">
       <Logo />
       <nav class="hidden sm:flex items-center gap-1">
         {
-          mainLinks.map((link, index) => {
+          mainLinks.map((link) => {
             const currentPath = new URL(Astro.request.url).pathname;
             const isActive = isActiveLink(currentPath, link.href);
 
@@ -25,7 +24,7 @@ import { isActiveLink } from '@/lib/utils';
               <a
                 href={link.href}
                 class:list={[
-                  'px-3 py-1.5 text-sm transition-colors rounded-md',
+                  'px-2.5 py-1 text-[13px] transition-colors duration-150',
                   isActive
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground',
@@ -38,7 +37,7 @@ import { isActiveLink } from '@/lib/utils';
         <ProjectsDropdown client:load />
       </nav>
     </div>
-    <div class="flex items-center gap-1">
+    <div class="flex items-center gap-0.5">
       <CommandMenu client:load sortedPosts={sortedBlogPosts} />
       <AccentColorSelector client:load />
       <SideMenu client:load sortedPosts={sortedBlogPosts} />

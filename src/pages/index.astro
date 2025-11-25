@@ -8,70 +8,69 @@ import { Icon } from 'astro-icon/components';
 <MainLayout
   title="Bassim Shahidy"
   description="Bassim Shahidy's personal website">
-  <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-    <!-- Hero -->
-    <header class="mb-16">
-      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
-        Bassim Shahidy
-      </h1>
-      <p class="text-lg text-muted-foreground max-w-2xl">
-        Founding engineer at{' '}
-        <a href="https://github.com/assistant-ui/assistant-ui" class="text-foreground hover:text-accent-500 transition-colors">assistant-ui</a>
-        <span class="ml-2 inline-flex items-center px-2 py-0.5 text-xs font-mono font-medium rounded border border-accent-500/30 text-accent-500 bg-accent-500/10">
-          YC W25
-        </span>
-      </p>
-    </header>
-
-    <!-- Bento Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border rounded-lg overflow-hidden border border-border">
-      <!-- Posts Cell -->
-      <section class="bg-background p-6 lg:p-8">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
-            Latest Posts
-          </h2>
-          <a href="/blog" class="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors">
-            View all →
+  <div class="w-full">
+    {/* Hero */}
+    <section class="border-b border-border">
+      <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
+          Bassim Shahidy
+        </h1>
+        <p class="mt-4 text-[15px] leading-relaxed text-muted-foreground max-w-lg">
+          Founding engineer at{' '}
+          <a href="https://github.com/assistant-ui/assistant-ui" class="link">assistant-ui</a>
+          <span class="ml-1.5 inline-flex items-baseline">
+            <span class="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-accent-500/10 text-accent-600 dark:text-accent-400">
+              YC W25
+            </span>
+          </span>
+        </p>
+        <div class="mt-6 flex items-center gap-3">
+          <a href="https://github.com/AVGVSTVS96" class="link-subtle" aria-label="GitHub">
+            <Icon name="github" class="size-[18px]" />
+          </a>
+          <a href="https://linkedin.com/in/bassimshahidy" class="link-subtle" aria-label="LinkedIn">
+            <Icon name="linkedin" class="size-[18px]" />
           </a>
         </div>
-        <BlogTimeline postCount={3} lineClamp="line-clamp-2" />
-      </section>
+      </div>
+    </section>
 
-      <!-- Projects Cell -->
-      <section class="bg-background p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-border">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
-            Projects
-          </h2>
-        </div>
-        <Projects />
-      </section>
-    </div>
-
-    <!-- About snippet -->
-    <section class="mt-16 pt-16 border-t border-border">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
-            About
-          </h2>
-        </div>
-        <div class="md:col-span-2">
-          <p class="text-muted-foreground leading-relaxed">
-            Based in SF, I'm a software engineer and open source developer building tools that solve meaningful problems.
-            Currently focused on{' '}
-            <a href="https://github.com/AVGVSTVS96/react-shiki" class="text-foreground hover:text-accent-500 transition-colors">react-shiki</a>,
-            a fast syntax highlighter for React, and contributing to the AI chat ecosystem at assistant-ui.
-          </p>
-          <div class="mt-6 flex items-center gap-4">
-            <a href="https://github.com/AVGVSTVS96" class="text-muted-foreground hover:text-foreground transition-colors">
-              <Icon name="github" class="size-5" />
-            </a>
-            <a href="https://linkedin.com/in/bassimshahidy" class="text-muted-foreground hover:text-foreground transition-colors">
-              <Icon name="linkedin" class="size-5" />
-            </a>
+    {/* Content Grid */}
+    <section class="border-b border-border">
+      <div class="max-w-3xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          {/* Posts */}
+          <div class="px-6 py-10 md:border-r border-border">
+            <div class="flex items-baseline justify-between mb-6">
+              <span class="label">Writing</span>
+              <a href="/blog" class="text-[11px] font-mono text-muted-foreground hover:text-foreground transition-colors duration-150">
+                All posts →
+              </a>
+            </div>
+            <BlogTimeline postCount={3} />
           </div>
+
+          {/* Projects */}
+          <div class="px-6 py-10 border-t md:border-t-0 border-border">
+            <div class="mb-6">
+              <span class="label">Projects</span>
+            </div>
+            <Projects />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* About */}
+    <section>
+      <div class="max-w-3xl mx-auto px-6 py-10">
+        <div class="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-6">
+          <span class="label">About</span>
+          <p class="text-[15px] leading-relaxed text-muted-foreground">
+            Based in SF. Building{' '}
+            <a href="https://github.com/AVGVSTVS96/react-shiki" class="link">react-shiki</a>
+            {' '}and contributing to the AI chat ecosystem.
+          </p>
         </div>
       </div>
     </section>

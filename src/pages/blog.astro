@@ -4,19 +4,25 @@ import BlogTimeline from '@components/BlogTimeline.astro';
 ---
 
 <BaseLayout title="Blog" description="Blog posts by Bassim Shahidy">
-  <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-    <header class="mb-16">
-      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Blog</h1>
-      <p class="mt-4 text-muted-foreground">
-        Thoughts on software engineering, web development, and open source.
-      </p>
-    </header>
+  <div class="w-full">
+    <section class="border-b border-border">
+      <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
+          Blog
+        </h1>
+        <p class="mt-4 text-[15px] text-muted-foreground">
+          Writing about software, web development, and building things.
+        </p>
+      </div>
+    </section>
 
     <section>
-      <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-6">
-        All Posts
-      </h2>
-      <BlogTimeline lineClamp="line-clamp-3" />
+      <div class="max-w-3xl mx-auto px-6 py-10">
+        <div class="mb-6">
+          <span class="label">All Posts</span>
+        </div>
+        <BlogTimeline lineClamp="line-clamp-3" />
+      </div>
     </section>
   </div>
 </BaseLayout>

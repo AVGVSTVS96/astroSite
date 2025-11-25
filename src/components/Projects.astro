@@ -7,50 +7,40 @@ const projects = await getCollection('projects');
 const versions = await getPackageVersions(projects);
 ---
 
-<div class="space-y-4">
+<ul class="space-y-5">
   {
     projects.map((project) => (
-      <article class="group">
-        <div class="flex items-start justify-between gap-4">
+      <li class="group">
+        <div class="flex items-start justify-between gap-3">
           <div class="min-w-0 flex-1">
-            <div class="flex items-center gap-2 mb-1">
-              <h3 class="font-medium text-foreground group-hover:text-accent-500 transition-colors truncate">
-                <a href={project.data.url} class="hover:underline underline-offset-4">
-                  {project.data.title}
-                </a>
-              </h3>
+            <div class="flex items-center gap-2">
+              <a
+                href={project.data.url}
+                class="text-[15px] font-medium text-foreground group-hover:text-accent-500 transition-colors duration-150 truncate">
+                {project.data.title}
+              </a>
               {project.data.package && (
                 <a
                   href={`https://www.npmjs.com/package/${project.data.title}`}
                   class="shrink-0">
-                  <span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono rounded border border-border text-muted-foreground hover:border-accent-500/50 hover:text-accent-500 transition-colors">
+                  <span class="text-[10px] font-mono text-muted-foreground hover:text-foreground transition-colors duration-150">
                     {versions.get(project.id)}
                   </span>
                 </a>
               )}
             </div>
-            <p class="text-sm text-muted-foreground line-clamp-2">
+            <p class="mt-1 text-[13px] leading-relaxed text-muted-foreground line-clamp-2">
               {project.data.description}
             </p>
-            {project.data.tags && (
-              <div class="flex flex-wrap gap-1.5 mt-2">
-                {project.data.tags.map((tag: string) => (
-                  <span class="text-[10px] font-mono text-muted-foreground/70">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
           <a
             aria-label={`View ${project.data.title} on GitHub`}
-            class="shrink-0 p-1 text-muted-foreground hover:text-foreground transition-colors"
+            class="shrink-0 text-muted-foreground hover:text-foreground transition-colors duration-150"
             href={project.data.url}>
             <Icon name="github" class="size-4" />
           </a>
         </div>
-        <div class="mt-4 border-b border-border/50 group-last:border-0" />
-      </article>
+      </li>
     ))
   }
-</div>
+</ul>

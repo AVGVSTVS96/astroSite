@@ -9,31 +9,29 @@ const latestPosts = Astro.props.postCount
 interface Props {
   postCount?: number;
   lineClamp?: string;
-  split?: boolean;
 }
 
-const { lineClamp, split = false } = Astro.props;
+const { lineClamp = 'line-clamp-2' } = Astro.props;
 ---
 
-<div class="space-y-4">
+<ul class="space-y-5">
   {
     latestPosts.map((post) => (
-      <article class="group">
-        <a href={`/posts/${post.slug}`} class="block">
-          <div class="flex items-baseline justify-between gap-4 mb-1">
-            <h3 class="font-medium text-foreground group-hover:text-accent-500 transition-colors">
+      <li>
+        <a href={`/posts/${post.slug}`} class="group block">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-[15px] font-medium text-foreground group-hover:text-accent-500 transition-colors duration-150 truncate">
               {post.data.title}
             </h3>
-            <time class="shrink-0 text-xs font-mono text-muted-foreground tabular-nums">
+            <time class="shrink-0 text-[11px] font-mono text-muted-foreground tabular-nums">
               {formatDate(post.data.pubDate)}
             </time>
           </div>
-          <p class:list={['text-sm text-muted-foreground', lineClamp]}>
+          <p class:list={['mt-1 text-[13px] leading-relaxed text-muted-foreground', lineClamp]}>
             {post.data.description}
           </p>
         </a>
-        <div class="mt-4 border-b border-border/50 group-last:border-0" />
-      </article>
+      </li>
     ))
   }
-</div>
+</ul>

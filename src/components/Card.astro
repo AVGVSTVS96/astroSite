@@ -23,21 +23,21 @@ const {
   noMargin = false,
 } = Astro.props;
 
-const baseStyles: string =
-  'prose prose-neutral dark:prose-invert prose-h2:font-semibold prose-h2:text-lg prose-h2:text-muted-foreground rounded-lg transition-colors';
+const baseStyles =
+  'prose prose-neutral dark:prose-invert prose-h2:font-medium prose-h2:text-muted-foreground transition-colors duration-150';
 
-const variableStyles: (string | undefined)[] = [
+const variableStyles = [
   padding,
   className,
   noMargin ? '' : 'mx-4',
-  variant === 'borderless' ? 'bg-muted/50' : 'border border-border bg-card',
+  variant === 'borderless' ? '' : 'border border-border rounded-lg',
 ];
 ---
 
 <div class={cn(baseStyles, variableStyles)}>
-  {title && <h1 class="mb-2 text-xl font-semibold">{title}</h1>}
-  {subtitle && <h2 class="mt-0">{subtitle}</h2>}
+  {title && <h1 class="text-xl font-semibold mb-2">{title}</h1>}
+  {subtitle && <h2 class="mt-0 text-[15px]">{subtitle}</h2>}
   {displayHr && <hr class="mb-6 border-border" />}
-  {heading && <h3 class="mb-1 text-base font-medium">{heading}</h3>}
+  {heading && <h3 class="text-[15px] font-medium mb-1">{heading}</h3>}
   <slot name="content" />
 </div>
