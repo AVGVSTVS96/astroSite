@@ -1,5 +1,4 @@
 ---
-import { Button } from '@components/ui/button';
 import { ModeToggle } from '@components/ModeToggle';
 import { SideMenu } from '@components/SideMenu';
 import { CommandMenu } from '@components/CommandMenu';
@@ -11,40 +10,38 @@ import { sortedBlogPosts } from '@/lib/utils/getSortedPosts';
 import { isActiveLink } from '@/lib/utils';
 ---
 
-<header
-  class="sticky top-0 z-10 flex w-full items-center border-b border-border/50 bg-background/80 backdrop-blur-xl backdrop-saturate-150 px-[clamp(0.75rem,3vw,2.5rem)] py-2">
-  <Logo />
-  <div class="button-container ml-2 flex w-full items-center justify-between">
-    <nav>
-      <span class="hidden gap-2 px-4 sm:flex">
+<header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm supports-[backdrop-filter]:bg-background/60">
+  <div class="h-12 px-6 lg:px-12 flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <Logo />
+      <nav class="hidden sm:flex items-center gap-1">
         {
-          mainLinks.map((link, index) => {
+          mainLinks.map((link) => {
             const currentPath = new URL(Astro.request.url).pathname;
-            const activeClass = isActiveLink(currentPath, link.href);
+            const isActive = isActiveLink(currentPath, link.href);
 
             return (
-              <a href={link.href} class="rounded-md">
-                <Button
-                  client:load
-                  aria-label={link.name}
-                  key={index}
-                  tabIndex={-1}
-                  variant="link"
-                  className={`h-9 px-2 hover:no-underline ${activeClass}`}>
-                  {link.name}
-                </Button>
+              <a
+                href={link.href}
+                class:list={[
+                  'px-3 py-1.5 text-[13px] transition-colors duration-150',
+                  isActive
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground',
+                ]}>
+                {link.name}
               </a>
             );
           })
         }
         <ProjectsDropdown client:load />
-      </span>
-    </nav>
-    <span class="flex items-center gap-2">
+      </nav>
+    </div>
+    <div class="flex items-center gap-0.5">
       <CommandMenu client:load sortedPosts={sortedBlogPosts} />
       <AccentColorSelector client:load />
       <SideMenu client:load sortedPosts={sortedBlogPosts} />
       <ModeToggle client:load />
-    </span>
+    </div>
   </div>
 </header>

@@ -9,44 +9,29 @@ const latestPosts = Astro.props.postCount
 interface Props {
   postCount?: number;
   lineClamp?: string;
-  split?: boolean;
 }
 
-const { lineClamp, split = false } = Astro.props;
+const { lineClamp = 'line-clamp-2' } = Astro.props;
 ---
 
-<div class="relative">
-  <!-- Continuous timeline line -->
-  <div class="absolute left-4 sm:left-8 top-[30px] bottom-[30px] w-[1px] bg-border/40"></div>
-  
+<ul class="space-y-5">
   {
-    latestPosts.map((post, index) => (
-      <article class="group relative">
-        <a href={`/posts/${post.slug}`} class="block">
-          <div class="relative py-6 pl-8 sm:pl-16">
-            <!-- Timeline dot -->
-            <div class="absolute left-[13px] sm:left-[29px] top-[31px] h-[7px] w-[7px] rounded-full bg-border group-hover:bg-accent-500 transition-all duration-200 z-10"></div>
-            
-            <!-- Content -->
-            <div class="relative">
-              <div class="mb-2">
-                <div class="flex items-start justify-between gap-4">
-                  <h2 class="text-base font-medium text-foreground group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
-                    {post.data.title}
-                  </h2>
-                  <time class="text-xs text-muted-foreground whitespace-nowrap mt-0.5">
-                    {formatDate(post.data.pubDate)}
-                  </time>
-                </div>
-              </div>
-              
-              <p class:list={['text-sm text-muted-foreground leading-relaxed', lineClamp]}>
-                {post.data.description}
-              </p>
-            </div>
+    latestPosts.map((post) => (
+      <li>
+        <a href={`/posts/${post.slug}`} class="group block">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-[15px] font-medium text-foreground group-hover:text-accent-500 transition-colors duration-150 truncate">
+              {post.data.title}
+            </h3>
+            <time class="shrink-0 text-[11px] font-mono text-muted-foreground tabular-nums">
+              {formatDate(post.data.pubDate)}
+            </time>
           </div>
+          <p class:list={['mt-1 text-[13px] leading-relaxed text-muted-foreground', lineClamp]}>
+            {post.data.description}
+          </p>
         </a>
-      </article>
+      </li>
     ))
   }
-</div>
+</ul>

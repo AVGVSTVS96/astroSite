@@ -1,19 +1,13 @@
 ---
 import Social from '@components/Social.astro';
-
-const name = 'Bassim';
 ---
 
-<footer
-  class="footer-container mt-8 pb-4 flex w-[calc(100%-32px)] sm:px-4 md:px-8">
-  <div
-    class="m-3 flex w-full items-center justify-between gap-4 text-sm text-muted-foreground/90">
-    <div class="flex gap-4">
+<footer class="w-full border-t border-border">
+  <div class="px-6 lg:px-12 py-6 flex items-center justify-between text-muted-foreground">
+    <div class="flex items-center gap-4">
       <Social platform="github" />
       <Social platform="linkedin" />
     </div>
-    <div class="flex gap-4 text-balance">
-      <span>Made by {name} &ThickSpace; &bull; &ThickSpace; <time>{new Date().getFullYear()}</time></span>
-    </div>
+    <span class="text-[11px] font-mono">{new Date().getFullYear()}</span>
   </div>
 </footer>
