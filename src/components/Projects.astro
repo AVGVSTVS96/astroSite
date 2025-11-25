@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import Card from '@components/Card.astro';
 import { Icon } from 'astro-icon/components';
 import { getPackageVersions } from '@/lib/utils/getNpmVersion';
 
@@ -8,54 +7,50 @@ const projects = await getCollection('projects');
 const versions = await getPackageVersions(projects);
 ---
 
-<div>
-  <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
-    {
-      projects.map((project) => (
-        <li>
-          <Card variant="bordered" padding="px-4 pt-3 pb-4" noMargin={true}>
-            <div slot="content">
-              <span class="flex items-center justify-between font-bold [&>span]:gap-2">
-                <span class="flex items-center">
+<div class="space-y-4">
+  {
+    projects.map((project) => (
+      <article class="group">
+        <div class="flex items-start justify-between gap-4">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="font-medium text-foreground group-hover:text-accent-500 transition-colors truncate">
+                <a href={project.data.url} class="hover:underline underline-offset-4">
                   {project.data.title}
-                  {project.data.package && (
-                    <a href={`https://www.npmjs.com/package/${project.data.title}`} class="no-underline">
-                      <span class="rounded-md border border-border hover:border-accent-400 dark:hover:border-accent-400 px-1 py-0.5 text-xs font-semibold">
-                        {versions.get(project.id)}
-                      </span>
-                    </a>
-                  )}
-                </span>
-                <span class="flex items-center">
-                  <a
-                    aria-label="github project link"
-                    class="text-muted-foreground no-underline hover:text-foreground"
-                    href={project.data.url}>
-                    <Icon name="github" class="size-4" />
-                  </a>
-              <!-- icon alignment is inconsistent between project cards, ridiculous -->
-                  <!-- {project.data.package && (<a -->
-                  <!--   aria-label="npm package link" -->
-                  <!--   class="text-muted-foreground no-underline hover:text-foreground" -->
-                  <!--   href={`https://www.npmjs.com/package/${project.data.title}`}> -->
-                  <!--   <Icon name="npm" class="size-6" /> -->
-                  <!-- </a>)} -->
-                </span>
-              </span>
-              <p class="mb-4 mt-1.5 line-clamp-2 text-[0.925rem] text-muted-foreground">
-                {project.data.description}
-              </p>
-              <div class="flex flex-wrap gap-2">
+                </a>
+              </h3>
+              {project.data.package && (
+                <a
+                  href={`https://www.npmjs.com/package/${project.data.title}`}
+                  class="shrink-0">
+                  <span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono rounded border border-border text-muted-foreground hover:border-accent-500/50 hover:text-accent-500 transition-colors">
+                    {versions.get(project.id)}
+                  </span>
+                </a>
+              )}
+            </div>
+            <p class="text-sm text-muted-foreground line-clamp-2">
+              {project.data.description}
+            </p>
+            {project.data.tags && (
+              <div class="flex flex-wrap gap-1.5 mt-2">
                 {project.data.tags.map((tag: string) => (
-                  <div class="rounded-xl border border-accent-400 bg-accent-50 px-2 py-[3px] text-xs text-accent-700/85 dark:border-accent-500/15 dark:bg-accent-500/10 dark:text-accent-300">
+                  <span class="text-[10px] font-mono text-muted-foreground/70">
                     {tag}
-                  </div>
+                  </span>
                 ))}
               </div>
-            </div>
-          </Card>
-        </li>
-      ))
-    }
-  </ul>
+            )}
+          </div>
+          <a
+            aria-label={`View ${project.data.title} on GitHub`}
+            class="shrink-0 p-1 text-muted-foreground hover:text-foreground transition-colors"
+            href={project.data.url}>
+            <Icon name="github" class="size-4" />
+          </a>
+        </div>
+        <div class="mt-4 border-b border-border/50 group-last:border-0" />
+      </article>
+    ))
+  }
 </div>

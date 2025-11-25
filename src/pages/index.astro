@@ -2,35 +2,78 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import BlogTimeline from '@components/BlogTimeline.astro';
 import Projects from '@components/Projects.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <MainLayout
   title="Bassim Shahidy"
   description="Bassim Shahidy's personal website">
-  <article class="card-mx card-p max-w-3xl">
-    <section id="hero section" class="mt-16 mb-24">
-      <h1 class="mb-2 text-[2.5rem] leading-tight font-bold tracking-tight">
-        Hi, I'm Bassim
+  <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <!-- Hero -->
+    <header class="mb-16">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+        Bassim Shahidy
       </h1>
-      <h2 class="text-muted-foreground text-xl font-medium">
-        I'm a founding engineer at <span class="">
-          <span class="text-foreground font-bold"> assistant-ui </span>
-          <span
-            class="ml-1 bg-gradient-to-r from-orange-500 from-15% via-orange-400 via-70% to-amber-400 bg-clip-text font-semibold text-transparent"
-            >YC W25</span
-          ></span
-        >
-      </h2>
-      <section id="latest posts" class="my-24">
-        <h1 class="mb-6 text-xl font-semibold">Latest Posts</h1>
-        <div>
-          <BlogTimeline postCount={3} lineClamp="line-clamp-2" />
+      <p class="text-lg text-muted-foreground max-w-2xl">
+        Founding engineer at{' '}
+        <a href="https://github.com/assistant-ui/assistant-ui" class="text-foreground hover:text-accent-500 transition-colors">assistant-ui</a>
+        <span class="ml-2 inline-flex items-center px-2 py-0.5 text-xs font-mono font-medium rounded border border-accent-500/30 text-accent-500 bg-accent-500/10">
+          YC W25
+        </span>
+      </p>
+    </header>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border rounded-lg overflow-hidden border border-border">
+      <!-- Posts Cell -->
+      <section class="bg-background p-6 lg:p-8">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            Latest Posts
+          </h2>
+          <a href="/blog" class="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors">
+            View all →
+          </a>
         </div>
+        <BlogTimeline postCount={3} lineClamp="line-clamp-2" />
       </section>
-      <section id="projects">
-        <h1 class="text-foreground mb-6 text-xl font-semibold">Projects</h1>
+
+      <!-- Projects Cell -->
+      <section class="bg-background p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-border">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            Projects
+          </h2>
+        </div>
         <Projects />
       </section>
+    </div>
+
+    <!-- About snippet -->
+    <section class="mt-16 pt-16 border-t border-border">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
+            About
+          </h2>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-muted-foreground leading-relaxed">
+            Based in SF, I'm a software engineer and open source developer building tools that solve meaningful problems.
+            Currently focused on{' '}
+            <a href="https://github.com/AVGVSTVS96/react-shiki" class="text-foreground hover:text-accent-500 transition-colors">react-shiki</a>,
+            a fast syntax highlighter for React, and contributing to the AI chat ecosystem at assistant-ui.
+          </p>
+          <div class="mt-6 flex items-center gap-4">
+            <a href="https://github.com/AVGVSTVS96" class="text-muted-foreground hover:text-foreground transition-colors">
+              <Icon name="github" class="size-5" />
+            </a>
+            <a href="https://linkedin.com/in/bassimshahidy" class="text-muted-foreground hover:text-foreground transition-colors">
+              <Icon name="linkedin" class="size-5" />
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
-  </article>
+  </div>
 </MainLayout>

@@ -18,26 +18,26 @@ const {
   heading,
   variant,
   displayHr,
-  padding = 'card-p',
+  padding = 'p-6',
   class: className,
   noMargin = false,
 } = Astro.props;
 
 const baseStyles: string =
-  'prose prose-neutral rounded-xl dark:prose-invert prose-h2:font-semibold prose-h2:text-xl prose-h2:text-muted-foreground transition-all duration-200 hover:shadow-lg backdrop-blur-sm';
+  'prose prose-neutral dark:prose-invert prose-h2:font-semibold prose-h2:text-lg prose-h2:text-muted-foreground rounded-lg transition-colors';
 
 const variableStyles: (string | undefined)[] = [
   padding,
   className,
   noMargin ? '' : 'mx-4',
-  variant === 'borderless' ? 'shadow-sm bg-card/50' : 'border border-border/50 shadow-md bg-card/80',
+  variant === 'borderless' ? 'bg-muted/50' : 'border border-border bg-card',
 ];
 ---
 
 <div class={cn(baseStyles, variableStyles)}>
-  {title && <h1 class="mb-2">{title}</h1>}
+  {title && <h1 class="mb-2 text-xl font-semibold">{title}</h1>}
   {subtitle && <h2 class="mt-0">{subtitle}</h2>}
-  {displayHr && <hr class="mb-8 border-accent-500" />}
-  {heading && <h3 class="mb-1">{heading}</h3>}
+  {displayHr && <hr class="mb-6 border-border" />}
+  {heading && <h3 class="mb-1 text-base font-medium">{heading}</h3>}
   <slot name="content" />
 </div>

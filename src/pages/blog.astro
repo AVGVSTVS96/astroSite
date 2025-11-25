@@ -3,12 +3,20 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogTimeline from '@components/BlogTimeline.astro';
 ---
 
-<BaseLayout>
-  <section class="card-mx card-p max-w-3xl">
-    <div class="mt-16 ml-8 sm:ml-16">
-      <h1 class="mb-4 text-5xl font-bold">blog</h1>
-    </div>
-    <hr class="border-accent-400 mt-8 mb-2 ml-8 sm:ml-16"/>
-    <BlogTimeline lineClamp="line-clamp-3" split={true} />
-  </section>
+<BaseLayout title="Blog" description="Blog posts by Bassim Shahidy">
+  <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <header class="mb-16">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Blog</h1>
+      <p class="mt-4 text-muted-foreground">
+        Thoughts on software engineering, web development, and open source.
+      </p>
+    </header>
+
+    <section>
+      <h2 class="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-6">
+        All Posts
+      </h2>
+      <BlogTimeline lineClamp="line-clamp-3" />
+    </section>
+  </div>
 </BaseLayout>
