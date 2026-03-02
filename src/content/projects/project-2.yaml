@@ -1,5 +1,6 @@
-title: astro-fouc-killer
-description: 'An Astro integration which eliminates flash of unstyled content when using class-based dark mode.'
-tags: [Astro, TailwindCSS, NPM]
+order: 2
+title: assistant-ui
+description: React framework and component library for building advanced, accessible AI-chat applications.
+tags: [React, TypeScript, AI, Framework]
 package: True
-url: https://github.com/AVGVSTVS96/astro-fouc-killer
+url: https://github.com/assistant-ui/assistant-ui

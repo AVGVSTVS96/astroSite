@@ -1,4 +1,6 @@
-title: astroSite
-description: Built with Astro and TailwindCSS, this MPA portfolio & blog site is version 3 of my personal website, my first MPA.
-tags: [Astro, TailwindCSS, TypeScript]
-url: https://github.com/AVGVSTVS96/astroSite
+order: 4
+title: openleaf
+description: 'Minimal, end-to-end encrypted, markdown notes app.'
+tags: [Astro, React, Convex, TypeScript]
+url: https://github.com/AVGVSTVS96/openleaf
+liveUrl: https://openleaf-peach.vercel.app

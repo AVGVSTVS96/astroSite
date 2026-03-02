@@ -1,5 +1,6 @@
-title: assistant-ui
-description: React framework and component library for building advanced, accessible AI-chat applications.
-tags: [React, TypeScript, AI, Framework]
-package: True
-url: https://github.com/!assistant-ui/assistant-ui
+order: 3
+title: lakhs
+description: 'Beautiful minimal currency converter for INR/USD with support for Lakhs and Crores'
+tags: [Design Exploration, React, TypeScript]
+url: https://github.com/AVGVSTVS96/lakhs
+liveUrl: https://lakhs.app
