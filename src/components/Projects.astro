@@ -6,21 +6,32 @@ import { getPackageVersions } from '@/lib/utils/getNpmVersion';
 
 const projects = await getCollection('projects');
 const versions = await getPackageVersions(projects);
+const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <div>
   <ul class="grid list-none gap-4 pl-0 md:grid-cols-2">
     {
-      projects.map((project) => (
+      sortedProjects.map((project) => (
         <li>
           <Card variant="bordered" padding="px-4 pt-3 pb-4" noMargin={true}>
             <div slot="content">
               <span class="flex items-center justify-between font-bold [&>span]:gap-2">
                 <span class="flex items-center">
-                  {project.data.title}
+                  {project.data.liveUrl ? (
+                    <a
+                      aria-label="live site link"
+                      class="group/link flex items-center gap-1.5 no-underline text-foreground"
+                      href={project.data.liveUrl}>
+                      {project.data.title}
+                      <Icon name="external-link-arrow" class="size-3.5 translate-y-[0.25px] text-muted-foreground/60 transition-all duration-200 ease-out group-hover/link:text-accent-500 group-hover/link:-translate-y-[1px] group-hover/link:translate-x-[1px] group-hover/link:scale-110" />
+                    </a>
+                  ) : (
+                    project.data.title
+                  )}
                   {project.data.package && (
                     <a href={`https://www.npmjs.com/package/${project.data.title}`} class="no-underline">
-                      <span class="rounded-md border border-border hover:border-accent-400 dark:hover:border-accent-400 px-1 py-0.5 text-xs font-semibold">
+                      <span class="rounded-md border border-border hover:border-accent-400 dark:hover:border-accent-400 px-1.25 py-0.75 text-xs font-semibold">
                         {versions.get(project.id)}
                       </span>
                     </a>
